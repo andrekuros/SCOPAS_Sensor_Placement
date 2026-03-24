@@ -1,0 +1,27 @@
+{
+  "experiment_name": "central_buildings_city",
+  "description": "City with buildings concentrated in center (400x400m), sparse at edges; 1km x 1km, sensor grid over full area",
+  "environment": {
+    "type": "synthetic",
+    "buildings_file": "data/scenes/central_buildings_city/buildings.geojson",
+    "sensor_locations_file": "data/scenes/central_buildings_city/sensor_locations.geojson",
+    "resolution": 20.0
+  },
+  "airway_altitudes": [20, 45, 65],
+  "sensors": {
+    "types": {
+      "Radar": { "cost": 50000.0, "power_W": 1000.0, "gain_dB": 30.0, "frequency_Hz": 1e10 },
+      "RF": { "cost": 15000.0, "sensitivity_dBm": -90.0, "frequency_Hz": 900e6 },
+      "EO": { "cost": 25000.0 }
+    }
+  },
+  "pareto_search": {
+    "n_samples": 30,
+    "generations": 20,
+    "n_cores": 4,
+    "min_sensors": 3,
+    "max_sensors": 15
+  },
+  "requirements": { "min_coverage": 0.75, "min_overlap": 0.35 },
+  "output": { "results_dir": "results/central_buildings_city", "save_results": true, "generate_plots": true }
+}

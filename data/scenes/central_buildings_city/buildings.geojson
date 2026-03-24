@@ -1,0 +1,11 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {"type": "Feature", "properties": {"name": "Center1", "height": 40}, "geometry": {"type": "Polygon", "coordinates": [[[400, 400], [500, 400], [500, 500], [400, 500], [400, 400]]]}},
+    {"type": "Feature", "properties": {"name": "Center2", "height": 55}, "geometry": {"type": "Polygon", "coordinates": [[[520, 400], [620, 400], [620, 500], [520, 500], [520, 400]]]}},
+    {"type": "Feature", "properties": {"name": "Center3", "height": 30}, "geometry": {"type": "Polygon", "coordinates": [[[400, 520], [500, 520], [500, 620], [400, 620], [400, 520]]]}},
+    {"type": "Feature", "properties": {"name": "Center4", "height": 45}, "geometry": {"type": "Polygon", "coordinates": [[[520, 520], [620, 520], [620, 620], [520, 620], [520, 520]]]}},
+    {"type": "Feature", "properties": {"name": "Center5", "height": 25}, "geometry": {"type": "Polygon", "coordinates": [[[350, 350], [400, 350], [400, 400], [350, 400], [350, 350]]]}},
+    {"type": "Feature", "properties": {"name": "Center6", "height": 35}, "geometry": {"type": "Polygon", "coordinates": [[[620, 350], [670, 350], [670, 400], [620, 400], [620, 350]]]}}
+  ]
+}

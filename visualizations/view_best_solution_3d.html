@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MUSCAT — Best Solution 3D</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: #0d0d0f;
+      color: #e2e2e8;
+      overflow: hidden;
+      height: 100vh;
+    }
+    #canvas-container { width: 100%; height: 100%; position: relative; }
+    #info {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      padding: 14px 18px;
+      background: rgba(12, 12, 14, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      font-size: 13px;
+      max-width: 320px;
+      backdrop-filter: blur(10px);
+    }
+    #info h1 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #7dd3fc;
+    }
+    #info p { margin: 4px 0; opacity: 0.9; }
+    #info .metric { color: #86efac; }
+    #info .hint { margin-top: 12px; font-size: 11px; opacity: 0.6; }
+    #legend {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      display: flex;
+      gap: 16px;
+      padding: 10px 14px;
+      background: rgba(12, 12, 14, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      font-size: 12px;
+    }
+    #legend span { display: flex; align-items: center; gap: 6px; }
+    #legend .dot { width: 10px; height: 10px; border-radius: 50%; }
+    #controls {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      padding: 12px 14px;
+      background: rgba(12, 12, 14, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      font-size: 12px;
+      min-width: 200px;
+    }
+    #controls h3 { font-size: 12px; margin-bottom: 10px; color: #94a3b8; }
+    #controls .row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    #controls .row label { flex: 0 0 70px; }
+    #controls input[type=checkbox] { cursor: pointer; }
+    #controls input[type=range] { flex: 1; min-width: 60px; cursor: pointer; }
+    #controls select { background: #334155; color: #e2e2e8; border: 1px solid #475569; border-radius: 6px; padding: 4px 8px; cursor: pointer; }
+    #loading, #file-pick {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'JetBrains Mono', monospace;
+      color: #64748b;
+      text-align: center;
+    }
+    #file-pick { display: none; }
+    #file-pick label {
+      display: inline-block;
+      padding: 10px 18px;
+      background: #334155;
+      border-radius: 8px;
+      cursor: pointer;
+      color: #e2e2e8;
+      margin-top: 10px;
+    }
+    #file-pick label:hover { background: #475569; }
+    #file-pick input[type=file] { display: none; }
+    #error { color: #f87171; margin-top: 8px; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <div id="canvas-container"></div>
+  <div id="info" style="display: none;">
+    <h1>MUSCAT — Best Solution</h1>
+    <p id="info-name"></p>
+    <p class="metric" id="info-mc"></p>
+    <div id="info-point-defense" class="metric" style="display: none;"></div>
+    <p class="metric" id="info-redundancy"></p>
+    <p class="metric" id="info-cost"></p>
+    <p class="hint">Drag to rotate · Scroll to zoom · Right-drag to pan</p>
+    <p id="error"></p>
+  </div>
+  <div id="legend" style="display: none;">
+    <span><i class="dot" style="background: #ef4444;"></i> Radar</span>
+    <span><i class="dot" style="background: #3b82f6;"></i> RF</span>
+    <span><i class="dot" style="background: #22c55e;"></i> EO</span>
+    <span><i class="dot" style="background: #f59e0b;"></i> Acoustic</span>
+    <span id="legend-assets" style="display: none;"><i class="dot" style="background: #a855f7;"></i> Critical asset</span>
+    <span id="legend-runways" style="display: none;"><i class="dot" style="background: #f59e0b;"></i> Runway</span>
+  </div>
+  <div id="controls" style="display: none;"></div>
+  <div id="loading">Loading…</div>
+  <div id="file-pick">
+    <p>Open <code>best_solution_3d.json</code> to view.</p>
+    <p id="file-pick-msg" style="font-size:12px;color:#94a3b8;margin-top:6px;"></p>
+    <label for="json-file">Choose JSON file</label>
+    <input type="file" id="json-file" accept=".json" />
+  </div>
+
+  <script type="importmap">
+    { "imports": { "three": "https://esm.sh/three@0.160.0" } }
+  </script>
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'https://esm.sh/three@0.160.0/examples/jsm/controls/OrbitControls.js';
+    import { CSS2DRenderer, CSS2DObject } from 'https://esm.sh/three@0.160.0/addons/renderers/CSS2DRenderer.js';
+
+    const SENSOR_COLORS = { Radar: 0xef4444, RF: 0x3b82f6, EO: 0x22c55e, Acoustic: 0xf59e0b };
+    const DATA_URL = (() => {
+      const params = new URLSearchParams(location.search);
+      return params.get('data') || 'best_solution_3d.json';
+    })();
+
+    function toThree(x, y, z) {
+      return new THREE.Vector3(Number(x), Number(z), -Number(y));
+    }
+
+    function loadDataFromUrl() {
+      return fetch(DATA_URL).then(r => {
+        if (!r.ok) throw new Error(`Failed to load ${DATA_URL} (${r.status}).`);
+        return r.json();
+      });
+    }
+
+    function loadDataFromFile(file) {
+      return new Promise((resolve, reject) => {
+        const fr = new FileReader();
+        fr.onload = () => { try { resolve(JSON.parse(fr.result)); } catch (e) { reject(e); } };
+        fr.onerror = () => reject(new Error('Could not read file'));
+        fr.readAsText(file);
+      });
+    }
+
+    function buildScene(data) {
+      const scene = new THREE.Scene();
+      scene.background = new THREE.Color(0x1a1a2e);
+      const bounds = data.bounds;
+      const [xMin, xMax, yMin, yMax, zMin, zMax] = bounds;
+      const cx = (xMin + xMax) / 2, cy = (yMin + yMax) / 2, cz = (zMin + zMax) / 2;
+      const extent = Math.max(xMax - xMin, yMax - yMin, zMax - zMin) || 100;
+
+      // Ground plane (visible base); can be textured with OSM/satellite when geo_bounds present
+      const groundSizeX = xMax - xMin;
+      const groundSizeY = yMax - yMin;
+      const groundGeo = new THREE.PlaneGeometry(groundSizeX * 1.15, groundSizeY * 1.15);
+      const groundMat = new THREE.MeshStandardMaterial({
+        color: 0x2d3748,
+        metalness: 0,
+        roughness: 1,
+      });
+      const ground = new THREE.Mesh(groundGeo, groundMat);
+      ground.rotation.x = -Math.PI / 2;
+      ground.position.set(cx, zMin, -cy);
+      ground.receiveShadow = true;
+      ground.userData.defaultColor = 0x2d3748;
+      scene.add(ground);
+      const gridHelper = new THREE.GridHelper(extent * 1.2, 24, 0x4a5568, 0x3d4a5c);
+      gridHelper.position.set(cx, zMin + 0.5, -cy);
+      scene.add(gridHelper);
+
+      // Per-sensor detection regions: one translucent volume per sensor, color = sensor type (drawn before buildings)
+      const res = data.voxel_resolution != null ? data.voxel_resolution : (xMax - xMin) / 50;
+      const shape = data.grid_shape;
+      const COVERAGE_THRESHOLD = 0.06;
+      const sensorVolumes = [];
+      const sensorGrids = data.sensor_detection_grids || [];
+      if (shape && shape[0] && shape[1] && shape[2]) {
+        const boxGeo = new THREE.BoxGeometry(res * 0.92, res * 0.92, res * 0.92);
+        sensorGrids.forEach(({ type, grid }) => {
+          const indices = [];
+          for (let i = 0; i < shape[0]; i++) {
+            for (let j = 0; j < shape[1]; j++) {
+              for (let k = 0; k < shape[2]; k++) {
+                const p = grid[i]?.[j]?.[k];
+                if (p != null && p >= COVERAGE_THRESHOLD) indices.push({ i, j, k });
+              }
+            }
+          }
+          if (indices.length === 0) return;
+          const hex = SENSOR_COLORS[type] ?? 0x888888;
+          const mat = new THREE.MeshBasicMaterial({
+            color: hex,
+            transparent: true,
+            opacity: 0.15,
+            depthWrite: false,
+            side: THREE.DoubleSide,
+          });
+          const instanced = new THREE.InstancedMesh(boxGeo, mat, indices.length);
+          const dummy = new THREE.Object3D();
+          indices.forEach(({ i, j, k }, idx) => {
+            const px = xMin + (i + 0.5) * res;
+            const py = yMin + (j + 0.5) * res;
+            const pz = zMin + (k + 0.5) * res;
+            dummy.position.set(px, pz, -py);
+            dummy.updateMatrix();
+            instanced.setMatrixAt(idx, dummy.matrix);
+          });
+          instanced.instanceMatrix.needsUpdate = true;
+          instanced.castShadow = false;
+          instanced.receiveShadow = false;
+          scene.add(instanced);
+          sensorVolumes.push({ type, mesh: instanced });
+        });
+      }
+      if (sensorVolumes.length === 0 && data.coverage_grid && shape) {
+        const coverageGrid = data.coverage_grid;
+        const indices = [];
+        for (let i = 0; i < shape[0]; i++) {
+          for (let j = 0; j < shape[1]; j++) {
+            for (let k = 0; k < shape[2]; k++) {
+              const p = coverageGrid[i]?.[j]?.[k];
+              if (p != null && p >= COVERAGE_THRESHOLD) indices.push({ i, j, k });
+            }
+          }
+        }
+        if (indices.length > 0) {
+          const boxGeo = new THREE.BoxGeometry(res * 0.92, res * 0.92, res * 0.92);
+          const mat = new THREE.MeshBasicMaterial({
+            color: 0x44dd88,
+            transparent: true,
+            opacity: 0.15,
+            depthWrite: false,
+            side: THREE.DoubleSide,
+          });
+          const instanced = new THREE.InstancedMesh(boxGeo, mat, indices.length);
+          const dummy = new THREE.Object3D();
+          indices.forEach(({ i, j, k }, idx) => {
+            dummy.position.set(xMin + (i + 0.5) * res, zMin + (k + 0.5) * res, -(yMin + (j + 0.5) * res));
+            dummy.updateMatrix();
+            instanced.setMatrixAt(idx, dummy.matrix);
+          });
+          instanced.instanceMatrix.needsUpdate = true;
+          scene.add(instanced);
+          sensorVolumes.push({ type: 'Coverage (all)', mesh: instanced });
+        }
+      }
+
+      // Buildings: light grey, use polygon when available for correct orientation
+      const buildingMat = new THREE.MeshStandardMaterial({
+        color: 0x718096,
+        metalness: 0.05,
+        roughness: 0.9,
+      });
+      for (const b of data.buildings || []) {
+        const h = b.height || 10;
+        const cx = (b.minx + b.maxx) / 2, cy = (b.miny + b.maxy) / 2;
+        let mesh;
+        if (b.polygon && Array.isArray(b.polygon) && b.polygon.length >= 3) {
+          const shape = new THREE.Shape();
+          const pts = b.polygon.map(([px, py]) => [px - cx, py - cy]);
+          shape.moveTo(pts[0][0], pts[0][1]);
+          for (let i = 1; i < pts.length; i++) shape.lineTo(pts[i][0], pts[i][1]);
+          const extGeo = new THREE.ExtrudeGeometry(shape, { depth: h, bevelEnabled: false });
+          extGeo.translate(0, 0, -h / 2);
+          extGeo.rotateX(Math.PI / 2);
+          mesh = new THREE.Mesh(extGeo, buildingMat);
+        } else {
+          const w = (b.maxx - b.minx) || 1, d = (b.maxy - b.miny) || 1;
+          mesh = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), buildingMat);
+        }
+        mesh.position.set(cx, zMin + h / 2, -cy);
+        mesh.castShadow = true;
+        mesh.receiveShadow = true;
+        scene.add(mesh);
+      }
+
+      // Sensors: bright and emissive so they pop; collect for labels (labels added in startWithData)
+      const sensorRadius = Math.min(extent / 50, 4);
+      const sensorPoints = [];
+      for (const s of data.sensors || []) {
+        const color = SENSOR_COLORS[s.type] ?? 0xaaaaaa;
+        const mat = new THREE.MeshStandardMaterial({
+          color,
+          emissive: color,
+          emissiveIntensity: 0.6,
+          metalness: 0.2,
+          roughness: 0.5,
+        });
+        const geo = new THREE.SphereGeometry(sensorRadius, 20, 16);
+        const mesh = new THREE.Mesh(geo, mat);
+        const v = toThree(s.x, s.y, s.z);
+        mesh.position.copy(v);
+        scene.add(mesh);
+        sensorPoints.push({ x: s.x, y: s.y, z: s.z, type: s.type });
+      }
+
+      // Critical assets: point (marker + wireframe sphere) or line (runway)
+      const assets = data.critical_assets || [];
+      if (assets.length > 0) {
+        const assetColor = 0xa855f7;
+        const assetMat = new THREE.MeshStandardMaterial({
+          color: assetColor,
+          emissive: assetColor,
+          emissiveIntensity: 0.4,
+          metalness: 0.3,
+          roughness: 0.6,
+        });
+        const wireframeMat = new THREE.MeshBasicMaterial({
+          color: 0xa855f7,
+          transparent: true,
+          opacity: 0.25,
+          wireframe: true,
+        });
+        const lineMat = new THREE.LineBasicMaterial({ color: 0xf59e0b, linewidth: 2 });
+        for (const a of assets) {
+          if (a.geometry === 'line') {
+            const coords = a.coordinates || [];
+            if (coords.length < 2) continue;
+            const width = Math.max((Number(a.protection_radius) || 60) * 2.5, 150);
+            const pts = coords.map(c => ({ x: c[0], y: c[1], z: c[2] != null ? c[2] : 0 }));
+            const vertices = [];
+            const indices = [];
+            for (let i = 0; i < pts.length - 1; i++) {
+              const p0 = pts[i], p1 = pts[i + 1];
+              const dx = p1.x - p0.x, dy = p1.y - p0.y;
+              const len = Math.sqrt(dx*dx + dy*dy) || 1;
+              const nx = -dy/len, ny = dx/len;
+              const hw = width / 2;
+              const v0 = toThree(p0.x - nx*hw, p0.y - ny*hw, p0.z);
+              const v1 = toThree(p0.x + nx*hw, p0.y + ny*hw, p0.z);
+              const v2 = toThree(p1.x + nx*hw, p1.y + ny*hw, p1.z);
+              const v3 = toThree(p1.x - nx*hw, p1.y - ny*hw, p1.z);
+              const base = vertices.length / 3;
+              vertices.push(v0.x, v0.y, v0.z, v1.x, v1.y, v1.z, v2.x, v2.y, v2.z, v3.x, v3.y, v3.z);
+              indices.push(base, base+1, base+2, base, base+2, base+3);
+            }
+            const ribbonGeo = new THREE.BufferGeometry();
+            ribbonGeo.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            ribbonGeo.setIndex(indices);
+            ribbonGeo.computeVertexNormals();
+            const ribbonMat = new THREE.MeshBasicMaterial({
+              color: 0xf59e0b, transparent: true, opacity: 0.5,
+              side: THREE.DoubleSide, depthWrite: false,
+            });
+            const ribbon = new THREE.Mesh(ribbonGeo, ribbonMat);
+            scene.add(ribbon);
+            const lineGeo = new THREE.BufferGeometry().setFromPoints(coords.map(c => toThree(c[0], c[1], c[2] != null ? c[2] : 0)));
+            const line = new THREE.Line(lineGeo, new THREE.LineBasicMaterial({ color: 0xb45309, linewidth: 1 }));
+            scene.add(line);
+          } else {
+            const [ax, ay, az] = a.location || [0, 0, 0];
+            const r = Math.max(Number(a.protection_radius) || 100, 20);
+            const v = toThree(ax, ay, az);
+            const markerGeo = new THREE.OctahedronGeometry(sensorRadius * 1.5, 0);
+            const marker = new THREE.Mesh(markerGeo, assetMat);
+            marker.position.copy(v);
+            scene.add(marker);
+            const sphereGeo = new THREE.SphereGeometry(r, 24, 16);
+            const wireframe = new THREE.Mesh(sphereGeo, wireframeMat);
+            wireframe.position.copy(v);
+            scene.add(wireframe);
+          }
+        }
+      }
+
+      return {
+        scene, bounds, extent, center: new THREE.Vector3(cx, cz, -cy),
+        sensorVolumes, sensorPoints, ground, gridHelper,
+        geo_bounds: data.geo_bounds || null,
+        xMin, xMax, yMin, yMax, zMin, zMax,
+      };
+    }
+
+    function lon2tile(lon, z) {
+      return Math.floor((lon + 180) / 360 * Math.pow(2, z));
+    }
+    function lat2tile(lat, z) {
+      const r = lat * Math.PI / 180;
+      return Math.floor((1 - Math.log(Math.tan(r) + 1 / Math.cos(r)) / Math.PI) / 2 * Math.pow(2, z));
+    }
+
+    function loadMapTexture(geo_bounds, xMin, xMax, yMin, yMax, style) {
+      const south = geo_bounds.south, north = geo_bounds.north, west = geo_bounds.west, east = geo_bounds.east;
+      const z = 16;
+      const xMinT = lon2tile(west, z);
+      const xMaxT = lon2tile(east, z);
+      const yMinT = lat2tile(north, z);
+      const yMaxT = lat2tile(south, z);
+      const nx = Math.min(xMaxT - xMinT + 1, 8);
+      const ny = Math.min(yMaxT - yMinT + 1, 8);
+      const tileSize = 256;
+      const canvas = document.createElement('canvas');
+      canvas.width = nx * tileSize;
+      canvas.height = ny * tileSize;
+      const ctx = canvas.getContext('2d');
+      const urls = [];
+      if (style === 'osm') {
+        for (let ty = yMinT; ty <= yMaxT; ty++) {
+          for (let tx = xMinT; tx <= xMaxT; tx++) {
+            urls.push({ url: `https://tile.openstreetmap.org/${z}/${tx}/${ty}.png`, tx, ty });
+          }
+        }
+      } else if (style === 'satellite') {
+        for (let ty = yMinT; ty <= yMaxT; ty++) {
+          for (let tx = xMinT; tx <= xMaxT; tx++) {
+            urls.push({ url: `https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/${z}/${ty}/${tx}`, tx, ty });
+          }
+        }
+      }
+      return Promise.all(urls.map(({ url, tx, ty }) => {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.crossOrigin = 'anonymous';
+          img.onload = () => resolve({ img, tx, ty });
+          img.onerror = () => resolve(null);
+          img.src = url;
+        });
+      })).then(results => {
+        results.forEach((r, i) => {
+          if (!r) return;
+          const { img, tx, ty } = r;
+          const dx = (tx - xMinT) * tileSize;
+          const dy = (ty - yMinT) * tileSize;
+          ctx.drawImage(img, dx, dy, tileSize, tileSize);
+        });
+        const texture = new THREE.CanvasTexture(canvas);
+        texture.wrapS = texture.wrapT = THREE.ClampToEdgeWrapping;
+        texture.flipY = true;
+        texture.needsUpdate = true;
+        return texture;
+      });
+    }
+
+    function applyMapAlignment(ground) {
+      if (!ground || !ground.material || !ground.material.map) return;
+      const tex = ground.material.map;
+      const ox = (Number(document.getElementById('map-offset-x')?.value) || 0) / 100;
+      const oy = (Number(document.getElementById('map-offset-y')?.value) || 0) / 100;
+      const sx = (Number(document.getElementById('map-scale-x')?.value) || 100) / 100;
+      const sy = (Number(document.getElementById('map-scale-y')?.value) || 100) / 100;
+      const rotDeg = Number(document.getElementById('map-rotation')?.value) || 0;
+      tex.offset.set(ox, oy);
+      tex.repeat.set(sx, sy);
+      tex.center.set(0.5, 0.5);
+      tex.rotation = rotDeg * Math.PI / 180;
+    }
+
+    function syncAlignmentLabels() {
+      const v = id => document.getElementById(id)?.value;
+      const span = id => document.getElementById(id + '-val');
+      const ox = v('map-offset-x'); if (ox != null && span('map-offset-x')) span('map-offset-x').textContent = ox;
+      const oy = v('map-offset-y'); if (oy != null && span('map-offset-y')) span('map-offset-y').textContent = oy;
+      const sx = v('map-scale-x'); if (sx != null && span('map-scale-x')) span('map-scale-x').textContent = sx + '%';
+      const sy = v('map-scale-y'); if (sy != null && span('map-scale-y')) span('map-scale-y').textContent = sy + '%';
+      const rot = v('map-rotation'); if (rot != null && span('map-rotation')) span('map-rotation').textContent = rot + '°';
+    }
+
+    function saveAlignmentToStorage(data) {
+      try {
+        const expKey = (data?.experiment_name || 'muscat').replace(/\W/g, '_');
+        const payload = {
+          offsetX: Number(document.getElementById('map-offset-x')?.value) || 0,
+          offsetY: Number(document.getElementById('map-offset-y')?.value) || 0,
+          scaleX: Number(document.getElementById('map-scale-x')?.value) || 100,
+          scaleY: Number(document.getElementById('map-scale-y')?.value) || 100,
+          rotation: Number(document.getElementById('map-rotation')?.value) || 0,
+        };
+        localStorage.setItem('muscat_map_align_' + expKey, JSON.stringify(payload));
+      } catch (e) {}
+    }
+
+    function startWithData(data) {
+      const container = document.getElementById('canvas-container');
+      const loadingEl = document.getElementById('loading');
+      const filePickEl = document.getElementById('file-pick');
+      const infoEl = document.getElementById('info');
+      const legendEl = document.getElementById('legend');
+      const errorEl = document.getElementById('error');
+
+      loadingEl.style.display = 'none';
+      filePickEl.style.display = 'none';
+      document.getElementById('info-name').textContent = data.experiment_name || 'Best solution';
+      document.getElementById('info-mc').textContent = `Mc: ${(data.Mc != null ? (data.Mc * 100).toFixed(2) : '—')}%`;
+      const hasPd = data.critical_assets && data.critical_assets.length;
+      const pdEl = document.getElementById('info-point-defense');
+      if (hasPd) {
+        const vulnCoop = data.M_vuln_coop != null ? data.M_vuln_coop : (data.M_wp_coop != null ? 1 - data.M_wp_coop : null);
+        const vulnNoncoop = data.M_vuln_noncoop != null ? data.M_vuln_noncoop : (data.M_wp_noncoop != null ? 1 - data.M_wp_noncoop : null);
+        pdEl.innerHTML = [
+          `M_wp coop: ${(data.M_wp_coop != null ? (data.M_wp_coop * 100).toFixed(2) : '—')}% &nbsp; noncoop: ${(data.M_wp_noncoop != null ? (data.M_wp_noncoop * 100).toFixed(2) : '—')}%`,
+          `M_vuln coop: ${(vulnCoop != null ? vulnCoop.toFixed(3) : '—')} &nbsp; noncoop: ${(vulnNoncoop != null ? vulnNoncoop.toFixed(3) : '—')}`,
+          `Fused resilience: ${(data.fused_resilience != null ? (data.fused_resilience * 100).toFixed(2) : '—')}%`,
+          `Asset ROI: $${data.asset_security_roi != null && isFinite(data.asset_security_roi) ? Math.round(data.asset_security_roi).toLocaleString() : '—'}`,
+        ].map(s => `<p style="margin:2px 0;">${s}</p>`).join('');
+        pdEl.style.display = 'block';
+      } else {
+        pdEl.style.display = 'none';
+      }
+      document.getElementById('info-redundancy').textContent = `Redundancy: ${data.redundancy != null ? data.redundancy.toFixed(3) : '—'}`;
+      document.getElementById('info-cost').textContent = `Cost: $${data.cost != null ? data.cost.toLocaleString() : '—'}`;
+      infoEl.style.display = 'block';
+      legendEl.style.display = 'flex';
+      document.getElementById('legend-assets').style.display = data.critical_assets && data.critical_assets.length ? 'flex' : 'none';
+      const hasRunways = (data.critical_assets || []).some(a => a.geometry === 'line');
+      document.getElementById('legend-runways').style.display = hasRunways ? 'flex' : 'none';
+      errorEl.textContent = '';
+
+      const { scene, extent, center, sensorVolumes, sensorPoints, ground, gridHelper, geo_bounds, xMin, xMax, yMin, yMax } = buildScene(data);
+      const controlsEl = document.getElementById('controls');
+      const DEFAULT_OPACITY = 0.15;
+      let controlsHtml = '';
+      if (geo_bounds && ground) {
+        const expKey = (data.experiment_name || 'muscat').replace(/\W/g, '_');
+        const saved = (() => { try { return JSON.parse(localStorage.getItem('muscat_map_align_' + expKey) || '{}'); } catch(e) { return {}; } })();
+        controlsHtml += '<h3>Map background</h3><div class="row"><label>Style:</label><select id="map-style"><option value="none">None</option><option value="osm">OpenStreetMap</option><option value="satellite">Satellite</option></select></div>';
+        controlsHtml += '<h4 style="margin-top:10px;font-size:11px;color:#94a3b8;">Map alignment (nudge if off)</h4>';
+        controlsHtml += '<div class="row"><label>Offset X:</label><input type="range" id="map-offset-x" min="-50" max="50" value="' + ((saved.offsetX ?? 0)) + '" title="Shift map left/right"/><span id="map-offset-x-val" style="min-width:32px">' + (saved.offsetX ?? 0) + '</span></div>';
+        controlsHtml += '<div class="row"><label>Offset Y:</label><input type="range" id="map-offset-y" min="-50" max="50" value="' + ((saved.offsetY ?? 0)) + '" title="Shift map up/down"/><span id="map-offset-y-val" style="min-width:32px">' + (saved.offsetY ?? 0) + '</span></div>';
+        controlsHtml += '<div class="row"><label>Scale X:</label><input type="range" id="map-scale-x" min="80" max="120" value="' + ((saved.scaleX ?? 100)) + '" title="Stretch map horizontally"/><span id="map-scale-x-val" style="min-width:32px">' + (saved.scaleX ?? 100) + '%</span></div>';
+        controlsHtml += '<div class="row"><label>Scale Y:</label><input type="range" id="map-scale-y" min="80" max="120" value="' + ((saved.scaleY ?? 100)) + '" title="Stretch map vertically"/><span id="map-scale-y-val" style="min-width:32px">' + (saved.scaleY ?? 100) + '%</span></div>';
+        controlsHtml += '<div class="row"><label>Rotate:</label><input type="range" id="map-rotation" min="-180" max="180" value="' + ((saved.rotation ?? 0)) + '" title="Rotate map"/><span id="map-rotation-val" style="min-width:32px">' + (saved.rotation ?? 0) + '°</span></div>';
+        controlsHtml += '<div class="row" style="margin-top:6px;"><button id="map-align-reset" style="font-size:11px;padding:4px 10px;background:#334155;border:1px solid #475569;border-radius:6px;color:#e2e2e8;cursor:pointer;">Reset alignment</button></div>';
+      }
+      if (sensorVolumes && sensorVolumes.length > 0) {
+        controlsHtml += '<h3 style="margin-top:12px;">Detection volumes by type</h3><p style="font-size:11px;color:#94a3b8;margin-bottom:8px;">Toggle and opacity per sensor type</p>';
+      }
+      controlsEl.innerHTML = controlsHtml;
+      if (geo_bounds && ground) {
+        const mapStyleEl = document.getElementById('map-style');
+        if (mapStyleEl) {
+          mapStyleEl.addEventListener('change', () => {
+            const style = mapStyleEl.value;
+            if (style === 'none') {
+              ground.material.map = null;
+              ground.material.color.setHex(ground.userData.defaultColor || 0x2d3748);
+              ground.material.needsUpdate = true;
+              if (gridHelper) gridHelper.visible = true;
+            } else {
+              if (gridHelper) gridHelper.visible = false;
+              loadMapTexture(geo_bounds, xMin, xMax, yMin, yMax, style).then(tex => {
+                if (ground.material) {
+                  ground.material.map = tex;
+                  ground.material.color.setHex(0xffffff);
+                  applyMapAlignment(ground);
+                  ground.material.needsUpdate = true;
+                }
+              }).catch(() => {});
+            }
+          });
+        }
+        ['map-offset-x', 'map-offset-y', 'map-scale-x', 'map-scale-y', 'map-rotation'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) {
+            el.addEventListener('input', () => {
+              syncAlignmentLabels();
+              applyMapAlignment(ground);
+              saveAlignmentToStorage(data);
+            });
+          }
+        });
+        const resetBtn = document.getElementById('map-align-reset');
+        if (resetBtn) {
+          resetBtn.addEventListener('click', () => {
+            const ids = ['map-offset-x', 'map-offset-y', 'map-scale-x', 'map-scale-y', 'map-rotation'];
+            const vals = ['0', '0', '100', '100', '0'];
+            ids.forEach((id, i) => { const el = document.getElementById(id); if (el) el.value = vals[i]; });
+            syncAlignmentLabels();
+            applyMapAlignment(ground);
+            saveAlignmentToStorage(data);
+          });
+        }
+      }
+      if (sensorVolumes && sensorVolumes.length > 0) {
+        controlsEl.style.display = 'block';
+        const byType = {};
+        sensorVolumes.forEach(({ type, mesh }) => {
+          if (!byType[type]) byType[type] = [];
+          byType[type].push(mesh);
+        });
+        Object.keys(byType).sort().forEach(type => {
+          const meshes = byType[type];
+          const row = document.createElement('div');
+          row.className = 'row';
+          const lab = document.createElement('label');
+          lab.textContent = type + ' (' + meshes.length + '):';
+          lab.title = 'Show/hide all ' + type + ' detection regions';
+          lab.style.flex = '0 0 90px';
+          const cb = document.createElement('input');
+          cb.type = 'checkbox';
+          cb.checked = true;
+          cb.title = 'Show/hide all';
+          cb.addEventListener('change', () => { meshes.forEach(m => { m.visible = cb.checked; }); });
+          const sl = document.createElement('input');
+          sl.type = 'range';
+          sl.min = 0;
+          sl.max = 100;
+          sl.value = Math.round(DEFAULT_OPACITY * 100);
+          sl.title = 'Opacity';
+          sl.addEventListener('input', () => { const o = sl.value / 100; meshes.forEach(m => { m.material.opacity = o; }); });
+          row.appendChild(lab);
+          row.appendChild(cb);
+          row.appendChild(sl);
+          controlsEl.appendChild(row);
+        });
+      }
+      if (controlsEl.innerHTML.trim()) {
+        controlsEl.style.display = 'block';
+      } else {
+        controlsEl.style.display = 'none';
+      }
+      const camera = new THREE.PerspectiveCamera(65, container.clientWidth / container.clientHeight, 1, extent * 12);
+      camera.position.copy(center).add(new THREE.Vector3(extent * 0.95, extent * 0.7, extent * 0.95));
+      camera.lookAt(center);
+
+      const renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.2;
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      container.appendChild(renderer.domElement);
+
+      const labelRenderer = new CSS2DRenderer();
+      labelRenderer.setSize(container.clientWidth, container.clientHeight);
+      labelRenderer.domElement.style.position = 'absolute';
+      labelRenderer.domElement.style.top = '0';
+      labelRenderer.domElement.style.left = '0';
+      labelRenderer.domElement.style.pointerEvents = 'none';
+      container.appendChild(labelRenderer.domElement);
+
+      const typeCount = {};
+      (sensorPoints || []).forEach(({ x, y, z, type }) => {
+        typeCount[type] = (typeCount[type] || 0) + 1;
+        const label = type + ' ' + typeCount[type];
+        const div = document.createElement('div');
+        div.textContent = label;
+        div.style.color = '#fff';
+        div.style.fontSize = '11px';
+        div.style.fontFamily = 'JetBrains Mono, monospace';
+        div.style.whiteSpace = 'nowrap';
+        div.style.textShadow = '0 0 2px #000, 0 0 4px #000';
+        div.style.pointerEvents = 'none';
+        const labelObj = new CSS2DObject(div);
+        const v = toThree(x, y, z);
+        labelObj.position.set(v.x, v.y + 8, v.z);
+        scene.add(labelObj);
+      });
+
+      const controls = new OrbitControls(camera, renderer.domElement);
+      controls.target.copy(center);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.05;
+
+      scene.add(new THREE.AmbientLight(0xffffff, 0.7));
+      const sun = new THREE.DirectionalLight(0xffffff, 1.2);
+      sun.position.set(extent * 0.7, extent * 1.5, extent * 0.7);
+      sun.castShadow = true;
+      sun.shadow.mapSize.width = 2048;
+      sun.shadow.mapSize.height = 2048;
+      scene.add(sun);
+      const fill = new THREE.DirectionalLight(0xb8d4e8, 0.4);
+      fill.position.set(-extent * 0.5, extent * 0.3, -extent * 0.5);
+      scene.add(fill);
+
+      window.addEventListener('resize', () => {
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        labelRenderer.setSize(container.clientWidth, container.clientHeight);
+      });
+
+      function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+        labelRenderer.render(scene, camera);
+      }
+      animate();
+    }
+
+    function showFilePick(errMsg) {
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('file-pick').style.display = 'block';
+      document.getElementById('file-pick-msg').textContent = errMsg || '';
+    }
+
+    function run() {
+      const fileInput = document.getElementById('json-file');
+      fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        loadDataFromFile(file).then(startWithData).catch(err => { showFilePick(err.message); });
+      });
+
+      if (location.protocol === 'file:') {
+        showFilePick('Opened as file. Choose best_solution_3d.json below.');
+        return;
+      }
+
+      loadDataFromUrl()
+        .then(startWithData)
+        .catch(() => showFilePick('Could not load from URL. Choose best_solution_3d.json below.'));
+    }
+
+    run();
+  </script>
+</body>
+</html>

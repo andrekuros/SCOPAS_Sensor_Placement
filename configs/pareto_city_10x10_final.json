@@ -1,0 +1,74 @@
+{
+  "experiment_name": "pareto_city_10x10_final",
+  "description": "Experimento FINAL - cidade 1km\u00d71km com aerovias e \u00e2ngulos de eleva\u00e7\u00e3o",
+  "environment": {
+    "type": "synthetic",
+    "buildings_file": "data/examples/city_10x10_buildings.geojson",
+    "sensor_locations_file": "data/examples/city_10x10_sensor_locations.geojson",
+    "resolution": 20.0,
+    "comment": "Grid 49\u00d749\u00d73, resolu\u00e7\u00e3o 20m para balance velocidade/precis\u00e3o"
+  },
+  "airway_altitudes": [
+    20,
+    45,
+    65
+  ],
+  "comment_airways": "Aerovias: 20m (entre pr\u00e9dios), 45m (acima m\u00e9dia, abaixo altos), 65m (5m acima do mais alto)",
+  "sensors": {
+    "types": {
+      "Radar": {
+        "cost": 50000.0,
+        "power_W": 1000.0,
+        "gain_dB": 30.0,
+        "frequency_Hz": 10000000000.0,
+        "elevation_min": -5.0,
+        "elevation_max": 30.0,
+        "fov_horizontal": 360.0,
+        "comment": "Radar: exemplo omni-azimute (360\u00b0); reduzir no config para painel setor"
+      },
+      "RF": {
+        "cost": 15000.0,
+        "sensitivity_dBm": -90.0,
+        "frequency_Hz": 900000000.0,
+        "elevation_min": -30.0,
+        "elevation_max": 70.0,
+        "fov_horizontal": 360.0,
+        "comment": "RF: omnidirecional"
+      },
+      "EO": {
+        "cost": 25000.0,
+        "elevation_min": -20.0,
+        "elevation_max": 45.0,
+        "fov_horizontal": 360.0,
+        "comment": "EO: exemplo omni-azimute (360\u00b0); modelo simplificado"
+      }
+    }
+  },
+  "pareto_search": {
+    "n_samples": 100,
+    "generations": 50,
+    "n_cores": 6,
+    "min_sensors": 3,
+    "max_sensors": 15,
+    "comment": "NSGA-II: 100 indiv\u00edduos \u00d7 50 gera\u00e7\u00f5es, 6 cores (ajuste conforme RAM)"
+  },
+  "requirements": {
+    "min_coverage": 0.75,
+    "min_overlap": 0.35,
+    "comment": "Requisitos para classifica\u00e7\u00e3o GREEN"
+  },
+  "output": {
+    "results_dir": "results/pareto_city_10x10_final",
+    "save_results": true,
+    "generate_plots": true
+  },
+  "checkpoint": {
+    "enabled": false,
+    "dir": "checkpoints/pareto_city_10x10_final",
+    "frequency": 5,
+    "resume": false
+  },
+  "analysis": {
+    "max_solutions": 40
+  }
+}

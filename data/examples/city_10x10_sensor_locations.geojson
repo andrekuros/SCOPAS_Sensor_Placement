@@ -1,0 +1,3762 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.0,
+          40.0
+        ]
+      },
+      "properties": {
+        "id": 1,
+        "height": 15,
+        "name": "Sensor_Building_1",
+        "location": "rooftop",
+        "block": 1
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          60.0,
+          40.0
+        ]
+      },
+      "properties": {
+        "id": 2,
+        "height": 60,
+        "name": "Sensor_Building_2",
+        "location": "rooftop",
+        "block": 1
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          90.0,
+          90.0
+        ]
+      },
+      "properties": {
+        "id": 3,
+        "height": 15,
+        "name": "Sensor_Street_0_0",
+        "location": "street",
+        "block": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.0,
+          40.0
+        ]
+      },
+      "properties": {
+        "id": 4,
+        "height": 50,
+        "name": "Sensor_Building_3",
+        "location": "rooftop",
+        "block": 2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          160.0,
+          40.0
+        ]
+      },
+      "properties": {
+        "id": 5,
+        "height": 50,
+        "name": "Sensor_Building_4",
+        "location": "rooftop",
+        "block": 2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          220.0,
+          40.0
+        ]
+      },
+      "properties": {
+        "id": 6,
+        "height": 55,
+        "name": "Sensor_Building_5",
+        "location": "rooftop",
+        "block": 3
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          260.0,
+          40.0
+        ]
+      },
+      "properties": {
+        "id": 7,
+        "height": 30,
+        "name": "Sensor_Building_6",
+        "location": "rooftop",
+        "block": 3
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          290.0,
+          90.0
+        ]
+      },
+      "properties": {
+        "id": 8,
+        "height": 15,
+        "name": "Sensor_Street_0_2",
+        "location": "street",
+        "block": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          340.0,
+          40.0
+        ]
+      },
+      "properties": {
+        "id": 9,
+        "height": 50,
+        "name": "Sensor_Building_7",
+        "location": "rooftop",
+        "block": 4
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          420.0,
+          40.0
+        ]
+      },
+      "properties": {
+        "id": 10,
+        "height": 40,
+        "name": "Sensor_Building_8",
+        "location": "rooftop",
+        "block": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          460.0,
+          40.0
+        ]
+      },
+      "properties": {
+        "id": 11,
+        "height": 60,
+        "name": "Sensor_Building_9",
+        "location": "rooftop",
+        "block": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          490.0,
+          90.0
+        ]
+      },
+      "properties": {
+        "id": 12,
+        "height": 15,
+        "name": "Sensor_Street_0_4",
+        "location": "street",
+        "block": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          540.0,
+          40.0
+        ]
+      },
+      "properties": {
+        "id": 13,
+        "height": 45,
+        "name": "Sensor_Building_10",
+        "location": "rooftop",
+        "block": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          620.0,
+          20.0
+        ]
+      },
+      "properties": {
+        "id": 14,
+        "height": 45,
+        "name": "Sensor_Building_11",
+        "location": "rooftop",
+        "block": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          660.0,
+          20.0
+        ]
+      },
+      "properties": {
+        "id": 15,
+        "height": 20,
+        "name": "Sensor_Building_12",
+        "location": "rooftop",
+        "block": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          620.0,
+          60.0
+        ]
+      },
+      "properties": {
+        "id": 16,
+        "height": 40,
+        "name": "Sensor_Building_13",
+        "location": "rooftop",
+        "block": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          690.0,
+          90.0
+        ]
+      },
+      "properties": {
+        "id": 17,
+        "height": 15,
+        "name": "Sensor_Street_0_6",
+        "location": "street",
+        "block": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          720.0,
+          40.0
+        ]
+      },
+      "properties": {
+        "id": 18,
+        "height": 45,
+        "name": "Sensor_Building_14",
+        "location": "rooftop",
+        "block": 8
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          760.0,
+          40.0
+        ]
+      },
+      "properties": {
+        "id": 19,
+        "height": 30,
+        "name": "Sensor_Building_15",
+        "location": "rooftop",
+        "block": 8
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          820.0,
+          20.0
+        ]
+      },
+      "properties": {
+        "id": 20,
+        "height": 40,
+        "name": "Sensor_Building_16",
+        "location": "rooftop",
+        "block": 9
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          860.0,
+          20.0
+        ]
+      },
+      "properties": {
+        "id": 21,
+        "height": 45,
+        "name": "Sensor_Building_17",
+        "location": "rooftop",
+        "block": 9
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          820.0,
+          60.0
+        ]
+      },
+      "properties": {
+        "id": 22,
+        "height": 30,
+        "name": "Sensor_Building_18",
+        "location": "rooftop",
+        "block": 9
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          890.0,
+          90.0
+        ]
+      },
+      "properties": {
+        "id": 23,
+        "height": 15,
+        "name": "Sensor_Street_0_8",
+        "location": "street",
+        "block": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          940.0,
+          40.0
+        ]
+      },
+      "properties": {
+        "id": 24,
+        "height": 15,
+        "name": "Sensor_Building_19",
+        "location": "rooftop",
+        "block": 10
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.0,
+          120.0
+        ]
+      },
+      "properties": {
+        "id": 25,
+        "height": 60,
+        "name": "Sensor_Building_20",
+        "location": "rooftop",
+        "block": 11
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          60.0,
+          120.0
+        ]
+      },
+      "properties": {
+        "id": 26,
+        "height": 15,
+        "name": "Sensor_Building_21",
+        "location": "rooftop",
+        "block": 11
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.0,
+          160.0
+        ]
+      },
+      "properties": {
+        "id": 27,
+        "height": 50,
+        "name": "Sensor_Building_22",
+        "location": "rooftop",
+        "block": 11
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          140.0,
+          140.0
+        ]
+      },
+      "properties": {
+        "id": 28,
+        "height": 50,
+        "name": "Sensor_Building_23",
+        "location": "rooftop",
+        "block": 12
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          220.0,
+          140.0
+        ]
+      },
+      "properties": {
+        "id": 29,
+        "height": 45,
+        "name": "Sensor_Building_24",
+        "location": "rooftop",
+        "block": 13
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          260.0,
+          140.0
+        ]
+      },
+      "properties": {
+        "id": 30,
+        "height": 60,
+        "name": "Sensor_Building_25",
+        "location": "rooftop",
+        "block": 13
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          320.0,
+          140.0
+        ]
+      },
+      "properties": {
+        "id": 31,
+        "height": 35,
+        "name": "Sensor_Building_26",
+        "location": "rooftop",
+        "block": 14
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          360.0,
+          140.0
+        ]
+      },
+      "properties": {
+        "id": 32,
+        "height": 35,
+        "name": "Sensor_Building_27",
+        "location": "rooftop",
+        "block": 14
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          420.0,
+          120.0
+        ]
+      },
+      "properties": {
+        "id": 33,
+        "height": 55,
+        "name": "Sensor_Building_28",
+        "location": "rooftop",
+        "block": 15
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          460.0,
+          120.0
+        ]
+      },
+      "properties": {
+        "id": 34,
+        "height": 20,
+        "name": "Sensor_Building_29",
+        "location": "rooftop",
+        "block": 15
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          420.0,
+          160.0
+        ]
+      },
+      "properties": {
+        "id": 35,
+        "height": 30,
+        "name": "Sensor_Building_30",
+        "location": "rooftop",
+        "block": 15
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          520.0,
+          120.0
+        ]
+      },
+      "properties": {
+        "id": 36,
+        "height": 40,
+        "name": "Sensor_Building_31",
+        "location": "rooftop",
+        "block": 16
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          560.0,
+          120.0
+        ]
+      },
+      "properties": {
+        "id": 37,
+        "height": 60,
+        "name": "Sensor_Building_32",
+        "location": "rooftop",
+        "block": 16
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          520.0,
+          160.0
+        ]
+      },
+      "properties": {
+        "id": 38,
+        "height": 25,
+        "name": "Sensor_Building_33",
+        "location": "rooftop",
+        "block": 16
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          620.0,
+          120.0
+        ]
+      },
+      "properties": {
+        "id": 39,
+        "height": 40,
+        "name": "Sensor_Building_34",
+        "location": "rooftop",
+        "block": 17
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          660.0,
+          120.0
+        ]
+      },
+      "properties": {
+        "id": 40,
+        "height": 50,
+        "name": "Sensor_Building_35",
+        "location": "rooftop",
+        "block": 17
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          620.0,
+          160.0
+        ]
+      },
+      "properties": {
+        "id": 41,
+        "height": 55,
+        "name": "Sensor_Building_36",
+        "location": "rooftop",
+        "block": 17
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          720.0,
+          120.0
+        ]
+      },
+      "properties": {
+        "id": 42,
+        "height": 35,
+        "name": "Sensor_Building_37",
+        "location": "rooftop",
+        "block": 18
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          760.0,
+          120.0
+        ]
+      },
+      "properties": {
+        "id": 43,
+        "height": 25,
+        "name": "Sensor_Building_38",
+        "location": "rooftop",
+        "block": 18
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          720.0,
+          160.0
+        ]
+      },
+      "properties": {
+        "id": 44,
+        "height": 30,
+        "name": "Sensor_Building_39",
+        "location": "rooftop",
+        "block": 18
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          840.0,
+          140.0
+        ]
+      },
+      "properties": {
+        "id": 45,
+        "height": 60,
+        "name": "Sensor_Building_40",
+        "location": "rooftop",
+        "block": 19
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          920.0,
+          140.0
+        ]
+      },
+      "properties": {
+        "id": 46,
+        "height": 20,
+        "name": "Sensor_Building_41",
+        "location": "rooftop",
+        "block": 20
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          960.0,
+          140.0
+        ]
+      },
+      "properties": {
+        "id": 47,
+        "height": 25,
+        "name": "Sensor_Building_42",
+        "location": "rooftop",
+        "block": 20
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.0,
+          240.0
+        ]
+      },
+      "properties": {
+        "id": 48,
+        "height": 55,
+        "name": "Sensor_Building_43",
+        "location": "rooftop",
+        "block": 21
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          90.0,
+          290.0
+        ]
+      },
+      "properties": {
+        "id": 49,
+        "height": 15,
+        "name": "Sensor_Street_2_0",
+        "location": "street",
+        "block": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.0,
+          220.0
+        ]
+      },
+      "properties": {
+        "id": 50,
+        "height": 45,
+        "name": "Sensor_Building_44",
+        "location": "rooftop",
+        "block": 22
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          160.0,
+          220.0
+        ]
+      },
+      "properties": {
+        "id": 51,
+        "height": 40,
+        "name": "Sensor_Building_45",
+        "location": "rooftop",
+        "block": 22
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.0,
+          260.0
+        ]
+      },
+      "properties": {
+        "id": 52,
+        "height": 50,
+        "name": "Sensor_Building_46",
+        "location": "rooftop",
+        "block": 22
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          240.0,
+          240.0
+        ]
+      },
+      "properties": {
+        "id": 53,
+        "height": 25,
+        "name": "Sensor_Building_47",
+        "location": "rooftop",
+        "block": 23
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          290.0,
+          290.0
+        ]
+      },
+      "properties": {
+        "id": 54,
+        "height": 15,
+        "name": "Sensor_Street_2_2",
+        "location": "street",
+        "block": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          320.0,
+          220.0
+        ]
+      },
+      "properties": {
+        "id": 55,
+        "height": 55,
+        "name": "Sensor_Building_48",
+        "location": "rooftop",
+        "block": 24
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          360.0,
+          220.0
+        ]
+      },
+      "properties": {
+        "id": 56,
+        "height": 35,
+        "name": "Sensor_Building_49",
+        "location": "rooftop",
+        "block": 24
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          320.0,
+          260.0
+        ]
+      },
+      "properties": {
+        "id": 57,
+        "height": 30,
+        "name": "Sensor_Building_50",
+        "location": "rooftop",
+        "block": 24
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          440.0,
+          240.0
+        ]
+      },
+      "properties": {
+        "id": 58,
+        "height": 60,
+        "name": "Sensor_Building_51",
+        "location": "rooftop",
+        "block": 25
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          490.0,
+          290.0
+        ]
+      },
+      "properties": {
+        "id": 59,
+        "height": 15,
+        "name": "Sensor_Street_2_4",
+        "location": "street",
+        "block": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          540.0,
+          240.0
+        ]
+      },
+      "properties": {
+        "id": 60,
+        "height": 15,
+        "name": "Sensor_Building_52",
+        "location": "rooftop",
+        "block": 26
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          620.0,
+          220.0
+        ]
+      },
+      "properties": {
+        "id": 61,
+        "height": 30,
+        "name": "Sensor_Building_53",
+        "location": "rooftop",
+        "block": 27
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          660.0,
+          220.0
+        ]
+      },
+      "properties": {
+        "id": 62,
+        "height": 55,
+        "name": "Sensor_Building_54",
+        "location": "rooftop",
+        "block": 27
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          620.0,
+          260.0
+        ]
+      },
+      "properties": {
+        "id": 63,
+        "height": 50,
+        "name": "Sensor_Building_55",
+        "location": "rooftop",
+        "block": 27
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          690.0,
+          290.0
+        ]
+      },
+      "properties": {
+        "id": 64,
+        "height": 15,
+        "name": "Sensor_Street_2_6",
+        "location": "street",
+        "block": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          740.0,
+          240.0
+        ]
+      },
+      "properties": {
+        "id": 65,
+        "height": 40,
+        "name": "Sensor_Building_56",
+        "location": "rooftop",
+        "block": 28
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          820.0,
+          240.0
+        ]
+      },
+      "properties": {
+        "id": 66,
+        "height": 20,
+        "name": "Sensor_Building_57",
+        "location": "rooftop",
+        "block": 29
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          860.0,
+          240.0
+        ]
+      },
+      "properties": {
+        "id": 67,
+        "height": 40,
+        "name": "Sensor_Building_58",
+        "location": "rooftop",
+        "block": 29
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          890.0,
+          290.0
+        ]
+      },
+      "properties": {
+        "id": 68,
+        "height": 15,
+        "name": "Sensor_Street_2_8",
+        "location": "street",
+        "block": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          940.0,
+          240.0
+        ]
+      },
+      "properties": {
+        "id": 69,
+        "height": 40,
+        "name": "Sensor_Building_59",
+        "location": "rooftop",
+        "block": 30
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.0,
+          340.0
+        ]
+      },
+      "properties": {
+        "id": 70,
+        "height": 35,
+        "name": "Sensor_Building_60",
+        "location": "rooftop",
+        "block": 31
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.0,
+          340.0
+        ]
+      },
+      "properties": {
+        "id": 71,
+        "height": 50,
+        "name": "Sensor_Building_61",
+        "location": "rooftop",
+        "block": 32
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          160.0,
+          340.0
+        ]
+      },
+      "properties": {
+        "id": 72,
+        "height": 55,
+        "name": "Sensor_Building_62",
+        "location": "rooftop",
+        "block": 32
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          240.0,
+          340.0
+        ]
+      },
+      "properties": {
+        "id": 73,
+        "height": 40,
+        "name": "Sensor_Building_63",
+        "location": "rooftop",
+        "block": 33
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          320.0,
+          320.0
+        ]
+      },
+      "properties": {
+        "id": 74,
+        "height": 55,
+        "name": "Sensor_Building_64",
+        "location": "rooftop",
+        "block": 34
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          360.0,
+          320.0
+        ]
+      },
+      "properties": {
+        "id": 75,
+        "height": 30,
+        "name": "Sensor_Building_65",
+        "location": "rooftop",
+        "block": 34
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          320.0,
+          360.0
+        ]
+      },
+      "properties": {
+        "id": 76,
+        "height": 55,
+        "name": "Sensor_Building_66",
+        "location": "rooftop",
+        "block": 34
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          420.0,
+          320.0
+        ]
+      },
+      "properties": {
+        "id": 77,
+        "height": 40,
+        "name": "Sensor_Building_67",
+        "location": "rooftop",
+        "block": 35
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          460.0,
+          320.0
+        ]
+      },
+      "properties": {
+        "id": 78,
+        "height": 15,
+        "name": "Sensor_Building_68",
+        "location": "rooftop",
+        "block": 35
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          420.0,
+          360.0
+        ]
+      },
+      "properties": {
+        "id": 79,
+        "height": 35,
+        "name": "Sensor_Building_69",
+        "location": "rooftop",
+        "block": 35
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          520.0,
+          320.0
+        ]
+      },
+      "properties": {
+        "id": 80,
+        "height": 20,
+        "name": "Sensor_Building_70",
+        "location": "rooftop",
+        "block": 36
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          560.0,
+          320.0
+        ]
+      },
+      "properties": {
+        "id": 81,
+        "height": 40,
+        "name": "Sensor_Building_71",
+        "location": "rooftop",
+        "block": 36
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          520.0,
+          360.0
+        ]
+      },
+      "properties": {
+        "id": 82,
+        "height": 35,
+        "name": "Sensor_Building_72",
+        "location": "rooftop",
+        "block": 36
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          640.0,
+          340.0
+        ]
+      },
+      "properties": {
+        "id": 83,
+        "height": 50,
+        "name": "Sensor_Building_73",
+        "location": "rooftop",
+        "block": 37
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          720.0,
+          340.0
+        ]
+      },
+      "properties": {
+        "id": 84,
+        "height": 35,
+        "name": "Sensor_Building_74",
+        "location": "rooftop",
+        "block": 38
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          760.0,
+          340.0
+        ]
+      },
+      "properties": {
+        "id": 85,
+        "height": 50,
+        "name": "Sensor_Building_75",
+        "location": "rooftop",
+        "block": 38
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          840.0,
+          340.0
+        ]
+      },
+      "properties": {
+        "id": 86,
+        "height": 30,
+        "name": "Sensor_Building_76",
+        "location": "rooftop",
+        "block": 39
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          920.0,
+          340.0
+        ]
+      },
+      "properties": {
+        "id": 87,
+        "height": 50,
+        "name": "Sensor_Building_77",
+        "location": "rooftop",
+        "block": 40
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          960.0,
+          340.0
+        ]
+      },
+      "properties": {
+        "id": 88,
+        "height": 55,
+        "name": "Sensor_Building_78",
+        "location": "rooftop",
+        "block": 40
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.0,
+          440.0
+        ]
+      },
+      "properties": {
+        "id": 89,
+        "height": 30,
+        "name": "Sensor_Building_79",
+        "location": "rooftop",
+        "block": 41
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          90.0,
+          490.0
+        ]
+      },
+      "properties": {
+        "id": 90,
+        "height": 15,
+        "name": "Sensor_Street_4_0",
+        "location": "street",
+        "block": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          140.0,
+          440.0
+        ]
+      },
+      "properties": {
+        "id": 91,
+        "height": 20,
+        "name": "Sensor_Building_80",
+        "location": "rooftop",
+        "block": 42
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          240.0,
+          440.0
+        ]
+      },
+      "properties": {
+        "id": 92,
+        "height": 50,
+        "name": "Sensor_Building_81",
+        "location": "rooftop",
+        "block": 43
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          290.0,
+          490.0
+        ]
+      },
+      "properties": {
+        "id": 93,
+        "height": 15,
+        "name": "Sensor_Street_4_2",
+        "location": "street",
+        "block": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          320.0,
+          440.0
+        ]
+      },
+      "properties": {
+        "id": 94,
+        "height": 30,
+        "name": "Sensor_Building_82",
+        "location": "rooftop",
+        "block": 44
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          360.0,
+          440.0
+        ]
+      },
+      "properties": {
+        "id": 95,
+        "height": 50,
+        "name": "Sensor_Building_83",
+        "location": "rooftop",
+        "block": 44
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          420.0,
+          440.0
+        ]
+      },
+      "properties": {
+        "id": 96,
+        "height": 55,
+        "name": "Sensor_Building_84",
+        "location": "rooftop",
+        "block": 45
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          460.0,
+          440.0
+        ]
+      },
+      "properties": {
+        "id": 97,
+        "height": 55,
+        "name": "Sensor_Building_85",
+        "location": "rooftop",
+        "block": 45
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          490.0,
+          490.0
+        ]
+      },
+      "properties": {
+        "id": 98,
+        "height": 15,
+        "name": "Sensor_Street_4_4",
+        "location": "street",
+        "block": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          520.0,
+          440.0
+        ]
+      },
+      "properties": {
+        "id": 99,
+        "height": 25,
+        "name": "Sensor_Building_86",
+        "location": "rooftop",
+        "block": 46
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          560.0,
+          440.0
+        ]
+      },
+      "properties": {
+        "id": 100,
+        "height": 30,
+        "name": "Sensor_Building_87",
+        "location": "rooftop",
+        "block": 46
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          640.0,
+          440.0
+        ]
+      },
+      "properties": {
+        "id": 101,
+        "height": 55,
+        "name": "Sensor_Building_88",
+        "location": "rooftop",
+        "block": 47
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          690.0,
+          490.0
+        ]
+      },
+      "properties": {
+        "id": 102,
+        "height": 15,
+        "name": "Sensor_Street_4_6",
+        "location": "street",
+        "block": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          740.0,
+          440.0
+        ]
+      },
+      "properties": {
+        "id": 103,
+        "height": 35,
+        "name": "Sensor_Building_89",
+        "location": "rooftop",
+        "block": 48
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          820.0,
+          440.0
+        ]
+      },
+      "properties": {
+        "id": 104,
+        "height": 50,
+        "name": "Sensor_Building_90",
+        "location": "rooftop",
+        "block": 49
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          860.0,
+          440.0
+        ]
+      },
+      "properties": {
+        "id": 105,
+        "height": 40,
+        "name": "Sensor_Building_91",
+        "location": "rooftop",
+        "block": 49
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          890.0,
+          490.0
+        ]
+      },
+      "properties": {
+        "id": 106,
+        "height": 15,
+        "name": "Sensor_Street_4_8",
+        "location": "street",
+        "block": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          920.0,
+          420.0
+        ]
+      },
+      "properties": {
+        "id": 107,
+        "height": 35,
+        "name": "Sensor_Building_92",
+        "location": "rooftop",
+        "block": 50
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          960.0,
+          420.0
+        ]
+      },
+      "properties": {
+        "id": 108,
+        "height": 60,
+        "name": "Sensor_Building_93",
+        "location": "rooftop",
+        "block": 50
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          920.0,
+          460.0
+        ]
+      },
+      "properties": {
+        "id": 109,
+        "height": 60,
+        "name": "Sensor_Building_94",
+        "location": "rooftop",
+        "block": 50
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.0,
+          540.0
+        ]
+      },
+      "properties": {
+        "id": 110,
+        "height": 55,
+        "name": "Sensor_Building_95",
+        "location": "rooftop",
+        "block": 51
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          60.0,
+          540.0
+        ]
+      },
+      "properties": {
+        "id": 111,
+        "height": 55,
+        "name": "Sensor_Building_96",
+        "location": "rooftop",
+        "block": 51
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.0,
+          540.0
+        ]
+      },
+      "properties": {
+        "id": 112,
+        "height": 25,
+        "name": "Sensor_Building_97",
+        "location": "rooftop",
+        "block": 52
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          160.0,
+          540.0
+        ]
+      },
+      "properties": {
+        "id": 113,
+        "height": 15,
+        "name": "Sensor_Building_98",
+        "location": "rooftop",
+        "block": 52
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          220.0,
+          540.0
+        ]
+      },
+      "properties": {
+        "id": 114,
+        "height": 50,
+        "name": "Sensor_Building_99",
+        "location": "rooftop",
+        "block": 53
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          260.0,
+          540.0
+        ]
+      },
+      "properties": {
+        "id": 115,
+        "height": 25,
+        "name": "Sensor_Building_100",
+        "location": "rooftop",
+        "block": 53
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          340.0,
+          540.0
+        ]
+      },
+      "properties": {
+        "id": 116,
+        "height": 45,
+        "name": "Sensor_Building_101",
+        "location": "rooftop",
+        "block": 54
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          420.0,
+          540.0
+        ]
+      },
+      "properties": {
+        "id": 117,
+        "height": 30,
+        "name": "Sensor_Building_102",
+        "location": "rooftop",
+        "block": 55
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          460.0,
+          540.0
+        ]
+      },
+      "properties": {
+        "id": 118,
+        "height": 15,
+        "name": "Sensor_Building_103",
+        "location": "rooftop",
+        "block": 55
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          540.0,
+          540.0
+        ]
+      },
+      "properties": {
+        "id": 119,
+        "height": 30,
+        "name": "Sensor_Building_104",
+        "location": "rooftop",
+        "block": 56
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          620.0,
+          540.0
+        ]
+      },
+      "properties": {
+        "id": 120,
+        "height": 40,
+        "name": "Sensor_Building_105",
+        "location": "rooftop",
+        "block": 57
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          660.0,
+          540.0
+        ]
+      },
+      "properties": {
+        "id": 121,
+        "height": 40,
+        "name": "Sensor_Building_106",
+        "location": "rooftop",
+        "block": 57
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          740.0,
+          540.0
+        ]
+      },
+      "properties": {
+        "id": 122,
+        "height": 45,
+        "name": "Sensor_Building_107",
+        "location": "rooftop",
+        "block": 58
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          820.0,
+          520.0
+        ]
+      },
+      "properties": {
+        "id": 123,
+        "height": 40,
+        "name": "Sensor_Building_108",
+        "location": "rooftop",
+        "block": 59
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          860.0,
+          520.0
+        ]
+      },
+      "properties": {
+        "id": 124,
+        "height": 50,
+        "name": "Sensor_Building_109",
+        "location": "rooftop",
+        "block": 59
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          820.0,
+          560.0
+        ]
+      },
+      "properties": {
+        "id": 125,
+        "height": 55,
+        "name": "Sensor_Building_110",
+        "location": "rooftop",
+        "block": 59
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          920.0,
+          520.0
+        ]
+      },
+      "properties": {
+        "id": 126,
+        "height": 60,
+        "name": "Sensor_Building_111",
+        "location": "rooftop",
+        "block": 60
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          960.0,
+          520.0
+        ]
+      },
+      "properties": {
+        "id": 127,
+        "height": 45,
+        "name": "Sensor_Building_112",
+        "location": "rooftop",
+        "block": 60
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          920.0,
+          560.0
+        ]
+      },
+      "properties": {
+        "id": 128,
+        "height": 35,
+        "name": "Sensor_Building_113",
+        "location": "rooftop",
+        "block": 60
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.0,
+          620.0
+        ]
+      },
+      "properties": {
+        "id": 129,
+        "height": 35,
+        "name": "Sensor_Building_114",
+        "location": "rooftop",
+        "block": 61
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          60.0,
+          620.0
+        ]
+      },
+      "properties": {
+        "id": 130,
+        "height": 60,
+        "name": "Sensor_Building_115",
+        "location": "rooftop",
+        "block": 61
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.0,
+          660.0
+        ]
+      },
+      "properties": {
+        "id": 131,
+        "height": 40,
+        "name": "Sensor_Building_116",
+        "location": "rooftop",
+        "block": 61
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          90.0,
+          690.0
+        ]
+      },
+      "properties": {
+        "id": 132,
+        "height": 15,
+        "name": "Sensor_Street_6_0",
+        "location": "street",
+        "block": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.0,
+          640.0
+        ]
+      },
+      "properties": {
+        "id": 133,
+        "height": 50,
+        "name": "Sensor_Building_117",
+        "location": "rooftop",
+        "block": 62
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          160.0,
+          640.0
+        ]
+      },
+      "properties": {
+        "id": 134,
+        "height": 60,
+        "name": "Sensor_Building_118",
+        "location": "rooftop",
+        "block": 62
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          220.0,
+          640.0
+        ]
+      },
+      "properties": {
+        "id": 135,
+        "height": 40,
+        "name": "Sensor_Building_119",
+        "location": "rooftop",
+        "block": 63
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          260.0,
+          640.0
+        ]
+      },
+      "properties": {
+        "id": 136,
+        "height": 45,
+        "name": "Sensor_Building_120",
+        "location": "rooftop",
+        "block": 63
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          290.0,
+          690.0
+        ]
+      },
+      "properties": {
+        "id": 137,
+        "height": 15,
+        "name": "Sensor_Street_6_2",
+        "location": "street",
+        "block": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          320.0,
+          620.0
+        ]
+      },
+      "properties": {
+        "id": 138,
+        "height": 35,
+        "name": "Sensor_Building_121",
+        "location": "rooftop",
+        "block": 64
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          360.0,
+          620.0
+        ]
+      },
+      "properties": {
+        "id": 139,
+        "height": 35,
+        "name": "Sensor_Building_122",
+        "location": "rooftop",
+        "block": 64
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          320.0,
+          660.0
+        ]
+      },
+      "properties": {
+        "id": 140,
+        "height": 35,
+        "name": "Sensor_Building_123",
+        "location": "rooftop",
+        "block": 64
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          440.0,
+          640.0
+        ]
+      },
+      "properties": {
+        "id": 141,
+        "height": 40,
+        "name": "Sensor_Building_124",
+        "location": "rooftop",
+        "block": 65
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          490.0,
+          690.0
+        ]
+      },
+      "properties": {
+        "id": 142,
+        "height": 15,
+        "name": "Sensor_Street_6_4",
+        "location": "street",
+        "block": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          520.0,
+          620.0
+        ]
+      },
+      "properties": {
+        "id": 143,
+        "height": 35,
+        "name": "Sensor_Building_125",
+        "location": "rooftop",
+        "block": 66
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          560.0,
+          620.0
+        ]
+      },
+      "properties": {
+        "id": 144,
+        "height": 60,
+        "name": "Sensor_Building_126",
+        "location": "rooftop",
+        "block": 66
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          520.0,
+          660.0
+        ]
+      },
+      "properties": {
+        "id": 145,
+        "height": 55,
+        "name": "Sensor_Building_127",
+        "location": "rooftop",
+        "block": 66
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          620.0,
+          640.0
+        ]
+      },
+      "properties": {
+        "id": 146,
+        "height": 25,
+        "name": "Sensor_Building_128",
+        "location": "rooftop",
+        "block": 67
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          660.0,
+          640.0
+        ]
+      },
+      "properties": {
+        "id": 147,
+        "height": 50,
+        "name": "Sensor_Building_129",
+        "location": "rooftop",
+        "block": 67
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          690.0,
+          690.0
+        ]
+      },
+      "properties": {
+        "id": 148,
+        "height": 15,
+        "name": "Sensor_Street_6_6",
+        "location": "street",
+        "block": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          720.0,
+          620.0
+        ]
+      },
+      "properties": {
+        "id": 149,
+        "height": 40,
+        "name": "Sensor_Building_130",
+        "location": "rooftop",
+        "block": 68
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          760.0,
+          620.0
+        ]
+      },
+      "properties": {
+        "id": 150,
+        "height": 55,
+        "name": "Sensor_Building_131",
+        "location": "rooftop",
+        "block": 68
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          720.0,
+          660.0
+        ]
+      },
+      "properties": {
+        "id": 151,
+        "height": 40,
+        "name": "Sensor_Building_132",
+        "location": "rooftop",
+        "block": 68
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          840.0,
+          640.0
+        ]
+      },
+      "properties": {
+        "id": 152,
+        "height": 25,
+        "name": "Sensor_Building_133",
+        "location": "rooftop",
+        "block": 69
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          890.0,
+          690.0
+        ]
+      },
+      "properties": {
+        "id": 153,
+        "height": 15,
+        "name": "Sensor_Street_6_8",
+        "location": "street",
+        "block": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          940.0,
+          640.0
+        ]
+      },
+      "properties": {
+        "id": 154,
+        "height": 60,
+        "name": "Sensor_Building_134",
+        "location": "rooftop",
+        "block": 70
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.0,
+          740.0
+        ]
+      },
+      "properties": {
+        "id": 155,
+        "height": 60,
+        "name": "Sensor_Building_135",
+        "location": "rooftop",
+        "block": 71
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.0,
+          720.0
+        ]
+      },
+      "properties": {
+        "id": 156,
+        "height": 20,
+        "name": "Sensor_Building_136",
+        "location": "rooftop",
+        "block": 72
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          160.0,
+          720.0
+        ]
+      },
+      "properties": {
+        "id": 157,
+        "height": 35,
+        "name": "Sensor_Building_137",
+        "location": "rooftop",
+        "block": 72
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.0,
+          760.0
+        ]
+      },
+      "properties": {
+        "id": 158,
+        "height": 55,
+        "name": "Sensor_Building_138",
+        "location": "rooftop",
+        "block": 72
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          220.0,
+          740.0
+        ]
+      },
+      "properties": {
+        "id": 159,
+        "height": 55,
+        "name": "Sensor_Building_139",
+        "location": "rooftop",
+        "block": 73
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          260.0,
+          740.0
+        ]
+      },
+      "properties": {
+        "id": 160,
+        "height": 55,
+        "name": "Sensor_Building_140",
+        "location": "rooftop",
+        "block": 73
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          320.0,
+          740.0
+        ]
+      },
+      "properties": {
+        "id": 161,
+        "height": 50,
+        "name": "Sensor_Building_141",
+        "location": "rooftop",
+        "block": 74
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          360.0,
+          740.0
+        ]
+      },
+      "properties": {
+        "id": 162,
+        "height": 25,
+        "name": "Sensor_Building_142",
+        "location": "rooftop",
+        "block": 74
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          420.0,
+          740.0
+        ]
+      },
+      "properties": {
+        "id": 163,
+        "height": 50,
+        "name": "Sensor_Building_143",
+        "location": "rooftop",
+        "block": 75
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          460.0,
+          740.0
+        ]
+      },
+      "properties": {
+        "id": 164,
+        "height": 25,
+        "name": "Sensor_Building_144",
+        "location": "rooftop",
+        "block": 75
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          540.0,
+          740.0
+        ]
+      },
+      "properties": {
+        "id": 165,
+        "height": 15,
+        "name": "Sensor_Building_145",
+        "location": "rooftop",
+        "block": 76
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          620.0,
+          740.0
+        ]
+      },
+      "properties": {
+        "id": 166,
+        "height": 30,
+        "name": "Sensor_Building_146",
+        "location": "rooftop",
+        "block": 77
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          660.0,
+          740.0
+        ]
+      },
+      "properties": {
+        "id": 167,
+        "height": 50,
+        "name": "Sensor_Building_147",
+        "location": "rooftop",
+        "block": 77
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          720.0,
+          740.0
+        ]
+      },
+      "properties": {
+        "id": 168,
+        "height": 60,
+        "name": "Sensor_Building_148",
+        "location": "rooftop",
+        "block": 78
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          760.0,
+          740.0
+        ]
+      },
+      "properties": {
+        "id": 169,
+        "height": 55,
+        "name": "Sensor_Building_149",
+        "location": "rooftop",
+        "block": 78
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          820.0,
+          720.0
+        ]
+      },
+      "properties": {
+        "id": 170,
+        "height": 30,
+        "name": "Sensor_Building_150",
+        "location": "rooftop",
+        "block": 79
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          860.0,
+          720.0
+        ]
+      },
+      "properties": {
+        "id": 171,
+        "height": 50,
+        "name": "Sensor_Building_151",
+        "location": "rooftop",
+        "block": 79
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          820.0,
+          760.0
+        ]
+      },
+      "properties": {
+        "id": 172,
+        "height": 20,
+        "name": "Sensor_Building_152",
+        "location": "rooftop",
+        "block": 79
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          920.0,
+          740.0
+        ]
+      },
+      "properties": {
+        "id": 173,
+        "height": 50,
+        "name": "Sensor_Building_153",
+        "location": "rooftop",
+        "block": 80
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          960.0,
+          740.0
+        ]
+      },
+      "properties": {
+        "id": 174,
+        "height": 60,
+        "name": "Sensor_Building_154",
+        "location": "rooftop",
+        "block": 80
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.0,
+          840.0
+        ]
+      },
+      "properties": {
+        "id": 175,
+        "height": 60,
+        "name": "Sensor_Building_155",
+        "location": "rooftop",
+        "block": 81
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          90.0,
+          890.0
+        ]
+      },
+      "properties": {
+        "id": 176,
+        "height": 15,
+        "name": "Sensor_Street_8_0",
+        "location": "street",
+        "block": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.0,
+          820.0
+        ]
+      },
+      "properties": {
+        "id": 177,
+        "height": 35,
+        "name": "Sensor_Building_156",
+        "location": "rooftop",
+        "block": 82
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          160.0,
+          820.0
+        ]
+      },
+      "properties": {
+        "id": 178,
+        "height": 15,
+        "name": "Sensor_Building_157",
+        "location": "rooftop",
+        "block": 82
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.0,
+          860.0
+        ]
+      },
+      "properties": {
+        "id": 179,
+        "height": 60,
+        "name": "Sensor_Building_158",
+        "location": "rooftop",
+        "block": 82
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          220.0,
+          820.0
+        ]
+      },
+      "properties": {
+        "id": 180,
+        "height": 50,
+        "name": "Sensor_Building_159",
+        "location": "rooftop",
+        "block": 83
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          260.0,
+          820.0
+        ]
+      },
+      "properties": {
+        "id": 181,
+        "height": 40,
+        "name": "Sensor_Building_160",
+        "location": "rooftop",
+        "block": 83
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          220.0,
+          860.0
+        ]
+      },
+      "properties": {
+        "id": 182,
+        "height": 55,
+        "name": "Sensor_Building_161",
+        "location": "rooftop",
+        "block": 83
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          290.0,
+          890.0
+        ]
+      },
+      "properties": {
+        "id": 183,
+        "height": 15,
+        "name": "Sensor_Street_8_2",
+        "location": "street",
+        "block": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          340.0,
+          840.0
+        ]
+      },
+      "properties": {
+        "id": 184,
+        "height": 45,
+        "name": "Sensor_Building_162",
+        "location": "rooftop",
+        "block": 84
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          420.0,
+          840.0
+        ]
+      },
+      "properties": {
+        "id": 185,
+        "height": 60,
+        "name": "Sensor_Building_163",
+        "location": "rooftop",
+        "block": 85
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          460.0,
+          840.0
+        ]
+      },
+      "properties": {
+        "id": 186,
+        "height": 30,
+        "name": "Sensor_Building_164",
+        "location": "rooftop",
+        "block": 85
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          490.0,
+          890.0
+        ]
+      },
+      "properties": {
+        "id": 187,
+        "height": 15,
+        "name": "Sensor_Street_8_4",
+        "location": "street",
+        "block": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          540.0,
+          840.0
+        ]
+      },
+      "properties": {
+        "id": 188,
+        "height": 25,
+        "name": "Sensor_Building_165",
+        "location": "rooftop",
+        "block": 86
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          620.0,
+          820.0
+        ]
+      },
+      "properties": {
+        "id": 189,
+        "height": 60,
+        "name": "Sensor_Building_166",
+        "location": "rooftop",
+        "block": 87
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          660.0,
+          820.0
+        ]
+      },
+      "properties": {
+        "id": 190,
+        "height": 25,
+        "name": "Sensor_Building_167",
+        "location": "rooftop",
+        "block": 87
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          620.0,
+          860.0
+        ]
+      },
+      "properties": {
+        "id": 191,
+        "height": 15,
+        "name": "Sensor_Building_168",
+        "location": "rooftop",
+        "block": 87
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          690.0,
+          890.0
+        ]
+      },
+      "properties": {
+        "id": 192,
+        "height": 15,
+        "name": "Sensor_Street_8_6",
+        "location": "street",
+        "block": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          720.0,
+          840.0
+        ]
+      },
+      "properties": {
+        "id": 193,
+        "height": 55,
+        "name": "Sensor_Building_169",
+        "location": "rooftop",
+        "block": 88
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          760.0,
+          840.0
+        ]
+      },
+      "properties": {
+        "id": 194,
+        "height": 35,
+        "name": "Sensor_Building_170",
+        "location": "rooftop",
+        "block": 88
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          820.0,
+          840.0
+        ]
+      },
+      "properties": {
+        "id": 195,
+        "height": 30,
+        "name": "Sensor_Building_171",
+        "location": "rooftop",
+        "block": 89
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          860.0,
+          840.0
+        ]
+      },
+      "properties": {
+        "id": 196,
+        "height": 55,
+        "name": "Sensor_Building_172",
+        "location": "rooftop",
+        "block": 89
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          890.0,
+          890.0
+        ]
+      },
+      "properties": {
+        "id": 197,
+        "height": 15,
+        "name": "Sensor_Street_8_8",
+        "location": "street",
+        "block": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          920.0,
+          820.0
+        ]
+      },
+      "properties": {
+        "id": 198,
+        "height": 55,
+        "name": "Sensor_Building_173",
+        "location": "rooftop",
+        "block": 90
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          960.0,
+          820.0
+        ]
+      },
+      "properties": {
+        "id": 199,
+        "height": 20,
+        "name": "Sensor_Building_174",
+        "location": "rooftop",
+        "block": 90
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          920.0,
+          860.0
+        ]
+      },
+      "properties": {
+        "id": 200,
+        "height": 15,
+        "name": "Sensor_Building_175",
+        "location": "rooftop",
+        "block": 90
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.0,
+          940.0
+        ]
+      },
+      "properties": {
+        "id": 201,
+        "height": 15,
+        "name": "Sensor_Building_176",
+        "location": "rooftop",
+        "block": 91
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          60.0,
+          940.0
+        ]
+      },
+      "properties": {
+        "id": 202,
+        "height": 40,
+        "name": "Sensor_Building_177",
+        "location": "rooftop",
+        "block": 91
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          140.0,
+          940.0
+        ]
+      },
+      "properties": {
+        "id": 203,
+        "height": 50,
+        "name": "Sensor_Building_178",
+        "location": "rooftop",
+        "block": 92
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          220.0,
+          940.0
+        ]
+      },
+      "properties": {
+        "id": 204,
+        "height": 50,
+        "name": "Sensor_Building_179",
+        "location": "rooftop",
+        "block": 93
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          260.0,
+          940.0
+        ]
+      },
+      "properties": {
+        "id": 205,
+        "height": 40,
+        "name": "Sensor_Building_180",
+        "location": "rooftop",
+        "block": 93
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          320.0,
+          920.0
+        ]
+      },
+      "properties": {
+        "id": 206,
+        "height": 45,
+        "name": "Sensor_Building_181",
+        "location": "rooftop",
+        "block": 94
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          360.0,
+          920.0
+        ]
+      },
+      "properties": {
+        "id": 207,
+        "height": 60,
+        "name": "Sensor_Building_182",
+        "location": "rooftop",
+        "block": 94
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          320.0,
+          960.0
+        ]
+      },
+      "properties": {
+        "id": 208,
+        "height": 25,
+        "name": "Sensor_Building_183",
+        "location": "rooftop",
+        "block": 94
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          440.0,
+          940.0
+        ]
+      },
+      "properties": {
+        "id": 209,
+        "height": 40,
+        "name": "Sensor_Building_184",
+        "location": "rooftop",
+        "block": 95
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          520.0,
+          940.0
+        ]
+      },
+      "properties": {
+        "id": 210,
+        "height": 20,
+        "name": "Sensor_Building_185",
+        "location": "rooftop",
+        "block": 96
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          560.0,
+          940.0
+        ]
+      },
+      "properties": {
+        "id": 211,
+        "height": 40,
+        "name": "Sensor_Building_186",
+        "location": "rooftop",
+        "block": 96
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          620.0,
+          920.0
+        ]
+      },
+      "properties": {
+        "id": 212,
+        "height": 35,
+        "name": "Sensor_Building_187",
+        "location": "rooftop",
+        "block": 97
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          660.0,
+          920.0
+        ]
+      },
+      "properties": {
+        "id": 213,
+        "height": 55,
+        "name": "Sensor_Building_188",
+        "location": "rooftop",
+        "block": 97
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          620.0,
+          960.0
+        ]
+      },
+      "properties": {
+        "id": 214,
+        "height": 25,
+        "name": "Sensor_Building_189",
+        "location": "rooftop",
+        "block": 97
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          720.0,
+          940.0
+        ]
+      },
+      "properties": {
+        "id": 215,
+        "height": 35,
+        "name": "Sensor_Building_190",
+        "location": "rooftop",
+        "block": 98
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          760.0,
+          940.0
+        ]
+      },
+      "properties": {
+        "id": 216,
+        "height": 50,
+        "name": "Sensor_Building_191",
+        "location": "rooftop",
+        "block": 98
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          820.0,
+          920.0
+        ]
+      },
+      "properties": {
+        "id": 217,
+        "height": 35,
+        "name": "Sensor_Building_192",
+        "location": "rooftop",
+        "block": 99
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          860.0,
+          920.0
+        ]
+      },
+      "properties": {
+        "id": 218,
+        "height": 60,
+        "name": "Sensor_Building_193",
+        "location": "rooftop",
+        "block": 99
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          820.0,
+          960.0
+        ]
+      },
+      "properties": {
+        "id": 219,
+        "height": 30,
+        "name": "Sensor_Building_194",
+        "location": "rooftop",
+        "block": 99
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          920.0,
+          940.0
+        ]
+      },
+      "properties": {
+        "id": 220,
+        "height": 35,
+        "name": "Sensor_Building_195",
+        "location": "rooftop",
+        "block": 100
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          960.0,
+          940.0
+        ]
+      },
+      "properties": {
+        "id": 221,
+        "height": 55,
+        "name": "Sensor_Building_196",
+        "location": "rooftop",
+        "block": 100
+      }
+    }
+  ]
+}

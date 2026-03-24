@@ -1,0 +1,7 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {"type": "Feature", "properties": {"name": "Shed1", "height": 5}, "geometry": {"type": "Polygon", "coordinates": [[[900, 900], [930, 900], [930, 930], [900, 930], [900, 900]]]}},
+    {"type": "Feature", "properties": {"name": "Shed2", "height": 5}, "geometry": {"type": "Polygon", "coordinates": [[[1100, 1100], [1130, 1100], [1130, 1130], [1100, 1130], [1100, 1100]]]}}
+  ]
+}

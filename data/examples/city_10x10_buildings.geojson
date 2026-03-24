@@ -1,0 +1,7061 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block1_Building1",
+        "height": 15,
+        "block": 1,
+        "id": 1
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              5,
+              5
+            ],
+            [
+              35.0,
+              5
+            ],
+            [
+              35.0,
+              75
+            ],
+            [
+              5,
+              75
+            ],
+            [
+              5,
+              5
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block1_Building2",
+        "height": 60,
+        "block": 1,
+        "id": 2
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              45.0,
+              5
+            ],
+            [
+              75,
+              5
+            ],
+            [
+              75,
+              75
+            ],
+            [
+              45.0,
+              75
+            ],
+            [
+              45.0,
+              5
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block2_Building1",
+        "height": 50,
+        "block": 2,
+        "id": 3
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              105,
+              5
+            ],
+            [
+              135.0,
+              5
+            ],
+            [
+              135.0,
+              75
+            ],
+            [
+              105,
+              75
+            ],
+            [
+              105,
+              5
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block2_Building2",
+        "height": 50,
+        "block": 2,
+        "id": 4
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              145.0,
+              5
+            ],
+            [
+              175,
+              5
+            ],
+            [
+              175,
+              75
+            ],
+            [
+              145.0,
+              75
+            ],
+            [
+              145.0,
+              5
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block3_Building1",
+        "height": 55,
+        "block": 3,
+        "id": 5
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              205,
+              5
+            ],
+            [
+              235.0,
+              5
+            ],
+            [
+              235.0,
+              75
+            ],
+            [
+              205,
+              75
+            ],
+            [
+              205,
+              5
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block3_Building2",
+        "height": 30,
+        "block": 3,
+        "id": 6
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              245.0,
+              5
+            ],
+            [
+              275,
+              5
+            ],
+            [
+              275,
+              75
+            ],
+            [
+              245.0,
+              75
+            ],
+            [
+              245.0,
+              5
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block4_Building1",
+        "height": 50,
+        "block": 4,
+        "id": 7
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              310,
+              10
+            ],
+            [
+              370,
+              10
+            ],
+            [
+              370,
+              70
+            ],
+            [
+              310,
+              70
+            ],
+            [
+              310,
+              10
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block5_Building1",
+        "height": 40,
+        "block": 5,
+        "id": 8
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              405,
+              5
+            ],
+            [
+              435.0,
+              5
+            ],
+            [
+              435.0,
+              75
+            ],
+            [
+              405,
+              75
+            ],
+            [
+              405,
+              5
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block5_Building2",
+        "height": 60,
+        "block": 5,
+        "id": 9
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              445.0,
+              5
+            ],
+            [
+              475,
+              5
+            ],
+            [
+              475,
+              75
+            ],
+            [
+              445.0,
+              75
+            ],
+            [
+              445.0,
+              5
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block6_Building1",
+        "height": 45,
+        "block": 6,
+        "id": 10
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              510,
+              10
+            ],
+            [
+              570,
+              10
+            ],
+            [
+              570,
+              70
+            ],
+            [
+              510,
+              70
+            ],
+            [
+              510,
+              10
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block7_Building1",
+        "height": 45,
+        "block": 7,
+        "id": 11
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              605.0,
+              5.0
+            ],
+            [
+              635.0,
+              5.0
+            ],
+            [
+              635.0,
+              35.0
+            ],
+            [
+              605.0,
+              35.0
+            ],
+            [
+              605.0,
+              5.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block7_Building2",
+        "height": 20,
+        "block": 7,
+        "id": 12
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              645.0,
+              5.0
+            ],
+            [
+              675.0,
+              5.0
+            ],
+            [
+              675.0,
+              35.0
+            ],
+            [
+              645.0,
+              35.0
+            ],
+            [
+              645.0,
+              5.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block7_Building3",
+        "height": 40,
+        "block": 7,
+        "id": 13
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              605.0,
+              45.0
+            ],
+            [
+              635.0,
+              45.0
+            ],
+            [
+              635.0,
+              75.0
+            ],
+            [
+              605.0,
+              75.0
+            ],
+            [
+              605.0,
+              45.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block8_Building1",
+        "height": 45,
+        "block": 8,
+        "id": 14
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              705,
+              5
+            ],
+            [
+              735.0,
+              5
+            ],
+            [
+              735.0,
+              75
+            ],
+            [
+              705,
+              75
+            ],
+            [
+              705,
+              5
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block8_Building2",
+        "height": 30,
+        "block": 8,
+        "id": 15
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              745.0,
+              5
+            ],
+            [
+              775,
+              5
+            ],
+            [
+              775,
+              75
+            ],
+            [
+              745.0,
+              75
+            ],
+            [
+              745.0,
+              5
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block9_Building1",
+        "height": 40,
+        "block": 9,
+        "id": 16
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              805.0,
+              5.0
+            ],
+            [
+              835.0,
+              5.0
+            ],
+            [
+              835.0,
+              35.0
+            ],
+            [
+              805.0,
+              35.0
+            ],
+            [
+              805.0,
+              5.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block9_Building2",
+        "height": 45,
+        "block": 9,
+        "id": 17
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              845.0,
+              5.0
+            ],
+            [
+              875.0,
+              5.0
+            ],
+            [
+              875.0,
+              35.0
+            ],
+            [
+              845.0,
+              35.0
+            ],
+            [
+              845.0,
+              5.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block9_Building3",
+        "height": 30,
+        "block": 9,
+        "id": 18
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              805.0,
+              45.0
+            ],
+            [
+              835.0,
+              45.0
+            ],
+            [
+              835.0,
+              75.0
+            ],
+            [
+              805.0,
+              75.0
+            ],
+            [
+              805.0,
+              45.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block10_Building1",
+        "height": 15,
+        "block": 10,
+        "id": 19
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              910,
+              10
+            ],
+            [
+              970,
+              10
+            ],
+            [
+              970,
+              70
+            ],
+            [
+              910,
+              70
+            ],
+            [
+              910,
+              10
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block11_Building1",
+        "height": 60,
+        "block": 11,
+        "id": 20
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              5.0,
+              105.0
+            ],
+            [
+              35.0,
+              105.0
+            ],
+            [
+              35.0,
+              135.0
+            ],
+            [
+              5.0,
+              135.0
+            ],
+            [
+              5.0,
+              105.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block11_Building2",
+        "height": 15,
+        "block": 11,
+        "id": 21
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              45.0,
+              105.0
+            ],
+            [
+              75.0,
+              105.0
+            ],
+            [
+              75.0,
+              135.0
+            ],
+            [
+              45.0,
+              135.0
+            ],
+            [
+              45.0,
+              105.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block11_Building3",
+        "height": 50,
+        "block": 11,
+        "id": 22
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              5.0,
+              145.0
+            ],
+            [
+              35.0,
+              145.0
+            ],
+            [
+              35.0,
+              175.0
+            ],
+            [
+              5.0,
+              175.0
+            ],
+            [
+              5.0,
+              145.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block12_Building1",
+        "height": 50,
+        "block": 12,
+        "id": 23
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              110,
+              110
+            ],
+            [
+              170,
+              110
+            ],
+            [
+              170,
+              170
+            ],
+            [
+              110,
+              170
+            ],
+            [
+              110,
+              110
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block13_Building1",
+        "height": 45,
+        "block": 13,
+        "id": 24
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              205,
+              105
+            ],
+            [
+              235.0,
+              105
+            ],
+            [
+              235.0,
+              175
+            ],
+            [
+              205,
+              175
+            ],
+            [
+              205,
+              105
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block13_Building2",
+        "height": 60,
+        "block": 13,
+        "id": 25
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              245.0,
+              105
+            ],
+            [
+              275,
+              105
+            ],
+            [
+              275,
+              175
+            ],
+            [
+              245.0,
+              175
+            ],
+            [
+              245.0,
+              105
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block14_Building1",
+        "height": 35,
+        "block": 14,
+        "id": 26
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              305,
+              105
+            ],
+            [
+              335.0,
+              105
+            ],
+            [
+              335.0,
+              175
+            ],
+            [
+              305,
+              175
+            ],
+            [
+              305,
+              105
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block14_Building2",
+        "height": 35,
+        "block": 14,
+        "id": 27
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              345.0,
+              105
+            ],
+            [
+              375,
+              105
+            ],
+            [
+              375,
+              175
+            ],
+            [
+              345.0,
+              175
+            ],
+            [
+              345.0,
+              105
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block15_Building1",
+        "height": 55,
+        "block": 15,
+        "id": 28
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              405.0,
+              105.0
+            ],
+            [
+              435.0,
+              105.0
+            ],
+            [
+              435.0,
+              135.0
+            ],
+            [
+              405.0,
+              135.0
+            ],
+            [
+              405.0,
+              105.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block15_Building2",
+        "height": 20,
+        "block": 15,
+        "id": 29
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              445.0,
+              105.0
+            ],
+            [
+              475.0,
+              105.0
+            ],
+            [
+              475.0,
+              135.0
+            ],
+            [
+              445.0,
+              135.0
+            ],
+            [
+              445.0,
+              105.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block15_Building3",
+        "height": 30,
+        "block": 15,
+        "id": 30
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              405.0,
+              145.0
+            ],
+            [
+              435.0,
+              145.0
+            ],
+            [
+              435.0,
+              175.0
+            ],
+            [
+              405.0,
+              175.0
+            ],
+            [
+              405.0,
+              145.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block16_Building1",
+        "height": 40,
+        "block": 16,
+        "id": 31
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              505.0,
+              105.0
+            ],
+            [
+              535.0,
+              105.0
+            ],
+            [
+              535.0,
+              135.0
+            ],
+            [
+              505.0,
+              135.0
+            ],
+            [
+              505.0,
+              105.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block16_Building2",
+        "height": 60,
+        "block": 16,
+        "id": 32
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              545.0,
+              105.0
+            ],
+            [
+              575.0,
+              105.0
+            ],
+            [
+              575.0,
+              135.0
+            ],
+            [
+              545.0,
+              135.0
+            ],
+            [
+              545.0,
+              105.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block16_Building3",
+        "height": 25,
+        "block": 16,
+        "id": 33
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              505.0,
+              145.0
+            ],
+            [
+              535.0,
+              145.0
+            ],
+            [
+              535.0,
+              175.0
+            ],
+            [
+              505.0,
+              175.0
+            ],
+            [
+              505.0,
+              145.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block17_Building1",
+        "height": 40,
+        "block": 17,
+        "id": 34
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              605.0,
+              105.0
+            ],
+            [
+              635.0,
+              105.0
+            ],
+            [
+              635.0,
+              135.0
+            ],
+            [
+              605.0,
+              135.0
+            ],
+            [
+              605.0,
+              105.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block17_Building2",
+        "height": 50,
+        "block": 17,
+        "id": 35
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              645.0,
+              105.0
+            ],
+            [
+              675.0,
+              105.0
+            ],
+            [
+              675.0,
+              135.0
+            ],
+            [
+              645.0,
+              135.0
+            ],
+            [
+              645.0,
+              105.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block17_Building3",
+        "height": 55,
+        "block": 17,
+        "id": 36
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              605.0,
+              145.0
+            ],
+            [
+              635.0,
+              145.0
+            ],
+            [
+              635.0,
+              175.0
+            ],
+            [
+              605.0,
+              175.0
+            ],
+            [
+              605.0,
+              145.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block18_Building1",
+        "height": 35,
+        "block": 18,
+        "id": 37
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              705.0,
+              105.0
+            ],
+            [
+              735.0,
+              105.0
+            ],
+            [
+              735.0,
+              135.0
+            ],
+            [
+              705.0,
+              135.0
+            ],
+            [
+              705.0,
+              105.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block18_Building2",
+        "height": 25,
+        "block": 18,
+        "id": 38
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              745.0,
+              105.0
+            ],
+            [
+              775.0,
+              105.0
+            ],
+            [
+              775.0,
+              135.0
+            ],
+            [
+              745.0,
+              135.0
+            ],
+            [
+              745.0,
+              105.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block18_Building3",
+        "height": 30,
+        "block": 18,
+        "id": 39
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              705.0,
+              145.0
+            ],
+            [
+              735.0,
+              145.0
+            ],
+            [
+              735.0,
+              175.0
+            ],
+            [
+              705.0,
+              175.0
+            ],
+            [
+              705.0,
+              145.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block19_Building1",
+        "height": 60,
+        "block": 19,
+        "id": 40
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              810,
+              110
+            ],
+            [
+              870,
+              110
+            ],
+            [
+              870,
+              170
+            ],
+            [
+              810,
+              170
+            ],
+            [
+              810,
+              110
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block20_Building1",
+        "height": 20,
+        "block": 20,
+        "id": 41
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              905,
+              105
+            ],
+            [
+              935.0,
+              105
+            ],
+            [
+              935.0,
+              175
+            ],
+            [
+              905,
+              175
+            ],
+            [
+              905,
+              105
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block20_Building2",
+        "height": 25,
+        "block": 20,
+        "id": 42
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              945.0,
+              105
+            ],
+            [
+              975,
+              105
+            ],
+            [
+              975,
+              175
+            ],
+            [
+              945.0,
+              175
+            ],
+            [
+              945.0,
+              105
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block21_Building1",
+        "height": 55,
+        "block": 21,
+        "id": 43
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              10,
+              210
+            ],
+            [
+              70,
+              210
+            ],
+            [
+              70,
+              270
+            ],
+            [
+              10,
+              270
+            ],
+            [
+              10,
+              210
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block22_Building1",
+        "height": 45,
+        "block": 22,
+        "id": 44
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              105.0,
+              205.0
+            ],
+            [
+              135.0,
+              205.0
+            ],
+            [
+              135.0,
+              235.0
+            ],
+            [
+              105.0,
+              235.0
+            ],
+            [
+              105.0,
+              205.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block22_Building2",
+        "height": 40,
+        "block": 22,
+        "id": 45
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              145.0,
+              205.0
+            ],
+            [
+              175.0,
+              205.0
+            ],
+            [
+              175.0,
+              235.0
+            ],
+            [
+              145.0,
+              235.0
+            ],
+            [
+              145.0,
+              205.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block22_Building3",
+        "height": 50,
+        "block": 22,
+        "id": 46
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              105.0,
+              245.0
+            ],
+            [
+              135.0,
+              245.0
+            ],
+            [
+              135.0,
+              275.0
+            ],
+            [
+              105.0,
+              275.0
+            ],
+            [
+              105.0,
+              245.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block23_Building1",
+        "height": 25,
+        "block": 23,
+        "id": 47
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              210,
+              210
+            ],
+            [
+              270,
+              210
+            ],
+            [
+              270,
+              270
+            ],
+            [
+              210,
+              270
+            ],
+            [
+              210,
+              210
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block24_Building1",
+        "height": 55,
+        "block": 24,
+        "id": 48
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              305.0,
+              205.0
+            ],
+            [
+              335.0,
+              205.0
+            ],
+            [
+              335.0,
+              235.0
+            ],
+            [
+              305.0,
+              235.0
+            ],
+            [
+              305.0,
+              205.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block24_Building2",
+        "height": 35,
+        "block": 24,
+        "id": 49
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              345.0,
+              205.0
+            ],
+            [
+              375.0,
+              205.0
+            ],
+            [
+              375.0,
+              235.0
+            ],
+            [
+              345.0,
+              235.0
+            ],
+            [
+              345.0,
+              205.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block24_Building3",
+        "height": 30,
+        "block": 24,
+        "id": 50
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              305.0,
+              245.0
+            ],
+            [
+              335.0,
+              245.0
+            ],
+            [
+              335.0,
+              275.0
+            ],
+            [
+              305.0,
+              275.0
+            ],
+            [
+              305.0,
+              245.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block25_Building1",
+        "height": 60,
+        "block": 25,
+        "id": 51
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              410,
+              210
+            ],
+            [
+              470,
+              210
+            ],
+            [
+              470,
+              270
+            ],
+            [
+              410,
+              270
+            ],
+            [
+              410,
+              210
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block26_Building1",
+        "height": 15,
+        "block": 26,
+        "id": 52
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              510,
+              210
+            ],
+            [
+              570,
+              210
+            ],
+            [
+              570,
+              270
+            ],
+            [
+              510,
+              270
+            ],
+            [
+              510,
+              210
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block27_Building1",
+        "height": 30,
+        "block": 27,
+        "id": 53
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              605.0,
+              205.0
+            ],
+            [
+              635.0,
+              205.0
+            ],
+            [
+              635.0,
+              235.0
+            ],
+            [
+              605.0,
+              235.0
+            ],
+            [
+              605.0,
+              205.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block27_Building2",
+        "height": 55,
+        "block": 27,
+        "id": 54
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              645.0,
+              205.0
+            ],
+            [
+              675.0,
+              205.0
+            ],
+            [
+              675.0,
+              235.0
+            ],
+            [
+              645.0,
+              235.0
+            ],
+            [
+              645.0,
+              205.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block27_Building3",
+        "height": 50,
+        "block": 27,
+        "id": 55
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              605.0,
+              245.0
+            ],
+            [
+              635.0,
+              245.0
+            ],
+            [
+              635.0,
+              275.0
+            ],
+            [
+              605.0,
+              275.0
+            ],
+            [
+              605.0,
+              245.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block28_Building1",
+        "height": 40,
+        "block": 28,
+        "id": 56
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              710,
+              210
+            ],
+            [
+              770,
+              210
+            ],
+            [
+              770,
+              270
+            ],
+            [
+              710,
+              270
+            ],
+            [
+              710,
+              210
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block29_Building1",
+        "height": 20,
+        "block": 29,
+        "id": 57
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              805,
+              205
+            ],
+            [
+              835.0,
+              205
+            ],
+            [
+              835.0,
+              275
+            ],
+            [
+              805,
+              275
+            ],
+            [
+              805,
+              205
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block29_Building2",
+        "height": 40,
+        "block": 29,
+        "id": 58
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              845.0,
+              205
+            ],
+            [
+              875,
+              205
+            ],
+            [
+              875,
+              275
+            ],
+            [
+              845.0,
+              275
+            ],
+            [
+              845.0,
+              205
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block30_Building1",
+        "height": 40,
+        "block": 30,
+        "id": 59
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              910,
+              210
+            ],
+            [
+              970,
+              210
+            ],
+            [
+              970,
+              270
+            ],
+            [
+              910,
+              270
+            ],
+            [
+              910,
+              210
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block31_Building1",
+        "height": 35,
+        "block": 31,
+        "id": 60
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              10,
+              310
+            ],
+            [
+              70,
+              310
+            ],
+            [
+              70,
+              370
+            ],
+            [
+              10,
+              370
+            ],
+            [
+              10,
+              310
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block32_Building1",
+        "height": 50,
+        "block": 32,
+        "id": 61
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              105,
+              305
+            ],
+            [
+              135.0,
+              305
+            ],
+            [
+              135.0,
+              375
+            ],
+            [
+              105,
+              375
+            ],
+            [
+              105,
+              305
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block32_Building2",
+        "height": 55,
+        "block": 32,
+        "id": 62
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              145.0,
+              305
+            ],
+            [
+              175,
+              305
+            ],
+            [
+              175,
+              375
+            ],
+            [
+              145.0,
+              375
+            ],
+            [
+              145.0,
+              305
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block33_Building1",
+        "height": 40,
+        "block": 33,
+        "id": 63
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              210,
+              310
+            ],
+            [
+              270,
+              310
+            ],
+            [
+              270,
+              370
+            ],
+            [
+              210,
+              370
+            ],
+            [
+              210,
+              310
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block34_Building1",
+        "height": 55,
+        "block": 34,
+        "id": 64
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              305.0,
+              305.0
+            ],
+            [
+              335.0,
+              305.0
+            ],
+            [
+              335.0,
+              335.0
+            ],
+            [
+              305.0,
+              335.0
+            ],
+            [
+              305.0,
+              305.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block34_Building2",
+        "height": 30,
+        "block": 34,
+        "id": 65
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              345.0,
+              305.0
+            ],
+            [
+              375.0,
+              305.0
+            ],
+            [
+              375.0,
+              335.0
+            ],
+            [
+              345.0,
+              335.0
+            ],
+            [
+              345.0,
+              305.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block34_Building3",
+        "height": 55,
+        "block": 34,
+        "id": 66
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              305.0,
+              345.0
+            ],
+            [
+              335.0,
+              345.0
+            ],
+            [
+              335.0,
+              375.0
+            ],
+            [
+              305.0,
+              375.0
+            ],
+            [
+              305.0,
+              345.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block35_Building1",
+        "height": 40,
+        "block": 35,
+        "id": 67
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              405.0,
+              305.0
+            ],
+            [
+              435.0,
+              305.0
+            ],
+            [
+              435.0,
+              335.0
+            ],
+            [
+              405.0,
+              335.0
+            ],
+            [
+              405.0,
+              305.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block35_Building2",
+        "height": 15,
+        "block": 35,
+        "id": 68
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              445.0,
+              305.0
+            ],
+            [
+              475.0,
+              305.0
+            ],
+            [
+              475.0,
+              335.0
+            ],
+            [
+              445.0,
+              335.0
+            ],
+            [
+              445.0,
+              305.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block35_Building3",
+        "height": 35,
+        "block": 35,
+        "id": 69
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              405.0,
+              345.0
+            ],
+            [
+              435.0,
+              345.0
+            ],
+            [
+              435.0,
+              375.0
+            ],
+            [
+              405.0,
+              375.0
+            ],
+            [
+              405.0,
+              345.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block36_Building1",
+        "height": 20,
+        "block": 36,
+        "id": 70
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              505.0,
+              305.0
+            ],
+            [
+              535.0,
+              305.0
+            ],
+            [
+              535.0,
+              335.0
+            ],
+            [
+              505.0,
+              335.0
+            ],
+            [
+              505.0,
+              305.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block36_Building2",
+        "height": 40,
+        "block": 36,
+        "id": 71
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              545.0,
+              305.0
+            ],
+            [
+              575.0,
+              305.0
+            ],
+            [
+              575.0,
+              335.0
+            ],
+            [
+              545.0,
+              335.0
+            ],
+            [
+              545.0,
+              305.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block36_Building3",
+        "height": 35,
+        "block": 36,
+        "id": 72
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              505.0,
+              345.0
+            ],
+            [
+              535.0,
+              345.0
+            ],
+            [
+              535.0,
+              375.0
+            ],
+            [
+              505.0,
+              375.0
+            ],
+            [
+              505.0,
+              345.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block37_Building1",
+        "height": 50,
+        "block": 37,
+        "id": 73
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              610,
+              310
+            ],
+            [
+              670,
+              310
+            ],
+            [
+              670,
+              370
+            ],
+            [
+              610,
+              370
+            ],
+            [
+              610,
+              310
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block38_Building1",
+        "height": 35,
+        "block": 38,
+        "id": 74
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              705,
+              305
+            ],
+            [
+              735.0,
+              305
+            ],
+            [
+              735.0,
+              375
+            ],
+            [
+              705,
+              375
+            ],
+            [
+              705,
+              305
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block38_Building2",
+        "height": 50,
+        "block": 38,
+        "id": 75
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              745.0,
+              305
+            ],
+            [
+              775,
+              305
+            ],
+            [
+              775,
+              375
+            ],
+            [
+              745.0,
+              375
+            ],
+            [
+              745.0,
+              305
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block39_Building1",
+        "height": 30,
+        "block": 39,
+        "id": 76
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              810,
+              310
+            ],
+            [
+              870,
+              310
+            ],
+            [
+              870,
+              370
+            ],
+            [
+              810,
+              370
+            ],
+            [
+              810,
+              310
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block40_Building1",
+        "height": 50,
+        "block": 40,
+        "id": 77
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              905,
+              305
+            ],
+            [
+              935.0,
+              305
+            ],
+            [
+              935.0,
+              375
+            ],
+            [
+              905,
+              375
+            ],
+            [
+              905,
+              305
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block40_Building2",
+        "height": 55,
+        "block": 40,
+        "id": 78
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              945.0,
+              305
+            ],
+            [
+              975,
+              305
+            ],
+            [
+              975,
+              375
+            ],
+            [
+              945.0,
+              375
+            ],
+            [
+              945.0,
+              305
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block41_Building1",
+        "height": 30,
+        "block": 41,
+        "id": 79
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              10,
+              410
+            ],
+            [
+              70,
+              410
+            ],
+            [
+              70,
+              470
+            ],
+            [
+              10,
+              470
+            ],
+            [
+              10,
+              410
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block42_Building1",
+        "height": 20,
+        "block": 42,
+        "id": 80
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              110,
+              410
+            ],
+            [
+              170,
+              410
+            ],
+            [
+              170,
+              470
+            ],
+            [
+              110,
+              470
+            ],
+            [
+              110,
+              410
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block43_Building1",
+        "height": 50,
+        "block": 43,
+        "id": 81
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              210,
+              410
+            ],
+            [
+              270,
+              410
+            ],
+            [
+              270,
+              470
+            ],
+            [
+              210,
+              470
+            ],
+            [
+              210,
+              410
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block44_Building1",
+        "height": 30,
+        "block": 44,
+        "id": 82
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              305,
+              405
+            ],
+            [
+              335.0,
+              405
+            ],
+            [
+              335.0,
+              475
+            ],
+            [
+              305,
+              475
+            ],
+            [
+              305,
+              405
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block44_Building2",
+        "height": 50,
+        "block": 44,
+        "id": 83
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              345.0,
+              405
+            ],
+            [
+              375,
+              405
+            ],
+            [
+              375,
+              475
+            ],
+            [
+              345.0,
+              475
+            ],
+            [
+              345.0,
+              405
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block45_Building1",
+        "height": 55,
+        "block": 45,
+        "id": 84
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              405,
+              405
+            ],
+            [
+              435.0,
+              405
+            ],
+            [
+              435.0,
+              475
+            ],
+            [
+              405,
+              475
+            ],
+            [
+              405,
+              405
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block45_Building2",
+        "height": 55,
+        "block": 45,
+        "id": 85
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              445.0,
+              405
+            ],
+            [
+              475,
+              405
+            ],
+            [
+              475,
+              475
+            ],
+            [
+              445.0,
+              475
+            ],
+            [
+              445.0,
+              405
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block46_Building1",
+        "height": 25,
+        "block": 46,
+        "id": 86
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              505,
+              405
+            ],
+            [
+              535.0,
+              405
+            ],
+            [
+              535.0,
+              475
+            ],
+            [
+              505,
+              475
+            ],
+            [
+              505,
+              405
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block46_Building2",
+        "height": 30,
+        "block": 46,
+        "id": 87
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              545.0,
+              405
+            ],
+            [
+              575,
+              405
+            ],
+            [
+              575,
+              475
+            ],
+            [
+              545.0,
+              475
+            ],
+            [
+              545.0,
+              405
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block47_Building1",
+        "height": 55,
+        "block": 47,
+        "id": 88
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              610,
+              410
+            ],
+            [
+              670,
+              410
+            ],
+            [
+              670,
+              470
+            ],
+            [
+              610,
+              470
+            ],
+            [
+              610,
+              410
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block48_Building1",
+        "height": 35,
+        "block": 48,
+        "id": 89
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              710,
+              410
+            ],
+            [
+              770,
+              410
+            ],
+            [
+              770,
+              470
+            ],
+            [
+              710,
+              470
+            ],
+            [
+              710,
+              410
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block49_Building1",
+        "height": 50,
+        "block": 49,
+        "id": 90
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              805,
+              405
+            ],
+            [
+              835.0,
+              405
+            ],
+            [
+              835.0,
+              475
+            ],
+            [
+              805,
+              475
+            ],
+            [
+              805,
+              405
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block49_Building2",
+        "height": 40,
+        "block": 49,
+        "id": 91
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              845.0,
+              405
+            ],
+            [
+              875,
+              405
+            ],
+            [
+              875,
+              475
+            ],
+            [
+              845.0,
+              475
+            ],
+            [
+              845.0,
+              405
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block50_Building1",
+        "height": 35,
+        "block": 50,
+        "id": 92
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              905.0,
+              405.0
+            ],
+            [
+              935.0,
+              405.0
+            ],
+            [
+              935.0,
+              435.0
+            ],
+            [
+              905.0,
+              435.0
+            ],
+            [
+              905.0,
+              405.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block50_Building2",
+        "height": 60,
+        "block": 50,
+        "id": 93
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              945.0,
+              405.0
+            ],
+            [
+              975.0,
+              405.0
+            ],
+            [
+              975.0,
+              435.0
+            ],
+            [
+              945.0,
+              435.0
+            ],
+            [
+              945.0,
+              405.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block50_Building3",
+        "height": 60,
+        "block": 50,
+        "id": 94
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              905.0,
+              445.0
+            ],
+            [
+              935.0,
+              445.0
+            ],
+            [
+              935.0,
+              475.0
+            ],
+            [
+              905.0,
+              475.0
+            ],
+            [
+              905.0,
+              445.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block51_Building1",
+        "height": 55,
+        "block": 51,
+        "id": 95
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              5,
+              505
+            ],
+            [
+              35.0,
+              505
+            ],
+            [
+              35.0,
+              575
+            ],
+            [
+              5,
+              575
+            ],
+            [
+              5,
+              505
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block51_Building2",
+        "height": 55,
+        "block": 51,
+        "id": 96
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              45.0,
+              505
+            ],
+            [
+              75,
+              505
+            ],
+            [
+              75,
+              575
+            ],
+            [
+              45.0,
+              575
+            ],
+            [
+              45.0,
+              505
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block52_Building1",
+        "height": 25,
+        "block": 52,
+        "id": 97
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              105,
+              505
+            ],
+            [
+              135.0,
+              505
+            ],
+            [
+              135.0,
+              575
+            ],
+            [
+              105,
+              575
+            ],
+            [
+              105,
+              505
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block52_Building2",
+        "height": 15,
+        "block": 52,
+        "id": 98
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              145.0,
+              505
+            ],
+            [
+              175,
+              505
+            ],
+            [
+              175,
+              575
+            ],
+            [
+              145.0,
+              575
+            ],
+            [
+              145.0,
+              505
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block53_Building1",
+        "height": 50,
+        "block": 53,
+        "id": 99
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              205,
+              505
+            ],
+            [
+              235.0,
+              505
+            ],
+            [
+              235.0,
+              575
+            ],
+            [
+              205,
+              575
+            ],
+            [
+              205,
+              505
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block53_Building2",
+        "height": 25,
+        "block": 53,
+        "id": 100
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              245.0,
+              505
+            ],
+            [
+              275,
+              505
+            ],
+            [
+              275,
+              575
+            ],
+            [
+              245.0,
+              575
+            ],
+            [
+              245.0,
+              505
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block54_Building1",
+        "height": 45,
+        "block": 54,
+        "id": 101
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              310,
+              510
+            ],
+            [
+              370,
+              510
+            ],
+            [
+              370,
+              570
+            ],
+            [
+              310,
+              570
+            ],
+            [
+              310,
+              510
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block55_Building1",
+        "height": 30,
+        "block": 55,
+        "id": 102
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              405,
+              505
+            ],
+            [
+              435.0,
+              505
+            ],
+            [
+              435.0,
+              575
+            ],
+            [
+              405,
+              575
+            ],
+            [
+              405,
+              505
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block55_Building2",
+        "height": 15,
+        "block": 55,
+        "id": 103
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              445.0,
+              505
+            ],
+            [
+              475,
+              505
+            ],
+            [
+              475,
+              575
+            ],
+            [
+              445.0,
+              575
+            ],
+            [
+              445.0,
+              505
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block56_Building1",
+        "height": 30,
+        "block": 56,
+        "id": 104
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              510,
+              510
+            ],
+            [
+              570,
+              510
+            ],
+            [
+              570,
+              570
+            ],
+            [
+              510,
+              570
+            ],
+            [
+              510,
+              510
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block57_Building1",
+        "height": 40,
+        "block": 57,
+        "id": 105
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              605,
+              505
+            ],
+            [
+              635.0,
+              505
+            ],
+            [
+              635.0,
+              575
+            ],
+            [
+              605,
+              575
+            ],
+            [
+              605,
+              505
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block57_Building2",
+        "height": 40,
+        "block": 57,
+        "id": 106
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              645.0,
+              505
+            ],
+            [
+              675,
+              505
+            ],
+            [
+              675,
+              575
+            ],
+            [
+              645.0,
+              575
+            ],
+            [
+              645.0,
+              505
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block58_Building1",
+        "height": 45,
+        "block": 58,
+        "id": 107
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              710,
+              510
+            ],
+            [
+              770,
+              510
+            ],
+            [
+              770,
+              570
+            ],
+            [
+              710,
+              570
+            ],
+            [
+              710,
+              510
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block59_Building1",
+        "height": 40,
+        "block": 59,
+        "id": 108
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              805.0,
+              505.0
+            ],
+            [
+              835.0,
+              505.0
+            ],
+            [
+              835.0,
+              535.0
+            ],
+            [
+              805.0,
+              535.0
+            ],
+            [
+              805.0,
+              505.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block59_Building2",
+        "height": 50,
+        "block": 59,
+        "id": 109
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              845.0,
+              505.0
+            ],
+            [
+              875.0,
+              505.0
+            ],
+            [
+              875.0,
+              535.0
+            ],
+            [
+              845.0,
+              535.0
+            ],
+            [
+              845.0,
+              505.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block59_Building3",
+        "height": 55,
+        "block": 59,
+        "id": 110
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              805.0,
+              545.0
+            ],
+            [
+              835.0,
+              545.0
+            ],
+            [
+              835.0,
+              575.0
+            ],
+            [
+              805.0,
+              575.0
+            ],
+            [
+              805.0,
+              545.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block60_Building1",
+        "height": 60,
+        "block": 60,
+        "id": 111
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              905.0,
+              505.0
+            ],
+            [
+              935.0,
+              505.0
+            ],
+            [
+              935.0,
+              535.0
+            ],
+            [
+              905.0,
+              535.0
+            ],
+            [
+              905.0,
+              505.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block60_Building2",
+        "height": 45,
+        "block": 60,
+        "id": 112
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              945.0,
+              505.0
+            ],
+            [
+              975.0,
+              505.0
+            ],
+            [
+              975.0,
+              535.0
+            ],
+            [
+              945.0,
+              535.0
+            ],
+            [
+              945.0,
+              505.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block60_Building3",
+        "height": 35,
+        "block": 60,
+        "id": 113
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              905.0,
+              545.0
+            ],
+            [
+              935.0,
+              545.0
+            ],
+            [
+              935.0,
+              575.0
+            ],
+            [
+              905.0,
+              575.0
+            ],
+            [
+              905.0,
+              545.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block61_Building1",
+        "height": 35,
+        "block": 61,
+        "id": 114
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              5.0,
+              605.0
+            ],
+            [
+              35.0,
+              605.0
+            ],
+            [
+              35.0,
+              635.0
+            ],
+            [
+              5.0,
+              635.0
+            ],
+            [
+              5.0,
+              605.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block61_Building2",
+        "height": 60,
+        "block": 61,
+        "id": 115
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              45.0,
+              605.0
+            ],
+            [
+              75.0,
+              605.0
+            ],
+            [
+              75.0,
+              635.0
+            ],
+            [
+              45.0,
+              635.0
+            ],
+            [
+              45.0,
+              605.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block61_Building3",
+        "height": 40,
+        "block": 61,
+        "id": 116
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              5.0,
+              645.0
+            ],
+            [
+              35.0,
+              645.0
+            ],
+            [
+              35.0,
+              675.0
+            ],
+            [
+              5.0,
+              675.0
+            ],
+            [
+              5.0,
+              645.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block62_Building1",
+        "height": 50,
+        "block": 62,
+        "id": 117
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              105,
+              605
+            ],
+            [
+              135.0,
+              605
+            ],
+            [
+              135.0,
+              675
+            ],
+            [
+              105,
+              675
+            ],
+            [
+              105,
+              605
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block62_Building2",
+        "height": 60,
+        "block": 62,
+        "id": 118
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              145.0,
+              605
+            ],
+            [
+              175,
+              605
+            ],
+            [
+              175,
+              675
+            ],
+            [
+              145.0,
+              675
+            ],
+            [
+              145.0,
+              605
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block63_Building1",
+        "height": 40,
+        "block": 63,
+        "id": 119
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              205,
+              605
+            ],
+            [
+              235.0,
+              605
+            ],
+            [
+              235.0,
+              675
+            ],
+            [
+              205,
+              675
+            ],
+            [
+              205,
+              605
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block63_Building2",
+        "height": 45,
+        "block": 63,
+        "id": 120
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              245.0,
+              605
+            ],
+            [
+              275,
+              605
+            ],
+            [
+              275,
+              675
+            ],
+            [
+              245.0,
+              675
+            ],
+            [
+              245.0,
+              605
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block64_Building1",
+        "height": 35,
+        "block": 64,
+        "id": 121
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              305.0,
+              605.0
+            ],
+            [
+              335.0,
+              605.0
+            ],
+            [
+              335.0,
+              635.0
+            ],
+            [
+              305.0,
+              635.0
+            ],
+            [
+              305.0,
+              605.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block64_Building2",
+        "height": 35,
+        "block": 64,
+        "id": 122
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              345.0,
+              605.0
+            ],
+            [
+              375.0,
+              605.0
+            ],
+            [
+              375.0,
+              635.0
+            ],
+            [
+              345.0,
+              635.0
+            ],
+            [
+              345.0,
+              605.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block64_Building3",
+        "height": 35,
+        "block": 64,
+        "id": 123
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              305.0,
+              645.0
+            ],
+            [
+              335.0,
+              645.0
+            ],
+            [
+              335.0,
+              675.0
+            ],
+            [
+              305.0,
+              675.0
+            ],
+            [
+              305.0,
+              645.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block65_Building1",
+        "height": 40,
+        "block": 65,
+        "id": 124
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              410,
+              610
+            ],
+            [
+              470,
+              610
+            ],
+            [
+              470,
+              670
+            ],
+            [
+              410,
+              670
+            ],
+            [
+              410,
+              610
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block66_Building1",
+        "height": 35,
+        "block": 66,
+        "id": 125
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              505.0,
+              605.0
+            ],
+            [
+              535.0,
+              605.0
+            ],
+            [
+              535.0,
+              635.0
+            ],
+            [
+              505.0,
+              635.0
+            ],
+            [
+              505.0,
+              605.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block66_Building2",
+        "height": 60,
+        "block": 66,
+        "id": 126
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              545.0,
+              605.0
+            ],
+            [
+              575.0,
+              605.0
+            ],
+            [
+              575.0,
+              635.0
+            ],
+            [
+              545.0,
+              635.0
+            ],
+            [
+              545.0,
+              605.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block66_Building3",
+        "height": 55,
+        "block": 66,
+        "id": 127
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              505.0,
+              645.0
+            ],
+            [
+              535.0,
+              645.0
+            ],
+            [
+              535.0,
+              675.0
+            ],
+            [
+              505.0,
+              675.0
+            ],
+            [
+              505.0,
+              645.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block67_Building1",
+        "height": 25,
+        "block": 67,
+        "id": 128
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              605,
+              605
+            ],
+            [
+              635.0,
+              605
+            ],
+            [
+              635.0,
+              675
+            ],
+            [
+              605,
+              675
+            ],
+            [
+              605,
+              605
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block67_Building2",
+        "height": 50,
+        "block": 67,
+        "id": 129
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              645.0,
+              605
+            ],
+            [
+              675,
+              605
+            ],
+            [
+              675,
+              675
+            ],
+            [
+              645.0,
+              675
+            ],
+            [
+              645.0,
+              605
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block68_Building1",
+        "height": 40,
+        "block": 68,
+        "id": 130
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              705.0,
+              605.0
+            ],
+            [
+              735.0,
+              605.0
+            ],
+            [
+              735.0,
+              635.0
+            ],
+            [
+              705.0,
+              635.0
+            ],
+            [
+              705.0,
+              605.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block68_Building2",
+        "height": 55,
+        "block": 68,
+        "id": 131
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              745.0,
+              605.0
+            ],
+            [
+              775.0,
+              605.0
+            ],
+            [
+              775.0,
+              635.0
+            ],
+            [
+              745.0,
+              635.0
+            ],
+            [
+              745.0,
+              605.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block68_Building3",
+        "height": 40,
+        "block": 68,
+        "id": 132
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              705.0,
+              645.0
+            ],
+            [
+              735.0,
+              645.0
+            ],
+            [
+              735.0,
+              675.0
+            ],
+            [
+              705.0,
+              675.0
+            ],
+            [
+              705.0,
+              645.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block69_Building1",
+        "height": 25,
+        "block": 69,
+        "id": 133
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              810,
+              610
+            ],
+            [
+              870,
+              610
+            ],
+            [
+              870,
+              670
+            ],
+            [
+              810,
+              670
+            ],
+            [
+              810,
+              610
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block70_Building1",
+        "height": 60,
+        "block": 70,
+        "id": 134
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              910,
+              610
+            ],
+            [
+              970,
+              610
+            ],
+            [
+              970,
+              670
+            ],
+            [
+              910,
+              670
+            ],
+            [
+              910,
+              610
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block71_Building1",
+        "height": 60,
+        "block": 71,
+        "id": 135
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              10,
+              710
+            ],
+            [
+              70,
+              710
+            ],
+            [
+              70,
+              770
+            ],
+            [
+              10,
+              770
+            ],
+            [
+              10,
+              710
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block72_Building1",
+        "height": 20,
+        "block": 72,
+        "id": 136
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              105.0,
+              705.0
+            ],
+            [
+              135.0,
+              705.0
+            ],
+            [
+              135.0,
+              735.0
+            ],
+            [
+              105.0,
+              735.0
+            ],
+            [
+              105.0,
+              705.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block72_Building2",
+        "height": 35,
+        "block": 72,
+        "id": 137
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              145.0,
+              705.0
+            ],
+            [
+              175.0,
+              705.0
+            ],
+            [
+              175.0,
+              735.0
+            ],
+            [
+              145.0,
+              735.0
+            ],
+            [
+              145.0,
+              705.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block72_Building3",
+        "height": 55,
+        "block": 72,
+        "id": 138
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              105.0,
+              745.0
+            ],
+            [
+              135.0,
+              745.0
+            ],
+            [
+              135.0,
+              775.0
+            ],
+            [
+              105.0,
+              775.0
+            ],
+            [
+              105.0,
+              745.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block73_Building1",
+        "height": 55,
+        "block": 73,
+        "id": 139
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              205,
+              705
+            ],
+            [
+              235.0,
+              705
+            ],
+            [
+              235.0,
+              775
+            ],
+            [
+              205,
+              775
+            ],
+            [
+              205,
+              705
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block73_Building2",
+        "height": 55,
+        "block": 73,
+        "id": 140
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              245.0,
+              705
+            ],
+            [
+              275,
+              705
+            ],
+            [
+              275,
+              775
+            ],
+            [
+              245.0,
+              775
+            ],
+            [
+              245.0,
+              705
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block74_Building1",
+        "height": 50,
+        "block": 74,
+        "id": 141
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              305,
+              705
+            ],
+            [
+              335.0,
+              705
+            ],
+            [
+              335.0,
+              775
+            ],
+            [
+              305,
+              775
+            ],
+            [
+              305,
+              705
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block74_Building2",
+        "height": 25,
+        "block": 74,
+        "id": 142
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              345.0,
+              705
+            ],
+            [
+              375,
+              705
+            ],
+            [
+              375,
+              775
+            ],
+            [
+              345.0,
+              775
+            ],
+            [
+              345.0,
+              705
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block75_Building1",
+        "height": 50,
+        "block": 75,
+        "id": 143
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              405,
+              705
+            ],
+            [
+              435.0,
+              705
+            ],
+            [
+              435.0,
+              775
+            ],
+            [
+              405,
+              775
+            ],
+            [
+              405,
+              705
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block75_Building2",
+        "height": 25,
+        "block": 75,
+        "id": 144
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              445.0,
+              705
+            ],
+            [
+              475,
+              705
+            ],
+            [
+              475,
+              775
+            ],
+            [
+              445.0,
+              775
+            ],
+            [
+              445.0,
+              705
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block76_Building1",
+        "height": 15,
+        "block": 76,
+        "id": 145
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              510,
+              710
+            ],
+            [
+              570,
+              710
+            ],
+            [
+              570,
+              770
+            ],
+            [
+              510,
+              770
+            ],
+            [
+              510,
+              710
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block77_Building1",
+        "height": 30,
+        "block": 77,
+        "id": 146
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              605,
+              705
+            ],
+            [
+              635.0,
+              705
+            ],
+            [
+              635.0,
+              775
+            ],
+            [
+              605,
+              775
+            ],
+            [
+              605,
+              705
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block77_Building2",
+        "height": 50,
+        "block": 77,
+        "id": 147
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              645.0,
+              705
+            ],
+            [
+              675,
+              705
+            ],
+            [
+              675,
+              775
+            ],
+            [
+              645.0,
+              775
+            ],
+            [
+              645.0,
+              705
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block78_Building1",
+        "height": 60,
+        "block": 78,
+        "id": 148
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              705,
+              705
+            ],
+            [
+              735.0,
+              705
+            ],
+            [
+              735.0,
+              775
+            ],
+            [
+              705,
+              775
+            ],
+            [
+              705,
+              705
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block78_Building2",
+        "height": 55,
+        "block": 78,
+        "id": 149
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              745.0,
+              705
+            ],
+            [
+              775,
+              705
+            ],
+            [
+              775,
+              775
+            ],
+            [
+              745.0,
+              775
+            ],
+            [
+              745.0,
+              705
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block79_Building1",
+        "height": 30,
+        "block": 79,
+        "id": 150
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              805.0,
+              705.0
+            ],
+            [
+              835.0,
+              705.0
+            ],
+            [
+              835.0,
+              735.0
+            ],
+            [
+              805.0,
+              735.0
+            ],
+            [
+              805.0,
+              705.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block79_Building2",
+        "height": 50,
+        "block": 79,
+        "id": 151
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              845.0,
+              705.0
+            ],
+            [
+              875.0,
+              705.0
+            ],
+            [
+              875.0,
+              735.0
+            ],
+            [
+              845.0,
+              735.0
+            ],
+            [
+              845.0,
+              705.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block79_Building3",
+        "height": 20,
+        "block": 79,
+        "id": 152
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              805.0,
+              745.0
+            ],
+            [
+              835.0,
+              745.0
+            ],
+            [
+              835.0,
+              775.0
+            ],
+            [
+              805.0,
+              775.0
+            ],
+            [
+              805.0,
+              745.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block80_Building1",
+        "height": 50,
+        "block": 80,
+        "id": 153
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              905,
+              705
+            ],
+            [
+              935.0,
+              705
+            ],
+            [
+              935.0,
+              775
+            ],
+            [
+              905,
+              775
+            ],
+            [
+              905,
+              705
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block80_Building2",
+        "height": 60,
+        "block": 80,
+        "id": 154
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              945.0,
+              705
+            ],
+            [
+              975,
+              705
+            ],
+            [
+              975,
+              775
+            ],
+            [
+              945.0,
+              775
+            ],
+            [
+              945.0,
+              705
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block81_Building1",
+        "height": 60,
+        "block": 81,
+        "id": 155
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              10,
+              810
+            ],
+            [
+              70,
+              810
+            ],
+            [
+              70,
+              870
+            ],
+            [
+              10,
+              870
+            ],
+            [
+              10,
+              810
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block82_Building1",
+        "height": 35,
+        "block": 82,
+        "id": 156
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              105.0,
+              805.0
+            ],
+            [
+              135.0,
+              805.0
+            ],
+            [
+              135.0,
+              835.0
+            ],
+            [
+              105.0,
+              835.0
+            ],
+            [
+              105.0,
+              805.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block82_Building2",
+        "height": 15,
+        "block": 82,
+        "id": 157
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              145.0,
+              805.0
+            ],
+            [
+              175.0,
+              805.0
+            ],
+            [
+              175.0,
+              835.0
+            ],
+            [
+              145.0,
+              835.0
+            ],
+            [
+              145.0,
+              805.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block82_Building3",
+        "height": 60,
+        "block": 82,
+        "id": 158
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              105.0,
+              845.0
+            ],
+            [
+              135.0,
+              845.0
+            ],
+            [
+              135.0,
+              875.0
+            ],
+            [
+              105.0,
+              875.0
+            ],
+            [
+              105.0,
+              845.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block83_Building1",
+        "height": 50,
+        "block": 83,
+        "id": 159
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              205.0,
+              805.0
+            ],
+            [
+              235.0,
+              805.0
+            ],
+            [
+              235.0,
+              835.0
+            ],
+            [
+              205.0,
+              835.0
+            ],
+            [
+              205.0,
+              805.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block83_Building2",
+        "height": 40,
+        "block": 83,
+        "id": 160
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              245.0,
+              805.0
+            ],
+            [
+              275.0,
+              805.0
+            ],
+            [
+              275.0,
+              835.0
+            ],
+            [
+              245.0,
+              835.0
+            ],
+            [
+              245.0,
+              805.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block83_Building3",
+        "height": 55,
+        "block": 83,
+        "id": 161
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              205.0,
+              845.0
+            ],
+            [
+              235.0,
+              845.0
+            ],
+            [
+              235.0,
+              875.0
+            ],
+            [
+              205.0,
+              875.0
+            ],
+            [
+              205.0,
+              845.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block84_Building1",
+        "height": 45,
+        "block": 84,
+        "id": 162
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              310,
+              810
+            ],
+            [
+              370,
+              810
+            ],
+            [
+              370,
+              870
+            ],
+            [
+              310,
+              870
+            ],
+            [
+              310,
+              810
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block85_Building1",
+        "height": 60,
+        "block": 85,
+        "id": 163
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              405,
+              805
+            ],
+            [
+              435.0,
+              805
+            ],
+            [
+              435.0,
+              875
+            ],
+            [
+              405,
+              875
+            ],
+            [
+              405,
+              805
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block85_Building2",
+        "height": 30,
+        "block": 85,
+        "id": 164
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              445.0,
+              805
+            ],
+            [
+              475,
+              805
+            ],
+            [
+              475,
+              875
+            ],
+            [
+              445.0,
+              875
+            ],
+            [
+              445.0,
+              805
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block86_Building1",
+        "height": 25,
+        "block": 86,
+        "id": 165
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              510,
+              810
+            ],
+            [
+              570,
+              810
+            ],
+            [
+              570,
+              870
+            ],
+            [
+              510,
+              870
+            ],
+            [
+              510,
+              810
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block87_Building1",
+        "height": 60,
+        "block": 87,
+        "id": 166
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              605.0,
+              805.0
+            ],
+            [
+              635.0,
+              805.0
+            ],
+            [
+              635.0,
+              835.0
+            ],
+            [
+              605.0,
+              835.0
+            ],
+            [
+              605.0,
+              805.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block87_Building2",
+        "height": 25,
+        "block": 87,
+        "id": 167
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              645.0,
+              805.0
+            ],
+            [
+              675.0,
+              805.0
+            ],
+            [
+              675.0,
+              835.0
+            ],
+            [
+              645.0,
+              835.0
+            ],
+            [
+              645.0,
+              805.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block87_Building3",
+        "height": 15,
+        "block": 87,
+        "id": 168
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              605.0,
+              845.0
+            ],
+            [
+              635.0,
+              845.0
+            ],
+            [
+              635.0,
+              875.0
+            ],
+            [
+              605.0,
+              875.0
+            ],
+            [
+              605.0,
+              845.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block88_Building1",
+        "height": 55,
+        "block": 88,
+        "id": 169
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              705,
+              805
+            ],
+            [
+              735.0,
+              805
+            ],
+            [
+              735.0,
+              875
+            ],
+            [
+              705,
+              875
+            ],
+            [
+              705,
+              805
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block88_Building2",
+        "height": 35,
+        "block": 88,
+        "id": 170
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              745.0,
+              805
+            ],
+            [
+              775,
+              805
+            ],
+            [
+              775,
+              875
+            ],
+            [
+              745.0,
+              875
+            ],
+            [
+              745.0,
+              805
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block89_Building1",
+        "height": 30,
+        "block": 89,
+        "id": 171
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              805,
+              805
+            ],
+            [
+              835.0,
+              805
+            ],
+            [
+              835.0,
+              875
+            ],
+            [
+              805,
+              875
+            ],
+            [
+              805,
+              805
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block89_Building2",
+        "height": 55,
+        "block": 89,
+        "id": 172
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              845.0,
+              805
+            ],
+            [
+              875,
+              805
+            ],
+            [
+              875,
+              875
+            ],
+            [
+              845.0,
+              875
+            ],
+            [
+              845.0,
+              805
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block90_Building1",
+        "height": 55,
+        "block": 90,
+        "id": 173
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              905.0,
+              805.0
+            ],
+            [
+              935.0,
+              805.0
+            ],
+            [
+              935.0,
+              835.0
+            ],
+            [
+              905.0,
+              835.0
+            ],
+            [
+              905.0,
+              805.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block90_Building2",
+        "height": 20,
+        "block": 90,
+        "id": 174
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              945.0,
+              805.0
+            ],
+            [
+              975.0,
+              805.0
+            ],
+            [
+              975.0,
+              835.0
+            ],
+            [
+              945.0,
+              835.0
+            ],
+            [
+              945.0,
+              805.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block90_Building3",
+        "height": 15,
+        "block": 90,
+        "id": 175
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              905.0,
+              845.0
+            ],
+            [
+              935.0,
+              845.0
+            ],
+            [
+              935.0,
+              875.0
+            ],
+            [
+              905.0,
+              875.0
+            ],
+            [
+              905.0,
+              845.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block91_Building1",
+        "height": 15,
+        "block": 91,
+        "id": 176
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              5,
+              905
+            ],
+            [
+              35.0,
+              905
+            ],
+            [
+              35.0,
+              975
+            ],
+            [
+              5,
+              975
+            ],
+            [
+              5,
+              905
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block91_Building2",
+        "height": 40,
+        "block": 91,
+        "id": 177
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              45.0,
+              905
+            ],
+            [
+              75,
+              905
+            ],
+            [
+              75,
+              975
+            ],
+            [
+              45.0,
+              975
+            ],
+            [
+              45.0,
+              905
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block92_Building1",
+        "height": 50,
+        "block": 92,
+        "id": 178
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              110,
+              910
+            ],
+            [
+              170,
+              910
+            ],
+            [
+              170,
+              970
+            ],
+            [
+              110,
+              970
+            ],
+            [
+              110,
+              910
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block93_Building1",
+        "height": 50,
+        "block": 93,
+        "id": 179
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              205,
+              905
+            ],
+            [
+              235.0,
+              905
+            ],
+            [
+              235.0,
+              975
+            ],
+            [
+              205,
+              975
+            ],
+            [
+              205,
+              905
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block93_Building2",
+        "height": 40,
+        "block": 93,
+        "id": 180
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              245.0,
+              905
+            ],
+            [
+              275,
+              905
+            ],
+            [
+              275,
+              975
+            ],
+            [
+              245.0,
+              975
+            ],
+            [
+              245.0,
+              905
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block94_Building1",
+        "height": 45,
+        "block": 94,
+        "id": 181
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              305.0,
+              905.0
+            ],
+            [
+              335.0,
+              905.0
+            ],
+            [
+              335.0,
+              935.0
+            ],
+            [
+              305.0,
+              935.0
+            ],
+            [
+              305.0,
+              905.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block94_Building2",
+        "height": 60,
+        "block": 94,
+        "id": 182
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              345.0,
+              905.0
+            ],
+            [
+              375.0,
+              905.0
+            ],
+            [
+              375.0,
+              935.0
+            ],
+            [
+              345.0,
+              935.0
+            ],
+            [
+              345.0,
+              905.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block94_Building3",
+        "height": 25,
+        "block": 94,
+        "id": 183
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              305.0,
+              945.0
+            ],
+            [
+              335.0,
+              945.0
+            ],
+            [
+              335.0,
+              975.0
+            ],
+            [
+              305.0,
+              975.0
+            ],
+            [
+              305.0,
+              945.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block95_Building1",
+        "height": 40,
+        "block": 95,
+        "id": 184
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              410,
+              910
+            ],
+            [
+              470,
+              910
+            ],
+            [
+              470,
+              970
+            ],
+            [
+              410,
+              970
+            ],
+            [
+              410,
+              910
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block96_Building1",
+        "height": 20,
+        "block": 96,
+        "id": 185
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              505,
+              905
+            ],
+            [
+              535.0,
+              905
+            ],
+            [
+              535.0,
+              975
+            ],
+            [
+              505,
+              975
+            ],
+            [
+              505,
+              905
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block96_Building2",
+        "height": 40,
+        "block": 96,
+        "id": 186
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              545.0,
+              905
+            ],
+            [
+              575,
+              905
+            ],
+            [
+              575,
+              975
+            ],
+            [
+              545.0,
+              975
+            ],
+            [
+              545.0,
+              905
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block97_Building1",
+        "height": 35,
+        "block": 97,
+        "id": 187
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              605.0,
+              905.0
+            ],
+            [
+              635.0,
+              905.0
+            ],
+            [
+              635.0,
+              935.0
+            ],
+            [
+              605.0,
+              935.0
+            ],
+            [
+              605.0,
+              905.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block97_Building2",
+        "height": 55,
+        "block": 97,
+        "id": 188
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              645.0,
+              905.0
+            ],
+            [
+              675.0,
+              905.0
+            ],
+            [
+              675.0,
+              935.0
+            ],
+            [
+              645.0,
+              935.0
+            ],
+            [
+              645.0,
+              905.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block97_Building3",
+        "height": 25,
+        "block": 97,
+        "id": 189
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              605.0,
+              945.0
+            ],
+            [
+              635.0,
+              945.0
+            ],
+            [
+              635.0,
+              975.0
+            ],
+            [
+              605.0,
+              975.0
+            ],
+            [
+              605.0,
+              945.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block98_Building1",
+        "height": 35,
+        "block": 98,
+        "id": 190
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              705,
+              905
+            ],
+            [
+              735.0,
+              905
+            ],
+            [
+              735.0,
+              975
+            ],
+            [
+              705,
+              975
+            ],
+            [
+              705,
+              905
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block98_Building2",
+        "height": 50,
+        "block": 98,
+        "id": 191
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              745.0,
+              905
+            ],
+            [
+              775,
+              905
+            ],
+            [
+              775,
+              975
+            ],
+            [
+              745.0,
+              975
+            ],
+            [
+              745.0,
+              905
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block99_Building1",
+        "height": 35,
+        "block": 99,
+        "id": 192
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              805.0,
+              905.0
+            ],
+            [
+              835.0,
+              905.0
+            ],
+            [
+              835.0,
+              935.0
+            ],
+            [
+              805.0,
+              935.0
+            ],
+            [
+              805.0,
+              905.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block99_Building2",
+        "height": 60,
+        "block": 99,
+        "id": 193
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              845.0,
+              905.0
+            ],
+            [
+              875.0,
+              905.0
+            ],
+            [
+              875.0,
+              935.0
+            ],
+            [
+              845.0,
+              935.0
+            ],
+            [
+              845.0,
+              905.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block99_Building3",
+        "height": 30,
+        "block": 99,
+        "id": 194
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              805.0,
+              945.0
+            ],
+            [
+              835.0,
+              945.0
+            ],
+            [
+              835.0,
+              975.0
+            ],
+            [
+              805.0,
+              975.0
+            ],
+            [
+              805.0,
+              945.0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block100_Building1",
+        "height": 35,
+        "block": 100,
+        "id": 195
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              905,
+              905
+            ],
+            [
+              935.0,
+              905
+            ],
+            [
+              935.0,
+              975
+            ],
+            [
+              905,
+              975
+            ],
+            [
+              905,
+              905
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Block100_Building2",
+        "height": 55,
+        "block": 100,
+        "id": 196
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              945.0,
+              905
+            ],
+            [
+              975,
+              905
+            ],
+            [
+              975,
+              975
+            ],
+            [
+              945.0,
+              975
+            ],
+            [
+              945.0,
+              905
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

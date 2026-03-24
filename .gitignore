@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv*/
+.venv/
+*.egg-info/
+
+# Results and outputs (large, regenerable)
+results/*
+!results/README.md
+!results/.gitkeep
+logs/
+cache/
+checkpoints/
+nohup.out
+
+# OS
+.DS_Store
+*~
+Thumbs.db
+
+# Editor / IDE
+*.swp
+*.swo
+.vscode/
+.idea/
+.cursor/

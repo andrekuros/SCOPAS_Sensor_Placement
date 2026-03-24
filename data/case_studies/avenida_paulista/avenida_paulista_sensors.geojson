@@ -1,0 +1,1400 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.0,
+          975.0
+        ]
+      },
+      "properties": {
+        "id": 1,
+        "height": 30.568938398135867,
+        "name": "Sensor_1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.0,
+          1125.0
+        ]
+      },
+      "properties": {
+        "id": 2,
+        "height": 27.02279308709362,
+        "name": "Sensor_2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.0,
+          1275.0
+        ]
+      },
+      "properties": {
+        "id": 3,
+        "height": 25.31987863762282,
+        "name": "Sensor_3"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.0,
+          1425.0
+        ]
+      },
+      "properties": {
+        "id": 4,
+        "height": 30.301250557405822,
+        "name": "Sensor_4"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.0,
+          1575.0
+        ]
+      },
+      "properties": {
+        "id": 5,
+        "height": 26.85952831572141,
+        "name": "Sensor_5"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.0,
+          1725.0
+        ]
+      },
+      "properties": {
+        "id": 6,
+        "height": 26.409294753057228,
+        "name": "Sensor_6"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.0,
+          1875.0
+        ]
+      },
+      "properties": {
+        "id": 7,
+        "height": 29.66212943222133,
+        "name": "Sensor_7"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          225.0,
+          75.0
+        ]
+      },
+      "properties": {
+        "id": 8,
+        "height": 28.378775035000494,
+        "name": "Sensor_8"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          225.0,
+          225.0
+        ]
+      },
+      "properties": {
+        "id": 9,
+        "height": 27.31588763319707,
+        "name": "Sensor_9"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          225.0,
+          825.0
+        ]
+      },
+      "properties": {
+        "id": 10,
+        "height": 33.50777038671897,
+        "name": "Sensor_10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          225.0,
+          975.0
+        ]
+      },
+      "properties": {
+        "id": 11,
+        "height": 33.938225995830656,
+        "name": "Sensor_11"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          225.0,
+          1125.0
+        ]
+      },
+      "properties": {
+        "id": 12,
+        "height": 32.42026571049806,
+        "name": "Sensor_12"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          225.0,
+          1275.0
+        ]
+      },
+      "properties": {
+        "id": 13,
+        "height": 30.445082588375925,
+        "name": "Sensor_13"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          225.0,
+          1425.0
+        ]
+      },
+      "properties": {
+        "id": 14,
+        "height": 30.91632713511475,
+        "name": "Sensor_14"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          225.0,
+          1875.0
+        ]
+      },
+      "properties": {
+        "id": 15,
+        "height": 29.30082679722008,
+        "name": "Sensor_15"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          375.0,
+          675.0
+        ]
+      },
+      "properties": {
+        "id": 16,
+        "height": 29.211509234323096,
+        "name": "Sensor_16"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          375.0,
+          825.0
+        ]
+      },
+      "properties": {
+        "id": 17,
+        "height": 26.59503019719201,
+        "name": "Sensor_17"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          375.0,
+          975.0
+        ]
+      },
+      "properties": {
+        "id": 18,
+        "height": 25.757651379407314,
+        "name": "Sensor_18"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          375.0,
+          1125.0
+        ]
+      },
+      "properties": {
+        "id": 19,
+        "height": 26.372392916123083,
+        "name": "Sensor_19"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          375.0,
+          1275.0
+        ]
+      },
+      "properties": {
+        "id": 20,
+        "height": 27.61393629886914,
+        "name": "Sensor_20"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          375.0,
+          1575.0
+        ]
+      },
+      "properties": {
+        "id": 21,
+        "height": 29.74023716348863,
+        "name": "Sensor_21"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          375.0,
+          1875.0
+        ]
+      },
+      "properties": {
+        "id": 22,
+        "height": 28.033596182422354,
+        "name": "Sensor_22"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          525.0,
+          375.0
+        ]
+      },
+      "properties": {
+        "id": 23,
+        "height": 34.871877298048815,
+        "name": "Sensor_23"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          525.0,
+          825.0
+        ]
+      },
+      "properties": {
+        "id": 24,
+        "height": 32.04625452381423,
+        "name": "Sensor_24"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          525.0,
+          975.0
+        ]
+      },
+      "properties": {
+        "id": 25,
+        "height": 30.796354598162615,
+        "name": "Sensor_25"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          525.0,
+          1275.0
+        ]
+      },
+      "properties": {
+        "id": 26,
+        "height": 31.08936667669063,
+        "name": "Sensor_26"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          525.0,
+          1425.0
+        ]
+      },
+      "properties": {
+        "id": 27,
+        "height": 30.269662748047644,
+        "name": "Sensor_27"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          525.0,
+          1575.0
+        ]
+      },
+      "properties": {
+        "id": 28,
+        "height": 32.75902309938226,
+        "name": "Sensor_28"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          525.0,
+          1725.0
+        ]
+      },
+      "properties": {
+        "id": 29,
+        "height": 34.384038422584915,
+        "name": "Sensor_29"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          525.0,
+          1875.0
+        ]
+      },
+      "properties": {
+        "id": 30,
+        "height": 34.92240415460738,
+        "name": "Sensor_30"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          675.0,
+          75.0
+        ]
+      },
+      "properties": {
+        "id": 31,
+        "height": 33.293364105517355,
+        "name": "Sensor_31"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          675.0,
+          525.0
+        ]
+      },
+      "properties": {
+        "id": 32,
+        "height": 31.60325938236711,
+        "name": "Sensor_32"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          675.0,
+          825.0
+        ]
+      },
+      "properties": {
+        "id": 33,
+        "height": 25.463556329164117,
+        "name": "Sensor_33"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          675.0,
+          975.0
+        ]
+      },
+      "properties": {
+        "id": 34,
+        "height": 34.27437569986301,
+        "name": "Sensor_34"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          675.0,
+          1275.0
+        ]
+      },
+      "properties": {
+        "id": 35,
+        "height": 32.29379396117494,
+        "name": "Sensor_35"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          675.0,
+          1425.0
+        ]
+      },
+      "properties": {
+        "id": 36,
+        "height": 26.373611280914226,
+        "name": "Sensor_36"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          675.0,
+          1575.0
+        ]
+      },
+      "properties": {
+        "id": 37,
+        "height": 33.193228061324675,
+        "name": "Sensor_37"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          675.0,
+          1875.0
+        ]
+      },
+      "properties": {
+        "id": 38,
+        "height": 34.73371956884045,
+        "name": "Sensor_38"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          825.0,
+          75.0
+        ]
+      },
+      "properties": {
+        "id": 39,
+        "height": 32.87313482048569,
+        "name": "Sensor_39"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          825.0,
+          375.0
+        ]
+      },
+      "properties": {
+        "id": 40,
+        "height": 27.558639175871296,
+        "name": "Sensor_40"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          825.0,
+          675.0
+        ]
+      },
+      "properties": {
+        "id": 41,
+        "height": 26.000220559925445,
+        "name": "Sensor_41"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          825.0,
+          825.0
+        ]
+      },
+      "properties": {
+        "id": 42,
+        "height": 28.911555079058846,
+        "name": "Sensor_42"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          825.0,
+          1125.0
+        ]
+      },
+      "properties": {
+        "id": 43,
+        "height": 34.0879242080951,
+        "name": "Sensor_43"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          825.0,
+          1275.0
+        ]
+      },
+      "properties": {
+        "id": 44,
+        "height": 28.02532333492338,
+        "name": "Sensor_44"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          825.0,
+          1875.0
+        ]
+      },
+      "properties": {
+        "id": 45,
+        "height": 33.825489521815605,
+        "name": "Sensor_45"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          975.0,
+          75.0
+        ]
+      },
+      "properties": {
+        "id": 46,
+        "height": 32.676824945286164,
+        "name": "Sensor_46"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          975.0,
+          1125.0
+        ]
+      },
+      "properties": {
+        "id": 47,
+        "height": 26.141569744768503,
+        "name": "Sensor_47"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          975.0,
+          1275.0
+        ]
+      },
+      "properties": {
+        "id": 48,
+        "height": 30.334933534252464,
+        "name": "Sensor_48"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          975.0,
+          1575.0
+        ]
+      },
+      "properties": {
+        "id": 49,
+        "height": 33.88075478241804,
+        "name": "Sensor_49"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1125.0,
+          75.0
+        ]
+      },
+      "properties": {
+        "id": 50,
+        "height": 34.3595678709914,
+        "name": "Sensor_50"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1125.0,
+          525.0
+        ]
+      },
+      "properties": {
+        "id": 51,
+        "height": 31.26500931297015,
+        "name": "Sensor_51"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1125.0,
+          975.0
+        ]
+      },
+      "properties": {
+        "id": 52,
+        "height": 29.17310355267539,
+        "name": "Sensor_52"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1125.0,
+          1125.0
+        ]
+      },
+      "properties": {
+        "id": 53,
+        "height": 32.82010082761024,
+        "name": "Sensor_53"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1125.0,
+          1575.0
+        ]
+      },
+      "properties": {
+        "id": 54,
+        "height": 25.599636271748015,
+        "name": "Sensor_54"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1125.0,
+          1725.0
+        ]
+      },
+      "properties": {
+        "id": 55,
+        "height": 33.409416898517094,
+        "name": "Sensor_55"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1125.0,
+          1875.0
+        ]
+      },
+      "properties": {
+        "id": 56,
+        "height": 26.45604945726123,
+        "name": "Sensor_56"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1275.0,
+          75.0
+        ]
+      },
+      "properties": {
+        "id": 57,
+        "height": 27.736262976591867,
+        "name": "Sensor_57"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1275.0,
+          225.0
+        ]
+      },
+      "properties": {
+        "id": 58,
+        "height": 34.523039556281034,
+        "name": "Sensor_58"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1275.0,
+          525.0
+        ]
+      },
+      "properties": {
+        "id": 59,
+        "height": 30.410331866616346,
+        "name": "Sensor_59"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1275.0,
+          675.0
+        ]
+      },
+      "properties": {
+        "id": 60,
+        "height": 27.64527174661501,
+        "name": "Sensor_60"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1275.0,
+          1575.0
+        ]
+      },
+      "properties": {
+        "id": 61,
+        "height": 31.020951817634348,
+        "name": "Sensor_61"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1275.0,
+          1725.0
+        ]
+      },
+      "properties": {
+        "id": 62,
+        "height": 33.01804853483805,
+        "name": "Sensor_62"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1275.0,
+          1875.0
+        ]
+      },
+      "properties": {
+        "id": 63,
+        "height": 33.186799042724125,
+        "name": "Sensor_63"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1425.0,
+          75.0
+        ]
+      },
+      "properties": {
+        "id": 64,
+        "height": 31.617923194036464,
+        "name": "Sensor_64"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1425.0,
+          225.0
+        ]
+      },
+      "properties": {
+        "id": 65,
+        "height": 26.049304510445257,
+        "name": "Sensor_65"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1425.0,
+          375.0
+        ]
+      },
+      "properties": {
+        "id": 66,
+        "height": 33.177481860767166,
+        "name": "Sensor_66"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1425.0,
+          525.0
+        ]
+      },
+      "properties": {
+        "id": 67,
+        "height": 31.40703456780299,
+        "name": "Sensor_67"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1425.0,
+          975.0
+        ]
+      },
+      "properties": {
+        "id": 68,
+        "height": 29.090578401083054,
+        "name": "Sensor_68"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1425.0,
+          1125.0
+        ]
+      },
+      "properties": {
+        "id": 69,
+        "height": 29.311005980764783,
+        "name": "Sensor_69"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1425.0,
+          1425.0
+        ]
+      },
+      "properties": {
+        "id": 70,
+        "height": 34.172891077815336,
+        "name": "Sensor_70"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1425.0,
+          1575.0
+        ]
+      },
+      "properties": {
+        "id": 71,
+        "height": 26.10211305681019,
+        "name": "Sensor_71"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1575.0,
+          375.0
+        ]
+      },
+      "properties": {
+        "id": 72,
+        "height": 26.03364638756978,
+        "name": "Sensor_72"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1575.0,
+          675.0
+        ]
+      },
+      "properties": {
+        "id": 73,
+        "height": 27.79863360134275,
+        "name": "Sensor_73"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1575.0,
+          825.0
+        ]
+      },
+      "properties": {
+        "id": 74,
+        "height": 33.844402307215354,
+        "name": "Sensor_74"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1575.0,
+          975.0
+        ]
+      },
+      "properties": {
+        "id": 75,
+        "height": 33.50643530462074,
+        "name": "Sensor_75"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1575.0,
+          1575.0
+        ]
+      },
+      "properties": {
+        "id": 76,
+        "height": 27.195407368774354,
+        "name": "Sensor_76"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1725.0,
+          75.0
+        ]
+      },
+      "properties": {
+        "id": 77,
+        "height": 31.365546803266888,
+        "name": "Sensor_77"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1725.0,
+          225.0
+        ]
+      },
+      "properties": {
+        "id": 78,
+        "height": 29.078767381160425,
+        "name": "Sensor_78"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1725.0,
+          825.0
+        ]
+      },
+      "properties": {
+        "id": 79,
+        "height": 29.128458676403348,
+        "name": "Sensor_79"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1725.0,
+          1125.0
+        ]
+      },
+      "properties": {
+        "id": 80,
+        "height": 29.35581800354876,
+        "name": "Sensor_80"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1725.0,
+          1275.0
+        ]
+      },
+      "properties": {
+        "id": 81,
+        "height": 33.006414402218304,
+        "name": "Sensor_81"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1725.0,
+          1575.0
+        ]
+      },
+      "properties": {
+        "id": 82,
+        "height": 25.47190530387389,
+        "name": "Sensor_82"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1725.0,
+          1725.0
+        ]
+      },
+      "properties": {
+        "id": 83,
+        "height": 31.330255780548363,
+        "name": "Sensor_83"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1725.0,
+          1875.0
+        ]
+      },
+      "properties": {
+        "id": 84,
+        "height": 30.70867215909056,
+        "name": "Sensor_84"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1875.0,
+          75.0
+        ]
+      },
+      "properties": {
+        "id": 85,
+        "height": 31.237989526063497,
+        "name": "Sensor_85"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1875.0,
+          525.0
+        ]
+      },
+      "properties": {
+        "id": 86,
+        "height": 28.52955945513279,
+        "name": "Sensor_86"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1875.0,
+          825.0
+        ]
+      },
+      "properties": {
+        "id": 87,
+        "height": 31.09726310507352,
+        "name": "Sensor_87"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1875.0,
+          975.0
+        ]
+      },
+      "properties": {
+        "id": 88,
+        "height": 27.5417188364164,
+        "name": "Sensor_88"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1875.0,
+          1275.0
+        ]
+      },
+      "properties": {
+        "id": 89,
+        "height": 29.895119922457447,
+        "name": "Sensor_89"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1875.0,
+          1425.0
+        ]
+      },
+      "properties": {
+        "id": 90,
+        "height": 28.7032835084296,
+        "name": "Sensor_90"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1875.0,
+          1575.0
+        ]
+      },
+      "properties": {
+        "id": 91,
+        "height": 25.652624739053806,
+        "name": "Sensor_91"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1875.0,
+          1725.0
+        ]
+      },
+      "properties": {
+        "id": 92,
+        "height": 29.216934901273305,
+        "name": "Sensor_92"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1875.0,
+          1875.0
+        ]
+      },
+      "properties": {
+        "id": 93,
+        "height": 31.88879577550396,
+        "name": "Sensor_93"
+      }
+    }
+  ]
+}

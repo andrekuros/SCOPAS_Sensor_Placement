@@ -1,0 +1,74 @@
+{
+  "experiment_name": "pareto_sp_avenida",
+  "description": "Experimento Pareto - Avenida Paulista (São Paulo)",
+
+  "environment": {
+    "type": "real",
+    "buildings_file": "data/case_studies/avenida_paulista/avenida_paulista_buildings.geojson",
+    "sensor_locations_file": "data/case_studies/avenida_paulista/avenida_paulista_sensors.geojson",
+    "resolution": 20.0,
+    "comment": "Voxel 20m para 3.8 km² (aprox. 100x100x6)"
+  },
+
+  "airway_altitudes": [20, 45, 65],
+  "comment_airways": "Aerovias: 20m (BVLOS baixo), 45m (acima dos prédios), 65m (corredor superior)",
+
+  "sensors": {
+    "types": {
+      "Radar": {
+        "cost": 55000.0,
+        "power_W": 1200.0,
+        "gain_dB": 32.0,
+        "frequency_Hz": 10500000000.0,
+        "elevation_min": -5.0,
+        "elevation_max": 35.0
+      },
+      "RF": {
+        "cost": 17000.0,
+        "sensitivity_dBm": -92.0,
+        "frequency_Hz": 915000000.0,
+        "elevation_min": -30.0,
+        "elevation_max": 75.0
+      },
+      "EO": {
+        "cost": 28000.0,
+        "elevation_min": -25.0,
+        "elevation_max": 50.0,
+        "fov_horizontal": 360.0
+      }
+    }
+  },
+
+  "pareto_search": {
+    "n_samples": 80,
+    "generations": 45,
+    "n_cores": 16,
+    "min_sensors": 5,
+    "max_sensors": 25,
+    "comment": "NSGA-II real: 80 indivíduos × 45 gerações"
+  },
+
+  "checkpoint": {
+    "enabled": true,
+    "dir": "checkpoints/pareto_sp_avenida",
+    "frequency": 1,
+    "resume": true,
+    "prefix": "pareto_sp_avenida"
+  },
+
+  "requirements": {
+    "min_coverage": 0.70,
+    "min_overlap": 0.40,
+    "comment": "Critérios relaxados para área real"
+  },
+
+  "analysis": {
+    "max_solutions": 30
+  },
+
+  "output": {
+    "results_dir": "results/pareto_sp_avenida",
+    "save_results": true,
+    "generate_plots": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "geo_bounds": {
+    "south": -23.23215641123329,
+    "north": -23.221828740353136,
+    "west": -45.86640642767758,
+    "east": -45.85549990779859
+  },
+  "runways_file": "airport_sjc_runways.geojson"
+}

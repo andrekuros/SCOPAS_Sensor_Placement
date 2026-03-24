@@ -1,0 +1,70 @@
+{
+  "experiment_name": "point_defense_experiment",
+  "description": "C-UAS Point Defense: Gaussian threat map, M_wp, Fused Resilience, Asset ROI",
+  "environment": {
+    "type": "synthetic",
+    "buildings_file": "data/examples/city_10x10_buildings.geojson",
+    "sensor_locations_file": "data/examples/city_10x10_sensor_locations.geojson",
+    "resolution": 15.0
+  },
+  "airway_altitudes": [20, 45, 65],
+  "sensors": {
+    "types": {
+      "Radar": {
+        "cost": 50000.0,
+        "power_W": 1000.0,
+        "gain_dB": 30.0,
+        "frequency_Hz": 10000000000.0,
+        "elevation_min": -5.0,
+        "elevation_max": 30.0
+      },
+      "RF": {
+        "cost": 15000.0,
+        "sensitivity_dBm": -90.0,
+        "frequency_Hz": 900000000.0,
+        "elevation_min": -30.0,
+        "elevation_max": 70.0
+      },
+      "EO": {
+        "cost": 25000.0,
+        "elevation_min": -20.0,
+        "elevation_max": 45.0,
+        "fov_horizontal": 360.0
+      }
+    }
+  },
+  "pareto_search": {
+    "n_samples": 28,
+    "generations": 15,
+    "n_cores": 8,
+    "min_sensors": 3,
+    "max_sensors": 12
+  },
+  "site_activation_cost": 15000,
+  "critical_assets": [
+    {
+      "id": "Consulate_Alpha",
+      "location": [500, 500, 30],
+      "protection_radius": 150,
+      "weight_multiplier": 1.0
+    },
+    {
+      "id": "Vertiport_Bravo",
+      "location": [250, 750, 25],
+      "protection_radius": 120,
+      "weight_multiplier": 0.8
+    }
+  ],
+  "requirements": {
+    "min_coverage": 0.75,
+    "min_overlap": 0.35
+  },
+  "output": {
+    "results_dir": "results/point_defense_experiment",
+    "save_results": true,
+    "generate_plots": true
+  },
+  "analysis": {
+    "max_solutions": 25
+  }
+}
