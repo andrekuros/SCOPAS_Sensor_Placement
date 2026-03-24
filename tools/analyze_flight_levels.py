@@ -22,7 +22,7 @@ import matplotlib.pyplot as plt
 
 from environment import UrbanEnvironment
 from network_evaluation import NetworkEvaluator
-from muscat_core import load_environment_from_config
+from scopas_core import load_environment_from_config
 
 
 def load_solutions_and_config(results_path):

@@ -13,7 +13,7 @@ if str(_root) not in sys.path:
 if str(_root / "src") not in sys.path:
     sys.path.insert(0, str(_root / "src"))
 
-from muscat_core import load_config, load_environment_from_config, evaluate_solution
+from scopas_core import load_config, load_environment_from_config, evaluate_solution
 from genetic_algorithm import SensorNetworkGAGeoJSON
 from deap_base import setup_multi_objective_creator
 

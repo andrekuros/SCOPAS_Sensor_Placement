@@ -322,7 +322,7 @@ class NetworkEvaluator:
                 "total_voxels": int(np.prod(self.grid_shape)),
             }
 
-        # Weighted Protection Index M_wp (upgrade of MUSCAT M_c)
+        # Weighted Protection Index M_wp (upgrade of SCOPAS M_c)
         M_wp_coop = self.calculate_network_coverage_coop(sensor_list)
         M_wp_noncoop = self.calculate_network_coverage_noncoop(sensor_list)
         # Sanitize so fitness and outputs are never NaN
@@ -336,7 +336,7 @@ class NetworkEvaluator:
         unique_sites = len(set(s.location for s in active))
         cost_sites = unique_sites * site_activation_cost
 
-        # Vulnerability Index M_vuln = 1 - M_wp (upgrade of MUSCAT M_g)
+        # Vulnerability Index M_vuln = 1 - M_wp (upgrade of SCOPAS M_g)
         M_vuln_coop = 1.0 - M_wp_coop
         M_vuln_noncoop = 1.0 - M_wp_noncoop
 
@@ -344,7 +344,7 @@ class NetworkEvaluator:
         fused_resilience = self.calculate_fused_resilience(sensor_list)
         fused_resilience = float(np.clip(np.nan_to_num(fused_resilience, nan=0.0), 0.0, 1.0))
 
-        # Asset Security ROI = Total_Cost / M_wp (upgrade of MUSCAT C_A)
+        # Asset Security ROI = Total_Cost / M_wp (upgrade of SCOPAS C_A)
         asset_security_roi = total_cost / max(M_wp_coop, 1e-10)
         asset_security_roi_noncoop = total_cost / max(M_wp_noncoop, 1e-10)
         if not np.isfinite(asset_security_roi):
@@ -556,7 +556,7 @@ def evaluate_sensor_network_optimized(
     evaluator = NetworkEvaluator(environment)
     results = evaluator.evaluate_network(sensors, weights=weights)
     
-    # Criar grids 3D para compatibilidade com métricas MUSCAT
+    # Criar grids 3D para compatibilidade com métricas SCOPAS
     # Preencher TODAS as camadas de altura para cálculo correto
     p_net_grid = np.zeros(environment.grid_shape, dtype=float)
     redundancy_grid = np.zeros(environment.grid_shape, dtype=float)

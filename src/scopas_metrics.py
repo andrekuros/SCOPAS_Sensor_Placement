@@ -1,7 +1,7 @@
 """
-MUSCAT metrics and C-UAS Point Defense upgrades.
+SCOPAS metrics and C-UAS Point Defense upgrades.
 
-Original MUSCAT (2023 baseline):
+Original SCOPAS (2023 baseline):
 - Mc: Coverage Index (Eq. 6) — n/N
 - Mg: Gap Index (Eq. 7) — 1 - Mc
 - CA: Cost per Coverage Area (Eq. 8) — Total_Cost / Mc
@@ -22,9 +22,9 @@ from typing import Dict, List, Any, Tuple
 from sensors import Sensor
 
 
-def calculate_muscat_coverage(p_net_grid: np.ndarray, threshold: float = 0.8) -> float:
+def calculate_scopas_coverage(p_net_grid: np.ndarray, threshold: float = 0.8) -> float:
     """
-    Calcula o índice de cobertura Mc conforme Equação 6 do MUSCAT.
+    Calcula o índice de cobertura Mc conforme Equação 6 do SCOPAS.
     
     Mc = n / N
     
@@ -41,7 +41,7 @@ def calculate_muscat_coverage(p_net_grid: np.ndarray, threshold: float = 0.8) ->
         
     Exemplo:
         >>> p_net_grid = np.array([[[0.9, 0.7], [0.85, 0.95]]])
-        >>> Mc = calculate_muscat_coverage(p_net_grid, threshold=0.8)
+        >>> Mc = calculate_scopas_coverage(p_net_grid, threshold=0.8)
         >>> print(f"Cobertura: {Mc*100:.1f}%")
         Cobertura: 75.0%
     """
@@ -69,9 +69,9 @@ def calculate_muscat_coverage(p_net_grid: np.ndarray, threshold: float = 0.8) ->
     return float(Mc)
 
 
-def calculate_muscat_gaps(p_net_grid: np.ndarray, threshold: float = 0.8) -> float:
+def calculate_scopas_gaps(p_net_grid: np.ndarray, threshold: float = 0.8) -> float:
     """
-    Calcula o índice de gaps (lacunas) Mg conforme Equação 7 do MUSCAT.
+    Calcula o índice de gaps (lacunas) Mg conforme Equação 7 do SCOPAS.
     
     Mg = 1 - n / N = 1 - Mc
     
@@ -89,16 +89,16 @@ def calculate_muscat_gaps(p_net_grid: np.ndarray, threshold: float = 0.8) -> flo
         
     Exemplo:
         >>> p_net_grid = np.array([[[0.9, 0.7], [0.85, 0.95]]])
-        >>> Mg = calculate_muscat_gaps(p_net_grid, threshold=0.8)
+        >>> Mg = calculate_scopas_gaps(p_net_grid, threshold=0.8)
         >>> print(f"Gaps: {Mg*100:.1f}%")
         Gaps: 25.0%
     """
-    Mc = calculate_muscat_coverage(p_net_grid, threshold)
+    Mc = calculate_scopas_coverage(p_net_grid, threshold)
     Mg = 1 - Mc  # Eq. 7
     return float(Mg)
 
 
-def calculate_muscat_overlap(
+def calculate_scopas_overlap(
     sensor_detections_list: List[np.ndarray],
     threshold: float = 0.8
 ) -> float:
@@ -118,7 +118,7 @@ def calculate_muscat_overlap(
     Exemplo:
         >>> sensor1 = np.array([[[0.9, 0.7], [0.85, 0.0]]])
         >>> sensor2 = np.array([[[0.95, 0.0], [0.8, 0.85]]])
-        >>> overlap = calculate_muscat_overlap([sensor1, sensor2], threshold=0.8)
+        >>> overlap = calculate_scopas_overlap([sensor1, sensor2], threshold=0.8)
         >>> print(f"Overlap: {overlap*100:.1f}%")
         Overlap: 50.0%
     """
@@ -143,13 +143,13 @@ def calculate_muscat_overlap(
     return float(overlap)
 
 
-def calculate_muscat_cost_effectiveness(
+def calculate_scopas_cost_effectiveness(
     sensors: List[Sensor],
     p_net_grid: np.ndarray,
     threshold: float = 0.8
 ) -> float:
     """
-    Calcula o custo por área de cobertura CA conforme Equação 8 do MUSCAT.
+    Calcula o custo por área de cobertura CA conforme Equação 8 do SCOPAS.
     
     CA = (∑ Ct × xtluh) / Mc
     
@@ -173,7 +173,7 @@ def calculate_muscat_cost_effectiveness(
         >>> from sensors import RadarSensor, RFSensor
         >>> sensors = [RadarSensor(cost=100), RFSensor(cost=50)]
         >>> p_net_grid = np.ones((10, 10, 5)) * 0.9
-        >>> CA = calculate_muscat_cost_effectiveness(sensors, p_net_grid)
+        >>> CA = calculate_scopas_cost_effectiveness(sensors, p_net_grid)
         >>> print(f"Cost-Effectiveness: {CA:.2f} UoM/%")
         Cost-Effectiveness: 1.50 UoM/%
     """
@@ -181,7 +181,7 @@ def calculate_muscat_cost_effectiveness(
     total_cost = sum(sensor.cost for sensor in sensors)
     
     # Índice de cobertura Mc
-    Mc = calculate_muscat_coverage(p_net_grid, threshold)
+    Mc = calculate_scopas_coverage(p_net_grid, threshold)
     
     # CA = Custo / Cobertura (Eq. 8)
     if Mc > 0:
@@ -198,7 +198,7 @@ def calculate_weighted_protection_index(
     occupancy_grid: np.ndarray = None,
 ) -> float:
     """
-    Weighted Protection Index M_wp (Point Defense upgrade of MUSCAT Mc).
+    Weighted Protection Index M_wp (Point Defense upgrade of SCOPAS Mc).
     M_wp = sum(Covered(x,y,z) × W(x,y,z)) / sum(W(x,y,z)).
     If weight_grid is None or not provided, uses uniform weights on free voxels.
     """
@@ -215,7 +215,7 @@ def calculate_weighted_protection_index(
 
 def calculate_vulnerability_index(M_wp: float) -> float:
     """
-    Vulnerability Index M_vuln = 1 - M_wp (Point Defense upgrade of MUSCAT Mg).
+    Vulnerability Index M_vuln = 1 - M_wp (Point Defense upgrade of SCOPAS Mg).
     A gap over the asset is critical; this quantifies vulnerability to uncooperative approach.
     """
     return 1.0 - M_wp
@@ -246,7 +246,7 @@ def calculate_fused_resilience(
 
 def calculate_asset_security_roi(total_cost: float, M_wp: float) -> float:
     """
-    Asset Security ROI = Total_Cost / M_wp (Point Defense upgrade of MUSCAT C_A).
+    Asset Security ROI = Total_Cost / M_wp (Point Defense upgrade of SCOPAS C_A).
     Total cost should include site activation cost. CapEx per unit of weighted protection.
     """
     if M_wp <= 0:
@@ -254,7 +254,7 @@ def calculate_asset_security_roi(total_cost: float, M_wp: float) -> float:
     return total_cost / M_wp
 
 
-def calculate_all_muscat_metrics(
+def calculate_all_scopas_metrics(
     sensors: List[Sensor],
     p_net_grid: np.ndarray,
     redundancy_grid: np.ndarray = None,
@@ -262,7 +262,7 @@ def calculate_all_muscat_metrics(
     threshold: float = 0.8
 ) -> Dict[str, float]:
     """
-    Calcula todas as métricas MUSCAT de uma vez.
+    Calcula todas as métricas SCOPAS de uma vez.
     
     Args:
         sensors: Lista de sensores ativos
@@ -283,15 +283,15 @@ def calculate_all_muscat_metrics(
         - 'num_sensors': Número de sensores
         
     Exemplo:
-        >>> metrics = calculate_all_muscat_metrics(sensors, p_net_grid)
+        >>> metrics = calculate_all_scopas_metrics(sensors, p_net_grid)
         >>> print(f"Coverage: {metrics['Mc']*100:.1f}%")
         >>> print(f"Gaps: {metrics['Mg']*100:.1f}%")
         >>> print(f"Cost-Effectiveness: {metrics['CA']:.2f}")
     """
     # Métricas básicas
-    Mc = calculate_muscat_coverage(p_net_grid, threshold)
-    Mg = calculate_muscat_gaps(p_net_grid, threshold)
-    CA = calculate_muscat_cost_effectiveness(sensors, p_net_grid, threshold)
+    Mc = calculate_scopas_coverage(p_net_grid, threshold)
+    Mg = calculate_scopas_gaps(p_net_grid, threshold)
+    CA = calculate_scopas_cost_effectiveness(sensors, p_net_grid, threshold)
     
     # Custo total
     total_cost = sum(sensor.cost for sensor in sensors)
@@ -312,7 +312,7 @@ def calculate_all_muscat_metrics(
     
     # Overlap (se fornecido)
     if sensor_detections_list is not None and len(sensor_detections_list) > 1:
-        overlap = calculate_muscat_overlap(sensor_detections_list, threshold)
+        overlap = calculate_scopas_overlap(sensor_detections_list, threshold)
         metrics['overlap'] = overlap
     
     # Redundância (se fornecida)
@@ -324,13 +324,13 @@ def calculate_all_muscat_metrics(
     return metrics
 
 
-def check_muscat_requirements(
+def check_scopas_requirements(
     metrics: Dict[str, float],
     min_coverage: float = 0.95,
     min_overlap: float = 0.55
 ) -> Dict[str, Any]:
     """
-    Verifica se uma configuração atende aos requisitos do estudo de caso MUSCAT.
+    Verifica se uma configuração atende aos requisitos do estudo de caso SCOPAS.
     
     Requisitos do artigo (Seção IV-A):
     - Cobertura (Mc) > 95%
@@ -349,7 +349,7 @@ def check_muscat_requirements(
         - 'status': 'green' (ambos), 'yellow' (um), 'red' (nenhum)
         
     Exemplo:
-        >>> status = check_muscat_requirements(metrics)
+        >>> status = check_scopas_requirements(metrics)
         >>> print(f"Status: {status['status']}")
         >>> if status['meets_all']:
         >>>     print("✅ Configuração atende todos os requisitos!")
@@ -382,12 +382,12 @@ def check_muscat_requirements(
     }
 
 
-def compare_with_muscat_table_iii(
+def compare_with_scopas_table_iii(
     our_results: Dict[str, float],
-    muscat_baseline: Dict[str, float] = None
+    scopas_baseline: Dict[str, float] = None
 ) -> Dict[str, Any]:
     """
-    Compara nossos resultados com a Tabela III do artigo MUSCAT.
+    Compara nossos resultados com a Tabela III do artigo SCOPAS.
     
     Tabela III do artigo (baseline):
     - 4 Radars + 4 RIDs: Cost=24 UoM, Coverage=97.16%, CA=0.25 UoM/%
@@ -396,18 +396,18 @@ def compare_with_muscat_table_iii(
     
     Args:
         our_results: Nossas métricas calculadas
-        muscat_baseline: Métricas da solução MUSCAT para comparação (opcional)
+        scopas_baseline: Métricas da solução SCOPAS para comparação (opcional)
         
     Returns:
         Dict com análise comparativa
         
     Exemplo:
-        >>> comparison = compare_with_muscat_table_iii(our_results)
+        >>> comparison = compare_with_scopas_table_iii(our_results)
         >>> print(comparison['summary'])
     """
-    # Baseline padrão: melhor solução do MUSCAT (4R+4RID)
-    if muscat_baseline is None:
-        muscat_baseline = {
+    # Baseline padrão: melhor solução do SCOPAS (4R+4RID)
+    if scopas_baseline is None:
+        scopas_baseline = {
             'total_cost': 24,
             'Mc': 0.9716,
             'CA': 0.25,
@@ -417,45 +417,45 @@ def compare_with_muscat_table_iii(
     # Comparação
     comparison = {
         'our_cost': our_results.get('total_cost', 0),
-        'muscat_cost': muscat_baseline.get('total_cost', 0),
+        'scopas_cost': scopas_baseline.get('total_cost', 0),
         'our_coverage': our_results.get('Mc', 0) * 100,
-        'muscat_coverage': muscat_baseline.get('Mc', 0) * 100,
+        'scopas_coverage': scopas_baseline.get('Mc', 0) * 100,
         'our_ca': our_results.get('CA', 0),
-        'muscat_ca': muscat_baseline.get('CA', 0),
+        'scopas_ca': scopas_baseline.get('CA', 0),
     }
     
     # Calcular diferenças
-    comparison['cost_diff'] = comparison['our_cost'] - comparison['muscat_cost']
-    comparison['coverage_diff'] = comparison['our_coverage'] - comparison['muscat_coverage']
-    comparison['ca_diff'] = comparison['our_ca'] - comparison['muscat_ca']
+    comparison['cost_diff'] = comparison['our_cost'] - comparison['scopas_cost']
+    comparison['coverage_diff'] = comparison['our_coverage'] - comparison['scopas_coverage']
+    comparison['ca_diff'] = comparison['our_ca'] - comparison['scopas_ca']
     
     # Análise
-    if comparison['our_ca'] < comparison['muscat_ca']:
-        verdict = "✅ SUPERIOR: Melhor custo-benefício que MUSCAT"
-    elif comparison['our_ca'] <= comparison['muscat_ca'] * 1.1:
-        verdict = "✓ EQUIVALENTE: Custo-benefício similar ao MUSCAT"
+    if comparison['our_ca'] < comparison['scopas_ca']:
+        verdict = "✅ SUPERIOR: Melhor custo-benefício que SCOPAS"
+    elif comparison['our_ca'] <= comparison['scopas_ca'] * 1.1:
+        verdict = "✓ EQUIVALENTE: Custo-benefício similar ao SCOPAS"
     else:
-        verdict = "⚠️ INFERIOR: Custo-benefício pior que MUSCAT"
+        verdict = "⚠️ INFERIOR: Custo-benefício pior que SCOPAS"
     
     comparison['verdict'] = verdict
     
     # Resumo
     summary = f"""
-    Comparação com MUSCAT (Tabela III - {muscat_baseline.get('config', 'baseline')}):
+    Comparação com SCOPAS (Tabela III - {scopas_baseline.get('config', 'baseline')}):
     
     Custo:
       - Nosso: {comparison['our_cost']:.0f} UoM
-      - MUSCAT: {comparison['muscat_cost']:.0f} UoM
+      - SCOPAS: {comparison['scopas_cost']:.0f} UoM
       - Diferença: {comparison['cost_diff']:+.0f} UoM
     
     Cobertura:
       - Nosso: {comparison['our_coverage']:.2f}%
-      - MUSCAT: {comparison['muscat_coverage']:.2f}%
+      - SCOPAS: {comparison['scopas_coverage']:.2f}%
       - Diferença: {comparison['coverage_diff']:+.2f}%
     
     Cost-Effectiveness (CA):
       - Nosso: {comparison['our_ca']:.2f} UoM/%
-      - MUSCAT: {comparison['muscat_ca']:.2f} UoM/%
+      - SCOPAS: {comparison['scopas_ca']:.2f} UoM/%
       - Diferença: {comparison['ca_diff']:+.2f} UoM/%
     
     {verdict}
@@ -468,7 +468,7 @@ def compare_with_muscat_table_iii(
 
 if __name__ == "__main__":
     # Exemplo de uso
-    print("=== Teste de Métricas MUSCAT ===\n")
+    print("=== Teste de Métricas SCOPAS ===\n")
     
     # Criar grid de exemplo
     np.random.seed(42)
@@ -485,10 +485,10 @@ if __name__ == "__main__":
     ]
     
     # Calcular métricas
-    metrics = calculate_all_muscat_metrics(sensors, p_net_grid, threshold=0.8)
+    metrics = calculate_all_scopas_metrics(sensors, p_net_grid, threshold=0.8)
     
     # Exibir resultados
-    print("📊 Métricas MUSCAT:")
+    print("📊 Métricas SCOPAS:")
     print(f"  Mc (Coverage):        {metrics['Mc']*100:.2f}%")
     print(f"  Mg (Gaps):            {metrics['Mg']*100:.2f}%")
     print(f"  CA (Cost-Eff):        {metrics['CA']:.2f} UoM/%")
@@ -498,14 +498,14 @@ if __name__ == "__main__":
     
     # Verificar requisitos
     print("\n🎯 Verificação de Requisitos:")
-    status = check_muscat_requirements(metrics, min_coverage=0.95, min_overlap=0.55)
+    status = check_scopas_requirements(metrics, min_coverage=0.95, min_overlap=0.55)
     print(f"  Atende cobertura >95%: {'✅' if status['meets_coverage'] else '❌'}")
     print(f"  Atende overlap >55%:   {'✅' if status['meets_overlap'] else '❌'}")
     print(f"  Status geral:          {status['status'].upper()}")
     
-    # Comparar com MUSCAT
-    print("\n🔬 Comparação com MUSCAT:")
-    comparison = compare_with_muscat_table_iii(metrics)
+    # Comparar com SCOPAS
+    print("\n🔬 Comparação com SCOPAS:")
+    comparison = compare_with_scopas_table_iii(metrics)
     print(comparison['summary'])
     
     print("\n✅ Testes concluídos com sucesso!")

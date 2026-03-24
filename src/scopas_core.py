@@ -1,5 +1,5 @@
 """
-MUSCAT Core API - standard evaluation entry point.
+SCOPAS Core API - standard evaluation entry point.
 Load environment from config, evaluate sensor deployments, return standardized results.
 """
 

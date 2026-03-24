@@ -1,10 +1,10 @@
 """
-Minimal example: custom optimizer calling MUSCAT as an objective function.
+Minimal example: custom optimizer calling SCOPAS as an objective function.
 
 This script shows how an external algorithm can:
 - load a config and environment,
 - generate candidate sensor networks (here: simple random search),
-- call muscat_core.evaluate_solution to get coverage / redundancy / cost,
+- call scopas_core.evaluate_solution to get coverage / redundancy / cost,
 - keep the best solution according to a custom criterion.
 
 Run from the project root:
@@ -24,7 +24,7 @@ if str(ROOT) not in sys.path:
 if str(ROOT / "src") not in sys.path:
     sys.path.insert(0, str(ROOT / "src"))
 
-from muscat_core import load_config, load_environment_from_config, evaluate_solution  # type: ignore
+from scopas_core import load_config, load_environment_from_config, evaluate_solution  # type: ignore
 
 
 def build_random_solution(
@@ -48,8 +48,8 @@ def build_random_solution(
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Custom algorithm demo using MUSCAT objective function")
-    parser.add_argument("--config", required=True, help="Path to MUSCAT JSON config")
+    parser = argparse.ArgumentParser(description="Custom algorithm demo using SCOPAS objective function")
+    parser.add_argument("--config", required=True, help="Path to SCOPAS JSON config")
     parser.add_argument("--iterations", type=int, default=50, help="Number of random solutions to try")
     args = parser.parse_args()
 

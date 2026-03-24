@@ -1,13 +1,13 @@
 """
-Stoplight Chart Visualization - Figura 9 do Artigo MUSCAT
+Stoplight Chart Visualization - Figura 9 do Artigo SCOPAS
 
-Este módulo implementa o "stoplight chart" usado no artigo MUSCAT para visualizar
+Este módulo implementa o "stoplight chart" usado no artigo SCOPAS para visualizar
 quais combinações de sensores atendem aos requisitos:
 - Verde: Atende ambos os requisitos (cobertura >95% e overlap >55%)
 - Amarelo: Atende apenas um requisito
 - Vermelho: Não atende nenhum requisito
 
-Referência: Figura 9 do artigo MUSCAT
+Referência: Figura 9 do artigo SCOPAS
 """
 
 import numpy as np
@@ -27,7 +27,7 @@ def plot_stoplight_chart_matplotlib(
     title: str = "Sensor Configuration Requirements Analysis"
 ) -> plt.Figure:
     """
-    Gera stoplight chart usando Matplotlib (estilo Figura 9 do MUSCAT).
+    Gera stoplight chart usando Matplotlib (estilo Figura 9 do SCOPAS).
     
     Args:
         results_list: Lista de dicts com resultados de diferentes configurações.
@@ -593,8 +593,8 @@ def prepare_redundancy_sum_display(
 
 
 if __name__ == "__main__":
-    # Exemplo de uso baseado na Tabela III do MUSCAT
-    print("=== Teste de Stoplight Chart (Figura 9 MUSCAT) ===\n")
+    # Exemplo de uso baseado na Tabela III do SCOPAS
+    print("=== Teste de Stoplight Chart (Figura 9 SCOPAS) ===\n")
     
     # Dados de exemplo (baseados na Tabela III do artigo)
     results_example = [
@@ -663,23 +663,23 @@ if __name__ == "__main__":
     # Matplotlib
     fig_mpl = plot_stoplight_chart_matplotlib(
         results_example,
-        save_path="muscat_stoplight_matplotlib.png"
+        save_path="scopas_stoplight_matplotlib.png"
     )
     
     # Plotly
     fig_plotly = plot_stoplight_chart_plotly(
         results_example,
-        save_path="muscat_stoplight_plotly.html"
+        save_path="scopas_stoplight_plotly.html"
     )
     
     # Requirements Matrix
     fig_matrix = plot_requirements_matrix(
         results_example,
-        save_path="muscat_requirements_matrix.html"
+        save_path="scopas_requirements_matrix.html"
     )
     
     print("\n✅ Visualizações geradas com sucesso!")
-    print("   - muscat_stoplight_matplotlib.png")
-    print("   - muscat_stoplight_plotly.html")
-    print("   - muscat_requirements_matrix.html")
+    print("   - scopas_stoplight_matplotlib.png")
+    print("   - scopas_stoplight_plotly.html")
+    print("   - scopas_requirements_matrix.html")
 

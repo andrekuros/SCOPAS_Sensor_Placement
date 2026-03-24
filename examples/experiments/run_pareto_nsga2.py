@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-MUSCAT Framework - Pareto optimization using NSGA-II
+SCOPAS Framework - Pareto optimization using NSGA-II
 ====================================================
 
 Uses NSGA-II (Genetic Algorithm) to find the Pareto front.
@@ -28,7 +28,7 @@ from environment import UrbanEnvironment
 from sensors import RadarSensor, RFSensor, EOSensor
 from network_evaluation import NetworkEvaluator
 from genetic_algorithm import SensorNetworkGAGeoJSON
-from muscat_metrics import calculate_all_muscat_metrics
+from scopas_metrics import calculate_all_scopas_metrics
 from airway_metrics import calculate_metrics_per_airway
 
 
@@ -37,7 +37,7 @@ class ParetoNSGA2Experiment:
     
     def __init__(self, config_file: str):
         print("="*80)
-        print("MUSCAT FRAMEWORK - Pareto with NSGA-II")
+        print("SCOPAS FRAMEWORK - Pareto with NSGA-II")
         print("="*80)
         
         with open(config_file, 'r', encoding='utf-8') as f:
@@ -204,7 +204,7 @@ class ParetoNSGA2Experiment:
                     sensors, site_activation_cost=site_cost
                 )
 
-            # Calcular métricas (3D) legacy MUSCAT
+            # Calcular métricas (3D) legacy SCOPAS
             grid_shape = self.env.grid_shape
             p_net_grid = np.zeros(grid_shape, dtype=float)
             redundancy_grid = np.zeros(grid_shape, dtype=float)
@@ -213,7 +213,7 @@ class ParetoNSGA2Experiment:
                 p_net_grid[:, :, k] = self.evaluator.get_coverage_map(sensors, height_level=k)
                 redundancy_grid[:, :, k] = self.evaluator.get_redundancy_map(sensors, height_level=k)
 
-            metrics = calculate_all_muscat_metrics(
+            metrics = calculate_all_scopas_metrics(
                 sensors,
                 p_net_grid,
                 redundancy_grid,

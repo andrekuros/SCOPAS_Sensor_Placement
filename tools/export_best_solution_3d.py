@@ -42,7 +42,7 @@ def _resolve_results(results_arg):
                     best = None
                 if not best:
                     raise ValueError("pareto_front.json has no sensors in solutions")
-                data = {"pareto_solutions": [best], "experiment_name": config.get("experiment_name", "muscat"), "config": config}
+                data = {"pareto_solutions": [best], "experiment_name": config.get("experiment_name", "scopas"), "config": config}
             else:
                 config = data.get("config") or json.loads((p / "config.json").read_text(encoding="utf-8"))
             return f, data, config
@@ -86,7 +86,7 @@ def main():
     from environment import UrbanEnvironment
     from network_evaluation import NetworkEvaluator
     from sensors import create_sensor_from_config
-    from muscat_core import _expand_runways_file
+    from scopas_core import _expand_runways_file
 
     env = UrbanEnvironment(
         buildings_geojson_path=str(buildings_path),
@@ -178,7 +178,7 @@ def main():
         except Exception:
             pass
     out = {
-        "experiment_name": data.get("experiment_name", "muscat"),
+        "experiment_name": data.get("experiment_name", "scopas"),
         "bounds": bounds,
         "grid_shape": list(env.grid_shape),
         "voxel_resolution": float(env.voxel_resolution),

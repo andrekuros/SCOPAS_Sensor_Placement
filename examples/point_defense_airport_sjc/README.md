@@ -30,4 +30,4 @@ python run_experiment.py --config configs/point_defense_airport_sjc.json --split
 - `pareto_front.png`, `coverage_maps/`, `overview_2d.png` — from `tools/`  
 - `best_solution_3d.json`, `cesium_data.json` — 3D / globe export  
 
-Use `src/muscat_core.py` (`evaluate_solution`) to plug in a custom optimizer while keeping the same scenario.
+Use `src/scopas_core.py` (`evaluate_solution`) to plug in a custom optimizer while keeping the same scenario.

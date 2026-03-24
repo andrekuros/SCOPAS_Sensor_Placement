@@ -34,14 +34,14 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "src"))
 
-from muscat_core import load_config, load_environment_from_config, evaluate_solution
+from scopas_core import load_config, load_environment_from_config, evaluate_solution
 
 
 def main():
     import argparse
     parser = argparse.ArgumentParser(description="Evaluate a custom sensor deployment")
     parser.add_argument("--config", default="configs/city_allocation_assets.json",
-                        help="MUSCAT JSON config")
+                        help="SCOPAS JSON config")
     parser.add_argument("--output", default=None, help="Save results to JSON file")
     args = parser.parse_args()
 

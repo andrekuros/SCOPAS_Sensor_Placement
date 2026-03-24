@@ -1,5 +1,5 @@
 """
-DEAP (Distributed Evolutionary Algorithms in Python) base for MUSCAT optimization.
+DEAP (Distributed Evolutionary Algorithms in Python) base for SCOPAS optimization.
 
 Provides a single integration point for all evolutionary algorithms:
 - Creator setup (multi-objective fitness, individual type)
@@ -16,7 +16,7 @@ import numpy as np
 from deap import base, creator, tools
 
 
-# Default weights for MUSCAT: (coverage, redundancy, -cost)
+# Default weights for SCOPAS: (coverage, redundancy, -cost)
 DEFAULT_WEIGHTS = (1.0, 1.0, -1.0)
 
 

@@ -1,5 +1,5 @@
 """
-MUSCAT optional solutions: NSGA-II, NSGA-III, random Pareto search.
+SCOPAS optional solutions: NSGA-II, NSGA-III, random Pareto search.
 Each module implements run(config) -> (population, results).
 """
 

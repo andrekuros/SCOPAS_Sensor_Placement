@@ -1,7 +1,7 @@
 ## SCOPAS — legacy experiment drivers (examples)
 
 Standalone scripts from early development. **Prefer** `run_framework.py` and `run_experiment.py`
-from the project root, or the `muscat_core` API for new work.
+from the project root, or the `scopas_core` API for new work.
 
 Run all commands from the **repository root**.
 
@@ -10,7 +10,7 @@ Run all commands from the **repository root**.
 - **Script**: `examples/experiments/run_pareto_experiment.py`  
 - **What it does**:  
   - Samples random sensor configurations.  
-  - Computes SCOPAS / MUSCAT-style metrics (Mc, redundancy, cost, airway metrics).  
+  - Computes SCOPAS / SCOPAS-style metrics (Mc, redundancy, cost, airway metrics).  
   - Builds a Pareto front and saves plots and JSON results.  
 - **Example**:
 

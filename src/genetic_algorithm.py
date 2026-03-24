@@ -200,10 +200,10 @@ class SensorNetworkGAGeoJSON:
             sensor_list, site_activation_cost=self.site_activation_cost
         )
         if self._noncoop_only:
-            # MUSCAT logic: optimize M_c (noncoop coverage) and cost
+            # SCOPAS logic: optimize M_c (noncoop coverage) and cost
             return (results["M_wp_noncoop"], results["fitness"][2])
         if self._coop_only:
-            # MUSCAT logic: optimize cooperative weighted protection and cost
+            # SCOPAS logic: optimize cooperative weighted protection and cost
             return (results["M_wp_coop"], results["fitness"][2])
         return results["fitness"]
 

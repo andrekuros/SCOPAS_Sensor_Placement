@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MUSCAT — Best Solution 3D</title>
+  <title>SCOPAS — Best Solution 3D</title>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -95,7 +95,7 @@
 <body>
   <div id="canvas-container"></div>
   <div id="info" style="display: none;">
-    <h1>MUSCAT — Best Solution</h1>
+    <h1>SCOPAS — Best Solution</h1>
     <p id="info-name"></p>
     <p class="metric" id="info-mc"></p>
     <div id="info-point-defense" class="metric" style="display: none;"></div>
@@ -471,7 +471,7 @@
 
     function saveAlignmentToStorage(data) {
       try {
-        const expKey = (data?.experiment_name || 'muscat').replace(/\W/g, '_');
+        const expKey = (data?.experiment_name || 'scopas').replace(/\W/g, '_');
         const payload = {
           offsetX: Number(document.getElementById('map-offset-x')?.value) || 0,
           offsetY: Number(document.getElementById('map-offset-y')?.value) || 0,
@@ -479,7 +479,7 @@
           scaleY: Number(document.getElementById('map-scale-y')?.value) || 100,
           rotation: Number(document.getElementById('map-rotation')?.value) || 0,
         };
-        localStorage.setItem('muscat_map_align_' + expKey, JSON.stringify(payload));
+        localStorage.setItem('scopas_map_align_' + expKey, JSON.stringify(payload));
       } catch (e) {}
     }
 
@@ -524,8 +524,8 @@
       const DEFAULT_OPACITY = 0.15;
       let controlsHtml = '';
       if (geo_bounds && ground) {
-        const expKey = (data.experiment_name || 'muscat').replace(/\W/g, '_');
-        const saved = (() => { try { return JSON.parse(localStorage.getItem('muscat_map_align_' + expKey) || '{}'); } catch(e) { return {}; } })();
+        const expKey = (data.experiment_name || 'scopas').replace(/\W/g, '_');
+        const saved = (() => { try { return JSON.parse(localStorage.getItem('scopas_map_align_' + expKey) || '{}'); } catch(e) { return {}; } })();
         controlsHtml += '<h3>Map background</h3><div class="row"><label>Style:</label><select id="map-style"><option value="none">None</option><option value="osm">OpenStreetMap</option><option value="satellite">Satellite</option></select></div>';
         controlsHtml += '<h4 style="margin-top:10px;font-size:11px;color:#94a3b8;">Map alignment (nudge if off)</h4>';
         controlsHtml += '<div class="row"><label>Offset X:</label><input type="range" id="map-offset-x" min="-50" max="50" value="' + ((saved.offsetX ?? 0)) + '" title="Shift map left/right"/><span id="map-offset-x-val" style="min-width:32px">' + (saved.offsetX ?? 0) + '</span></div>';

@@ -1,1 +1,1 @@
-# MUSCAT tests
+# SCOPAS tests

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Export MUSCAT best solution for Cesium 3D viewer (WGS84).
+Export SCOPAS best solution for Cesium 3D viewer (WGS84).
 Converts scene coordinates to geographic and writes cesium_data.json.
 Requires scene_meta.json with utm_origin and epsg.
 
@@ -106,7 +106,7 @@ def main():
 
     # Critical assets: points and lines
     critical_assets = list(config.get("critical_assets") or [])
-    from muscat_core import _expand_runways_file
+    from scopas_core import _expand_runways_file
     runways_file = config.get("runways_file")
     if runways_file:
         r_path = scene_dir / runways_file
@@ -130,7 +130,7 @@ def main():
                 assets_wgs.append({"type": "point", "id": a.get("id", ""), "lon": lon, "lat": lat, "alt": alt, "radius": float(a.get("protection_radius", 100))})
 
     out = {
-        "experiment_name": data.get("experiment_name", "muscat"),
+        "experiment_name": data.get("experiment_name", "scopas"),
         "geo_bounds": geo_bounds,
         "buildings": buildings_geojson,
         "sensors": sensors_wgs,

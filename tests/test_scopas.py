@@ -2,7 +2,7 @@
 SCOPAS tests — config, environment, evaluation, and CLI.
 
 Run from repo root:
-  python -m unittest tests.test_muscat -v
+  python -m unittest tests.test_scopas -v
 
 Fast tests only (omit TestNSGA2Smoke), a few seconds — run TestConfig, TestEnvironment,
 TestEvaluation, TestCLI, and TestOutputHelpers (see README / DOCUMENTATION.md).
@@ -21,7 +21,7 @@ if str(ROOT) not in sys.path:
 if str(ROOT / "src") not in sys.path:
     sys.path.insert(0, str(ROOT / "src"))
 
-from muscat_core import (
+from scopas_core import (
     load_config,
     load_environment_from_config,
     evaluate_solution,
@@ -121,7 +121,7 @@ class TestOutputHelpers(unittest.TestCase):
         config = load_config(ROOT / "configs" / "quick_test.json")
         population = [[{"type": "Radar", "x": 100, "y": 100, "z": 15}]]
         results = [{"coverage": 0.5, "redundancy": 0.2, "cost": 50000.0, "num_sensors": 1}]
-        with tempfile.TemporaryDirectory(prefix="muscat_test_") as tmp:
+        with tempfile.TemporaryDirectory(prefix="scopas_test_") as tmp:
             config["output"] = {"results_dir": tmp}
             out_dir = save_run_results(config, population, results, run_id="save_test", save_pareto=True)
             self.assertTrue((out_dir / "config.json").exists())

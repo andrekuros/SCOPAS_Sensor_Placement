@@ -58,7 +58,7 @@ This gives two separate result sets:
 Use this when you already have your own optimization algorithm.
 
 ```python
-from src.muscat_core import load_config, load_environment_from_config, evaluate_solution
+from src.scopas_core import load_config, load_environment_from_config, evaluate_solution
 
 config = load_config("configs/my_scenario.json")
 env = load_environment_from_config(config)

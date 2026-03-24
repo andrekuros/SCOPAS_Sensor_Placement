@@ -1,6 +1,6 @@
 {
   "experiment_name": "point_defense_airport_sjc_noncoop",
-  "description": "Airport SJC: noncoop-only (MUSCAT M_c + cost). No RF; optimize M_wp_noncoop vs cost.",
+  "description": "Airport SJC: noncoop-only (SCOPAS M_c + cost). No RF; optimize M_wp_noncoop vs cost.",
   "environment": {
     "type": "real",
     "buildings_file": "data/scenes/airport_sjc/airport_sjc_buildings.geojson",

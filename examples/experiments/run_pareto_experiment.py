@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-MUSCAT Framework - Experimento de Otimização Pareto
+SCOPAS Framework - Experimento de Otimização Pareto
 ====================================================
 
 Este script explora a fronteira de Pareto para balancear custo e requisitos
-atendidos, sem comparar com configurações específicas do MUSCAT.
+atendidos, sem comparar com configurações específicas do SCOPAS.
 
 Uso:
     python examples/experiments/run_pareto_experiment.py --config configs/pareto_city_3x2.json
@@ -31,7 +31,7 @@ if str(SRC_DIR) not in sys.path:
 from environment import UrbanEnvironment
 from sensors import RadarSensor, RFSensor, EOSensor
 from network_evaluation import NetworkEvaluator
-from muscat_metrics import calculate_all_muscat_metrics, check_muscat_requirements
+from scopas_metrics import calculate_all_scopas_metrics, check_scopas_requirements
 from airway_metrics import calculate_metrics_per_airway, format_airway_results_table
 
 
@@ -40,7 +40,7 @@ class ParetoExperiment:
     
     def __init__(self, config_file: str):
         print("="*80)
-        print("MUSCAT FRAMEWORK - Análise de Fronteira de Pareto")
+        print("SCOPAS FRAMEWORK - Análise de Fronteira de Pareto")
         print("="*80)
         
         with open(config_file, 'r') as f:
@@ -169,8 +169,8 @@ class ParetoExperiment:
             p_net_grid[:, :, k] = self.evaluator.get_coverage_map(sensors, height_level=k)
             redundancy_grid[:, :, k] = self.evaluator.get_redundancy_map(sensors, height_level=k)
         
-        # Métricas MUSCAT gerais
-        metrics = calculate_all_muscat_metrics(
+        # Métricas SCOPAS gerais
+        metrics = calculate_all_scopas_metrics(
             sensors, p_net_grid, redundancy_grid=redundancy_grid, threshold=0.8
         )
         
@@ -190,7 +190,7 @@ class ParetoExperiment:
         metrics['airway_metrics'] = airway_metrics
         
         # Verificar requisitos
-        requirements = check_muscat_requirements(
+        requirements = check_scopas_requirements(
             metrics,
             min_coverage=self.config['requirements']['min_coverage'],
             min_overlap=self.config['requirements']['min_overlap']
@@ -548,7 +548,7 @@ class ParetoExperiment:
 
 def main():
     parser = argparse.ArgumentParser(
-        description='MUSCAT Framework - Análise de Fronteira de Pareto',
+        description='SCOPAS Framework - Análise de Fronteira de Pareto',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Exemplo de uso:

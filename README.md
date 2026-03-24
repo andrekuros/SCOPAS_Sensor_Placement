@@ -6,7 +6,7 @@ Pareto-based multi-objective optimization of heterogeneous sensor networks in 3D
 
 Inspired by: *"Multi-Sensor Placement and Information Fusion Analysis to Enable Beyond Visual Line of Sight Operations for Small Uncrewed Aerial Vehicles"* (IEEE/AIAA DASC 2023).
 
-This repository is an independent implementation and extension. It references the original MUSCAT concepts and publication while introducing a different software architecture and workflow (including split cooperative/non-cooperative optimization profiles).
+This repository is an independent implementation and extension. It references the original SCOPAS concepts and publication while introducing a different software architecture and workflow (including split cooperative/non-cooperative optimization profiles).
 
 ---
 
@@ -24,6 +24,84 @@ python run_experiment.py --config configs/city_allocation_assets.json
 ```
 
 Results are saved to `results/<experiment_name>/<run_id>/`.
+
+---
+
+## Fast Tutorial: External Optimizer + SCOPAS Evaluation Function
+
+Use SCOPAS as the objective evaluator, and run your own optimization algorithm outside the framework.
+
+### 1) Load config and build evaluation context
+
+```python
+from src.scopas_core import load_config, load_environment_from_config, evaluate_solution
+
+config = load_config("configs/city_allocation_assets.json")
+env = load_environment_from_config(config)
+sensor_types = config["sensors"]["types"]
+```
+
+### 2) Define one candidate solution format
+
+Each candidate is a Python list of sensors:
+
+```python
+candidate = [
+    {"type": "Radar", "x": 500, "y": 500, "z": 30},
+    {"type": "RF",    "x": 200, "y": 700, "z": 25},
+    {"type": "EO",    "x": 400, "y": 300, "z": 35},
+]
+```
+
+### 3) Evaluate inside your own optimization loop
+
+```python
+import random
+from src.scopas_core import load_config, load_environment_from_config, evaluate_solution
+
+config = load_config("configs/city_allocation_assets.json")
+env = load_environment_from_config(config)
+sensor_types = config["sensors"]["types"]
+
+def random_candidate():
+    # Simple example generator (replace with your own optimizer logic)
+    types = list(sensor_types.keys())
+    n = random.randint(3, 6)
+    return [
+        {
+            "type": random.choice(types),
+            "x": random.uniform(0, 1000),
+            "y": random.uniform(0, 1000),
+            "z": random.uniform(20, 60),
+        }
+        for _ in range(n)
+    ]
+
+best = None
+for _ in range(20):  # your algorithm iterations
+    candidate = random_candidate()
+    metrics = evaluate_solution(env, candidate, sensor_types, config=config)
+
+    # Example objective: maximize non-coop coverage, then coop coverage
+    score = (metrics["M_wp_noncoop"], metrics["M_wp_coop"])
+    if best is None or score > best["score"]:
+        best = {"score": score, "candidate": candidate, "metrics": metrics}
+
+print("Best score:", best["score"])
+print("Best metrics:", best["metrics"])
+```
+
+### 4) What your optimizer receives from SCOPAS
+
+`evaluate_solution(...)` returns metrics you can optimize directly, such as:
+
+- `M_wp_coop`
+- `M_wp_noncoop`
+- `fused_resilience`
+- `cost`
+- `num_sensors`
+
+For a complete runnable script, see `examples/custom_algorithm_demo.py`.
 
 ---
 
@@ -109,7 +187,7 @@ python run_framework.py --config configs/city_allocation_assets.json \
 Or from Python:
 
 ```python
-from src.muscat_core import load_config, load_environment_from_config, evaluate_solution
+from src.scopas_core import load_config, load_environment_from_config, evaluate_solution
 
 config = load_config("configs/city_allocation_assets.json")
 env = load_environment_from_config(config)
@@ -220,13 +298,13 @@ When `critical_assets` is present, the framework computes dual-layer metrics (M_
 |-- requirements.txt
 |
 |-- src/                         # Core framework
-|   |-- muscat_core.py           # Entry point: load config, evaluate solutions
+|   |-- scopas_core.py           # Entry point: load config, evaluate solutions
 |   |-- environment.py           # 3D voxelized urban environment
 |   |-- sensors.py               # Sensor models (Radar, RF, EO)
 |   |-- propagation.py           # Ray-tracing, P_D, line-of-sight
 |   |-- network_evaluation.py    # Dual-layer network metrics (M_wp, fused resilience)
 |   |-- genetic_algorithm.py     # NSGA-II/III engine with DEAP
-|   |-- muscat_metrics.py        # MUSCAT metrics (Mc, Mg, CA, overlap)
+|   |-- scopas_metrics.py        # SCOPAS metrics (Mc, Mg, CA, overlap)
 |   |-- airway_metrics.py        # Per-altitude airway metrics
 |   |-- visualization.py         # Plotting utilities
 |   |-- download_osm.py          # Download building data from OpenStreetMap
@@ -281,13 +359,13 @@ When `critical_assets` is present, the framework computes dual-layer metrics (M_
 ## Tests
 
 ```bash
-python -m unittest tests.test_muscat -v
+python -m unittest tests.test_scopas -v
 ```
 
 Quick subset (no NSGA-II smoke, a few seconds):
 
 ```bash
-python -m unittest tests.test_muscat.TestConfig tests.test_muscat.TestEnvironment tests.test_muscat.TestEvaluation tests.test_muscat.TestCLI tests.test_muscat.TestOutputHelpers -v
+python -m unittest tests.test_scopas.TestConfig tests.test_scopas.TestEnvironment tests.test_scopas.TestEvaluation tests.test_scopas.TestCLI tests.test_scopas.TestOutputHelpers -v
 ```
 
 ---

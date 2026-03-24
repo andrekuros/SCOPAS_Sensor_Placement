@@ -68,7 +68,7 @@ def main():
     )
     critical_assets = list(config.get("critical_assets") or [])
     if config.get("runways_file"):
-        from muscat_core import _expand_runways_file
+        from scopas_core import _expand_runways_file
         r_path = _root / config["runways_file"]
         if not r_path.exists():
             r_path = (_root / env_cfg["buildings_file"]).parent / config["runways_file"]

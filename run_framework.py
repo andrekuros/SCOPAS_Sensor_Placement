@@ -16,7 +16,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent / "src"))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from muscat_core import load_config, run_evaluation, save_run_results, get_results_dir, make_run_id
+from scopas_core import load_config, run_evaluation, save_run_results, get_results_dir, make_run_id
 
 
 def main():

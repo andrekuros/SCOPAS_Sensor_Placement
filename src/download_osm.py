@@ -270,7 +270,7 @@ def generate_sensor_locations(buildings_gdf, bounds, spacing=150):
 def main():
     """Função principal com CLI."""
     parser = argparse.ArgumentParser(
-        description='Download de dados urbanos do OpenStreetMap para análise MUSCAT'
+        description='Download de dados urbanos do OpenStreetMap para análise SCOPAS'
     )
     parser.add_argument('--city', type=str, required=True,
                        help='Nome da cidade/região')

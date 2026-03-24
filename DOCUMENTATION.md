@@ -17,7 +17,7 @@ SCOPAS optimizes **ground-based sensor networks** for detecting and tracking sma
 
 Interaction is via **CLI**, **JSON configs**, and **Python imports**. No REST API or plugin system.
 
-Attribution: SCOPAS is an independent implementation inspired by the MUSCAT paper and concepts (Kukulka de Albuquerque et al., DASC 2023), with its own framework structure and workflow.
+Attribution: SCOPAS is an independent implementation inspired by the SCOPAS paper and concepts (Kukulka de Albuquerque et al., DASC 2023), with its own framework structure and workflow.
 Quick onboarding: see `docs/QUICK_INTEGRATION_TUTORIAL.md` for a practical integration path.
 
 ---
@@ -177,12 +177,12 @@ When `critical_assets` is present, the framework computes dual-layer metrics ins
 
 ## 5. Python API
 
-### Objective Function API (`muscat_core`)
+### Objective Function API (`scopas_core`)
 
 The simplest integration point for external optimizers:
 
 ```python
-from src.muscat_core import load_config, load_environment_from_config, evaluate_solution
+from src.scopas_core import load_config, load_environment_from_config, evaluate_solution
 
 config = load_config("configs/city_allocation_assets.json")
 env = load_environment_from_config(config)
@@ -240,7 +240,7 @@ Without `critical_assets`:
 | `network_evaluation.py` | `NetworkEvaluator`                                                       | Coverage maps, redundancy, dual-layer evaluation               |
 | `genetic_algorithm.py`  | `SensorNetworkGAGeoJSON`                                                 | NSGA-II/III with GeoJSON sensor locations                      |
 | `deap_base.py`          | `setup_multi_objective_creator`, `create_toolbox`                        | DEAP framework setup                                           |
-| `muscat_metrics.py`     | `calculate_all_muscat_metrics`                                           | Mc, Mg, CA, overlap                                            |
+| `scopas_metrics.py`     | `calculate_all_scopas_metrics`                                           | Mc, Mg, CA, overlap                                            |
 | `airway_metrics.py`     | `calculate_metrics_per_airway`                                           | Per-altitude metrics                                           |
 | `visualization.py`      | Plotting helpers                                                         | matplotlib/plotly utilities                                    |
 
@@ -342,13 +342,13 @@ Notes:
 ## 9. Tests
 
 ```bash
-python -m unittest tests.test_muscat -v
+python -m unittest tests.test_scopas -v
 ```
 
 Fast subset (excludes the ~20–40 s NSGA-II smoke test):
 
 ```bash
-python -m unittest tests.test_muscat.TestConfig tests.test_muscat.TestEnvironment tests.test_muscat.TestEvaluation tests.test_muscat.TestCLI tests.test_muscat.TestOutputHelpers -v
+python -m unittest tests.test_scopas.TestConfig tests.test_scopas.TestEnvironment tests.test_scopas.TestEvaluation tests.test_scopas.TestCLI tests.test_scopas.TestOutputHelpers -v
 ```
 
 ---

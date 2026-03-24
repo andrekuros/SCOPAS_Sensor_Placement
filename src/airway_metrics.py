@@ -1,14 +1,14 @@
 """
 Métricas por Aerovia (Flight Corridors)
 
-Calcula métricas MUSCAT separadamente para cada aerovia (altitude de voo).
+Calcula métricas SCOPAS separadamente para cada aerovia (altitude de voo).
 Exclui volumes ocupados por prédios do cálculo.
 """
 
 import numpy as np
 from typing import Dict, List, Tuple
 from sensors import Sensor
-from muscat_metrics import calculate_all_muscat_metrics
+from scopas_metrics import calculate_all_scopas_metrics
 
 
 def calculate_metrics_per_airway(
@@ -22,7 +22,7 @@ def calculate_metrics_per_airway(
     threshold: float = 0.8
 ) -> Dict[str, Dict]:
     """
-    Calcula métricas MUSCAT para cada aerovia (altitude de voo).
+    Calcula métricas SCOPAS para cada aerovia (altitude de voo).
     
     Volumes ocupados por prédios NÃO contam como área a ser coberta.
     
