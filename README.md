@@ -1,4 +1,4 @@
-# SCOPAS Framework
+# Sensor Coverage Optimization for Protected Air Space (SCOPAS) Framework
 
 **BVLOS Sensor Placement and Fusion for Counter-UAS Operations**
 
