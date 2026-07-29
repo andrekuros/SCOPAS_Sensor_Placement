@@ -40,3 +40,11 @@ python run_experiment.py --config configs/demo_acoustic_split.json --split-objec
 ```
 
 See `docs/DEMO_RUNS.md` for interpretation.
+## Cleaning
+
+```bash
+# Remove generated runs (Unix)
+rm -rf results/*/
+```
+
+Re-run experiments from the repo root using `run_framework.py` or `run_experiment.py`.
