@@ -234,6 +234,8 @@ python tools/export_for_cesium.py           --results results/<exp>/<run>/
 | `demo_acoustic_dual_layer.json` | Synthetic city | **Demo:** dual-layer NSGA-II with Radar+RF+EO+Acoustic |
 | `demo_acoustic_noncoop.json` | Synthetic city | **Demo:** non-coop only (Radar+EO+Acoustic), low-cost acoustic mix |
 | `demo_acoustic_split.json` | Synthetic city | **Demo:** split coop/noncoop fronts (`--split-objectives`) |
+| `demo_targets_coop90_noncoop35.json` | Synthetic city | **Demo:** dual-layer target floors coop≥90% / noncoop≥35% |
+| `demo_targets_coop90_noncoop50.json` | Synthetic city | **Demo:** stretch floors coop≥90% / noncoop≥50% |
 | `pareto_city_10x10_final.json` | Synthetic city | Full city benchmark (1 km x 1 km, 196 buildings) |
 | `city_allocation_assets.json` | Synthetic city | City with 5 critical assets, threat-weighted dual-layer metrics |
 | `point_defense_airport_sjc.json` | Airport SJC | Real-world airport scene with runway corridors |
@@ -409,6 +411,6 @@ python -m unittest tests.test_scopas.TestConfig tests.test_scopas.TestEnvironmen
 ## Sharing / reproducibility
 
 - **Smoke test**: `configs/quick_test.json` (fast NSGA-II).
-- **Acoustic demos**: `configs/demo_acoustic_dual_layer.json`, `demo_acoustic_noncoop.json`, `demo_acoustic_split.json` (see `docs/DEMO_RUNS.md`).
+- **Acoustic demos**: `configs/demo_acoustic_*.json` and target-seeking `demo_targets_coop90_noncoop{35,50}.json` (see `docs/DEMO_RUNS.md`; filter with `tools/select_requirement_solutions.py`).
 - **Reference experiments** (paper-style benchmarks): `configs/pareto_city_10x10_final.json` (city), `configs/point_defense_airport_sjc.json` (airport; use `--split-objectives` for separate coop/noncoop fronts).
 - **Docs map**: this file → quick commands; `DOCUMENTATION.md` → full reference; `docs/QUICK_INTEGRATION_TUTORIAL.md` → onboarding; `docs/SENSORS.md` → sensor parameters (incl. Acoustic cost/range); `docs/DEMO_RUNS.md` → demo reproduction.
