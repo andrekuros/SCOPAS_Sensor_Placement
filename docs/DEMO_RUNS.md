@@ -62,6 +62,35 @@ Illustrative demo settings (pop 12–16, gen 6–8). Not paper-grade; regenerate
 
 Hypervolumes (raw): dual `32369`, noncoop `682830`, split_coop `49340`, split_noncoop `493894`.
 
+## Target-seeking dual-layer experiments
+
+Aim for explicit dual-layer floors instead of open Pareto exploration alone:
+
+| Config | Targets | Rationale |
+|--------|---------|-----------|
+| `configs/demo_targets_coop90_noncoop35.json` | coop ≥90%, noncoop ≥35% | Practical floor (prior demos often reach ~35–48% noncoop) |
+| `configs/demo_targets_coop90_noncoop50.json` | coop ≥90%, noncoop ≥50% | Stretch dark-target requirement |
+
+```bash
+python run_experiment.py --config configs/demo_targets_coop90_noncoop35.json --skip-3d
+python run_experiment.py --config configs/demo_targets_coop90_noncoop50.json --skip-3d
+
+# Filter Pareto for cheapest feasible under the config targets
+python tools/select_requirement_solutions.py \
+  --results results/demo_targets_coop90_noncoop35/run_practical/
+python tools/select_requirement_solutions.py \
+  --results results/demo_targets_coop90_noncoop50/run_targets/
+```
+
+Outputs: `requirement_solutions.json` (feasible set + cheapest) and `pareto_dual_layer_targets.png` (coop×noncoop with target box).
+
+### Measured snapshot (this environment)
+
+| Run | Targets | Feasible? | Cheapest feasible / closest miss |
+|-----|---------|-----------|----------------------------------|
+| `run_practical` | 90% / 35% | *(pending)* | *(pending)* |
+| `run_targets` | 90% / 50% | *(pending)* | *(pending)* |
+
 ## Scaling up
 
 For publication-grade fronts, switch to:
