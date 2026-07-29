@@ -95,7 +95,7 @@ Best-individual snapshot in this run:
 
 Interpretation:
 
-- Cooperative protection is high, while non-cooperative protection remains limited in the same best snapshot, indicating a strong tension between RF-supported detectability and radar/EO-only detectability in dense urban geometry.
+- Cooperative protection is high, while non-cooperative protection remains limited in the same best snapshot, indicating a strong tension between RF-supported detectability and Radar/EO/Acoustic dark-target detectability in dense urban geometry.
 - The wide Pareto set is useful for policy trade studies, but point recommendations should depend on explicit non-cooperative minimum requirements, not only aggregate cooperative scores.
 
 Execution caveat:
@@ -148,7 +148,7 @@ Cost-vs-coverage:
 
 Interpretation:
 
-- Non-cooperative optimization is significantly harder and cost-intensive, revealing a current detectability ceiling for radar/EO-only sensing under this scenario setup.
+- Non-cooperative optimization is significantly harder and cost-intensive, revealing a current detectability ceiling for Radar/EO/Acoustic dark-target sensing under this scenario setup.
 - This evidence is operationally valuable: it avoids overclaiming non-cooperative safety margins and indicates where additional sensing strategy, placement density, or model refinement is required.
 
 ### C.3 Cross-profile discussion (operational meaning)

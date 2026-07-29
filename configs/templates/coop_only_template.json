@@ -72,7 +72,8 @@
     }
   ],
   "requirements": {
-    "min_coverage": 0.95,
+    "min_M_wp_coop": 0.90,
+    "min_coverage": 0.90,
     "min_overlap": 0.35
   },
   "output": {
