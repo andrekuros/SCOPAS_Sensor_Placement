@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generate a single 2D overview image of the best solution: map + metrics panel.
+Generate a single 2D overview image of the best solution: LoS-aware coverage + sensors.
 Usage: python tools/generate_2d_overview.py --results results/point_defense_airport_sjc/airport_run/
 """
 
@@ -20,6 +20,7 @@ import numpy as np
 from environment import UrbanEnvironment
 from sensors import create_sensor_from_config
 from network_evaluation import NetworkEvaluator
+from visualization import prepare_detection_probability_display, upsample_scalar_field_2d
 
 
 def _resolve_results(results_arg):
@@ -47,10 +48,30 @@ def _resolve_results(results_arg):
     raise FileNotFoundError(f"No results in {p}")
 
 
+def _pick_height_level(env, config) -> int:
+    """Prefer a layer near the lowest airway where buildings still occlude."""
+    airways = config.get("airway_altitudes") or [20]
+    target_z = float(airways[0])
+    best_k = 0
+    best_dz = float("inf")
+    for k in range(env.grid_shape[2]):
+        z = env.voxel_to_world(0, 0, k)[2]
+        dz = abs(z - target_z)
+        # Prefer layers that still contain some occupied buildings when possible
+        has_occ = np.any(env.occupancy_grid[:, :, k] == 1)
+        score = dz - (5.0 if has_occ else 0.0)
+        if score < best_dz:
+            best_dz = score
+            best_k = k
+    return best_k
+
+
 def main():
     parser = argparse.ArgumentParser(description="Generate 2D overview of best solution")
     parser.add_argument("--results", required=True, help="Results dir or JSON file")
     parser.add_argument("--output", default=None, help="Output path (default: <results_dir>/overview_2d.png)")
+    parser.add_argument("--show-max-range", action="store_true",
+                        help="Overlay dashed max-range rings (not LoS; for scale only)")
     args = parser.parse_args()
     base_dir, solutions, config = _resolve_results(args.results)
     if not solutions:
@@ -83,12 +104,35 @@ def main():
         if "azimuth_deg" in s:
             sens.azimuth_deg = float(s["azimuth_deg"])
         sensors.append(sens)
+
+    evaluator = NetworkEvaluator(env)
+    height_level = _pick_height_level(env, config)
+    z_view = env.voxel_to_world(0, 0, height_level)[2]
+    coverage_map = evaluator.get_coverage_map(sensors, height_level=height_level)
+    cov_up = upsample_scalar_field_2d(coverage_map, 4, order=1, clip_0_1=True)
+    cov_disp, cov_norm, cov_cbar_label = prepare_detection_probability_display(
+        cov_up, scale="power", p_floor=1e-3, power_gamma=0.45
+    )
+
     x_min, x_max, y_min, y_max = env.bounds[0], env.bounds[1], env.bounds[2], env.bounds[3]
     fig, ax = plt.subplots(1, 1, figsize=(12, 10))
+    im = ax.imshow(
+        cov_disp.T,
+        origin="lower",
+        extent=[x_min, x_max, y_min, y_max],
+        cmap="RdYlGn",
+        norm=cov_norm,
+        alpha=0.85,
+        interpolation="bicubic",
+        zorder=1,
+    )
     for _, building in env.buildings_df.iterrows():
         geom = building.geometry
         if geom.geom_type == "Polygon":
-            ax.add_patch(patches.Polygon(list(geom.exterior.coords), facecolor="lightgray", edgecolor="black", linewidth=0.5, alpha=0.6))
+            ax.add_patch(patches.Polygon(
+                list(geom.exterior.coords),
+                facecolor="none", edgecolor="black", linewidth=0.6, alpha=0.7, zorder=3,
+            ))
     for a in critical_assets:
         if a.get("geometry") == "line":
             coords = a.get("coordinates", [])
@@ -100,33 +144,51 @@ def main():
             x, y = a["location"][0], a["location"][1]
             r = a.get("protection_radius", 100)
             ax.scatter([x], [y], c="purple", s=200, marker="*", edgecolors="black", zorder=10)
-            ax.add_patch(patches.Circle((x, y), r, fill=False, edgecolor="purple", linestyle="--", linewidth=1.5))
-    # Sensor type colors; draw estimated max range circle per sensor; triangle = pointing direction
+            ax.add_patch(patches.Circle((x, y), r, fill=False, edgecolor="purple", linestyle="--", linewidth=1.5, zorder=5))
+
     type_color = {"Radar": "red", "RF": "blue", "EO": "green", "Acoustic": "orange"}
     type_ranges = {}
     for s in sensors:
         r = getattr(s, "max_range", 2000.0)
         x, y, _ = s.location
         color = type_color.get(getattr(s, "sensor_type", "Radar"), "gray")
-        circle = patches.Circle((x, y), r, fill=True, facecolor=color, edgecolor=color, linewidth=1, alpha=0.12, zorder=4)
-        ax.add_patch(circle)
+        if args.show_max_range:
+            # Dashed ring only — NOT filled — so buildings/LoS stay visible
+            ax.add_patch(patches.Circle(
+                (x, y), r, fill=False, edgecolor=color, linewidth=1.0,
+                linestyle=":", alpha=0.45, zorder=4,
+            ))
         az = getattr(s, "azimuth_deg", 0.0)
-        angle = 90.0 - az  # 0=East, 90=North -> triangle up=North
-        ax.plot([x], [y], marker=(3, 0, angle), markersize=10, color=color, markeredgecolor="black", markeredgewidth=1, zorder=10)
+        angle = 90.0 - az
+        ax.plot([x], [y], marker=(3, 0, angle), markersize=10, color=color,
+                markeredgecolor="black", markeredgewidth=1, zorder=10)
         t = getattr(s, "sensor_type", "?")
         type_ranges[t] = r
-    # Legend for sensor ranges (estimated max range in m)
-    range_legend = "  |  ".join(f"{t}: {type_ranges[t]:.0f}m" for t in sorted(type_ranges.keys()))
+        if not any(getattr(ss, "sensor_type", "") == t and ss is not s for ss in sensors):
+            pass
+    for stype, color in type_color.items():
+        if any(getattr(s, "sensor_type", "") == stype for s in sensors):
+            ax.plot([], [], marker=(3, 0, 0), markersize=10, color=color,
+                    markeredgecolor="black", linestyle="", label=stype)
+
     ax.set_xlim(x_min, x_max)
     ax.set_ylim(y_min, y_max)
     ax.set_xlabel("X (m)")
     ax.set_ylabel("Y (m)")
-    ax.set_title("Best solution – 2D overview\n(Colored circles = estimated max range)")
-    ax.grid(True, alpha=0.3)
+    ax.set_title(
+        f"Best solution – 2D overview (LoS-aware P_Net @ z≈{z_view:.0f} m)\n"
+        f"Buildings occlude Radar/EO/RF; heatmap = network detection probability"
+    )
+    ax.grid(True, alpha=0.25)
     ax.set_aspect("equal")
-    # Small note so the result "makes sense"
-    note = "Runways (yellow): no sensors within 50m. Circles = estimated detection range."
+    if any(getattr(s, "sensor_type", "") in type_color for s in sensors):
+        ax.legend(loc="upper right", fontsize=9)
+    plt.colorbar(im, ax=ax, fraction=0.046, pad=0.04).set_label(cov_cbar_label)
+    note = "Heatmap uses ray-traced building occlusion (not raw max-range discs)."
+    if args.show_max_range:
+        note += " Dotted rings = nominal max range only."
     ax.text(0.5, -0.02, note, transform=ax.transAxes, fontsize=9, ha="center", style="italic", color="gray")
+
     mc = best.get("Mc", best.get("coverage")) or 0
     txt = f"Mc: {mc*100:.2f}%\nCost: ${best.get('cost', 0):,.0f}\nRedundancy: {best.get('redundancy', 0):.2f}"
     if best.get("M_wp_coop") is not None:
@@ -138,15 +200,15 @@ def main():
     if best.get("asset_security_roi") is not None and np.isfinite(best.get("asset_security_roi")):
         txt += f"\nAsset ROI: ${best['asset_security_roi']:,.0f}"
     if type_ranges:
-        txt += "\n\nRange (est.): " + "  |  ".join(f"{t}: {type_ranges[t]:.0f}m" for t in sorted(type_ranges.keys()))
+        txt += "\n\nMax range (nominal): " + "  |  ".join(f"{t}: {type_ranges[t]:.0f}m" for t in sorted(type_ranges.keys()))
     ax.text(0.02, 0.98, txt, transform=ax.transAxes, fontsize=10, verticalalignment="top",
-            bbox=dict(boxstyle="round", facecolor="wheat", alpha=0.9))
+            bbox=dict(boxstyle="round", facecolor="wheat", alpha=0.9), zorder=20)
     out = Path(args.output) if args.output else base_dir / "overview_2d.png"
     out.parent.mkdir(parents=True, exist_ok=True)
     plt.tight_layout()
     plt.savefig(out, dpi=200, bbox_inches="tight")
     plt.close()
-    print(f"Saved: {out}")
+    print(f"Saved: {out} (LoS coverage at height_level={height_level}, z≈{z_view:.1f}m)")
 
 
 if __name__ == "__main__":

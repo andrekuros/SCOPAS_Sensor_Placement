@@ -154,9 +154,13 @@ For loud ICE / Shahed-class threats in quieter environments, try `"max_range": 2
 
 Detection probability is computed in `src/propagation.py`:
 
-- **Radar**: `calculate_PD_Radar()` (range, RCS, LoS/PLoS).
+- **Radar**: `calculate_PD_Radar()` — **hard building/terrain LoS gate** (blocked ⇒ \(P_D=0\)), then SNR from power/RCS/range.
 - **RF**: `calculate_PD_RF()` (range, sensitivity, LoS).
-- **EO**: `calculate_PD_EO()` (range, FOV, LoS).
+- **EO**: `calculate_PD_EO()` (range, FOV, **requires clear LoS**).
 - **Acoustic**: `calculate_PD_Acoustic()` (SPL, spreading, ambient noise, soft occlusion).
 
-See `propagation.py` and `network_evaluation.py` for network-level coverage (P_Net) and redundancy. Non-cooperative grids include Radar, EO, and Acoustic.
+Ray-tracing walks the voxel occupancy grid (`skimage.draw.line_nd`). Coarser `resolution` under-resolves street-canyon shadows; prefer ≤20–30 m for urban radar studies.
+
+See `network_evaluation.py` for network-level coverage (P_Net). Non-cooperative grids include Radar, EO, and Acoustic.
+
+**Visualization note:** `tools/generate_2d_overview.py` plots the LoS-aware \(P_\mathrm{Net}\) heatmap (not raw max-range discs). Optional `--show-max-range` draws dotted nominal-range rings only.

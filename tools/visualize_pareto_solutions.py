@@ -208,6 +208,7 @@ def visualize_solution(
     output_file,
     critical_assets=None,
     *,
+    airway_altitudes=None,
     coverage_scale="power",
     coverage_p_floor=1e-3,
     coverage_power_gamma=0.45,
@@ -216,7 +217,18 @@ def visualize_solution(
     heatmap_zoom_order=1,
     colormap_lut_size=256,
 ):
-    height_level = 1
+    # Prefer a layer near the lowest airway that still has building voxels when possible
+    airways = airway_altitudes or [20]
+    target_z = float(airways[0])
+    best_k, best_score = 0, float("inf")
+    for k in range(env.grid_shape[2]):
+        z = env.voxel_to_world(0, 0, k)[2]
+        has_occ = bool(np.any(env.occupancy_grid[:, :, k] == 1))
+        score = abs(z - target_z) - (5.0 if has_occ else 0.0)
+        if score < best_score:
+            best_score = score
+            best_k = k
+    height_level = best_k
     coverage_map = evaluator.get_coverage_map(sensors, height_level=height_level)
     redundancy_map = evaluator.get_redundancy_map(sensors, height_level=height_level)
     if heatmap_upsample > 1:
@@ -431,6 +443,7 @@ def main():
             solution,
             output_file,
             critical_assets=critical_assets,
+            airway_altitudes=config.get("airway_altitudes"),
             coverage_scale=args.coverage_scale,
             coverage_p_floor=args.coverage_p_floor,
             coverage_power_gamma=args.coverage_power_gamma,

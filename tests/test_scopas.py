@@ -14,6 +14,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
+import numpy as np
+
 # Repo root and src on path
 ROOT = Path(__file__).resolve().parent.parent
 if str(ROOT) not in sys.path:
@@ -214,6 +216,25 @@ class TestAcousticSensor(unittest.TestCase):
         self.assertGreaterEqual(near, far)
         beyond = calculate_PD_Acoustic(sensor, (500.0 + sensor.max_range + 50.0, 500.0, 40.0), self.env)
         self.assertEqual(beyond, 0.0)
+
+
+    def test_radar_blocked_by_building(self):
+        """Radar P_D must be zero when a building occludes LoS."""
+        from sensors import create_sensor
+        from propagation import calculate_PD_Radar, calculate_PLoS_deterministic
+        locs = self.env.get_sensor_locations()
+        loc = min(locs, key=lambda L: (L[0] - 500) ** 2 + (L[1] - 500) ** 2)
+        radar = create_sensor("Radar", tuple(loc[:3]))
+        free = list(zip(*np.where(self.env.occupancy_grid == 0)))
+        blocked_target = None
+        for i, j, k in free[::5]:
+            x, y, z = self.env.voxel_to_world(i, j, k)
+            if calculate_PLoS_deterministic(radar.location, (x, y, z), self.env) < 1.0:
+                blocked_target = (x, y, z)
+                break
+        self.assertIsNotNone(blocked_target, "expected at least one occluded free voxel")
+        pd = calculate_PD_Radar(radar, blocked_target, self.env)
+        self.assertEqual(pd, 0.0)
 
 
 class TestNSGA2Smoke(unittest.TestCase):

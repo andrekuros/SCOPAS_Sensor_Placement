@@ -39,7 +39,8 @@ python run_experiment.py --config configs/demo_acoustic_noncoop.json --skip-3d
 python run_experiment.py --config configs/demo_acoustic_split.json --split-objectives --skip-3d
 ```
 
-See `docs/DEMO_RUNS.md` for interpretation.
+See `docs/DEMO_RUNS.md` for interpretation and measured snapshots.
+
 ## Cleaning
 
 ```bash
