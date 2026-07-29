@@ -10,7 +10,7 @@ SCOPAS optimizes **ground-based sensor networks** for detecting and tracking sma
 
 - **Pareto-based multi-objective optimization** (NSGA-II / NSGA-III): coverage, redundancy/resilience, cost
 - **3D voxelized ray-tracing** with building occlusion and per-sensor field-of-view constraints
-- **Dual-layer airspace analysis**: cooperative (RF identity) and non-cooperative (Radar/EO kinematic) layers
+- **Dual-layer airspace analysis**: cooperative (RF identity) and non-cooperative (Radar/EO/Acoustic) layers
 - **Threat-weighted metrics** when critical assets are defined (point defense)
 - **Airway-stratified coverage** at configurable flight altitudes
 - **OpenStreetMap / GeoJSON** integration for real urban data
@@ -161,7 +161,7 @@ When `critical_assets` is present, the framework computes dual-layer metrics ins
 | Cost-Effectiveness (C_A) | **Asset Security ROI**         | Total_Cost / M_wp. CapEx per unit of weighted protection.                                        |
 
 
-**Dual-layer**: M_wp_coop (any sensor) and M_wp_noncoop (Radar/EO only).
+**Dual-layer**: M_wp_coop (any sensor) and M_wp_noncoop (Radar/EO/Acoustic only).
 
 ### Objective profile semantics
 

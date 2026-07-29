@@ -263,7 +263,8 @@ A config JSON file defines:
     "types": {
       "Radar": {"cost": 50000, "power_W": 1000, "gain_dB": 30, "frequency_Hz": 1e10},
       "RF":    {"cost": 15000, "sensitivity_dBm": -90, "frequency_Hz": 9e8},
-      "EO":    {"cost": 25000}
+      "EO":    {"cost": 25000},
+      "Acoustic": {"cost": 8000, "max_range": 300, "source_spl_dB": 80}
     }
   },
   "pareto_search": {
@@ -300,7 +301,7 @@ When `critical_assets` is present, the framework computes dual-layer metrics (M_
 |-- src/                         # Core framework
 |   |-- scopas_core.py           # Entry point: load config, evaluate solutions
 |   |-- environment.py           # 3D voxelized urban environment
-|   |-- sensors.py               # Sensor models (Radar, RF, EO)
+|   |-- sensors.py               # Sensor models (Radar, RF, EO, Acoustic)
 |   |-- propagation.py           # Ray-tracing, P_D, line-of-sight
 |   |-- network_evaluation.py    # Dual-layer network metrics (M_wp, fused resilience)
 |   |-- genetic_algorithm.py     # NSGA-II/III engine with DEAP
@@ -347,7 +348,7 @@ When `critical_assets` is present, the framework computes dual-layer metrics (M_
 | Metric | Description |
 |--------|-------------|
 | **M_wp_coop** | Threat-weighted cooperative coverage (RF sensors) |
-| **M_wp_noncoop** | Threat-weighted non-cooperative coverage (Radar, EO) |
+| **M_wp_noncoop** | Threat-weighted non-cooperative coverage (Radar, EO, Acoustic) |
 | **Fused Resilience** | Combined dual-layer resilience score |
 | **M_c** | Global area coverage fraction |
 | **Cost** | Total deployment cost (sensor + site activation) |

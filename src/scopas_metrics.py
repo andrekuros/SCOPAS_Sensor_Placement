@@ -229,7 +229,7 @@ def calculate_fused_resilience(
 ) -> float:
     """
     Fused Resilience: % of (weighted) threat volume where Q=1.0 — covered by both
-    RF identity and kinematic Radar/EO. Modality diversity for weapon-grade fused track.
+    cooperative and non-cooperative (Radar / EO / Acoustic) layers.
     coop_covered and noncoop_covered are binary (0/1) grids.
     """
     fused = coop_covered * noncoop_covered

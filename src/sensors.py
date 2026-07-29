@@ -172,15 +172,56 @@ class EOSensor(Sensor):
         }
 
 
+class AcousticSensor(Sensor):
+    """
+    Passive acoustic array for non-cooperative UAS detection (propeller / motor noise).
+
+    Planning defaults are calibrated for *urban small electric multi-rotors*:
+    - Cost ~USD 8,000: rugged outdoor MEMS array + enclosure + edge AI / backhaul
+      (DIY / mass nodes often USD 400–1,000; commercial nodes typically a few–15k).
+    - Max range ~300 m in city noise (literature/vendor quiet-condition ranges for
+      small quads are often 200–500 m; loud ICE drones can be km-scale — override
+      ``max_range`` / ``source_spl_dB`` for those cases).
+
+    Acoustic is a **non-cooperative** modality (no RF emissions required from the target).
+    """
+
+    def __init__(self, location: Tuple[float, float, float], cost: float = 8000.0):
+        super().__init__(location, cost)
+
+        # Acoustic-specific parameters (SPL reference at 1 m)
+        self.source_spl_dB = 80.0  # Typical small multi-rotor source level (dB SPL @ 1 m)
+        self.snr_threshold_dB = 6.0  # Detection threshold above ambient
+        self.absorption_dB_per_km = 5.0  # Approx atmospheric absorption @ mid audible band
+
+        # Urban FOV & range (omnidirectional array)
+        self.elevation_min = -20.0
+        self.elevation_max = 70.0
+        self.fov_horizontal = 360.0
+        self.max_range = 300.0  # Urban electric sUAS; override for quiet rural / loud ICE
+
+    def _get_sensor_type(self) -> str:
+        return "Acoustic"
+
+    def get_physical_parameters(self) -> Dict[str, Any]:
+        return {
+            "source_spl_dB": self.source_spl_dB,
+            "snr_threshold_dB": self.snr_threshold_dB,
+            "absorption_dB_per_km": self.absorption_dB_per_km,
+            "max_range": self.max_range,
+            "fov_horizontal": self.fov_horizontal,
+        }
+
+
 def create_sensor(sensor_type: str, location: Tuple[float, float, float], cost: float = None) -> Sensor:
     """
     Factory function to create sensors by type.
-    Acoustic sensor removed per urban deployment constraints.
     """
     sensor_classes = {
         "Radar": RadarSensor,
         "RF": RFSensor,
-        "EO": EOSensor
+        "EO": EOSensor,
+        "Acoustic": AcousticSensor,
     }
     
     if sensor_type not in sensor_classes:
@@ -207,6 +248,9 @@ _CONFIG_ATTR_MAP = {
     "fov_horizontal": "fov_horizontal",
     "max_range": "max_range",
     "sensitivity_dBm": "sensitivity",
+    "source_spl_dB": "source_spl_dB",
+    "snr_threshold_dB": "snr_threshold_dB",
+    "absorption_dB_per_km": "absorption_dB_per_km",
 }
 
 

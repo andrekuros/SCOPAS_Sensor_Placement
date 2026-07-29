@@ -102,7 +102,7 @@ def main():
             ax.scatter([x], [y], c="purple", s=200, marker="*", edgecolors="black", zorder=10)
             ax.add_patch(patches.Circle((x, y), r, fill=False, edgecolor="purple", linestyle="--", linewidth=1.5))
     # Sensor type colors; draw estimated max range circle per sensor; triangle = pointing direction
-    type_color = {"Radar": "red", "RF": "blue", "EO": "green"}
+    type_color = {"Radar": "red", "RF": "blue", "EO": "green", "Acoustic": "orange"}
     type_ranges = {}
     for s in sensors:
         r = getattr(s, "max_range", 2000.0)

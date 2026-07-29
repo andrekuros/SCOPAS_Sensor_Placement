@@ -24,7 +24,7 @@ import argparse
 import random
 
 from environment import UrbanEnvironment
-from sensors import RadarSensor, RFSensor, EOSensor
+from sensors import RadarSensor, RFSensor, EOSensor, AcousticSensor
 from network_evaluation import NetworkEvaluator
 from visualization import (
     prepare_detection_probability_display,
@@ -130,6 +130,10 @@ def decode_solution(solution, sensor_locations, sensor_types_config):
                 sensor.frequency = type_config.get("frequency_Hz", 900e6)
             elif sensor_type == "EO":
                 sensor = EOSensor(location=loc, cost=cost)
+            elif sensor_type == "Acoustic":
+                sensor = AcousticSensor(location=loc, cost=cost)
+                sensor.source_spl_dB = type_config.get("source_spl_dB", 80.0)
+                sensor.max_range = type_config.get("max_range", 300.0)
             else:
                 continue
             sensors.append(sensor)
@@ -254,7 +258,7 @@ def visualize_solution(
         if geom.geom_type == "Polygon":
             ax1.add_patch(patches.Polygon(list(geom.exterior.coords), facecolor="gray", edgecolor="black", linewidth=0.5, alpha=0.4))
     _add_asset_overlay(ax1, critical_assets or [])
-    type_color = {"Radar": "#c0392b", "EO": "#27ae60", "RF": "#2980b9"}
+    type_color = {"Radar": "#c0392b", "EO": "#27ae60", "RF": "#2980b9", "Acoustic": "#d68910"}
     if sensors:
         for s in sensors:
             x, y, _ = s.location

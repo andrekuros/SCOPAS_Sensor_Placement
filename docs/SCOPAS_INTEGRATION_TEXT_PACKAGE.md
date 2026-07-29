@@ -42,7 +42,7 @@ Core inputs:
 
 - building geometry and height (GeoJSON polygons);
 - candidate sensor sites and height (GeoJSON points);
-- sensor models (Radar, RF, EO) with range/elevation/FOV/cost parameters;
+- sensor models (Radar, RF, EO, Acoustic) with range/elevation/FOV/cost parameters;
 - airway altitudes and critical assets (for weighted point-defense metrics);
 - optimization settings (`n_samples`, `generations`, `n_cores`, min/max sensors).
 

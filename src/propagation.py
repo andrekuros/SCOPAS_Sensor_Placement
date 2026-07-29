@@ -291,39 +291,49 @@ def calculate_PD_EO(eo_sensor: Sensor, target_point: Tuple[float, float, float],
     return detection_probability
 
 
-def calculate_PD_Acoustic(acoustic_sensor: Sensor, target_point: Tuple[float, float, float], 
+def calculate_PD_Acoustic(acoustic_sensor: Sensor, target_point: Tuple[float, float, float],
                          environment: UrbanEnvironment) -> float:
     """
-    Calculate acoustic detection probability using deterministic ray-tracing.
-    
-    Args:
-        acoustic_sensor: Acoustic sensor instance
-        target_point: Target point (x, y, z)
-        environment: Urban environment
-        
-    Returns:
-        Detection probability between 0 and 1
+    Acoustic detection probability from source SPL, spherical spreading, absorption,
+    urban ambient noise, and soft building occlusion (diffraction-tolerant vs EO).
+
+    Received level (dB SPL) ≈ SL - 20 log10(r) - α·r_km - occlusion_penalty
+    SNR = received - ambient; P_D via sigmoid around snr_threshold_dB.
     """
-    # Calculate distance
     distance = acoustic_sensor.get_distance_to_point(target_point)
-    
-    # Calculate deterministic PLoS
+    max_range = getattr(acoustic_sensor, "max_range", 300.0)
+    if distance > max_range or distance <= 0:
+        return 0.0
+
+    source_spl = getattr(acoustic_sensor, "source_spl_dB", 80.0)
+    snr_threshold = getattr(acoustic_sensor, "snr_threshold_dB", 6.0)
+    absorption = getattr(acoustic_sensor, "absorption_dB_per_km", 5.0)
+
+    # Spherical spreading + atmospheric absorption
+    spreading_db = 20.0 * math.log10(max(distance, 1.0))
+    absorption_db = absorption * (distance / 1000.0)
+    received_spl = source_spl - spreading_db - absorption_db
+
+    # Soft occlusion: sound can diffract; blocked paths get ~15 dB penalty (not hard zero)
     P_LoS = calculate_PLoS_deterministic(acoustic_sensor.location, target_point, environment)
-    
-    # Acoustic sensors are affected by line of sight but not as critically as EO
-    if P_LoS < 0.5:  # Heavily blocked
-        return 0.1  # Very low detection probability
-    elif P_LoS < 1.0:  # Partially blocked
-        return 0.5  # Reduced detection probability
-    
-    # Calculate detection probability based on distance
-    max_range = acoustic_sensor.max_range
-    base_probability = max(0.0, 1.0 - (distance / max_range))
-    
-    # Apply PLoS factor
-    detection_probability = base_probability * P_LoS
-    
-    return detection_probability
+    if P_LoS < 1.0:
+        received_spl -= 15.0
+
+    ambient_db = get_Noise_Acoustic(environment)
+    snr_db = received_spl - ambient_db
+
+    # Soft range roll-off near max_range (urban clutter / model bound)
+    range_factor = max(0.0, 1.0 - (distance / max_range) ** 2)
+
+    k = 1.2
+    if snr_db > snr_threshold + 8:
+        base_pd = 0.92
+    elif snr_db < snr_threshold - 8:
+        base_pd = 0.05
+    else:
+        base_pd = 1.0 / (1.0 + math.exp(-k * (snr_db - snr_threshold)))
+
+    return float(max(0.0, min(1.0, base_pd * range_factor)))
 
 
 def check_elevation_angle(sensor: Sensor, target_point: Tuple[float, float, float]) -> bool:

@@ -18,7 +18,7 @@ import argparse
 import random
 
 from environment import UrbanEnvironment
-from sensors import RadarSensor, RFSensor, EOSensor, create_sensor_from_config
+from sensors import RadarSensor, RFSensor, EOSensor, AcousticSensor, create_sensor_from_config
 from network_evaluation import NetworkEvaluator
 from visualization import (
     prepare_detection_probability_display,
@@ -88,6 +88,10 @@ def decode_solution(solution, sensor_locations, sensor_types_config):
                 s.frequency = cfg.get("frequency_Hz", 900e6)
             elif stype == "EO":
                 s = EOSensor(location=loc, cost=cost)
+            elif stype == "Acoustic":
+                s = AcousticSensor(location=loc, cost=cost)
+                s.source_spl_dB = cfg.get("source_spl_dB", 80.0)
+                s.max_range = cfg.get("max_range", 300.0)
             else:
                 si += 1
                 continue
