@@ -9,7 +9,7 @@ pip install -r requirements.txt
 python run_framework.py --config configs/quick_test.json --mode nsga2
 ```
 
-If this runs, your environment is ready.
+If this runs, your environment is ready. The smoke test includes **Radar, RF, EO, and Acoustic**.
 
 ## 2) Choose an integration style
 
@@ -21,7 +21,7 @@ If this runs, your environment is ready.
 ### 3.1 Copy a template
 
 ```bash
-copy configs\templates\dual_layer_template.json configs\my_scenario.json
+cp configs/templates/dual_layer_template.json configs/my_scenario.json
 ```
 
 Edit these keys in `configs/my_scenario.json`:
@@ -30,6 +30,8 @@ Edit these keys in `configs/my_scenario.json`:
 - `environment.sensor_locations_file`
 - `critical_assets`
 - `output.run_id`
+
+Templates already include Acoustic (non-cooperative, ~USD 8k / ~300 m urban). Details: `docs/SENSORS.md`.
 
 ### 3.2 Run optimization
 
@@ -51,7 +53,17 @@ python run_experiment.py --config configs/my_scenario.json --split-objectives
 
 This gives two separate result sets:
 - cooperative objective (`_coop`)
-- non-cooperative objective (`_noncoop`)
+- non-cooperative objective (`_noncoop`) — Radar / EO / Acoustic (RF dropped)
+
+### 3.5 Ready-made Acoustic demos
+
+```bash
+python run_experiment.py --config configs/demo_acoustic_dual_layer.json --skip-3d
+python run_experiment.py --config configs/demo_acoustic_noncoop.json --skip-3d
+python run_experiment.py --config configs/demo_acoustic_split.json --split-objectives --skip-3d
+```
+
+See `docs/DEMO_RUNS.md` for expected outputs and interpretation.
 
 ## 4) Python API integration
 
@@ -67,6 +79,7 @@ sensor_types = config["sensors"]["types"]
 candidate = [
     {"type": "Radar", "x": 500, "y": 500, "z": 30},
     {"type": "RF", "x": 200, "y": 700, "z": 25},
+    {"type": "Acoustic", "x": 350, "y": 450, "z": 20},
 ]
 
 result = evaluate_solution(env, candidate, sensor_types, config=config)
@@ -91,5 +104,6 @@ Key files:
 
 - Wrong relative paths in config files.
 - Running outside the project root.
-- Using non-cooperative objective with RF-only sensor sets.
+- Using non-cooperative objective with RF-only sensor sets (RF is ignored for dark-target coverage).
 - Comparing runs with different `resolution` or `pareto_search` settings.
+- Expecting Acoustic to match Radar long-range performance — urban Acoustic default is ~300 m for quiet multi-rotors.

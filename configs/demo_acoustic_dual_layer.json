@@ -1,0 +1,90 @@
+{
+  "experiment_name": "demo_acoustic_dual_layer",
+  "description": "Demonstration: dual-layer NSGA-II with Radar+RF+EO+Acoustic on the synthetic city (Acoustic-enabled).",
+  "environment": {
+    "type": "synthetic",
+    "buildings_file": "data/examples/city_10x10_buildings.geojson",
+    "sensor_locations_file": "data/examples/city_10x10_sensor_locations.geojson",
+    "resolution": 40.0
+  },
+  "airway_altitudes": [20, 45, 65],
+  "sensors": {
+    "types": {
+      "Radar": {
+        "cost": 50000.0,
+        "power_W": 1000.0,
+        "gain_dB": 30.0,
+        "frequency_Hz": 10000000000.0,
+        "elevation_min": -5.0,
+        "elevation_max": 30.0,
+        "fov_horizontal": 360.0,
+        "max_range": 2000.0
+      },
+      "RF": {
+        "cost": 15000.0,
+        "sensitivity_dBm": -90.0,
+        "frequency_Hz": 900000000.0,
+        "elevation_min": -30.0,
+        "elevation_max": 70.0,
+        "fov_horizontal": 360.0
+      },
+      "EO": {
+        "cost": 25000.0,
+        "elevation_min": -20.0,
+        "elevation_max": 45.0,
+        "fov_horizontal": 360.0,
+        "max_range": 150.0
+      },
+      "Acoustic": {
+        "cost": 8000.0,
+        "source_spl_dB": 80.0,
+        "snr_threshold_dB": 6.0,
+        "max_range": 300.0,
+        "elevation_min": -20.0,
+        "elevation_max": 70.0,
+        "fov_horizontal": 360.0
+      }
+    }
+  },
+  "optimization": {
+    "objectives": "dual_layer"
+  },
+  "pareto_search": {
+    "n_samples": 16,
+    "generations": 8,
+    "n_cores": 4,
+    "min_sensors": 3,
+    "max_sensors": 10
+  },
+  "site_activation_cost": 15000,
+  "critical_assets": [
+    {
+      "id": "Hospital_Center",
+      "location": [500, 500, 30],
+      "protection_radius": 120,
+      "weight_multiplier": 1.0
+    },
+    {
+      "id": "Stadium_North",
+      "location": [250, 750, 25],
+      "protection_radius": 100,
+      "weight_multiplier": 0.9
+    }
+  ],
+  "requirements": {
+    "min_coverage": 0.70,
+    "min_overlap": 0.30
+  },
+  "output": {
+    "results_dir": "results/demo_acoustic_dual_layer",
+    "run_id": "demo_dual",
+    "save_results": true,
+    "generate_plots": true
+  },
+  "analysis": {
+    "max_solutions": 20
+  },
+  "checkpoint": {
+    "enabled": false
+  }
+}

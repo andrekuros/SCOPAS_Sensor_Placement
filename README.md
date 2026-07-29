@@ -50,6 +50,7 @@ candidate = [
     {"type": "Radar", "x": 500, "y": 500, "z": 30},
     {"type": "RF",    "x": 200, "y": 700, "z": 25},
     {"type": "EO",    "x": 400, "y": 300, "z": 35},
+    {"type": "Acoustic", "x": 350, "y": 450, "z": 20},
 ]
 ```
 
@@ -110,6 +111,8 @@ For a complete runnable script, see `examples/custom_algorithm_demo.py`.
 - `README.md` (this file): quick start and day-to-day commands.
 - `DOCUMENTATION.md`: full technical reference.
 - `docs/QUICK_INTEGRATION_TUTORIAL.md`: step-by-step integration tutorial.
+- `docs/SENSORS.md`: Radar / RF / EO / Acoustic parameters, costs, and ranges.
+- `docs/DEMO_RUNS.md`: Acoustic-enabled demonstration experiments.
 
 ## Usage
 
@@ -228,6 +231,9 @@ python tools/export_for_cesium.py           --results results/<exp>/<run>/
 | Config | Scene | Description |
 |--------|-------|-------------|
 | `quick_test.json` | Synthetic city | Smoke test (8 pop, 3 gen, 1 core). Use to verify installation. |
+| `demo_acoustic_dual_layer.json` | Synthetic city | **Demo:** dual-layer NSGA-II with Radar+RF+EO+Acoustic |
+| `demo_acoustic_noncoop.json` | Synthetic city | **Demo:** non-coop only (Radar+EO+Acoustic), low-cost acoustic mix |
+| `demo_acoustic_split.json` | Synthetic city | **Demo:** split coop/noncoop fronts (`--split-objectives`) |
 | `pareto_city_10x10_final.json` | Synthetic city | Full city benchmark (1 km x 1 km, 196 buildings) |
 | `city_allocation_assets.json` | Synthetic city | City with 5 critical assets, threat-weighted dual-layer metrics |
 | `point_defense_airport_sjc.json` | Airport SJC | Real-world airport scene with runway corridors |
@@ -236,7 +242,7 @@ python tools/export_for_cesium.py           --results results/<exp>/<run>/
 | `point_defense_airport_sjc_noncoop_90.json` | Airport SJC | Target M_c_noncoop >= 0.90 |
 | `point_defense_airport_sjc_3h.json` | Airport SJC | Long run with checkpoint/resume |
 | `point_defense_airport_sjc_reference_long.json` | Airport SJC | Extended reference run (large search; long runtime) |
-| `point_defense_airport_sjc_no_rf_95.json` | Airport SJC | Radar + EO only, 95% protection, 15 m resolution |
+| `point_defense_airport_sjc_no_rf_95.json` | Airport SJC | Radar + EO (+ Acoustic) dark-target mix, 95% protection, 15 m resolution |
 | `point_defense_experiment.json` | Synthetic city | Point defense with critical assets |
 | `point_defense_stadium_arena.json` | Stadium | Stadium/arena protection scenario |
 | `open_farm.json` | Open farm | Rural open-field scenario |
@@ -347,7 +353,7 @@ When `critical_assets` is present, the framework computes dual-layer metrics (M_
 
 | Metric | Description |
 |--------|-------------|
-| **M_wp_coop** | Threat-weighted cooperative coverage (RF sensors) |
+| **M_wp_coop** | Threat-weighted cooperative coverage (any modality: RF, Radar, EO, Acoustic) |
 | **M_wp_noncoop** | Threat-weighted non-cooperative coverage (Radar, EO, Acoustic) |
 | **Fused Resilience** | Combined dual-layer resilience score |
 | **M_c** | Global area coverage fraction |
@@ -403,5 +409,6 @@ python -m unittest tests.test_scopas.TestConfig tests.test_scopas.TestEnvironmen
 ## Sharing / reproducibility
 
 - **Smoke test**: `configs/quick_test.json` (fast NSGA-II).
+- **Acoustic demos**: `configs/demo_acoustic_dual_layer.json`, `demo_acoustic_noncoop.json`, `demo_acoustic_split.json` (see `docs/DEMO_RUNS.md`).
 - **Reference experiments** (paper-style benchmarks): `configs/pareto_city_10x10_final.json` (city), `configs/point_defense_airport_sjc.json` (airport; use `--split-objectives` for separate coop/noncoop fronts).
-- **Docs map**: this file → quick commands; `DOCUMENTATION.md` → full reference; `docs/QUICK_INTEGRATION_TUTORIAL.md` → onboarding; `docs/SENSORS.md` → sensor parameters.
+- **Docs map**: this file → quick commands; `DOCUMENTATION.md` → full reference; `docs/QUICK_INTEGRATION_TUTORIAL.md` → onboarding; `docs/SENSORS.md` → sensor parameters (incl. Acoustic cost/range); `docs/DEMO_RUNS.md` → demo reproduction.

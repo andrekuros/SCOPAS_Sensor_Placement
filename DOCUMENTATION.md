@@ -32,6 +32,17 @@ pip install -r requirements.txt
 
 Python 3.8+ required (3.10+ recommended). All scripts assume the **project root** as working directory.
 
+### Sensor modalities
+
+| Type | Default CapEx | Urban range (small electric sUAS) | Dual-layer role |
+|------|---------------|-----------------------------------|-----------------|
+| Radar | USD 50,000 | ~2–3 km | Non-cooperative |
+| RF | USD 15,000 | ~250 m | Cooperative only |
+| EO | USD 25,000 | ~150 m | Non-cooperative |
+| Acoustic | USD 8,000 | ~300 m | Non-cooperative |
+
+Full parameter tables and rationale: `docs/SENSORS.md`. Acoustic demos: `docs/DEMO_RUNS.md`.
+
 ### Dependencies
 
 
@@ -129,7 +140,7 @@ See `configs/templates/README.md` for a short copy-edit-run workflow.
 | ------------------ | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
 | `experiment_name`  | string                                                              | Unique name, used for results directory                                                                |
 | `environment`      | `buildings_file`, `sensor_locations_file`, `resolution`             | GeoJSON paths and voxel size (m)                                                                       |
-| `sensors.types`    | per-type dict                                                       | `cost`, `power_W`, `gain_dB`, `sensitivity_dBm`, `frequency_Hz`, `elevation_min/max`, `fov_horizontal` |
+| `sensors.types`    | per-type dict                                                       | `cost`, ranges/FOV, plus type-specific keys (`power_W`, `sensitivity_dBm`, `source_spl_dB`, …). See `docs/SENSORS.md`. |
 | `pareto_search`    | `n_samples`, `generations`, `n_cores`, `min_sensors`, `max_sensors` | GA parameters                                                                                          |
 | `airway_altitudes` | array of floats                                                     | Flight levels in metres, e.g. `[20, 45, 65]`                                                           |
 | `requirements`     | `min_coverage`, `min_overlap`                                       | Thresholds for solution classification                                                                 |
@@ -191,6 +202,7 @@ sensor_types = config["sensors"]["types"]
 candidate = [
     {"type": "Radar", "x": 500, "y": 500, "z": 30},
     {"type": "RF",    "x": 200, "y": 700, "z": 25},
+    {"type": "Acoustic", "x": 350, "y": 450, "z": 20},
 ]
 
 result = evaluate_solution(env, candidate, sensor_types, config=config)

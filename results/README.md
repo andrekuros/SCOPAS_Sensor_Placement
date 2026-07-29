@@ -29,12 +29,14 @@ For `configs/point_defense_airport_sjc.json`, `run_experiment.py` runs **coop_on
 
 (suffix comes from `--run-id-suffix` combined with the base `run_id` in `run_framework.py`.)
 
-## Cleaning
+## Acoustic demos
+
+Pre-built Acoustic-enabled configs write here when you run:
 
 ```bash
-# Remove generated runs (Unix)
-rm -rf results/*/
-# PowerShell: Remove-Item results\*\* -Recurse -Force (careful)
+python run_experiment.py --config configs/demo_acoustic_dual_layer.json --skip-3d
+python run_experiment.py --config configs/demo_acoustic_noncoop.json --skip-3d
+python run_experiment.py --config configs/demo_acoustic_split.json --split-objectives --skip-3d
 ```
 
-Re-run experiments from the repo root using `run_framework.py` or `run_experiment.py`.
+See `docs/DEMO_RUNS.md` for interpretation.
