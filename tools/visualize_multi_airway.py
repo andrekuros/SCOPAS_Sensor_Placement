@@ -147,12 +147,12 @@ def visualize_multi_airway(
             cmap=cmap,
             norm=cov_norm,
             alpha=0.9,
-            interpolation="nearest",
+            interpolation="bicubic",
         )
         for _, b in env.buildings_df.iterrows():
             g = b.geometry
             if g.geom_type == "Polygon":
-                ax.add_patch(patches.Polygon(list(g.exterior.coords), facecolor="#9aa0a6", edgecolor="black", linewidth=0.5, alpha=1.0, zorder=3))
+                ax.add_patch(patches.Polygon(list(g.exterior.coords), facecolor="#d0d0d0", edgecolor="black", linewidth=0.5, alpha=0.4, zorder=3))
         if sensors:
             xs, ys, _ = zip(*[s.location for s in sensors])
             ax.scatter(xs, ys, c="red", s=80, marker="^", edgecolors="black", linewidth=1.5, zorder=10)

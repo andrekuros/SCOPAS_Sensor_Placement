@@ -7,7 +7,7 @@ Supports optional DEM/terrain for realistic LoS (line-of-sight) and sensor place
 import json
 import numpy as np
 import geopandas as gpd
-from shapely.geometry import Point, Polygon, box
+from shapely.geometry import Point, Polygon
 from typing import List, Tuple, Optional, Dict, Any
 import os
 from pathlib import Path
@@ -287,18 +287,14 @@ class UrbanEnvironment:
                 continue
             max_k = min(self.grid_shape[2], max(1, int(np.ceil(float(height) / self.voxel_resolution))))
 
-            # Mark voxels as occupied
-            half = self.voxel_resolution / 2.0
+            # Mark voxels as occupied (center-in: matches prior visual density;
+            # short buildings still get ≥1 layer via ceil above).
             for i in range(min_i, max_i):
                 for j in range(min_j, max_j):
-                    # Cell footprint in world coordinates (edge-aligned with grid_extent_xy)
-                    cx0 = x_min + i * self.voxel_resolution
-                    cy0 = y_min + j * self.voxel_resolution
-                    cell = box(cx0, cy0, cx0 + self.voxel_resolution, cy0 + self.voxel_resolution)
-
-                    # Any overlap with the building polygon counts (not just center-in),
-                    # so occlusion / plots match GeoJSON footprints more closely.
-                    if geometry.intersects(cell):
+                    voxel_x = x_min + i * self.voxel_resolution + self.voxel_resolution / 2
+                    voxel_y = y_min + j * self.voxel_resolution + self.voxel_resolution / 2
+                    voxel_point = Point(voxel_x, voxel_y)
+                    if geometry.contains(voxel_point) or geometry.touches(voxel_point):
                         for k in range(max_k):
                             if self.occupancy_grid[i, j, k] == 0:
                                 self.occupancy_grid[i, j, k] = 1

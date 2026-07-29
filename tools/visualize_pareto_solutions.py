@@ -256,20 +256,20 @@ def visualize_solution(
         p_floor=coverage_p_floor,
         power_gamma=coverage_power_gamma,
     )
-    # Nearest keeps voxel edges aligned with building polygons (bicubic smears into footprints).
+    # Bicubic + upsample for smooth display; extent uses grid_extent_xy (aligned).
     im1 = ax1.imshow(
         cov_disp.T,
         origin="lower",
         extent=[x_min, x_max, y_min, y_max],
         cmap=cmap_coverage,
         norm=cov_norm,
-        alpha=0.8,
-        interpolation="nearest",
+        alpha=0.85,
+        interpolation="bicubic",
     )
     for _, building in env.buildings_df.iterrows():
         geom = building.geometry
         if geom.geom_type == "Polygon":
-            ax1.add_patch(patches.Polygon(list(geom.exterior.coords), facecolor="#9aa0a6", edgecolor="black", linewidth=0.5, alpha=1.0, zorder=3))
+            ax1.add_patch(patches.Polygon(list(geom.exterior.coords), facecolor="#d0d0d0", edgecolor="black", linewidth=0.5, alpha=0.4, zorder=3))
     _add_asset_overlay(ax1, critical_assets or [])
     type_color = {"Radar": "#c0392b", "EO": "#27ae60", "RF": "#2980b9", "Acoustic": "#d68910"}
     if sensors:
@@ -306,13 +306,13 @@ def visualize_solution(
         extent=[x_min, x_max, y_min, y_max],
         cmap=cmap_redundancy,
         norm=red_norm,
-        alpha=0.8,
-        interpolation="nearest",
+        alpha=0.85,
+        interpolation="bicubic",
     )
     for _, building in env.buildings_df.iterrows():
         geom = building.geometry
         if geom.geom_type == "Polygon":
-            ax2.add_patch(patches.Polygon(list(geom.exterior.coords), facecolor="#9aa0a6", edgecolor="black", linewidth=0.5, alpha=1.0, zorder=3))
+            ax2.add_patch(patches.Polygon(list(geom.exterior.coords), facecolor="#d0d0d0", edgecolor="black", linewidth=0.5, alpha=0.4, zorder=3))
     _add_asset_overlay(ax2, critical_assets or [])
     if sensors:
         for s in sensors:
