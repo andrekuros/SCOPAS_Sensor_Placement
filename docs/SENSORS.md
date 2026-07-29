@@ -159,7 +159,7 @@ Detection probability is computed in `src/propagation.py`:
 - **EO**: `calculate_PD_EO()` (range, FOV, **requires clear LoS**).
 - **Acoustic**: `calculate_PD_Acoustic()` (SPL, spreading, ambient noise, soft occlusion).
 
-Ray-tracing walks the voxel occupancy grid (`skimage.draw.line_nd`). Coarser `resolution` under-resolves street-canyon shadows; prefer ≤20–30 m for urban radar studies. Building height uses **ceil(height / resolution)** so structures shorter than one voxel still occlude.
+Ray-tracing walks the voxel occupancy grid (`skimage.draw.line_nd`). Coarser `resolution` under-resolves street-canyon shadows; prefer ≤20–30 m for urban radar studies. Buildings shorter than one voxel are not occupied unless you lower `resolution`.
 
 Heatmap tools use `UrbanEnvironment.grid_extent_xy()` (``n * resolution``), not raw scenario bounds max — otherwise coverage cells stretch and no longer line up with building polygons.
 

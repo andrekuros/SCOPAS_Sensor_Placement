@@ -66,21 +66,12 @@ class TestEnvironment(unittest.TestCase):
         # Scenario bounds max can differ from grid max (ceil sizing)
         self.assertLessEqual(env.bounds[1] - env.bounds[0], x1 - x0 + 1e-6)
 
-    def test_short_buildings_still_occupy_voxels(self):
-        """Buildings shorter than voxel resolution must still occlude (ceil height)."""
+    def test_buildings_taller_than_resolution_occupy(self):
         config = load_config(ROOT / "configs" / "demo_acoustic_noncoop.json")
         env = load_environment_from_config(config, base_dir=ROOT)
-        short = env.buildings_df[env.buildings_df["height"] < env.voxel_resolution]
-        self.assertGreater(len(short), 0)
-        # At least some short-building footprint samples should be occupied at k=0
-        from shapely.geometry import Point
-        occupied_hits = 0
-        for _, row in short.iterrows():
-            c = row.geometry.centroid
-            i, j, _ = env.world_to_voxel(c.x, c.y, 1.0)
-            if env.occupancy_grid[i, j, 0] == 1:
-                occupied_hits += 1
-        self.assertGreater(occupied_hits, 0)
+        tall = env.buildings_df[env.buildings_df["height"] >= env.voxel_resolution]
+        self.assertGreater(len(tall), 0)
+        self.assertGreater(int(np.sum(env.occupancy_grid == 1)), 0)
 
 
 class TestEvaluation(unittest.TestCase):

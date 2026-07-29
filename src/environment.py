@@ -282,10 +282,12 @@ class UrbanEnvironment:
             min_j = max(0, int((building_bounds[1] - y_min) / self.voxel_resolution))
             max_j = min(self.grid_shape[1], int((building_bounds[3] - y_min) / self.voxel_resolution) + 1)
 
-            # Ceil so buildings shorter than one voxel still occlude at least one layer
-            if height <= 0:
+            # Occupy layers whose bottom is below building height (same as classic
+            # int(height/res)). Buildings shorter than one voxel need a finer
+            # resolution to appear — prefer resolution ≤ building height for studies.
+            max_k = min(self.grid_shape[2], int(float(height) / self.voxel_resolution))
+            if max_k <= 0:
                 continue
-            max_k = min(self.grid_shape[2], max(1, int(np.ceil(float(height) / self.voxel_resolution))))
 
             # Mark voxels as occupied (center-in: matches prior visual density;
             # short buildings still get ≥1 layer via ceil above).
