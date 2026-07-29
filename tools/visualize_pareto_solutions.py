@@ -269,7 +269,7 @@ def visualize_solution(
     for _, building in env.buildings_df.iterrows():
         geom = building.geometry
         if geom.geom_type == "Polygon":
-            ax1.add_patch(patches.Polygon(list(geom.exterior.coords), facecolor="0.55", edgecolor="black", linewidth=0.5, alpha=0.5))
+            ax1.add_patch(patches.Polygon(list(geom.exterior.coords), facecolor="#9aa0a6", edgecolor="black", linewidth=0.5, alpha=1.0, zorder=3))
     _add_asset_overlay(ax1, critical_assets or [])
     type_color = {"Radar": "#c0392b", "EO": "#27ae60", "RF": "#2980b9", "Acoustic": "#d68910"}
     if sensors:
@@ -312,7 +312,7 @@ def visualize_solution(
     for _, building in env.buildings_df.iterrows():
         geom = building.geometry
         if geom.geom_type == "Polygon":
-            ax2.add_patch(patches.Polygon(list(geom.exterior.coords), facecolor="0.55", edgecolor="black", linewidth=0.5, alpha=0.5))
+            ax2.add_patch(patches.Polygon(list(geom.exterior.coords), facecolor="#9aa0a6", edgecolor="black", linewidth=0.5, alpha=1.0, zorder=3))
     _add_asset_overlay(ax2, critical_assets or [])
     if sensors:
         for s in sensors:

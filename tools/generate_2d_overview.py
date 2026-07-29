@@ -133,7 +133,7 @@ def main():
         if geom.geom_type == "Polygon":
             ax.add_patch(patches.Polygon(
                 list(geom.exterior.coords),
-                facecolor="0.55", edgecolor="black", linewidth=0.7, alpha=0.55, zorder=3,
+                facecolor="#9aa0a6", edgecolor="black", linewidth=0.7, alpha=1.0, zorder=3,
             ))
     for a in critical_assets:
         if a.get("geometry") == "line":
