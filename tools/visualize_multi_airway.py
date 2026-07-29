@@ -121,8 +121,9 @@ def visualize_multi_airway(
     if n_airways == 1:
         axes = [axes]
     cmap, _ = heatmap_colormaps(lut_size=int(colormap_lut_size))
-    x_min, x_max = env.bounds[0], env.bounds[1]
-    y_min, y_max = env.bounds[2], env.bounds[3]
+    x_min, x_max, y_min, y_max = env.grid_extent_xy()
+    view_x0, view_x1 = float(env.bounds[0]), float(env.bounds[1])
+    view_y0, view_y1 = float(env.bounds[2]), float(env.bounds[3])
     for idx, alt in enumerate(airway_altitudes):
         ax = axes[idx]
         layer = int((alt - env.bounds[4]) / env.voxel_resolution)
@@ -146,17 +147,17 @@ def visualize_multi_airway(
             cmap=cmap,
             norm=cov_norm,
             alpha=0.9,
-            interpolation="bicubic",
+            interpolation="nearest",
         )
         for _, b in env.buildings_df.iterrows():
             g = b.geometry
             if g.geom_type == "Polygon":
-                ax.add_patch(patches.Polygon(list(g.exterior.coords), facecolor="gray", edgecolor="black", linewidth=0.5, alpha=0.5))
+                ax.add_patch(patches.Polygon(list(g.exterior.coords), facecolor="0.55", edgecolor="black", linewidth=0.5, alpha=0.5))
         if sensors:
             xs, ys, _ = zip(*[s.location for s in sensors])
             ax.scatter(xs, ys, c="red", s=80, marker="^", edgecolors="black", linewidth=1.5, zorder=10)
-        ax.set_xlim(x_min, x_max)
-        ax.set_ylim(y_min, y_max)
+        ax.set_xlim(view_x0, view_x1)
+        ax.set_ylim(view_y0, view_y1)
         ax.set_xlabel("X (m)")
         ax.set_ylabel("Y (m)")
         ax.set_title(f"Airway {alt}m\nMc={Mc_layer*100:.1f}%")

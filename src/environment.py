@@ -281,17 +281,19 @@ class UrbanEnvironment:
             max_i = min(self.grid_shape[0], int((building_bounds[2] - x_min) / self.voxel_resolution) + 1)
             min_j = max(0, int((building_bounds[1] - y_min) / self.voxel_resolution))
             max_j = min(self.grid_shape[1], int((building_bounds[3] - y_min) / self.voxel_resolution) + 1)
-            
-            # Calculate height in voxels
-            max_k = min(self.grid_shape[2], int(height / self.voxel_resolution))
-            
+
+            # Ceil so buildings shorter than one voxel still occlude at least one layer
+            if height <= 0:
+                continue
+            max_k = min(self.grid_shape[2], max(1, int(np.ceil(float(height) / self.voxel_resolution))))
+
             # Mark voxels as occupied
             for i in range(min_i, max_i):
                 for j in range(min_j, max_j):
                     # Convert voxel indices back to world coordinates
                     voxel_x = x_min + i * self.voxel_resolution + self.voxel_resolution / 2
                     voxel_y = y_min + j * self.voxel_resolution + self.voxel_resolution / 2
-                    
+
                     # Check if voxel center is inside building polygon
                     voxel_point = Point(voxel_x, voxel_y)
                     if geometry.contains(voxel_point) or geometry.touches(voxel_point):
@@ -346,6 +348,20 @@ class UrbanEnvironment:
         z = z_min + k * self.voxel_resolution + self.voxel_resolution / 2
         
         return x, y, z
+
+    def grid_extent_xy(self) -> Tuple[float, float, float, float]:
+        """
+        World-coordinate extent of the occupancy / coverage grid for matplotlib imshow.
+
+        Returns (x_min, x_max_grid, y_min, y_max_grid) where max = min + n * resolution.
+        Do **not** use raw scenario ``bounds`` max here: ``ceil`` grid sizing makes
+        ``n * resolution`` larger than ``(max - min)``, and using bounds stretches
+        the heatmap so it no longer lines up with building polygons.
+        """
+        x_min, _, y_min, _, _, _ = self.bounds
+        nx, ny, _ = self.grid_shape
+        res = self.voxel_resolution
+        return (float(x_min), float(x_min + nx * res), float(y_min), float(y_min + ny * res))
     
     def get_sensor_locations(self, num_locations: Optional[int] = None) -> List[Tuple[float, float, float]]:
         """

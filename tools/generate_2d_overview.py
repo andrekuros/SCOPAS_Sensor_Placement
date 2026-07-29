@@ -20,7 +20,7 @@ import numpy as np
 from environment import UrbanEnvironment
 from sensors import create_sensor_from_config
 from network_evaluation import NetworkEvaluator
-from visualization import prepare_detection_probability_display, upsample_scalar_field_2d
+from visualization import prepare_detection_probability_display
 
 
 def _resolve_results(results_arg):
@@ -109,12 +109,14 @@ def main():
     height_level = _pick_height_level(env, config)
     z_view = env.voxel_to_world(0, 0, height_level)[2]
     coverage_map = evaluator.get_coverage_map(sensors, height_level=height_level)
-    cov_up = upsample_scalar_field_2d(coverage_map, 4, order=1, clip_0_1=True)
     cov_disp, cov_norm, cov_cbar_label = prepare_detection_probability_display(
-        cov_up, scale="power", p_floor=1e-3, power_gamma=0.45
+        coverage_map, scale="power", p_floor=1e-3, power_gamma=0.45
     )
 
-    x_min, x_max, y_min, y_max = env.bounds[0], env.bounds[1], env.bounds[2], env.bounds[3]
+    x_min, x_max, y_min, y_max = env.grid_extent_xy()
+    # Keep building / asset view on scenario bounds (may be slightly inside grid)
+    view_x0, view_x1 = float(env.bounds[0]), float(env.bounds[1])
+    view_y0, view_y1 = float(env.bounds[2]), float(env.bounds[3])
     fig, ax = plt.subplots(1, 1, figsize=(12, 10))
     im = ax.imshow(
         cov_disp.T,
@@ -123,7 +125,7 @@ def main():
         cmap="RdYlGn",
         norm=cov_norm,
         alpha=0.85,
-        interpolation="bicubic",
+        interpolation="nearest",
         zorder=1,
     )
     for _, building in env.buildings_df.iterrows():
@@ -131,7 +133,7 @@ def main():
         if geom.geom_type == "Polygon":
             ax.add_patch(patches.Polygon(
                 list(geom.exterior.coords),
-                facecolor="none", edgecolor="black", linewidth=0.6, alpha=0.7, zorder=3,
+                facecolor="0.55", edgecolor="black", linewidth=0.7, alpha=0.55, zorder=3,
             ))
     for a in critical_assets:
         if a.get("geometry") == "line":
@@ -164,15 +166,13 @@ def main():
                 markeredgecolor="black", markeredgewidth=1, zorder=10)
         t = getattr(s, "sensor_type", "?")
         type_ranges[t] = r
-        if not any(getattr(ss, "sensor_type", "") == t and ss is not s for ss in sensors):
-            pass
     for stype, color in type_color.items():
         if any(getattr(s, "sensor_type", "") == stype for s in sensors):
             ax.plot([], [], marker=(3, 0, 0), markersize=10, color=color,
                     markeredgecolor="black", linestyle="", label=stype)
 
-    ax.set_xlim(x_min, x_max)
-    ax.set_ylim(y_min, y_max)
+    ax.set_xlim(view_x0, view_x1)
+    ax.set_ylim(view_y0, view_y1)
     ax.set_xlabel("X (m)")
     ax.set_ylabel("Y (m)")
     ax.set_title(
@@ -184,7 +184,7 @@ def main():
     if any(getattr(s, "sensor_type", "") in type_color for s in sensors):
         ax.legend(loc="upper right", fontsize=9)
     plt.colorbar(im, ax=ax, fraction=0.046, pad=0.04).set_label(cov_cbar_label)
-    note = "Heatmap uses ray-traced building occlusion (not raw max-range discs)."
+    note = "Heatmap extent matches voxel grid (aligned with buildings). Gray = building footprints."
     if args.show_max_range:
         note += " Dotted rings = nominal max range only."
     ax.text(0.5, -0.02, note, transform=ax.transAxes, fontsize=9, ha="center", style="italic", color="gray")
