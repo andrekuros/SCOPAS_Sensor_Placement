@@ -86,10 +86,33 @@ Outputs: `requirement_solutions.json` (feasible set + cheapest) and `pareto_dual
 
 ### Measured snapshot (this environment)
 
-| Run | Targets | Feasible? | Cheapest feasible / closest miss |
-|-----|---------|-----------|----------------------------------|
-| `run_practical` | 90% / 35% | *(pending)* | *(pending)* |
-| `run_targets` | 90% / 50% | *(pending)* | *(pending)* |
+Illustrative short runs (pop 20–24, gen 10–12, resolution 35 m). Not paper-grade.
+
+| Run | Stated targets | Feasible under those targets? | Best joint outcome |
+|-----|----------------|-------------------------------|--------------------|
+| `run_practical` | 90% / 35% | No (near miss) | Closest: coop=0.873, noncoop=0.414 @ $328k; separately noncoop max=0.598 |
+| `run_targets` | 90% / 50% | No | Closest: coop=0.957, noncoop=0.445 @ $363k (misses 50% by ~5.5 pp) |
+
+Re-filtering the stretch front at the **practical** floors finds joint solutions:
+
+| Joint corridor | Feasible on `run_targets`? | Cheapest |
+|----------------|----------------------------|----------|
+| **90% coop / 35% noncoop** | Yes (3 sols) | **$315k** — 4 RF + 3 Radar; coop=0.947, noncoop=0.367 |
+| 90% coop / 40% noncoop | Yes (1 sol) | $363k — 4 RF + 3 Radar + 1 Acoustic + 1 EO; coop=0.957, noncoop=0.445 |
+| 90% coop / 50% noncoop | No | Stretch not reached in this budget |
+
+**What makes sense as planning targets**
+
+- **90% cooperative** remains the right hard floor (cheap with RF).
+- **35% non-cooperative** is the practical joint dark-target floor with this scene/budget (~$315k).
+- **50% non-cooperative** is a useful stretch / stress test: individually approachable (~45% with ≥90% coop here; earlier noncoop-only demos reached ~48%), but jointly with 90% coop it needs a larger search or more sites/sensors.
+
+```bash
+# After a run, filter at any corridor:
+python tools/select_requirement_solutions.py \
+  --results results/demo_targets_coop90_noncoop50/run_targets/ \
+  --min-coop 0.90 --min-noncoop 0.35
+```
 
 ## Scaling up
 
