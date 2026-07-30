@@ -1,0 +1,122 @@
+% Section 3: Problem Formulation
+
+\section{Problem Formulation}
+
+\subsection{Multi-Sensor Optimization Problem}
+
+Following the MUSCAT formulation \cite{muscat2023}, we define the sensor placement problem as a resource allocation optimization. The objective is to determine the optimal number, combination, and placement of sensors in a given Region of Interest (ROI) to maximize system performance under resource constraints.
+
+\subsubsection{Sets and Indices}
+
+\begin{itemize}
+\item $T$: Set of sensor types, indexed by $t \in T$
+\item $L$: Set of potential sensor locations, indexed by $l \in L$
+\item $U$: Set of UAV types (characterized by RCS), indexed by $u \in U$
+\item $H$: Set of flight altitudes, indexed by $h \in H$
+\end{itemize}
+
+\subsubsection{Parameters}
+
+\begin{itemize}
+\item $AB$: Available budget (cost limit)
+\item $C_t$: Unit cost of sensor type $t$
+\item $SC_{tluh}$: Coverage provided by sensor type $t$ at location $l$ detecting UAV $u$ at altitude $h$
+\item $\sigma$: Conversion parameter for objective function
+\end{itemize}
+
+\subsubsection{Decision Variables}
+
+\begin{equation}
+x_{tluh} = \begin{cases}
+1 & \text{if sensor } t \text{ is placed at location } l \\
+0 & \text{otherwise}
+\end{cases}
+\end{equation}
+
+\subsubsection{Objective Function}
+
+Maximize total coverage minus cost penalty:
+
+\begin{equation}
+\max \sum_{t \in T} \sum_{l \in L} \sum_{u \in U} \sum_{h \in H} SC_{tluh} \cdot x_{tluh} - \sigma \sum_{t \in T} \sum_{l \in L} C_t \cdot x_{tluh}
+\label{eq:objective}
+\end{equation}
+
+\subsubsection{Constraints}
+
+\begin{equation}
+\sum_{t \in T} \sum_{l \in L} \sum_{u \in U} \sum_{h \in H} C_t \cdot x_{tluh} \leq AB
+\label{eq:budget}
+\end{equation}
+
+\begin{equation}
+x_{tluh} \in \{0, 1\} \quad \forall t \in T, l \in L, u \in U, h \in H
+\label{eq:binary}
+\end{equation}
+
+\subsection{Genetic Algorithm Reformulation}
+
+For GA implementation, we reformulate the decision variables as a chromosome representation:
+
+\begin{equation}
+\textbf{X} = [(l_1, t_1, a_1), (l_2, t_2, a_2), ..., (l_n, t_n, a_n)]
+\label{eq:chromosome}
+\end{equation}
+
+where each gene $(l_i, t_i, a_i)$ represents:
+\begin{itemize}
+\item $l_i \in L$: sensor location index
+\item $t_i \in T$: sensor type
+\item $a_i \in \{0, 1\}$: activation status
+\end{itemize}
+
+The fitness function becomes:
+
+\begin{equation}
+F(\textbf{X}) = w_1 \cdot \pnet(\textbf{X}) + w_2 \cdot \rnet(\textbf{X}) - w_3 \cdot C(\textbf{X})
+\label{eq:fitness}
+\end{equation}
+
+where:
+\begin{itemize}
+\item $\pnet(\textbf{X})$: Average network detection probability
+\item $\rnet(\textbf{X})$: Average redundancy
+\item $C(\textbf{X})$: Total cost
+\item $w_1, w_2, w_3$: Weight parameters
+\end{itemize}
+
+\subsection{MUSCAT Metrics}
+
+To maintain compatibility with the original framework, we implement the following metrics:
+
+\textbf{Coverage Index} (Equation 6 from \cite{muscat2023}):
+\begin{equation}
+\mc = \frac{n}{N}
+\label{eq:coverage_index}
+\end{equation}
+where $n$ is the number of grid cells with detection probability $P_D \geq$ threshold and $N$ is the total number of cells.
+
+\textbf{Gap Index} (Equation 7 from \cite{muscat2023}):
+\begin{equation}
+\mg = 1 - \mc
+\label{eq:gap_index}
+\end{equation}
+
+\textbf{Cost-Effectiveness} (Equation 8 from \cite{muscat2023}):
+\begin{equation}
+CA = \frac{\sum_{t \in T} C_t \cdot x_t}{\mc}
+\label{eq:cost_effectiveness}
+\end{equation}
+
+\subsection{Requirements}
+
+Following the MUSCAT baseline study \cite{muscat2023}, we adopt the following requirements for corridor coverage:
+
+\begin{itemize}
+\item $\mc > 0.95$ (coverage exceeds 95\%)
+\item Overlap $> 0.55$ (multi-sensor redundancy exceeds 55\%)
+\end{itemize}
+
+These requirements ensure comprehensive monitoring and system resilience against sensor failures or cyber-attacks.
+
+

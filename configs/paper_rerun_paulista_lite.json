@@ -5,7 +5,7 @@
     "type": "real",
     "buildings_file": "data/case_studies/avenida_paulista/avenida_paulista_buildings.geojson",
     "sensor_locations_file": "data/case_studies/avenida_paulista/avenida_paulista_sensors.geojson",
-    "resolution": 30.0
+    "resolution": 40.0
   },
   "airway_altitudes": [20, 45, 65],
   "sensors": {
@@ -50,11 +50,11 @@
     "objectives": "dual_layer"
   },
   "pareto_search": {
-    "n_samples": 28,
-    "generations": 12,
+    "n_samples": 24,
+    "generations": 10,
     "n_cores": 4,
     "min_sensors": 5,
-    "max_sensors": 20
+    "max_sensors": 18
   },
   "site_activation_cost": 15000,
   "critical_assets": [

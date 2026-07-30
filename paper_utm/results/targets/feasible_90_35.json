@@ -1,0 +1,368 @@
+{
+  "source": "results/demo_targets_coop90_noncoop50/run_targets/evaluation_results.json",
+  "targets": {
+    "min_M_wp_coop": 0.9,
+    "min_M_wp_noncoop": 0.35,
+    "min_fused_resilience": null
+  },
+  "n_pareto": 24,
+  "n_feasible": 3,
+  "cheapest": {
+    "cost": 315000.0,
+    "M_wp_coop": 0.9465965098634727,
+    "M_wp_noncoop": 0.366739257890733,
+    "fused_resilience": 0.31514508209296044,
+    "num_sensors": 7,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 220.0,
+        "y": 640.0,
+        "z": 40,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 160.0,
+        "y": 40.0,
+        "z": 50,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 290.0,
+        "y": 290.0,
+        "z": 15,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Radar",
+        "x": 120.0,
+        "y": 860.0,
+        "z": 60,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Radar",
+        "x": 260.0,
+        "y": 640.0,
+        "z": 45,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Radar",
+        "x": 660.0,
+        "y": 540.0,
+        "z": 40,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 320.0,
+        "y": 920.0,
+        "z": 45,
+        "azimuth_deg": 120.0
+      }
+    ]
+  },
+  "solutions": [
+    {
+      "solution_id": 22,
+      "sensors": [
+        {
+          "type": "RF",
+          "x": 220.0,
+          "y": 640.0,
+          "z": 40,
+          "azimuth_deg": 0.0
+        },
+        {
+          "type": "RF",
+          "x": 160.0,
+          "y": 40.0,
+          "z": 50,
+          "azimuth_deg": 0.0
+        },
+        {
+          "type": "RF",
+          "x": 290.0,
+          "y": 290.0,
+          "z": 15,
+          "azimuth_deg": 120.0
+        },
+        {
+          "type": "Radar",
+          "x": 120.0,
+          "y": 860.0,
+          "z": 60,
+          "azimuth_deg": 240.0
+        },
+        {
+          "type": "Radar",
+          "x": 260.0,
+          "y": 640.0,
+          "z": 45,
+          "azimuth_deg": 240.0
+        },
+        {
+          "type": "Radar",
+          "x": 660.0,
+          "y": 540.0,
+          "z": 40,
+          "azimuth_deg": 240.0
+        },
+        {
+          "type": "RF",
+          "x": 320.0,
+          "y": 920.0,
+          "z": 45,
+          "azimuth_deg": 120.0
+        }
+      ],
+      "M_wp_coop": 0.9465965098634727,
+      "M_wp_noncoop": 0.366739257890733,
+      "M_vuln_coop": 0.05340349013652734,
+      "M_vuln_noncoop": 0.6332607421092671,
+      "fused_resilience": 0.31514508209296044,
+      "asset_security_roi": 332771.14030922466,
+      "asset_security_roi_noncoop": 858920.8633176973,
+      "M_c_coop": 0.9465965098634727,
+      "M_c_noncoop": 0.366739257890733,
+      "coverage": 0.9465965098634727,
+      "redundancy": 2.8393569290215668,
+      "cost": 315000.0,
+      "cost_hardware": 210000.0,
+      "cost_sites": 105000.0,
+      "num_sensors": 7,
+      "unique_sites": 7,
+      "fitness": [
+        0.9465965098634727,
+        0.366739257890733,
+        3.15
+      ],
+      "evaluated_voxels": 2130,
+      "total_voxels": 2352,
+      "requirement_check": {
+        "meets_M_wp_coop": true,
+        "meets_M_wp_noncoop": true,
+        "meets_fused_resilience": true,
+        "meets_all": true,
+        "status": "green",
+        "M_wp_coop": 0.9465965098634727,
+        "M_wp_noncoop": 0.366739257890733,
+        "fused_resilience": 0.31514508209296044,
+        "min_M_wp_coop": 0.9,
+        "min_M_wp_noncoop": 0.35,
+        "min_fused_resilience": null
+      }
+    },
+    {
+      "solution_id": 5,
+      "sensors": [
+        {
+          "type": "RF",
+          "x": 220.0,
+          "y": 640.0,
+          "z": 40,
+          "azimuth_deg": 0.0
+        },
+        {
+          "type": "RF",
+          "x": 520.0,
+          "y": 360.0,
+          "z": 35,
+          "azimuth_deg": 240.0
+        },
+        {
+          "type": "Acoustic",
+          "x": 90.0,
+          "y": 490.0,
+          "z": 15,
+          "azimuth_deg": 240.0
+        },
+        {
+          "type": "RF",
+          "x": 160.0,
+          "y": 40.0,
+          "z": 50,
+          "azimuth_deg": 0.0
+        },
+        {
+          "type": "RF",
+          "x": 290.0,
+          "y": 290.0,
+          "z": 15,
+          "azimuth_deg": 120.0
+        },
+        {
+          "type": "Radar",
+          "x": 120.0,
+          "y": 860.0,
+          "z": 60,
+          "azimuth_deg": 240.0
+        },
+        {
+          "type": "Radar",
+          "x": 260.0,
+          "y": 640.0,
+          "z": 45,
+          "azimuth_deg": 240.0
+        },
+        {
+          "type": "Radar",
+          "x": 660.0,
+          "y": 540.0,
+          "z": 40,
+          "azimuth_deg": 240.0
+        },
+        {
+          "type": "EO",
+          "x": 520.0,
+          "y": 360.0,
+          "z": 35,
+          "azimuth_deg": 120.0
+        }
+      ],
+      "M_wp_coop": 0.9570534591650881,
+      "M_wp_noncoop": 0.44533468396063625,
+      "M_vuln_coop": 0.042946540834911895,
+      "M_vuln_noncoop": 0.5546653160393638,
+      "fused_resilience": 0.35201904809829787,
+      "asset_security_roi": 379289.1572814261,
+      "asset_security_roi_noncoop": 815117.2883540463,
+      "M_c_coop": 0.9570534591650881,
+      "M_c_noncoop": 0.44533468396063625,
+      "coverage": 0.9570534591650881,
+      "redundancy": 2.9030581923888086,
+      "cost": 363000.0,
+      "cost_hardware": 243000.0,
+      "cost_sites": 120000.0,
+      "num_sensors": 9,
+      "unique_sites": 8,
+      "fitness": [
+        0.9570534591650881,
+        0.44533468396063625,
+        3.63
+      ],
+      "evaluated_voxels": 2130,
+      "total_voxels": 2352,
+      "requirement_check": {
+        "meets_M_wp_coop": true,
+        "meets_M_wp_noncoop": true,
+        "meets_fused_resilience": true,
+        "meets_all": true,
+        "status": "green",
+        "M_wp_coop": 0.9570534591650881,
+        "M_wp_noncoop": 0.44533468396063625,
+        "fused_resilience": 0.35201904809829787,
+        "min_M_wp_coop": 0.9,
+        "min_M_wp_noncoop": 0.35,
+        "min_fused_resilience": null
+      }
+    },
+    {
+      "solution_id": 3,
+      "sensors": [
+        {
+          "type": "RF",
+          "x": 220.0,
+          "y": 640.0,
+          "z": 40,
+          "azimuth_deg": 0.0
+        },
+        {
+          "type": "RF",
+          "x": 520.0,
+          "y": 360.0,
+          "z": 35,
+          "azimuth_deg": 240.0
+        },
+        {
+          "type": "Acoustic",
+          "x": 90.0,
+          "y": 490.0,
+          "z": 15,
+          "azimuth_deg": 240.0
+        },
+        {
+          "type": "RF",
+          "x": 160.0,
+          "y": 40.0,
+          "z": 50,
+          "azimuth_deg": 0.0
+        },
+        {
+          "type": "RF",
+          "x": 290.0,
+          "y": 290.0,
+          "z": 15,
+          "azimuth_deg": 120.0
+        },
+        {
+          "type": "Radar",
+          "x": 120.0,
+          "y": 860.0,
+          "z": 60,
+          "azimuth_deg": 240.0
+        },
+        {
+          "type": "Radar",
+          "x": 260.0,
+          "y": 640.0,
+          "z": 45,
+          "azimuth_deg": 240.0
+        },
+        {
+          "type": "Radar",
+          "x": 660.0,
+          "y": 540.0,
+          "z": 40,
+          "azimuth_deg": 240.0
+        },
+        {
+          "type": "RF",
+          "x": 320.0,
+          "y": 920.0,
+          "z": 45,
+          "azimuth_deg": 120.0
+        }
+      ],
+      "M_wp_coop": 0.9720995831721124,
+      "M_wp_noncoop": 0.3686966825574555,
+      "M_vuln_coop": 0.027900416827887575,
+      "M_vuln_noncoop": 0.6313033174425444,
+      "fused_resilience": 0.31514508209296044,
+      "asset_security_roi": 378562.0386742258,
+      "asset_security_roi_noncoop": 998110.418155588,
+      "M_c_coop": 0.9720995831721124,
+      "M_c_noncoop": 0.3686966825574555,
+      "coverage": 0.9720995831721124,
+      "redundancy": 3.5952527672453023,
+      "cost": 368000.0,
+      "cost_hardware": 233000.0,
+      "cost_sites": 135000.0,
+      "num_sensors": 9,
+      "unique_sites": 9,
+      "fitness": [
+        0.9720995831721124,
+        0.3686966825574555,
+        3.68
+      ],
+      "evaluated_voxels": 2130,
+      "total_voxels": 2352,
+      "requirement_check": {
+        "meets_M_wp_coop": true,
+        "meets_M_wp_noncoop": true,
+        "meets_fused_resilience": true,
+        "meets_all": true,
+        "status": "green",
+        "M_wp_coop": 0.9720995831721124,
+        "M_wp_noncoop": 0.3686966825574555,
+        "fused_resilience": 0.31514508209296044,
+        "min_M_wp_coop": 0.9,
+        "min_M_wp_noncoop": 0.35,
+        "min_fused_resilience": null
+      }
+    }
+  ]
+}

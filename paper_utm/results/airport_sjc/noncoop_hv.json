@@ -1,0 +1,10 @@
+{
+  "hypervolume": 962618.9767872391,
+  "normalized_hypervolume": 6.575371156850346,
+  "pareto_size": 24,
+  "reference_point": [
+    0,
+    415000.0
+  ],
+  "objectives": "noncoop_only"
+}

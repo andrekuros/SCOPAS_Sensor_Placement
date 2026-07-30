@@ -1,0 +1,64 @@
+% SCOPAS dual-layer revision of the UTM / MUSCAT sensor-placement paper
+% Target venue: IEEE/AIAA DASC (IEEEtran)
+
+\documentclass[conference]{IEEEtran}
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{hyperref}
+
+\newcommand{\mc}{M_c}
+\newcommand{\mg}{M_g}
+\newcommand{\mwp}{M_{wp}}
+\newcommand{\pnet}{\bar{P}_{Net}}
+\newcommand{\rnet}{\bar{R}}
+
+\begin{document}
+
+\title{Dual-Layer Multi-Objective Sensor Placement for Urban BVLOS Surveillance}
+
+\author{
+\IEEEauthorblockN{Your Name\IEEEauthorrefmark{1}, Co-Author Name\IEEEauthorrefmark{2}}
+\IEEEauthorblockA{\IEEEauthorrefmark{1}Your Institution, Department\\
+City, Country\\
+Email: your.email@institution.edu}
+\IEEEauthorblockA{\IEEEauthorrefmark{2}Co-Author Institution\\
+Email: coauthor@institution.edu}
+}
+
+\maketitle
+
+\begin{abstract}
+Urban Beyond Visual Line of Sight (BVLOS) operations require Ground-Based Surveillance Systems (GBSS) that separately account for \emph{cooperative} traffic (e.g., Remote~ID / RF) and \emph{non-cooperative} dark targets (Radar, EO, Acoustic). Collapsing both into a single coverage score systematically understates dark-target risk. This paper revisits city-scale sensor placement with the SCOPAS dual-layer framework: multi-objective NSGA-II optimizing threat-weighted \(M_{wp,coop}\), \(M_{wp,noncoop}\), and CapEx (hardware + site activation) under 3D LoS occlusion, with Acoustic as a low-cost non-cooperative modality and explicit planning floors (e.g., \(0.90/0.35\)).
+
+On a 1\,km$\times$1\,km synthetic city with five critical assets, a dual-layer front of 32 solutions spans cooperative coverage \(0.07\)--\(0.96\) and non-cooperative coverage \(0.00\)--\(0.56\). Cooperative \(\geq90\%\) is reachable near \$247k, yet the same plans leave non-cooperative coverage near \(0.13\); joint floors near \(0.85/0.35\) cost about \$320k, while a strict \(0.90/0.50\) box remains a stretch. Airway-stratified maps retain the altitude-gap finding of prior work. Complementary airport split fronts and requirement-seeking demos reinforce the operational claim: BVLOS infrastructure cases must report cooperative and non-cooperative sensing fronts separately, and select deployments from dual-layer Pareto sets rather than a single fused score.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Beyond Visual Line of Sight (BVLOS), Urban Air Mobility (UAM), Ground-Based Surveillance Systems (GBSS), Dual-layer sensing, Counter-UAS, Multi-sensor optimization, NSGA-II, Acoustic sensing, OpenStreetMap
+\end{IEEEkeywords}
+
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_problem_formulation}
+\input{sections/04_methodology}
+\input{sections/05_implementation}
+\input{sections/06_experimental_setup}
+\input{sections/07_results}
+\input{sections/08_discussion}
+\input{sections/09_conclusion}
+
+\section*{Acknowledgments}
+This work was supported by [Funding Agency]. The authors thank [People/Organizations].
+
+\bibliographystyle{IEEEtran}
+\bibliography{references/references}
+
+\end{document}

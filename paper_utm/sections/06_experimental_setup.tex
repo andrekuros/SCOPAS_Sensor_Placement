@@ -1,0 +1,24 @@
+% Section 6: Experimental Setup (SCOPAS dual-layer revision)
+
+\section{Experimental Setup}
+\label{sec:setup}
+
+All experiments use the open SCOPAS framework (Radar, RF, EO, Acoustic) with dual-layer NSGA-II objectives \((M_{wp,coop}, M_{wp,noncoop}, \mathrm{cost})\) unless a split profile is stated. Sensor CapEx defaults: Radar \$50k, RF \$15k, EO \$25k, Acoustic \$8k, plus site activation \$15k.
+
+\subsection{Synthetic city}
+
+Scene: 1\,km$\times$1\,km, 196 buildings, 221 candidate sites (\texttt{data/examples/city\_10x10\_*}). Five critical assets define the threat map. Airway altitudes \(\{20,45,65\}\)\,m. Cloud-feasible paper rerun: resolution 30\,m, population 32, 18 generations, 4 cores (\texttt{configs/paper\_rerun\_city\_dual.json}).
+
+Planning floors used for post-filtering: \(M_{wp,coop}\geq0.90\), \(M_{wp,noncoop}\geq0.35\) (practical) and stretch \(0.90/0.50\).
+
+\subsection{Airport SJC (split fronts)}
+
+Real OSM airport scene with runway exclusion. Split optimization runs \texttt{coop\_only} then \texttt{noncoop\_only} (\texttt{--split-objectives}) so dark-target cost is not hidden inside a cooperative optimum. Lite paper budget: resolution 40\,m, population 24, 12 generations.
+
+\subsection{Avenida Paulista (lite)}
+
+Real corridor scene retained for continuity with the prior draft, executed at reduced fidelity (resolution 40\,m, smaller GA) for cloud reproducibility. Full 80$\times$45 @ 20\,m remains a longer checkpointed job.
+
+\subsection{Analysis pipeline}
+
+Each run emits Pareto JSON, hypervolume, convergence plots, LoS-aware overview maps, flight-level \(M_c\), and cost-vs-threshold curves. Dual-layer fronts additionally emit coop$\times$noncoop target plots; \texttt{tools/select\_requirement\_solutions.py} reports cheapest feasible members under stated floors.

@@ -1,11 +1,11 @@
 {
   "experiment_name": "paper_rerun_city_dual",
-  "description": "Paper redo — synthetic city dual-layer (Radar+RF+EO+Acoustic). Medium budget for cloud rerun; same scene as 2023/UTM city study.",
+  "description": "Paper redo — synthetic city dual-layer (Radar+RF+EO+Acoustic). Cloud-feasible budget (res 30 m); same scene as UTM city study.",
   "environment": {
     "type": "synthetic",
     "buildings_file": "data/examples/city_10x10_buildings.geojson",
     "sensor_locations_file": "data/examples/city_10x10_sensor_locations.geojson",
-    "resolution": 20.0
+    "resolution": 30.0
   },
   "airway_altitudes": [20, 45, 65],
   "sensors": {
@@ -50,8 +50,8 @@
     "objectives": "dual_layer"
   },
   "pareto_search": {
-    "n_samples": 48,
-    "generations": 25,
+    "n_samples": 32,
+    "generations": 18,
     "n_cores": 4,
     "min_sensors": 3,
     "max_sensors": 15
@@ -108,6 +108,6 @@
     "enabled": true,
     "dir": "checkpoints/paper_rerun_city_dual",
     "frequency": 5,
-    "resume": true
+    "resume": false
   }
 }
