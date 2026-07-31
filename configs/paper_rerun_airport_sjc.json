@@ -1,0 +1,105 @@
+{
+  "experiment_name": "paper_rerun_airport_sjc",
+  "description": "Paper redo \u2014 SJC airport with Acoustic + dual-layer floors; use --split-objectives for coop/noncoop fronts.",
+  "environment": {
+    "type": "real",
+    "buildings_file": "data/scenes/airport_sjc/airport_sjc_buildings.geojson",
+    "sensor_locations_file": "data/scenes/airport_sjc/airport_sjc_sensors.geojson",
+    "resolution": 40.0,
+    "bounds_expansion": 300
+  },
+  "airway_altitudes": [
+    20,
+    45,
+    65
+  ],
+  "sensors": {
+    "types": {
+      "Radar": {
+        "cost": 50000.0,
+        "power_W": 1000.0,
+        "gain_dB": 30.0,
+        "frequency_Hz": 10000000000.0,
+        "elevation_min": -5.0,
+        "elevation_max": 30.0,
+        "max_range": 3000.0,
+        "fov_horizontal": 360.0
+      },
+      "RF": {
+        "cost": 15000.0,
+        "sensitivity_dBm": -90.0,
+        "frequency_Hz": 900000000.0,
+        "elevation_min": -30.0,
+        "elevation_max": 70.0,
+        "fov_horizontal": 360.0
+      },
+      "EO": {
+        "cost": 25000.0,
+        "elevation_min": -20.0,
+        "elevation_max": 45.0,
+        "fov_horizontal": 360.0,
+        "max_range": 150.0
+      },
+      "Acoustic": {
+        "cost": 8000.0,
+        "source_spl_dB": 80.0,
+        "snr_threshold_dB": 6.0,
+        "max_range": 300.0,
+        "elevation_min": -20.0,
+        "elevation_max": 70.0,
+        "fov_horizontal": 360.0
+      }
+    }
+  },
+  "optimization": {
+    "objectives": "dual_layer"
+  },
+  "pareto_search": {
+    "n_samples": 24,
+    "generations": 12,
+    "n_cores": 4,
+    "min_sensors": 3,
+    "max_sensors": 12
+  },
+  "site_activation_cost": 15000,
+  "runways_file": "airport_sjc_runways.geojson",
+  "runways_protection_radius": 80,
+  "runways_exclusion_margin": 50,
+  "runways_display_offset": [
+    30,
+    -80
+  ],
+  "critical_assets": [
+    {
+      "id": "Airport_Terminal_SJC",
+      "location": [
+        555,
+        568,
+        30
+      ],
+      "protection_radius": 180,
+      "weight_multiplier": 1.0
+    }
+  ],
+  "requirements": {
+    "min_M_wp_coop": 0.9,
+    "min_M_wp_noncoop": 0.35,
+    "min_coverage": 0.7,
+    "min_overlap": 0.35
+  },
+  "output": {
+    "results_dir": "results/paper_rerun_airport_sjc",
+    "run_id": "airport_run",
+    "save_results": true,
+    "generate_plots": true
+  },
+  "analysis": {
+    "max_solutions": 30
+  },
+  "checkpoint": {
+    "enabled": false,
+    "dir": "checkpoints/paper_rerun_airport_sjc",
+    "frequency": 5,
+    "resume": false
+  }
+}

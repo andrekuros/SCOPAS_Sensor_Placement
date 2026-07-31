@@ -10,15 +10,16 @@ SCOPAS optimizes **ground-based sensor networks** for detecting and tracking sma
 
 - **Pareto-based multi-objective optimization** (NSGA-II / NSGA-III): coverage, redundancy/resilience, cost
 - **3D voxelized ray-tracing** with building occlusion and per-sensor field-of-view constraints
-- **Dual-layer airspace analysis**: cooperative (RF identity) and non-cooperative (Radar/EO kinematic) layers
+- **Dual-layer airspace analysis**: cooperative coverage (any modality) and non-cooperative / dark-target coverage (Radar / EO / Acoustic; RF excluded)
 - **Threat-weighted metrics** when critical assets are defined (point defense)
+- **Requirement floors** for planning (`min_M_wp_coop`, `min_M_wp_noncoop`) with Pareto filtering
 - **Airway-stratified coverage** at configurable flight altitudes
 - **OpenStreetMap / GeoJSON** integration for real urban data
 
 Interaction is via **CLI**, **JSON configs**, and **Python imports**. No REST API or plugin system.
 
 Attribution: SCOPAS is an independent implementation inspired by the SCOPAS paper and concepts (Kukulka de Albuquerque et al., DASC 2023), with its own framework structure and workflow.
-Quick onboarding: see `docs/QUICK_INTEGRATION_TUTORIAL.md` for a practical integration path.
+Quick onboarding: see `docs/QUICK_INTEGRATION_TUTORIAL.md`. Sensor parameters: `docs/SENSORS.md`. Demo runs (including Acoustic and target floors): `docs/DEMO_RUNS.md`.
 
 ---
 
@@ -31,6 +32,17 @@ pip install -r requirements.txt
 ```
 
 Python 3.8+ required (3.10+ recommended). All scripts assume the **project root** as working directory.
+
+### Sensor modalities
+
+| Type | Default CapEx | Urban range (small electric sUAS) | Dual-layer role |
+|------|---------------|-----------------------------------|-----------------|
+| Radar | USD 50,000 | ~2–3 km | Non-cooperative |
+| RF | USD 15,000 | ~250 m | Cooperative only |
+| EO | USD 25,000 | ~150 m | Non-cooperative |
+| Acoustic | USD 8,000 | ~300 m | Non-cooperative |
+
+Full parameter tables and rationale: `docs/SENSORS.md`. Acoustic demos: `docs/DEMO_RUNS.md`.
 
 ### Dependencies
 
@@ -129,11 +141,24 @@ See `configs/templates/README.md` for a short copy-edit-run workflow.
 | ------------------ | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
 | `experiment_name`  | string                                                              | Unique name, used for results directory                                                                |
 | `environment`      | `buildings_file`, `sensor_locations_file`, `resolution`             | GeoJSON paths and voxel size (m)                                                                       |
-| `sensors.types`    | per-type dict                                                       | `cost`, `power_W`, `gain_dB`, `sensitivity_dBm`, `frequency_Hz`, `elevation_min/max`, `fov_horizontal` |
+| `sensors.types`    | per-type dict                                                       | `cost`, ranges/FOV, plus type-specific keys (`power_W`, `sensitivity_dBm`, `source_spl_dB`, …). See `docs/SENSORS.md`. |
 | `pareto_search`    | `n_samples`, `generations`, `n_cores`, `min_sensors`, `max_sensors` | GA parameters                                                                                          |
 | `airway_altitudes` | array of floats                                                     | Flight levels in metres, e.g. `[20, 45, 65]`                                                           |
-| `requirements`     | `min_coverage`, `min_overlap`                                       | Thresholds for solution classification                                                                 |
+| `requirements`     | see below                                                           | Planning thresholds / classification floors                                                            |
 | `output`           | `results_dir`, `save_results`, `generate_plots`                     | Output configuration                                                                                   |
+
+
+### `requirements` keys
+
+| Key | Typical value | Role |
+| --- | ------------- | ---- |
+| `min_M_wp_coop` | `0.90` | Dual-layer cooperative floor (preferred) |
+| `min_M_wp_noncoop` | `0.35`–`0.50` | Dual-layer dark-target floor (preferred) |
+| `min_fused_resilience` | optional | Optional fused-resilience floor |
+| `min_coverage` | `0.75`–`0.90` | Legacy / single-layer coverage floor (also used as coop fallback by some tools) |
+| `min_overlap` | `0.30`–`0.35` | Legacy redundancy / overlap floor |
+
+Target-seeking demos: `configs/demo_targets_coop90_noncoop35.json` (practical) and `configs/demo_targets_coop90_noncoop50.json` (stretch). Filter a finished Pareto with `tools/select_requirement_solutions.py`.
 
 
 ### Optional sections
@@ -143,9 +168,22 @@ See `configs/templates/README.md` for a short copy-edit-run workflow.
 | ------------------------- | --------------------------------------------------------------- | --------------------------------------------- |
 | `critical_assets`         | array of `{id, location, protection_radius, weight_multiplier}` | Enables threat-weighted point-defense metrics |
 | `site_activation_cost`    | float                                                           | Fixed cost per unique sensor site             |
-| `optimization.objectives` | `"dual_layer" | "coop_only" | "noncoop_only"`                   | Objective profile for optimization            |
+| `optimization.objectives` | `"dual_layer" \| "coop_only" \| "noncoop_only"`                 | Objective profile for optimization            |
 | `checkpoint`              | `enabled`, `dir`, `frequency`, `resume`                         | GA checkpoint save/resume                     |
 | `analysis`                | `max_solutions`                                                 | Max solutions to keep in Pareto front         |
+
+
+### Provided demo configs
+
+| Config | Purpose |
+| ------ | ------- |
+| `configs/demo_acoustic_dual_layer.json` | Dual-layer NSGA-II with Radar+RF+EO+Acoustic |
+| `configs/demo_acoustic_noncoop.json` | Non-coop only (Radar+EO+Acoustic) |
+| `configs/demo_acoustic_split.json` | Split coop / noncoop fronts |
+| `configs/demo_targets_coop90_noncoop35.json` | Target floors coop≥90% / noncoop≥35% |
+| `configs/demo_targets_coop90_noncoop50.json` | Stretch floors coop≥90% / noncoop≥50% |
+
+Full commands and measured snapshots: `docs/DEMO_RUNS.md`.
 
 
 ### Point Defense Metrics
@@ -161,7 +199,7 @@ When `critical_assets` is present, the framework computes dual-layer metrics ins
 | Cost-Effectiveness (C_A) | **Asset Security ROI**         | Total_Cost / M_wp. CapEx per unit of weighted protection.                                        |
 
 
-**Dual-layer**: M_wp_coop (any sensor) and M_wp_noncoop (Radar/EO only).
+**Dual-layer**: M_wp_coop (any sensor: RF, Radar, EO, Acoustic) and M_wp_noncoop (Radar / EO / Acoustic only; RF excluded).
 
 ### Objective profile semantics
 
@@ -172,6 +210,29 @@ When `critical_assets` is present, the framework computes dual-layer metrics ins
 | `coop_only`               | `(M_wp_coop, cost)`               | Operational planning for compliant traffic       |
 | `noncoop_only`            | `(M_wp_noncoop, cost)`            | Operational planning for non-cooperative threats |
 
+
+### Checking requirement floors
+
+```python
+from src.scopas_metrics import check_dual_layer_requirements
+
+status = check_dual_layer_requirements(
+    metrics,                      # dict with M_wp_coop / M_wp_noncoop
+    min_M_wp_coop=0.90,
+    min_M_wp_noncoop=0.35,
+)
+# status["meets_all"], status["status"] in {"green","yellow","red"}, ...
+```
+
+CLI equivalent after a run:
+
+```bash
+python tools/select_requirement_solutions.py \
+    --results results/demo_targets_coop90_noncoop50/run_targets/ \
+    --min-coop 0.90 --min-noncoop 0.35
+```
+
+Writes `requirement_solutions.json` (feasible set + cheapest).
 
 ---
 
@@ -191,6 +252,7 @@ sensor_types = config["sensors"]["types"]
 candidate = [
     {"type": "Radar", "x": 500, "y": 500, "z": 30},
     {"type": "RF",    "x": 200, "y": 700, "z": 25},
+    {"type": "Acoustic", "x": 350, "y": 450, "z": 20},
 ]
 
 result = evaluate_solution(env, candidate, sensor_types, config=config)
@@ -232,17 +294,17 @@ Without `critical_assets`:
 ### Core Modules
 
 
-| Module                  | Main exports                                                             | Purpose                                                        |
-| ----------------------- | ------------------------------------------------------------------------ | -------------------------------------------------------------- |
-| `environment.py`        | `UrbanEnvironment`                                                       | Load GeoJSON, 3D voxelization, building occlusion, threat maps |
-| `sensors.py`            | `RadarSensor`, `RFSensor`, `EOSensor`, `AcousticSensor`, `create_sensor` | Sensor models                                                  |
-| `propagation.py`        | `check_line_of_sight`, `check_elevation_angle`, `calculate_PD`           | Ray-tracing, detection probability                             |
-| `network_evaluation.py` | `NetworkEvaluator`                                                       | Coverage maps, redundancy, dual-layer evaluation               |
-| `genetic_algorithm.py`  | `SensorNetworkGAGeoJSON`                                                 | NSGA-II/III with GeoJSON sensor locations                      |
-| `deap_base.py`          | `setup_multi_objective_creator`, `create_toolbox`                        | DEAP framework setup                                           |
-| `scopas_metrics.py`     | `calculate_all_scopas_metrics`                                           | Mc, Mg, CA, overlap                                            |
-| `airway_metrics.py`     | `calculate_metrics_per_airway`                                           | Per-altitude metrics                                           |
-| `visualization.py`      | Plotting helpers                                                         | matplotlib/plotly utilities                                    |
+| Module                  | Main exports                                                                 | Purpose                                                        |
+| ----------------------- | ---------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| `environment.py`        | `UrbanEnvironment`                                                           | Load GeoJSON, 3D voxelization, building occlusion, threat maps |
+| `sensors.py`            | `RadarSensor`, `RFSensor`, `EOSensor`, `AcousticSensor`, `create_sensor`     | Sensor models                                                  |
+| `propagation.py`        | `calculate_PD`, `calculate_PD_{Radar,RF,EO,Acoustic}`, `calculate_PLoS_deterministic`, FOV helpers | Per-modality \(P_D\) and occlusion                             |
+| `network_evaluation.py` | `NetworkEvaluator`, `NONCOOP_SENSOR_TYPES`                                   | Coverage maps, redundancy, dual-layer evaluation               |
+| `genetic_algorithm.py`  | `SensorNetworkGAGeoJSON`                                                     | NSGA-II/III with GeoJSON sensor locations                      |
+| `deap_base.py`          | `setup_multi_objective_creator`, `create_toolbox`                            | DEAP framework setup                                           |
+| `scopas_metrics.py`     | `calculate_all_scopas_metrics`, `check_dual_layer_requirements`              | Mc, Mg, CA, overlap, dual-layer floors                         |
+| `airway_metrics.py`     | `calculate_metrics_per_airway`                                               | Per-altitude metrics                                           |
+| `visualization.py`      | Plotting helpers                                                             | matplotlib/plotly utilities                                    |
 
 
 ---
@@ -252,19 +314,20 @@ Without `critical_assets`:
 All tools operate on results directories and accept `--results <path>`.
 
 
-| Tool                                   | Output                                    | Description                                   |
-| -------------------------------------- | ----------------------------------------- | --------------------------------------------- |
-| `tools/plot_pareto_from_results.py`    | `pareto_front.png`, `pareto_front_3d.png` | 2D and 3D Pareto front plots                  |
-| `tools/visualize_pareto_solutions.py`  | `coverage_maps/`                          | Coverage and redundancy heat maps             |
-| `tools/analyze_flight_levels.py`       | `coverage_by_flight_level.png`            | Coverage (Mc) at each airway altitude         |
-| `tools/analyze_coverage_levels.py`     | `cost_vs_coverage_level.png`              | Minimum cost to achieve coverage thresholds   |
-| `tools/calculate_hypervolume.py`       | `hypervolume.json`                        | Hypervolume indicator of Pareto front quality |
-| `tools/generate_convergence_plots.py`  | `evolution_convergence.png`               | Objective convergence over generations        |
-| `tools/generate_2d_overview.py`        | `overview_2d.png`                         | 2D overview of best solution                  |
-| `tools/visualize_multi_airway.py`      | `multi_airway_maps/`                      | Side-by-side altitude comparison maps         |
-| `tools/export_best_solution_3d.py`     | `best_solution_3d.json`                   | Best solution for Three.js 3D viewer          |
-| `tools/export_for_cesium.py`           | `cesium_data.json`                        | Export for Cesium globe viewer (WGS84)        |
-| `tools/generate_all_visualizations.py` | (all above)                               | Run all visualization tools at once           |
+| Tool                                   | Output                                                         | Description                                                          |
+| -------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `tools/plot_pareto_from_results.py`    | `pareto_front.png`, `pareto_front_3d.png`, `pareto_dual_layer_targets.png` | Cost vs coop/noncoop; dual-layer coop×noncoop plot with target box |
+| `tools/select_requirement_solutions.py`| `requirement_solutions.json`                                   | Filter Pareto by `min_M_wp_coop` / `min_M_wp_noncoop` (cheapest first) |
+| `tools/visualize_pareto_solutions.py`  | `coverage_maps/`                                               | Coverage and redundancy heat maps                                    |
+| `tools/analyze_flight_levels.py`       | `coverage_by_flight_level.png`                                 | Coverage (Mc) at each airway altitude                                |
+| `tools/analyze_coverage_levels.py`     | `cost_vs_coverage_level.png`                                   | Minimum cost to achieve coverage thresholds (`--dual-layer`)         |
+| `tools/calculate_hypervolume.py`       | `hypervolume.json`                                             | Hypervolume indicator of Pareto front quality                        |
+| `tools/generate_convergence_plots.py`  | `evolution_convergence.png`                                    | Objective convergence over generations                               |
+| `tools/generate_2d_overview.py`        | `overview_2d.png`                                              | LoS-aware \(P_\mathrm{Net}\) overview (not filled max-range discs) |
+| `tools/visualize_multi_airway.py`      | `multi_airway_maps/`                                           | Side-by-side altitude comparison maps                                |
+| `tools/export_best_solution_3d.py`     | `best_solution_3d.json`                                        | Best solution for Three.js 3D viewer                                 |
+| `tools/export_for_cesium.py`           | `cesium_data.json`                                             | Export for Cesium globe viewer (WGS84)                               |
+| `tools/generate_all_visualizations.py` | (all above)                                                    | Run all visualization tools at once                                  |
 
 
 Coverage heat maps default to `power` (`--coverage-scale power`, `--coverage-power-gamma` default `0.45`): color follows `Pd**gamma`, so `gamma < 1` uses less of the green ramp in the 0.8-1.0 plateau (less "solid dark disk + sudden step"). Use `linear` only if you want a literal 0-1 bar (often looks worse). Also: 256-level LUT, upsample 4x, bilinear + bicubic (display-only). Redundancy default: `--redundancy-gamma 0.5` (same idea on Pd sums).
@@ -315,20 +378,22 @@ Each optimization run creates:
 
 ```
 results/<experiment_name>/<run_id>/
-|-- config.json                   # Copy of the config used
-|-- evaluation_results.json       # Evaluated Pareto solutions with metrics
-|-- pareto_front.json             # Pareto front data (standard output)
-|-- pareto_front.png              # 2D Pareto plot
-|-- pareto_front_3d.png           # 3D Pareto plot
-|-- overview_2d.png               # 2D best-solution overview
-|-- evolution_convergence.png     # Convergence over generations
-|-- coverage_by_flight_level.png  # Coverage at each altitude
-|-- cost_vs_coverage_level.png    # Cost vs coverage threshold
-|-- hypervolume.json              # Hypervolume indicator
-|-- coverage_maps/                # Per-solution coverage heat maps
-|-- multi_airway_maps/            # Per-altitude comparison maps
-|-- best_solution_3d.json         # For Three.js viewer
-`-- cesium_data.json              # For Cesium viewer
+|-- config.json                      # Copy of the config used
+|-- evaluation_results.json          # Evaluated Pareto solutions with metrics
+|-- pareto_front.json                # Pareto front data (standard output)
+|-- pareto_front.png                 # Cost vs coop / noncoop (or legacy coverage)
+|-- pareto_front_3d.png              # 3D Pareto plot
+|-- pareto_dual_layer_targets.png    # Coop × noncoop with requirement box (dual-layer)
+|-- requirement_solutions.json       # Optional: from select_requirement_solutions.py
+|-- overview_2d.png                  # LoS-aware best-solution overview
+|-- evolution_convergence.png        # Convergence over generations
+|-- coverage_by_flight_level.png     # Coverage at each altitude
+|-- cost_vs_coverage_level.png       # Cost vs coverage threshold
+|-- hypervolume.json                 # Hypervolume indicator
+|-- coverage_maps/                   # Per-solution coverage heat maps
+|-- multi_airway_maps/               # Per-altitude comparison maps
+|-- best_solution_3d.json            # For Three.js viewer
+`-- cesium_data.json                 # For Cesium viewer
 ```
 
 Notes:
@@ -336,6 +401,7 @@ Notes:
 - `<run_id>` can be timestamped or explicit (`output.run_id`).
 - Some tools still accept legacy `pareto_results.json` when present.
 - **Cesium export** (`tools/export_for_cesium.py`) expects a `scene_meta.json` in the scene directory (e.g. `data/scenes/airport_sjc/`). Synthetic example scenes under `data/examples/` typically do not include it — use `run_experiment.py --skip-3d` for those, or add scene metadata for your area.
+- Demo target runs typically land under `results/demo_targets_coop90_noncoop35/run_practical/` and `results/demo_targets_coop90_noncoop50/run_targets/`.
 
 ---
 
@@ -343,6 +409,7 @@ Notes:
 
 ```bash
 python -m unittest tests.test_scopas -v
+python -m unittest tests.test_dual_layer_requirements -v
 ```
 
 Fast subset (excludes the ~20–40 s NSGA-II smoke test):

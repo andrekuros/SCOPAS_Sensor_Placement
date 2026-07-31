@@ -14,8 +14,8 @@ from propagation import calculate_PD
 
 # Default site activation cost (rooftop/power/backhaul) per unique location
 DEFAULT_SITE_ACTIVATION_COST = 15_000.0
-# Kinematic/visual sensor types (non-coop); RF is cooperative-only
-NONCOOP_SENSOR_TYPES = ("Radar", "EO")
+# Non-cooperative modalities (no target RF emissions required); RF is cooperative-only
+NONCOOP_SENSOR_TYPES = ("Radar", "EO", "Acoustic")
 
 
 class NetworkEvaluator:
@@ -166,8 +166,8 @@ class NetworkEvaluator:
     ) -> Tuple[np.ndarray, np.ndarray]:
         """
         Compute cooperative and non-cooperative P_Net 3D grids using numpy masking.
-        Cooperative: any sensor (RF, Radar, EO) can detect (compliant / Remote ID).
-        Non-cooperative: only Radar or EO (kinematic/visual); RF sensors are masked.
+        Cooperative: any sensor (RF, Radar, EO, Acoustic) can detect (compliant / Remote ID).
+        Non-cooperative: Radar, EO, or Acoustic; RF sensors are masked.
         """
         active = [s for s in sensor_list if s.is_active]
         if not active:
@@ -219,7 +219,7 @@ class NetworkEvaluator:
     def calculate_network_coverage_noncoop(self, sensor_list: List[Sensor]) -> float:
         """
         Non-cooperative coverage M_c_noncoop: voxel covered only if LoS and within range
-        of a Radar or EO sensor (RF sensors masked). For dark drones with no RF.
+        of a Radar, EO, or Acoustic sensor (RF sensors masked). For dark drones with no RF.
         """
         if not sensor_list:
             return 0.0
@@ -241,8 +241,8 @@ class NetworkEvaluator:
     ) -> float:
         """
         Fused Resilience: fraction of (weighted) threat volume where voxels have
-        Q=1.0 — covered by both RF identity (cooperative) AND kinematic Radar/EO (non-cooperative).
-        Modality diversity: proves critical asset is protected by weapon-grade fused track.
+        Q=1.0 — covered by both cooperative (any modality) AND non-cooperative
+        (Radar / EO / Acoustic) layers. Modality diversity for fused track confidence.
         """
         if not sensor_list:
             return 0.0

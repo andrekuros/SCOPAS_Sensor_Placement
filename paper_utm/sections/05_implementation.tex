@@ -1,0 +1,71 @@
+% Section 5: Implementation
+
+\section{Framework Implementation}
+
+\subsection{Software Architecture}
+
+The framework is implemented in Python 3.10+ with a modular architecture consisting of eight core modules totaling approximately 2,680 lines of code:
+
+\begin{itemize}
+\item \texttt{environment.py}: Urban environment loading and voxelization
+\item \texttt{sensors.py}: Sensor class definitions with physical parameters
+\item \texttt{propagation.py}: Ray-tracing and detection probability calculations
+\item \texttt{network\_evaluation.py}: Network performance assessment
+\item \texttt{genetic\_algorithm.py}: GA implementation using DEAP
+\item \texttt{muscat\_metrics.py}: MUSCAT-compatible metrics computation
+\item \texttt{visualization.py}: Results visualization and reporting
+\item \texttt{download\_osm.py}: OpenStreetMap data acquisition
+\end{itemize}
+
+\subsection{Key Libraries and Dependencies}
+
+\begin{itemize}
+\item \textbf{NumPy/SciPy}: Numerical computations and scientific functions
+\item \textbf{GeoPandas}: Geospatial data handling and GeoJSON processing
+\item \textbf{OSMnx}: OpenStreetMap data download and processing
+\item \textbf{DEAP}: Genetic algorithm framework
+\item \textbf{scikit-image}: 3D line drawing for ray-tracing
+\item \textbf{Plotly/Matplotlib}: Interactive and static visualizations
+\end{itemize}
+
+\subsection{Configuration System}
+
+All experimental parameters are specified via JSON configuration files, enabling reproducibility without code modification. A typical configuration includes:
+
+\begin{itemize}
+\item Environment: building/sensor GeoJSON files, voxel resolution
+\item Sensors: maximum count per type, physical parameters, costs
+\item GA: population size, generations, crossover/mutation probabilities, fitness weights
+\item Requirements: minimum coverage $\mc$, minimum overlap
+\item Output: results directory, visualization formats
+\end{itemize}
+
+This design separates experiment specification from implementation, facilitating systematic parameter studies and reproducible research.
+
+\subsection{Parallelization}
+
+The GA evaluation phase is parallelized across available CPU cores using Python's multiprocessing. For a machine with 16 cores, this provides approximately 12-14x speedup compared to sequential evaluation, further enhancing scalability.
+
+\subsection{Checkpointing and Robustness}
+
+To ensure robustness for long-running optimizations (e.g., the Avenida Paulista case requiring 7.6 hours), the framework implements a checkpointing mechanism that saves the complete genetic algorithm state at user-specified intervals (typically every generation). Each checkpoint includes the current population, hall-of-fame archive, random number generator state, and generation counter. This enables seamless resumption from the most recent checkpoint after interruptions (e.g., system failures or manual stops), validating the framework's practical applicability for production deployments where overnight runs may be interrupted.
+
+\subsection{Computational Optimizations}
+
+Several optimizations reduce computational requirements:
+
+\begin{enumerate}
+\item \textbf{Free Voxel Caching}: Pre-compute and cache the list of unoccupied voxels, reducing evaluation points by the occupancy ratio (typically 5-25\% for urban scenarios).
+
+\item \textbf{Incremental Coverage Maps}: Generate coverage maps per height level only when needed for visualization, using sparse evaluation for metrics calculation.
+
+\item \textbf{Early Termination}: If LoS is blocked in ray-tracing, detection probability is immediately set to zero without further propagation calculations.
+\end{enumerate}
+
+These optimizations enable processing of scenarios with 44,000+ voxels (Avenida Paulista case) in reasonable time frames.
+
+\subsection{Open Source Availability}
+
+The complete framework implementation, including source code, documentation, and example configurations, is available as open-source software to facilitate reproducibility and community extensions.
+
+

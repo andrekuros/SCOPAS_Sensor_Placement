@@ -38,4 +38,4 @@ Requires `scene_meta.json` in the scene directory (see `data/scenes/airport_sjc/
 - **Scroll**: zoom  
 - **Right-drag**: pan  
 
-Sensor colors: Radar (red), RF (blue), EO (green).
+Sensor colors: Radar (red), RF (blue), EO (green), Acoustic (amber/orange).

@@ -50,6 +50,7 @@ candidate = [
     {"type": "Radar", "x": 500, "y": 500, "z": 30},
     {"type": "RF",    "x": 200, "y": 700, "z": 25},
     {"type": "EO",    "x": 400, "y": 300, "z": 35},
+    {"type": "Acoustic", "x": 350, "y": 450, "z": 20},
 ]
 ```
 
@@ -110,6 +111,9 @@ For a complete runnable script, see `examples/custom_algorithm_demo.py`.
 - `README.md` (this file): quick start and day-to-day commands.
 - `DOCUMENTATION.md`: full technical reference.
 - `docs/QUICK_INTEGRATION_TUTORIAL.md`: step-by-step integration tutorial.
+- `docs/SENSORS.md`: Radar / RF / EO / Acoustic parameters, costs, and ranges.
+- `docs/DEMO_RUNS.md`: Acoustic demos and dual-layer target floors (90% coop / 35–50% noncoop).
+- `docs/PUBLICATION_ANALYSIS.md`: Research framing and publication roadmap.
 
 ## Usage
 
@@ -172,7 +176,8 @@ Define your sensor deployment in a JSON file:
   [
     {"type": "Radar", "x": 500, "y": 500, "z": 30},
     {"type": "RF",    "x": 200, "y": 700, "z": 25},
-    {"type": "EO",    "x": 400, "y": 300, "z": 35}
+    {"type": "EO",    "x": 400, "y": 300, "z": 35},
+    {"type": "Acoustic", "x": 350, "y": 450, "z": 20}
   ]
 ]
 ```
@@ -210,16 +215,20 @@ All tools work on existing results directories:
 
 ```bash
 python tools/plot_pareto_from_results.py    --results results/<exp>/<run>/
+python tools/select_requirement_solutions.py --results results/<exp>/<run>/ \
+    --min-coop 0.90 --min-noncoop 0.35
 python tools/visualize_pareto_solutions.py  --results results/<exp>/<run>/
 python tools/analyze_flight_levels.py       --results results/<exp>/<run>/
 python tools/analyze_coverage_levels.py     --results results/<exp>/<run>/ --dual-layer
 python tools/calculate_hypervolume.py       --results results/<exp>/<run>/
 python tools/generate_convergence_plots.py  --results results/<exp>/<run>/
-python tools/generate_2d_overview.py        --results results/<exp>/<run>/
+python tools/generate_2d_overview.py        --results results/<exp>/<run>/   # LoS-aware P_Net heatmap
 python tools/visualize_multi_airway.py      --results results/<exp>/<run>/
 python tools/export_best_solution_3d.py     --results results/<exp>/<run>/
 python tools/export_for_cesium.py           --results results/<exp>/<run>/
 ```
+
+Dual-layer plots also write `pareto_dual_layer_targets.png` (coop × noncoop with requirement box when floors are in the config). `select_requirement_solutions.py` writes `requirement_solutions.json`.
 
 ---
 
@@ -228,6 +237,11 @@ python tools/export_for_cesium.py           --results results/<exp>/<run>/
 | Config | Scene | Description |
 |--------|-------|-------------|
 | `quick_test.json` | Synthetic city | Smoke test (8 pop, 3 gen, 1 core). Use to verify installation. |
+| `demo_acoustic_dual_layer.json` | Synthetic city | **Demo:** dual-layer NSGA-II with Radar+RF+EO+Acoustic |
+| `demo_acoustic_noncoop.json` | Synthetic city | **Demo:** non-coop only (Radar+EO+Acoustic), low-cost acoustic mix |
+| `demo_acoustic_split.json` | Synthetic city | **Demo:** split coop/noncoop fronts (`--split-objectives`) |
+| `demo_targets_coop90_noncoop35.json` | Synthetic city | **Demo:** dual-layer target floors coop≥90% / noncoop≥35% |
+| `demo_targets_coop90_noncoop50.json` | Synthetic city | **Demo:** stretch floors coop≥90% / noncoop≥50% |
 | `pareto_city_10x10_final.json` | Synthetic city | Full city benchmark (1 km x 1 km, 196 buildings) |
 | `city_allocation_assets.json` | Synthetic city | City with 5 critical assets, threat-weighted dual-layer metrics |
 | `point_defense_airport_sjc.json` | Airport SJC | Real-world airport scene with runway corridors |
@@ -236,7 +250,7 @@ python tools/export_for_cesium.py           --results results/<exp>/<run>/
 | `point_defense_airport_sjc_noncoop_90.json` | Airport SJC | Target M_c_noncoop >= 0.90 |
 | `point_defense_airport_sjc_3h.json` | Airport SJC | Long run with checkpoint/resume |
 | `point_defense_airport_sjc_reference_long.json` | Airport SJC | Extended reference run (large search; long runtime) |
-| `point_defense_airport_sjc_no_rf_95.json` | Airport SJC | Radar + EO only, 95% protection, 15 m resolution |
+| `point_defense_airport_sjc_no_rf_95.json` | Airport SJC | Radar + EO (+ Acoustic) dark-target mix, 95% protection, 15 m resolution |
 | `point_defense_experiment.json` | Synthetic city | Point defense with critical assets |
 | `point_defense_stadium_arena.json` | Stadium | Stadium/arena protection scenario |
 | `open_farm.json` | Open farm | Rural open-field scenario |
@@ -263,7 +277,8 @@ A config JSON file defines:
     "types": {
       "Radar": {"cost": 50000, "power_W": 1000, "gain_dB": 30, "frequency_Hz": 1e10},
       "RF":    {"cost": 15000, "sensitivity_dBm": -90, "frequency_Hz": 9e8},
-      "EO":    {"cost": 25000}
+      "EO":    {"cost": 25000},
+      "Acoustic": {"cost": 8000, "max_range": 300, "source_spl_dB": 80}
     }
   },
   "pareto_search": {
@@ -280,12 +295,17 @@ A config JSON file defines:
   "critical_assets": [                          // Triggers threat-weighted metrics
     {"id": "Hospital", "location": [500,500,30], "protection_radius": 120, "weight_multiplier": 1.0}
   ],
-  "requirements": {"min_coverage": 0.75, "min_overlap": 0.35},
+  "requirements": {
+    "min_M_wp_coop": 0.90,                      // Dual-layer cooperative floor
+    "min_M_wp_noncoop": 0.35,                   // Dual-layer dark-target floor (0.50 = stretch)
+    "min_coverage": 0.75,                       // Legacy / fallback coverage floor
+    "min_overlap": 0.35
+  },
   "output": {"results_dir": "results/my_experiment", "save_results": true}
 }
 ```
 
-When `critical_assets` is present, the framework computes dual-layer metrics (M_wp_coop, M_wp_noncoop, fused_resilience) instead of basic coverage/redundancy.
+When `critical_assets` is present, the framework computes dual-layer metrics (`M_wp_coop`, `M_wp_noncoop`, `fused_resilience`) instead of basic coverage/redundancy. Use `tools/select_requirement_solutions.py` to filter a finished Pareto by the floors above.
 
 ---
 
@@ -300,11 +320,11 @@ When `critical_assets` is present, the framework computes dual-layer metrics (M_
 |-- src/                         # Core framework
 |   |-- scopas_core.py           # Entry point: load config, evaluate solutions
 |   |-- environment.py           # 3D voxelized urban environment
-|   |-- sensors.py               # Sensor models (Radar, RF, EO)
+|   |-- sensors.py               # Sensor models (Radar, RF, EO, Acoustic)
 |   |-- propagation.py           # Ray-tracing, P_D, line-of-sight
 |   |-- network_evaluation.py    # Dual-layer network metrics (M_wp, fused resilience)
 |   |-- genetic_algorithm.py     # NSGA-II/III engine with DEAP
-|   |-- scopas_metrics.py        # SCOPAS metrics (Mc, Mg, CA, overlap)
+|   |-- scopas_metrics.py        # SCOPAS metrics + dual-layer requirement checks
 |   |-- airway_metrics.py        # Per-altitude airway metrics
 |   |-- visualization.py         # Plotting utilities
 |   |-- download_osm.py          # Download building data from OpenStreetMap
@@ -317,19 +337,21 @@ When `critical_assets` is present, the framework computes dual-layer metrics (M_
 |
 |-- tools/                       # Post-processing and analysis
 |   |-- plot_pareto_from_results.py
+|   |-- select_requirement_solutions.py
 |   |-- visualize_pareto_solutions.py
 |   |-- analyze_flight_levels.py
 |   |-- analyze_coverage_levels.py
 |   |-- calculate_hypervolume.py
 |   |-- generate_convergence_plots.py
-|   |-- generate_2d_overview.py
+|   |-- generate_2d_overview.py  # LoS-aware P_Net overview
 |   |-- visualize_multi_airway.py
 |   |-- export_best_solution_3d.py
 |   |-- export_for_cesium.py
 |   |-- generate_all_visualizations.py
 |   `-- download_dem.py
 |
-|-- configs/                     # Experiment configurations
+|-- configs/                     # Experiment configurations (+ templates/, demos)
+|-- docs/                        # SENSORS, DEMO_RUNS, tutorials, publication notes
 |-- data/                        # Input data (GeoJSON scenes)
 |   |-- examples/                # Synthetic scenes
 |   |-- scenes/                  # Prepared real/synthetic scenes
@@ -346,8 +368,8 @@ When `critical_assets` is present, the framework computes dual-layer metrics (M_
 
 | Metric | Description |
 |--------|-------------|
-| **M_wp_coop** | Threat-weighted cooperative coverage (RF sensors) |
-| **M_wp_noncoop** | Threat-weighted non-cooperative coverage (Radar, EO) |
+| **M_wp_coop** | Threat-weighted cooperative coverage (any modality: RF, Radar, EO, Acoustic) |
+| **M_wp_noncoop** | Threat-weighted non-cooperative coverage (Radar, EO, Acoustic) |
 | **Fused Resilience** | Combined dual-layer resilience score |
 | **M_c** | Global area coverage fraction |
 | **Cost** | Total deployment cost (sensor + site activation) |
@@ -360,6 +382,7 @@ When `critical_assets` is present, the framework computes dual-layer metrics (M_
 
 ```bash
 python -m unittest tests.test_scopas -v
+python -m unittest tests.test_dual_layer_requirements -v
 ```
 
 Quick subset (no NSGA-II smoke, a few seconds):
@@ -402,5 +425,6 @@ python -m unittest tests.test_scopas.TestConfig tests.test_scopas.TestEnvironmen
 ## Sharing / reproducibility
 
 - **Smoke test**: `configs/quick_test.json` (fast NSGA-II).
+- **Acoustic demos**: `configs/demo_acoustic_*.json` and target-seeking `demo_targets_coop90_noncoop{35,50}.json` (see `docs/DEMO_RUNS.md`; filter with `tools/select_requirement_solutions.py`).
 - **Reference experiments** (paper-style benchmarks): `configs/pareto_city_10x10_final.json` (city), `configs/point_defense_airport_sjc.json` (airport; use `--split-objectives` for separate coop/noncoop fronts).
-- **Docs map**: this file → quick commands; `DOCUMENTATION.md` → full reference; `docs/QUICK_INTEGRATION_TUTORIAL.md` → onboarding; `docs/SENSORS.md` → sensor parameters.
+- **Docs map**: this file → quick commands; `DOCUMENTATION.md` → full reference; `docs/QUICK_INTEGRATION_TUTORIAL.md` → onboarding; `docs/SENSORS.md` → sensor parameters; `docs/DEMO_RUNS.md` → Acoustic + target-floor demos; `docs/PUBLICATION_ANALYSIS.md` → research roadmap.

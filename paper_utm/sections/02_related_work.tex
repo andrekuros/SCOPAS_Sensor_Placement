@@ -1,0 +1,34 @@
+% Section 2: Related Work
+
+\section{Related Work}
+
+\subsection{Multi-Sensor C-UAS Systems}
+
+Detection and tracking of small UAVs has been extensively studied using various sensor modalities. Guvenc et al. \cite{guvenc2018detection} demonstrated that multi-sensor fusion significantly improves detection rates compared to single-sensor approaches. Jovanoska et al. \cite{jovanoska2018multisensor} developed data fusion techniques combining radar, RF, and optical sensors, achieving robust tracking even with partial sensor failures. Dudczyk et al. \cite{dudczyk2022multisensor} presented a 3D multi-sensor fusion framework, though focused on detection algorithms rather than optimal placement.
+
+\subsection{Optimization Methods for Sensor Placement}
+
+The sensor placement problem has been approached using various optimization techniques, each with distinct trade-offs:
+
+\textbf{Exhaustive Search}: MUSCAT \cite{muscat2023} evaluates all possible sensor combinations to guarantee finding the global optimum. While theoretically optimal, this $O(2^n)$ approach becomes intractable for $n > 15$ locations. For a realistic urban scenario with 50 potential positions, exhaustive search would require $2^{50} \approx 10^{15}$ evaluations—computationally infeasible.
+
+\textbf{Mathematical Programming}: Aievola et al. \cite{aievola2022ground} formulated radar network design as Mixed-Integer Programming (MIP) for UAM applications. While MIP provides optimality guarantees for convex problems, sensor placement with heterogeneous types and complex propagation models yields non-convex formulations that similarly suffer from computational intractability. Katoh and Ibaraki \cite{katoh1998resource} survey MIP approaches for resource allocation, noting scalability challenges.
+
+\textbf{Greedy Heuristics}: Sequential greedy selection offers polynomial complexity but frequently yields suboptimal solutions, particularly for problems requiring balanced coverage and redundancy—missing opportunities for synergistic sensor placement.
+
+\textbf{Meta-heuristics}: Genetic Algorithms have successfully addressed network optimization in other domains \cite{zou2019WSN, charlish2016radar}, offering good solution quality with manageable computational requirements. However, no existing work applies GA specifically to heterogeneous C-UAS sensor placement with urban environment constraints.
+
+The MUSCAT framework \cite{muscat2023} specifically addressed multi-sensor C-UAS placement, establishing valuable methodology (four phases, metrics, requirements) and demonstrating the importance of considering multiple sensor types. Our work adopts MUSCAT's methodological framework while addressing its scalability limitation through GA-based optimization.
+
+\subsection{Genetic Algorithms for Network Optimization}
+
+Genetic Algorithms have been successfully applied to network design problems due to their ability to explore large solution spaces efficiently. Holland \cite{holland1992adaptation} established the theoretical foundations, while recent applications include wireless sensor network placement \cite{zou2019WSN} and radar network configuration \cite{charlish2016radar}. Unlike gradient-based methods, GAs can handle discrete combinatorial problems and multiple objectives simultaneously, making them well-suited for sensor placement with heterogeneous costs and capabilities.
+
+\subsection{Urban Environment Modeling}
+
+Accurate propagation modeling in urban environments is essential for realistic sensor network design. The 3GPP channel model \cite{3gpp38901} provides statistical LoS probability models based on building density and heights. However, deterministic approaches using actual building geometries offer higher accuracy. OpenStreetMap has emerged as a valuable source of urban data, successfully used in various telecommunications and sensor network studies \cite{osm_applications}. The integration of OSM data with sensor placement optimization, particularly for C-UAS applications, remains an underexplored area that our work addresses.
+
+\subsection{Gap Analysis}
+
+Despite significant progress, current approaches face limitations in scalability (exhaustive vs. heuristic optimization), urban environment modeling (statistical vs. deterministic), and validation with real-world data. Our work bridges these gaps by combining GA-based optimization with OSM urban data and deterministic ray-tracing, validated against both synthetic scenarios and real urban environments.
+

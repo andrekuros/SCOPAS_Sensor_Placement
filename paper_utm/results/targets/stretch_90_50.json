@@ -1,0 +1,1724 @@
+[
+  {
+    "solution_id": 1,
+    "sensors": [
+      {
+        "type": "Acoustic",
+        "x": 520.0,
+        "y": 320.0,
+        "z": 20,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Radar",
+        "x": 260.0,
+        "y": 140.0,
+        "z": 60,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 760.0,
+        "y": 620.0,
+        "z": 55,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Radar",
+        "x": 260.0,
+        "y": 640.0,
+        "z": 45,
+        "azimuth_deg": 240.0
+      }
+    ],
+    "M_wp_coop": 0.21994076496404885,
+    "M_wp_noncoop": 0.21994076496404885,
+    "M_vuln_coop": 0.7800592350359512,
+    "M_vuln_noncoop": 0.7800592350359512,
+    "fused_resilience": 0.142504462682206,
+    "asset_security_roi": 800215.4581428716,
+    "asset_security_roi_noncoop": 800215.4581428716,
+    "M_c_coop": 0.21994076496404885,
+    "M_c_noncoop": 0.21994076496404885,
+    "coverage": 0.21994076496404885,
+    "redundancy": 0.17905253497335138,
+    "cost": 176000.0,
+    "cost_hardware": 116000.0,
+    "cost_sites": 60000.0,
+    "num_sensors": 4,
+    "unique_sites": 4,
+    "fitness": [
+      0.21994076496404885,
+      0.21994076496404885,
+      1.76
+    ],
+    "evaluated_voxels": 2130,
+    "total_voxels": 2352
+  },
+  {
+    "solution_id": 2,
+    "sensors": [
+      {
+        "type": "Acoustic",
+        "x": 520.0,
+        "y": 320.0,
+        "z": 20,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Radar",
+        "x": 260.0,
+        "y": 140.0,
+        "z": 60,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 760.0,
+        "y": 620.0,
+        "z": 55,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Radar",
+        "x": 260.0,
+        "y": 640.0,
+        "z": 45,
+        "azimuth_deg": 240.0
+      }
+    ],
+    "M_wp_coop": 0.21994076496404885,
+    "M_wp_noncoop": 0.21994076496404885,
+    "M_vuln_coop": 0.7800592350359512,
+    "M_vuln_noncoop": 0.7800592350359512,
+    "fused_resilience": 0.142504462682206,
+    "asset_security_roi": 800215.4581428716,
+    "asset_security_roi_noncoop": 800215.4581428716,
+    "M_c_coop": 0.21994076496404885,
+    "M_c_noncoop": 0.21994076496404885,
+    "coverage": 0.21994076496404885,
+    "redundancy": 0.17905253497335138,
+    "cost": 176000.0,
+    "cost_hardware": 116000.0,
+    "cost_sites": 60000.0,
+    "num_sensors": 4,
+    "unique_sites": 4,
+    "fitness": [
+      0.21994076496404885,
+      0.21994076496404885,
+      1.76
+    ],
+    "evaluated_voxels": 2130,
+    "total_voxels": 2352
+  },
+  {
+    "solution_id": 3,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 220.0,
+        "y": 640.0,
+        "z": 40,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 520.0,
+        "y": 360.0,
+        "z": 35,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 90.0,
+        "y": 490.0,
+        "z": 15,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 160.0,
+        "y": 40.0,
+        "z": 50,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 290.0,
+        "y": 290.0,
+        "z": 15,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Radar",
+        "x": 120.0,
+        "y": 860.0,
+        "z": 60,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Radar",
+        "x": 260.0,
+        "y": 640.0,
+        "z": 45,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Radar",
+        "x": 660.0,
+        "y": 540.0,
+        "z": 40,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 320.0,
+        "y": 920.0,
+        "z": 45,
+        "azimuth_deg": 120.0
+      }
+    ],
+    "M_wp_coop": 0.9720995831721124,
+    "M_wp_noncoop": 0.3686966825574555,
+    "M_vuln_coop": 0.027900416827887575,
+    "M_vuln_noncoop": 0.6313033174425444,
+    "fused_resilience": 0.31514508209296044,
+    "asset_security_roi": 378562.0386742258,
+    "asset_security_roi_noncoop": 998110.418155588,
+    "M_c_coop": 0.9720995831721124,
+    "M_c_noncoop": 0.3686966825574555,
+    "coverage": 0.9720995831721124,
+    "redundancy": 3.5952527672453023,
+    "cost": 368000.0,
+    "cost_hardware": 233000.0,
+    "cost_sites": 135000.0,
+    "num_sensors": 9,
+    "unique_sites": 9,
+    "fitness": [
+      0.9720995831721124,
+      0.3686966825574555,
+      3.68
+    ],
+    "evaluated_voxels": 2130,
+    "total_voxels": 2352
+  },
+  {
+    "solution_id": 4,
+    "sensors": [
+      {
+        "type": "Acoustic",
+        "x": 520.0,
+        "y": 320.0,
+        "z": 20,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 860.0,
+        "y": 20.0,
+        "z": 45,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "EO",
+        "x": 960.0,
+        "y": 140.0,
+        "z": 25,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 620.0,
+        "y": 160.0,
+        "z": 55,
+        "azimuth_deg": 0.0
+      }
+    ],
+    "M_wp_coop": 0.7567724723167797,
+    "M_wp_noncoop": 0.014422543780414772,
+    "M_vuln_coop": 0.2432275276832203,
+    "M_vuln_noncoop": 0.9855774562195853,
+    "fused_resilience": 1.0897297379880818e-06,
+    "asset_security_roi": 153282.53106891975,
+    "asset_security_roi_noncoop": 8042963.971274144,
+    "M_c_coop": 0.7567724723167797,
+    "M_c_noncoop": 0.014422543780414772,
+    "coverage": 0.7567724723167797,
+    "redundancy": 0.7650013269431506,
+    "cost": 116000.0,
+    "cost_hardware": 56000.0,
+    "cost_sites": 60000.0,
+    "num_sensors": 4,
+    "unique_sites": 4,
+    "fitness": [
+      0.7567724723167797,
+      0.014422543780414772,
+      1.16
+    ],
+    "evaluated_voxels": 2130,
+    "total_voxels": 2352
+  },
+  {
+    "solution_id": 5,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 220.0,
+        "y": 640.0,
+        "z": 40,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 520.0,
+        "y": 360.0,
+        "z": 35,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 90.0,
+        "y": 490.0,
+        "z": 15,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 160.0,
+        "y": 40.0,
+        "z": 50,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 290.0,
+        "y": 290.0,
+        "z": 15,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Radar",
+        "x": 120.0,
+        "y": 860.0,
+        "z": 60,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Radar",
+        "x": 260.0,
+        "y": 640.0,
+        "z": 45,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Radar",
+        "x": 660.0,
+        "y": 540.0,
+        "z": 40,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "EO",
+        "x": 520.0,
+        "y": 360.0,
+        "z": 35,
+        "azimuth_deg": 120.0
+      }
+    ],
+    "M_wp_coop": 0.9570534591650881,
+    "M_wp_noncoop": 0.44533468396063625,
+    "M_vuln_coop": 0.042946540834911895,
+    "M_vuln_noncoop": 0.5546653160393638,
+    "fused_resilience": 0.35201904809829787,
+    "asset_security_roi": 379289.1572814261,
+    "asset_security_roi_noncoop": 815117.2883540463,
+    "M_c_coop": 0.9570534591650881,
+    "M_c_noncoop": 0.44533468396063625,
+    "coverage": 0.9570534591650881,
+    "redundancy": 2.9030581923888086,
+    "cost": 363000.0,
+    "cost_hardware": 243000.0,
+    "cost_sites": 120000.0,
+    "num_sensors": 9,
+    "unique_sites": 8,
+    "fitness": [
+      0.9570534591650881,
+      0.44533468396063625,
+      3.63
+    ],
+    "evaluated_voxels": 2130,
+    "total_voxels": 2352
+  },
+  {
+    "solution_id": 6,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 220.0,
+        "y": 640.0,
+        "z": 40,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 520.0,
+        "y": 360.0,
+        "z": 35,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 90.0,
+        "y": 490.0,
+        "z": 15,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 160.0,
+        "y": 40.0,
+        "z": 50,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 290.0,
+        "y": 290.0,
+        "z": 15,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Radar",
+        "x": 120.0,
+        "y": 860.0,
+        "z": 60,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 420.0,
+        "y": 440.0,
+        "z": 55,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 360.0,
+        "y": 140.0,
+        "z": 35,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 260.0,
+        "y": 40.0,
+        "z": 30,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 320.0,
+        "y": 920.0,
+        "z": 45,
+        "azimuth_deg": 120.0
+      }
+    ],
+    "M_wp_coop": 0.9816570843208536,
+    "M_wp_noncoop": 0.10665763754945726,
+    "M_vuln_coop": 0.018342915679146365,
+    "M_vuln_noncoop": 0.8933423624505428,
+    "fused_resilience": 0.07075261068139842,
+    "asset_security_roi": 326998.0985489241,
+    "asset_security_roi_noncoop": 3009629.759061108,
+    "M_c_coop": 0.9816570843208536,
+    "M_c_noncoop": 0.10665763754945726,
+    "coverage": 0.9816570843208536,
+    "redundancy": 4.920793273575681,
+    "cost": 321000.0,
+    "cost_hardware": 171000.0,
+    "cost_sites": 150000.0,
+    "num_sensors": 10,
+    "unique_sites": 10,
+    "fitness": [
+      0.9816570843208536,
+      0.10665763754945726,
+      3.21
+    ],
+    "evaluated_voxels": 2130,
+    "total_voxels": 2352
+  },
+  {
+    "solution_id": 7,
+    "sensors": [
+      {
+        "type": "Acoustic",
+        "x": 520.0,
+        "y": 320.0,
+        "z": 20,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Radar",
+        "x": 260.0,
+        "y": 640.0,
+        "z": 45,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Radar",
+        "x": 660.0,
+        "y": 540.0,
+        "z": 40,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "EO",
+        "x": 520.0,
+        "y": 360.0,
+        "z": 35,
+        "azimuth_deg": 120.0
+      }
+    ],
+    "M_wp_coop": 0.393633271216582,
+    "M_wp_noncoop": 0.393633271216582,
+    "M_vuln_coop": 0.606366728783418,
+    "M_vuln_noncoop": 0.606366728783418,
+    "fused_resilience": 0.298482204441862,
+    "asset_security_roi": 490304.08279133745,
+    "asset_security_roi_noncoop": 490304.08279133745,
+    "M_c_coop": 0.393633271216582,
+    "M_c_noncoop": 0.393633271216582,
+    "coverage": 0.393633271216582,
+    "redundancy": 0.20469919763430588,
+    "cost": 193000.0,
+    "cost_hardware": 133000.0,
+    "cost_sites": 60000.0,
+    "num_sensors": 4,
+    "unique_sites": 4,
+    "fitness": [
+      0.393633271216582,
+      0.393633271216582,
+      1.93
+    ],
+    "evaluated_voxels": 2130,
+    "total_voxels": 2352
+  },
+  {
+    "solution_id": 8,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 890.0,
+        "y": 290.0,
+        "z": 15,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 290.0,
+        "y": 90.0,
+        "z": 15,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "Radar",
+        "x": 260.0,
+        "y": 640.0,
+        "z": 45,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Radar",
+        "x": 660.0,
+        "y": 540.0,
+        "z": 40,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "EO",
+        "x": 520.0,
+        "y": 360.0,
+        "z": 35,
+        "azimuth_deg": 120.0
+      }
+    ],
+    "M_wp_coop": 0.6893786731051822,
+    "M_wp_noncoop": 0.38572633698255976,
+    "M_vuln_coop": 0.3106213268948178,
+    "M_vuln_noncoop": 0.6142736630174402,
+    "fused_resilience": 0.298482204441862,
+    "asset_security_roi": 333633.7617814697,
+    "asset_security_roi_noncoop": 596277.6661796864,
+    "M_c_coop": 0.6893786731051822,
+    "M_c_noncoop": 0.38572633698255976,
+    "coverage": 0.6893786731051822,
+    "redundancy": 0.8181868459780651,
+    "cost": 230000.0,
+    "cost_hardware": 155000.0,
+    "cost_sites": 75000.0,
+    "num_sensors": 5,
+    "unique_sites": 5,
+    "fitness": [
+      0.6893786731051822,
+      0.38572633698255976,
+      2.3
+    ],
+    "evaluated_voxels": 2130,
+    "total_voxels": 2352
+  },
+  {
+    "solution_id": 9,
+    "sensors": [
+      {
+        "type": "Acoustic",
+        "x": 520.0,
+        "y": 320.0,
+        "z": 20,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Radar",
+        "x": 260.0,
+        "y": 140.0,
+        "z": 60,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 760.0,
+        "y": 620.0,
+        "z": 55,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 620.0,
+        "y": 160.0,
+        "z": 55,
+        "azimuth_deg": 0.0
+      }
+    ],
+    "M_wp_coop": 0.7628278794441318,
+    "M_wp_noncoop": 0.0585076907862776,
+    "M_vuln_coop": 0.23717212055586823,
+    "M_vuln_noncoop": 0.9414923092137224,
+    "fused_resilience": 0.0023933632650010575,
+    "asset_security_roi": 184838.55113259086,
+    "asset_security_roi_noncoop": 2409939.5840977225,
+    "M_c_coop": 0.7628278794441318,
+    "M_c_noncoop": 0.0585076907862776,
+    "coverage": 0.7628278794441318,
+    "redundancy": 0.8309842438700692,
+    "cost": 141000.0,
+    "cost_hardware": 81000.0,
+    "cost_sites": 60000.0,
+    "num_sensors": 4,
+    "unique_sites": 4,
+    "fitness": [
+      0.7628278794441318,
+      0.0585076907862776,
+      1.41
+    ],
+    "evaluated_voxels": 2130,
+    "total_voxels": 2352
+  },
+  {
+    "solution_id": 10,
+    "sensors": [
+      {
+        "type": "Acoustic",
+        "x": 520.0,
+        "y": 320.0,
+        "z": 20,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "EO",
+        "x": 620.0,
+        "y": 540.0,
+        "z": 40,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 860.0,
+        "y": 20.0,
+        "z": 45,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 760.0,
+        "y": 620.0,
+        "z": 55,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Radar",
+        "x": 260.0,
+        "y": 640.0,
+        "z": 45,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Radar",
+        "x": 660.0,
+        "y": 540.0,
+        "z": 40,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "EO",
+        "x": 520.0,
+        "y": 360.0,
+        "z": 35,
+        "azimuth_deg": 120.0
+      }
+    ],
+    "M_wp_coop": 0.42521567131918814,
+    "M_wp_noncoop": 0.42521567131918814,
+    "M_vuln_coop": 0.5747843286808119,
+    "M_vuln_noncoop": 0.5747843286808119,
+    "fused_resilience": 0.30248757510701113,
+    "asset_security_roi": 656137.6233722314,
+    "asset_security_roi_noncoop": 656137.6233722314,
+    "M_c_coop": 0.42521567131918814,
+    "M_c_noncoop": 0.42521567131918814,
+    "coverage": 0.42521567131918814,
+    "redundancy": 0.24041705594155394,
+    "cost": 279000.0,
+    "cost_hardware": 174000.0,
+    "cost_sites": 105000.0,
+    "num_sensors": 7,
+    "unique_sites": 7,
+    "fitness": [
+      0.42521567131918814,
+      0.42521567131918814,
+      2.79
+    ],
+    "evaluated_voxels": 2130,
+    "total_voxels": 2352
+  },
+  {
+    "solution_id": 11,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 220.0,
+        "y": 640.0,
+        "z": 40,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "Radar",
+        "x": 420.0,
+        "y": 740.0,
+        "z": 50,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 860.0,
+        "y": 20.0,
+        "z": 45,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 360.0,
+        "y": 140.0,
+        "z": 35,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 260.0,
+        "y": 40.0,
+        "z": 30,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 320.0,
+        "y": 920.0,
+        "z": 45,
+        "azimuth_deg": 120.0
+      }
+    ],
+    "M_wp_coop": 0.9424022218150401,
+    "M_wp_noncoop": 0.14568981996065172,
+    "M_vuln_coop": 0.057597778184959925,
+    "M_vuln_noncoop": 0.8543101800393482,
+    "fused_resilience": 0.11085606881491954,
+    "asset_security_roi": 213284.72635906955,
+    "asset_security_roi_noncoop": 1379643.4099121448,
+    "M_c_coop": 0.9424022218150401,
+    "M_c_noncoop": 0.14568981996065172,
+    "coverage": 0.9424022218150401,
+    "redundancy": 2.3056781929503316,
+    "cost": 201000.0,
+    "cost_hardware": 111000.0,
+    "cost_sites": 90000.0,
+    "num_sensors": 6,
+    "unique_sites": 6,
+    "fitness": [
+      0.9424022218150401,
+      0.14568981996065172,
+      2.01
+    ],
+    "evaluated_voxels": 2130,
+    "total_voxels": 2352
+  },
+  {
+    "solution_id": 12,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 890.0,
+        "y": 290.0,
+        "z": 15,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Radar",
+        "x": 260.0,
+        "y": 140.0,
+        "z": 60,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 760.0,
+        "y": 620.0,
+        "z": 55,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Radar",
+        "x": 260.0,
+        "y": 640.0,
+        "z": 45,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Radar",
+        "x": 660.0,
+        "y": 540.0,
+        "z": 40,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "EO",
+        "x": 520.0,
+        "y": 360.0,
+        "z": 35,
+        "azimuth_deg": 120.0
+      }
+    ],
+    "M_wp_coop": 0.5594678724766624,
+    "M_wp_noncoop": 0.41000205529961703,
+    "M_vuln_coop": 0.4405321275233376,
+    "M_vuln_noncoop": 0.5899979447003829,
+    "fused_resilience": 0.30087556770686313,
+    "asset_security_roi": 514774.8676346265,
+    "asset_security_roi_noncoop": 702435.5031331206,
+    "M_c_coop": 0.5594678724766624,
+    "M_c_noncoop": 0.41000205529961703,
+    "coverage": 0.5594678724766624,
+    "redundancy": 0.5843488790369623,
+    "cost": 288000.0,
+    "cost_hardware": 198000.0,
+    "cost_sites": 90000.0,
+    "num_sensors": 6,
+    "unique_sites": 6,
+    "fitness": [
+      0.5594678724766624,
+      0.41000205529961703,
+      2.88
+    ],
+    "evaluated_voxels": 2130,
+    "total_voxels": 2352
+  },
+  {
+    "solution_id": 13,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 890.0,
+        "y": 290.0,
+        "z": 15,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Radar",
+        "x": 260.0,
+        "y": 140.0,
+        "z": 60,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 760.0,
+        "y": 620.0,
+        "z": 55,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Radar",
+        "x": 260.0,
+        "y": 640.0,
+        "z": 45,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Radar",
+        "x": 660.0,
+        "y": 540.0,
+        "z": 40,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "EO",
+        "x": 520.0,
+        "y": 360.0,
+        "z": 35,
+        "azimuth_deg": 120.0
+      }
+    ],
+    "M_wp_coop": 0.5594678724766624,
+    "M_wp_noncoop": 0.41000205529961703,
+    "M_vuln_coop": 0.4405321275233376,
+    "M_vuln_noncoop": 0.5899979447003829,
+    "fused_resilience": 0.30087556770686313,
+    "asset_security_roi": 514774.8676346265,
+    "asset_security_roi_noncoop": 702435.5031331206,
+    "M_c_coop": 0.5594678724766624,
+    "M_c_noncoop": 0.41000205529961703,
+    "coverage": 0.5594678724766624,
+    "redundancy": 0.5843488790369623,
+    "cost": 288000.0,
+    "cost_hardware": 198000.0,
+    "cost_sites": 90000.0,
+    "num_sensors": 6,
+    "unique_sites": 6,
+    "fitness": [
+      0.5594678724766624,
+      0.41000205529961703,
+      2.88
+    ],
+    "evaluated_voxels": 2130,
+    "total_voxels": 2352
+  },
+  {
+    "solution_id": 14,
+    "sensors": [
+      {
+        "type": "Radar",
+        "x": 740.0,
+        "y": 540.0,
+        "z": 45,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 520.0,
+        "y": 360.0,
+        "z": 35,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Radar",
+        "x": 260.0,
+        "y": 140.0,
+        "z": 60,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 760.0,
+        "y": 620.0,
+        "z": 55,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Radar",
+        "x": 260.0,
+        "y": 640.0,
+        "z": 45,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Radar",
+        "x": 660.0,
+        "y": 540.0,
+        "z": 40,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "EO",
+        "x": 520.0,
+        "y": 360.0,
+        "z": 35,
+        "azimuth_deg": 120.0
+      }
+    ],
+    "M_wp_coop": 0.8393298953710975,
+    "M_wp_noncoop": 0.44293528252140496,
+    "M_vuln_coop": 0.16067010462890252,
+    "M_vuln_noncoop": 0.557064717478595,
+    "fused_resilience": 0.3259178764847064,
+    "asset_security_roi": 402702.20549043856,
+    "asset_security_roi_noncoop": 763091.1632867405,
+    "M_c_coop": 0.8393298953710975,
+    "M_c_noncoop": 0.44293528252140496,
+    "coverage": 0.8393298953710975,
+    "redundancy": 1.1200140659274462,
+    "cost": 338000.0,
+    "cost_hardware": 248000.0,
+    "cost_sites": 90000.0,
+    "num_sensors": 7,
+    "unique_sites": 6,
+    "fitness": [
+      0.8393298953710975,
+      0.44293528252140496,
+      3.38
+    ],
+    "evaluated_voxels": 2130,
+    "total_voxels": 2352
+  },
+  {
+    "solution_id": 15,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 220.0,
+        "y": 640.0,
+        "z": 40,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "EO",
+        "x": 520.0,
+        "y": 660.0,
+        "z": 55,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 860.0,
+        "y": 20.0,
+        "z": 45,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 360.0,
+        "y": 740.0,
+        "z": 25,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Radar",
+        "x": 260.0,
+        "y": 640.0,
+        "z": 45,
+        "azimuth_deg": 240.0
+      }
+    ],
+    "M_wp_coop": 0.8191788071151583,
+    "M_wp_noncoop": 0.249218849587853,
+    "M_vuln_coop": 0.18082119288484166,
+    "M_vuln_noncoop": 0.750781150412147,
+    "fused_resilience": 0.16568896809038408,
+    "asset_security_roi": 220952.98172741354,
+    "asset_security_roi_noncoop": 726269.3022591578,
+    "M_c_coop": 0.8191788071151583,
+    "M_c_noncoop": 0.249218849587853,
+    "coverage": 0.8191788071151583,
+    "redundancy": 0.8748056313484762,
+    "cost": 181000.0,
+    "cost_hardware": 106000.0,
+    "cost_sites": 75000.0,
+    "num_sensors": 5,
+    "unique_sites": 5,
+    "fitness": [
+      0.8191788071151583,
+      0.249218849587853,
+      1.81
+    ],
+    "evaluated_voxels": 2130,
+    "total_voxels": 2352
+  },
+  {
+    "solution_id": 16,
+    "sensors": [
+      {
+        "type": "Acoustic",
+        "x": 520.0,
+        "y": 320.0,
+        "z": 20,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 860.0,
+        "y": 20.0,
+        "z": 45,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 760.0,
+        "y": 620.0,
+        "z": 55,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 320.0,
+        "y": 320.0,
+        "z": 55,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 620.0,
+        "y": 160.0,
+        "z": 55,
+        "azimuth_deg": 0.0
+      }
+    ],
+    "M_wp_coop": 0.8661227196100357,
+    "M_wp_noncoop": 0.020611204228113886,
+    "M_vuln_coop": 0.13387728038996427,
+    "M_vuln_noncoop": 0.9793887957718861,
+    "fused_resilience": 0.0,
+    "asset_security_roi": 148939.6330096053,
+    "asset_security_roi_noncoop": 6258731.832080084,
+    "M_c_coop": 0.8661227196100357,
+    "M_c_noncoop": 0.020611204228113886,
+    "coverage": 0.8661227196100357,
+    "redundancy": 1.5003720983307267,
+    "cost": 129000.0,
+    "cost_hardware": 54000.0,
+    "cost_sites": 75000.0,
+    "num_sensors": 5,
+    "unique_sites": 5,
+    "fitness": [
+      0.8661227196100357,
+      0.020611204228113886,
+      1.29
+    ],
+    "evaluated_voxels": 2130,
+    "total_voxels": 2352
+  },
+  {
+    "solution_id": 17,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 890.0,
+        "y": 290.0,
+        "z": 15,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 290.0,
+        "y": 90.0,
+        "z": 15,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 540.0,
+        "y": 40.0,
+        "z": 45,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "Radar",
+        "x": 260.0,
+        "y": 640.0,
+        "z": 45,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Radar",
+        "x": 660.0,
+        "y": 540.0,
+        "z": 40,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "EO",
+        "x": 520.0,
+        "y": 360.0,
+        "z": 35,
+        "azimuth_deg": 120.0
+      }
+    ],
+    "M_wp_coop": 0.6895717149078788,
+    "M_wp_noncoop": 0.38614238797951894,
+    "M_vuln_coop": 0.31042828509212117,
+    "M_vuln_noncoop": 0.6138576120204811,
+    "fused_resilience": 0.298482204441862,
+    "asset_security_roi": 366894.399132654,
+    "asset_security_roi_noncoop": 655198.7242939492,
+    "M_c_coop": 0.6895717149078788,
+    "M_c_noncoop": 0.38614238797951894,
+    "coverage": 0.6895717149078788,
+    "redundancy": 0.8223690577673214,
+    "cost": 253000.0,
+    "cost_hardware": 163000.0,
+    "cost_sites": 90000.0,
+    "num_sensors": 6,
+    "unique_sites": 6,
+    "fitness": [
+      0.6895717149078788,
+      0.38614238797951894,
+      2.53
+    ],
+    "evaluated_voxels": 2130,
+    "total_voxels": 2352
+  },
+  {
+    "solution_id": 18,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 220.0,
+        "y": 640.0,
+        "z": 40,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 520.0,
+        "y": 360.0,
+        "z": 35,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 90.0,
+        "y": 490.0,
+        "z": 15,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 160.0,
+        "y": 40.0,
+        "z": 50,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 290.0,
+        "y": 290.0,
+        "z": 15,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Radar",
+        "x": 120.0,
+        "y": 860.0,
+        "z": 60,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 420.0,
+        "y": 440.0,
+        "z": 55,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Radar",
+        "x": 220.0,
+        "y": 860.0,
+        "z": 55,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 260.0,
+        "y": 40.0,
+        "z": 30,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 320.0,
+        "y": 920.0,
+        "z": 45,
+        "azimuth_deg": 120.0
+      }
+    ],
+    "M_wp_coop": 0.9790127550673579,
+    "M_wp_noncoop": 0.20735175948956605,
+    "M_vuln_coop": 0.020987244932642146,
+    "M_vuln_noncoop": 0.7926482405104339,
+    "fused_resilience": 0.14832499371982666,
+    "asset_security_roi": 363631.62600011943,
+    "asset_security_roi_noncoop": 1716889.2170308009,
+    "M_c_coop": 0.9790127550673579,
+    "M_c_noncoop": 0.20735175948956605,
+    "coverage": 0.9790127550673579,
+    "redundancy": 4.269438302198878,
+    "cost": 356000.0,
+    "cost_hardware": 206000.0,
+    "cost_sites": 150000.0,
+    "num_sensors": 10,
+    "unique_sites": 10,
+    "fitness": [
+      0.9790127550673579,
+      0.20735175948956605,
+      3.56
+    ],
+    "evaluated_voxels": 2130,
+    "total_voxels": 2352
+  },
+  {
+    "solution_id": 19,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 220.0,
+        "y": 640.0,
+        "z": 40,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 860.0,
+        "y": 20.0,
+        "z": 45,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "Radar",
+        "x": 260.0,
+        "y": 640.0,
+        "z": 45,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 260.0,
+        "y": 40.0,
+        "z": 30,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 320.0,
+        "y": 920.0,
+        "z": 45,
+        "azimuth_deg": 120.0
+      }
+    ],
+    "M_wp_coop": 0.910587811342488,
+    "M_wp_noncoop": 0.17085327355435176,
+    "M_vuln_coop": 0.08941218865751199,
+    "M_vuln_noncoop": 0.8291467264456482,
+    "fused_resilience": 0.14011109941720495,
+    "asset_security_roi": 187790.78510604388,
+    "asset_security_roi_noncoop": 1000858.7862707914,
+    "M_c_coop": 0.910587811342488,
+    "M_c_noncoop": 0.17085327355435176,
+    "coverage": 0.910587811342488,
+    "redundancy": 1.5676594230803096,
+    "cost": 171000.0,
+    "cost_hardware": 96000.0,
+    "cost_sites": 75000.0,
+    "num_sensors": 5,
+    "unique_sites": 5,
+    "fitness": [
+      0.910587811342488,
+      0.17085327355435176,
+      1.71
+    ],
+    "evaluated_voxels": 2130,
+    "total_voxels": 2352
+  },
+  {
+    "solution_id": 20,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 220.0,
+        "y": 640.0,
+        "z": 40,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 520.0,
+        "y": 360.0,
+        "z": 35,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Radar",
+        "x": 260.0,
+        "y": 140.0,
+        "z": 60,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 760.0,
+        "y": 620.0,
+        "z": 55,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Radar",
+        "x": 260.0,
+        "y": 640.0,
+        "z": 45,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Radar",
+        "x": 660.0,
+        "y": 540.0,
+        "z": 40,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 320.0,
+        "y": 920.0,
+        "z": 45,
+        "azimuth_deg": 120.0
+      }
+    ],
+    "M_wp_coop": 0.9561298394429416,
+    "M_wp_noncoop": 0.33232569056156,
+    "M_vuln_coop": 0.04387016055705839,
+    "M_vuln_noncoop": 0.66767430943844,
+    "fused_resilience": 0.2640016017015257,
+    "asset_security_roi": 322131.9817603918,
+    "asset_security_roi_noncoop": 926801.6549654806,
+    "M_c_coop": 0.9561298394429416,
+    "M_c_noncoop": 0.33232569056156,
+    "coverage": 0.9561298394429416,
+    "redundancy": 2.479501200372409,
+    "cost": 308000.0,
+    "cost_hardware": 203000.0,
+    "cost_sites": 105000.0,
+    "num_sensors": 7,
+    "unique_sites": 7,
+    "fitness": [
+      0.9561298394429416,
+      0.33232569056156,
+      3.08
+    ],
+    "evaluated_voxels": 2130,
+    "total_voxels": 2352
+  },
+  {
+    "solution_id": 21,
+    "sensors": [
+      {
+        "type": "Acoustic",
+        "x": 520.0,
+        "y": 320.0,
+        "z": 20,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 860.0,
+        "y": 20.0,
+        "z": 45,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 760.0,
+        "y": 620.0,
+        "z": 55,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 320.0,
+        "y": 320.0,
+        "z": 55,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Radar",
+        "x": 260.0,
+        "y": 640.0,
+        "z": 45,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Radar",
+        "x": 660.0,
+        "y": 540.0,
+        "z": 40,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "EO",
+        "x": 520.0,
+        "y": 360.0,
+        "z": 35,
+        "azimuth_deg": 120.0
+      }
+    ],
+    "M_wp_coop": 0.8073576472215847,
+    "M_wp_noncoop": 0.3966289612656456,
+    "M_vuln_coop": 0.19264235277841535,
+    "M_vuln_noncoop": 0.6033710387343544,
+    "fused_resilience": 0.298482204441862,
+    "asset_security_roi": 333185.67171033577,
+    "asset_security_roi_noncoop": 678215.7287294887,
+    "M_c_coop": 0.8073576472215847,
+    "M_c_noncoop": 0.3966289612656456,
+    "coverage": 0.8073576472215847,
+    "redundancy": 0.9605307752947103,
+    "cost": 269000.0,
+    "cost_hardware": 164000.0,
+    "cost_sites": 105000.0,
+    "num_sensors": 7,
+    "unique_sites": 7,
+    "fitness": [
+      0.8073576472215847,
+      0.3966289612656456,
+      2.69
+    ],
+    "evaluated_voxels": 2130,
+    "total_voxels": 2352
+  },
+  {
+    "solution_id": 22,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 220.0,
+        "y": 640.0,
+        "z": 40,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 160.0,
+        "y": 40.0,
+        "z": 50,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 290.0,
+        "y": 290.0,
+        "z": 15,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Radar",
+        "x": 120.0,
+        "y": 860.0,
+        "z": 60,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Radar",
+        "x": 260.0,
+        "y": 640.0,
+        "z": 45,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Radar",
+        "x": 660.0,
+        "y": 540.0,
+        "z": 40,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 320.0,
+        "y": 920.0,
+        "z": 45,
+        "azimuth_deg": 120.0
+      }
+    ],
+    "M_wp_coop": 0.9465965098634727,
+    "M_wp_noncoop": 0.366739257890733,
+    "M_vuln_coop": 0.05340349013652734,
+    "M_vuln_noncoop": 0.6332607421092671,
+    "fused_resilience": 0.31514508209296044,
+    "asset_security_roi": 332771.14030922466,
+    "asset_security_roi_noncoop": 858920.8633176973,
+    "M_c_coop": 0.9465965098634727,
+    "M_c_noncoop": 0.366739257890733,
+    "coverage": 0.9465965098634727,
+    "redundancy": 2.8393569290215668,
+    "cost": 315000.0,
+    "cost_hardware": 210000.0,
+    "cost_sites": 105000.0,
+    "num_sensors": 7,
+    "unique_sites": 7,
+    "fitness": [
+      0.9465965098634727,
+      0.366739257890733,
+      3.15
+    ],
+    "evaluated_voxels": 2130,
+    "total_voxels": 2352
+  },
+  {
+    "solution_id": 23,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 220.0,
+        "y": 640.0,
+        "z": 40,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 520.0,
+        "y": 360.0,
+        "z": 35,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 90.0,
+        "y": 490.0,
+        "z": 15,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 160.0,
+        "y": 40.0,
+        "z": 50,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 290.0,
+        "y": 290.0,
+        "z": 15,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Radar",
+        "x": 120.0,
+        "y": 860.0,
+        "z": 60,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 620.0,
+        "y": 160.0,
+        "z": 55,
+        "azimuth_deg": 0.0
+      }
+    ],
+    "M_wp_coop": 0.9609870562934097,
+    "M_wp_noncoop": 0.10647164711796066,
+    "M_vuln_coop": 0.03901294370659025,
+    "M_vuln_noncoop": 0.8935283528820394,
+    "fused_resilience": 0.07075261068139842,
+    "asset_security_roi": 247662.02462495348,
+    "asset_security_roi_noncoop": 2235336.884910949,
+    "M_c_coop": 0.9609870562934097,
+    "M_c_noncoop": 0.10647164711796066,
+    "coverage": 0.9609870562934097,
+    "redundancy": 3.442899515424752,
+    "cost": 238000.0,
+    "cost_hardware": 133000.0,
+    "cost_sites": 105000.0,
+    "num_sensors": 7,
+    "unique_sites": 7,
+    "fitness": [
+      0.9609870562934097,
+      0.10647164711796066,
+      2.38
+    ],
+    "evaluated_voxels": 2130,
+    "total_voxels": 2352
+  },
+  {
+    "solution_id": 24,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 220.0,
+        "y": 640.0,
+        "z": 40,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "Radar",
+        "x": 420.0,
+        "y": 740.0,
+        "z": 50,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 860.0,
+        "y": 20.0,
+        "z": 45,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "Radar",
+        "x": 220.0,
+        "y": 860.0,
+        "z": 55,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 260.0,
+        "y": 40.0,
+        "z": 30,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 320.0,
+        "y": 920.0,
+        "z": 45,
+        "azimuth_deg": 120.0
+      }
+    ],
+    "M_wp_coop": 0.9117516871692963,
+    "M_wp_noncoop": 0.2574463083916829,
+    "M_vuln_coop": 0.08824831283070367,
+    "M_vuln_noncoop": 0.7425536916083171,
+    "fused_resilience": 0.20726351550737096,
+    "asset_security_roi": 258842.40558161854,
+    "asset_security_roi_noncoop": 916695.9956595914,
+    "M_c_coop": 0.9117516871692963,
+    "M_c_noncoop": 0.2574463083916829,
+    "coverage": 0.9117516871692963,
+    "redundancy": 1.6543232215736108,
+    "cost": 236000.0,
+    "cost_hardware": 146000.0,
+    "cost_sites": 90000.0,
+    "num_sensors": 6,
+    "unique_sites": 6,
+    "fitness": [
+      0.9117516871692963,
+      0.2574463083916829,
+      2.36
+    ],
+    "evaluated_voxels": 2130,
+    "total_voxels": 2352
+  }
+]

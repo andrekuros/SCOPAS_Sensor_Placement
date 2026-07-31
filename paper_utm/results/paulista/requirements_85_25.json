@@ -1,0 +1,12 @@
+{
+  "source": "results/paper_rerun_paulista_lite/run_lite/evaluation_results.json",
+  "targets": {
+    "min_M_wp_coop": 0.85,
+    "min_M_wp_noncoop": 0.25,
+    "min_fused_resilience": null
+  },
+  "n_pareto": 24,
+  "n_feasible": 0,
+  "cheapest": null,
+  "solutions": []
+}
