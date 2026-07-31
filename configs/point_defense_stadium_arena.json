@@ -1,13 +1,17 @@
 {
   "experiment_name": "point_defense_stadium_arena",
-  "description": "Point Defense: Stadium area - Neo Química Arena region (real OSM data)",
+  "description": "Point Defense: Stadium area - Neo Qu\u00edmica Arena region (real OSM data)",
   "environment": {
     "type": "real",
     "buildings_file": "data/scenes/stadium_arena/stadium_arena_buildings.geojson",
     "sensor_locations_file": "data/scenes/stadium_arena/stadium_arena_sensors.geojson",
     "resolution": 15.0
   },
-  "airway_altitudes": [20, 45, 65],
+  "airway_altitudes": [
+    20,
+    45,
+    65
+  ],
   "sensors": {
     "types": {
       "Radar": {
@@ -30,6 +34,15 @@
         "elevation_min": -20.0,
         "elevation_max": 45.0,
         "fov_horizontal": 360.0
+      },
+      "Acoustic": {
+        "cost": 8000.0,
+        "source_spl_dB": 80.0,
+        "snr_threshold_dB": 6.0,
+        "max_range": 300.0,
+        "elevation_min": -20.0,
+        "elevation_max": 70.0,
+        "fov_horizontal": 360.0
       }
     }
   },
@@ -44,7 +57,11 @@
   "critical_assets": [
     {
       "id": "Stadium_Arena",
-      "location": [564, 610, 25],
+      "location": [
+        564,
+        610,
+        25
+      ],
       "protection_radius": 150,
       "weight_multiplier": 1.0
     }

@@ -34,18 +34,20 @@ def calculate_PLoS_deterministic(point_A: Tuple[float, float, float],
     ei, ej, ek = environment.world_to_voxel(x2, y2, z2)
     start_voxel = (int(si), int(sj), int(sk))
     end_voxel = (int(ei), int(ej), int(ek))
-    
+
     # Use skimage.draw.line_nd for ray-tracing
     try:
         # Get all voxel indices along the line
         line_voxels = line_nd(start_voxel, end_voxel, endpoint=True)
         terrain_fn = getattr(environment, 'terrain_height', None)
+        n_pts = len(line_voxels[0])
 
-        # Check if any voxel along the line is occupied (buildings) or below terrain (ground)
-        for i in range(len(line_voxels[0])):
-            voxel_i = line_voxels[0][i]
-            voxel_j = line_voxels[1][i]
-            voxel_k = line_voxels[2][i]
+        # Skip index 0 (sensor cell) so rooftop/site voxels do not self-occlude.
+        # Also skip the final cell (target air voxel).
+        for i in range(1, max(1, n_pts - 1)):
+            voxel_i = int(line_voxels[0][i])
+            voxel_j = int(line_voxels[1][i])
+            voxel_k = int(line_voxels[2][i])
 
             # Check bounds
             if (0 <= voxel_i < environment.grid_shape[0] and
@@ -64,10 +66,10 @@ def calculate_PLoS_deterministic(point_A: Tuple[float, float, float],
                         return 0.0  # Line of sight blocked by terrain
 
         return 1.0  # Clear line of sight
-        
-    except Exception as e:
+
+    except Exception:
         # Fallback: simple distance-based calculation
-        distance = math.sqrt((x2-x1)**2 + (y2-y1)**2 + (z2-z1)**2)
+        distance = math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2 + (z2 - z1) ** 2)
         if distance < 50:  # Very close points
             return 1.0
         else:
@@ -171,10 +173,12 @@ def calculate_PD_Radar(radar_sensor: Sensor, target_point: Tuple[float, float, f
     if distance > max_range:
         return 0.0
 
-    # Calculate deterministic PLoS
+    # Buildings / terrain must block radar (optical LoS). Early exit when occluded.
     P_LoS = calculate_PLoS_deterministic(radar_sensor.location, target_point, environment)
-    
-    # Calculate path loss
+    if P_LoS < 1.0:
+        return 0.0
+
+    # Calculate path loss (LoS branch)
     frequency = getattr(radar_sensor, 'frequency', 2.4e9)  # Use sensor's configured frequency
     path_loss = calculate_PathLoss(distance, frequency, P_LoS)
     
@@ -190,11 +194,7 @@ def calculate_PD_Radar(radar_sensor: Sensor, target_point: Tuple[float, float, f
     # Calculate SNR (dB)
     snr_db = Pr - noise_power
     
-    # Convert SNR to linear scale
-    snr_linear = 10**(snr_db / 10)
-    
     # Calculate detection probability using sigmoid function
-    # P_D = 1 / (1 + exp(-k * (SNR - threshold)))
     threshold = 10  # dB threshold for detection
     k = 2  # Steepness parameter
     
@@ -205,11 +205,7 @@ def calculate_PD_Radar(radar_sensor: Sensor, target_point: Tuple[float, float, f
     else:
         base_pd = 1 / (1 + math.exp(-k * (snr_db - threshold)))
     
-    # CRITICAL: Apply P_LoS as factor (if blocked, P_D should be ~0)
-    final_pd = base_pd * P_LoS
-    
-    return final_pd
-
+    return float(base_pd)
 
 def calculate_PD_RF(rf_sensor: Sensor, target_point: Tuple[float, float, float], 
                    environment: UrbanEnvironment, target_power: float = 20.0) -> float:
@@ -291,39 +287,49 @@ def calculate_PD_EO(eo_sensor: Sensor, target_point: Tuple[float, float, float],
     return detection_probability
 
 
-def calculate_PD_Acoustic(acoustic_sensor: Sensor, target_point: Tuple[float, float, float], 
+def calculate_PD_Acoustic(acoustic_sensor: Sensor, target_point: Tuple[float, float, float],
                          environment: UrbanEnvironment) -> float:
     """
-    Calculate acoustic detection probability using deterministic ray-tracing.
-    
-    Args:
-        acoustic_sensor: Acoustic sensor instance
-        target_point: Target point (x, y, z)
-        environment: Urban environment
-        
-    Returns:
-        Detection probability between 0 and 1
+    Acoustic detection probability from source SPL, spherical spreading, absorption,
+    urban ambient noise, and soft building occlusion (diffraction-tolerant vs EO).
+
+    Received level (dB SPL) ≈ SL - 20 log10(r) - α·r_km - occlusion_penalty
+    SNR = received - ambient; P_D via sigmoid around snr_threshold_dB.
     """
-    # Calculate distance
     distance = acoustic_sensor.get_distance_to_point(target_point)
-    
-    # Calculate deterministic PLoS
+    max_range = getattr(acoustic_sensor, "max_range", 300.0)
+    if distance > max_range or distance <= 0:
+        return 0.0
+
+    source_spl = getattr(acoustic_sensor, "source_spl_dB", 80.0)
+    snr_threshold = getattr(acoustic_sensor, "snr_threshold_dB", 6.0)
+    absorption = getattr(acoustic_sensor, "absorption_dB_per_km", 5.0)
+
+    # Spherical spreading + atmospheric absorption
+    spreading_db = 20.0 * math.log10(max(distance, 1.0))
+    absorption_db = absorption * (distance / 1000.0)
+    received_spl = source_spl - spreading_db - absorption_db
+
+    # Soft occlusion: sound can diffract; blocked paths get ~15 dB penalty (not hard zero)
     P_LoS = calculate_PLoS_deterministic(acoustic_sensor.location, target_point, environment)
-    
-    # Acoustic sensors are affected by line of sight but not as critically as EO
-    if P_LoS < 0.5:  # Heavily blocked
-        return 0.1  # Very low detection probability
-    elif P_LoS < 1.0:  # Partially blocked
-        return 0.5  # Reduced detection probability
-    
-    # Calculate detection probability based on distance
-    max_range = acoustic_sensor.max_range
-    base_probability = max(0.0, 1.0 - (distance / max_range))
-    
-    # Apply PLoS factor
-    detection_probability = base_probability * P_LoS
-    
-    return detection_probability
+    if P_LoS < 1.0:
+        received_spl -= 15.0
+
+    ambient_db = get_Noise_Acoustic(environment)
+    snr_db = received_spl - ambient_db
+
+    # Soft range roll-off near max_range (urban clutter / model bound)
+    range_factor = max(0.0, 1.0 - (distance / max_range) ** 2)
+
+    k = 1.2
+    if snr_db > snr_threshold + 8:
+        base_pd = 0.92
+    elif snr_db < snr_threshold - 8:
+        base_pd = 0.05
+    else:
+        base_pd = 1.0 / (1.0 + math.exp(-k * (snr_db - snr_threshold)))
+
+    return float(max(0.0, min(1.0, base_pd * range_factor)))
 
 
 def check_elevation_angle(sensor: Sensor, target_point: Tuple[float, float, float]) -> bool:

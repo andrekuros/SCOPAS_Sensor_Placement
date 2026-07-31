@@ -7,7 +7,11 @@
     "sensor_locations_file": "data/examples/city_10x10_sensor_locations.geojson",
     "resolution": 15.0
   },
-  "airway_altitudes": [20, 45, 65],
+  "airway_altitudes": [
+    20,
+    45,
+    65
+  ],
   "sensors": {
     "types": {
       "Radar": {
@@ -30,6 +34,15 @@
         "elevation_min": -20.0,
         "elevation_max": 45.0,
         "fov_horizontal": 360.0
+      },
+      "Acoustic": {
+        "cost": 8000.0,
+        "source_spl_dB": 80.0,
+        "snr_threshold_dB": 6.0,
+        "max_range": 300.0,
+        "elevation_min": -20.0,
+        "elevation_max": 70.0,
+        "fov_horizontal": 360.0
       }
     }
   },
@@ -44,13 +57,21 @@
   "critical_assets": [
     {
       "id": "Consulate_Alpha",
-      "location": [500, 500, 30],
+      "location": [
+        500,
+        500,
+        30
+      ],
       "protection_radius": 150,
       "weight_multiplier": 1.0
     },
     {
       "id": "Vertiport_Bravo",
-      "location": [250, 750, 25],
+      "location": [
+        250,
+        750,
+        25
+      ],
       "protection_radius": 120,
       "weight_multiplier": 0.8
     }

@@ -70,15 +70,15 @@ class SensorNetworkGAGeoJSON:
             self.sensor_types = list(config["sensors"]["types"].keys())
             self.sensor_types_config = config["sensors"]["types"]
         else:
-            self.sensor_types = ["Radar", "RF", "EO"]
+            self.sensor_types = ["Radar", "RF", "EO", "Acoustic"]
             self.sensor_types_config = {}
-        # Noncoop-only: use only Radar and EO (no RF)
+        # Noncoop-only: drop RF (cooperative-only); keep Radar / EO / Acoustic
         if self._noncoop_only and "RF" in self.sensor_types:
             self.sensor_types = [t for t in self.sensor_types if t != "RF"]
             self.sensor_types_config = {k: v for k, v in self.sensor_types_config.items() if k != "RF"}
             if not self.sensor_types:
                 raw = (config or {}).get("sensors", {}).get("types", {})
-                self.sensor_types = [t for t in ("Radar", "EO") if t in raw] or ["Radar", "EO"]
+                self.sensor_types = [t for t in ("Radar", "EO", "Acoustic") if t in raw] or ["Radar", "EO", "Acoustic"]
                 self.sensor_types_config = {k: raw[k] for k in self.sensor_types if k in raw}
         # Site activation cost (CapEx) for dual-layer evaluation
         self.site_activation_cost = float(

@@ -1,18 +1,19 @@
 {
   "experiment_name": "pareto_sp_avenida",
-  "description": "Experimento Pareto - Avenida Paulista (São Paulo)",
-
+  "description": "Experimento Pareto - Avenida Paulista (S\u00e3o Paulo)",
   "environment": {
     "type": "real",
     "buildings_file": "data/case_studies/avenida_paulista/avenida_paulista_buildings.geojson",
     "sensor_locations_file": "data/case_studies/avenida_paulista/avenida_paulista_sensors.geojson",
     "resolution": 20.0,
-    "comment": "Voxel 20m para 3.8 km² (aprox. 100x100x6)"
+    "comment": "Voxel 20m para 3.8 km\u00b2 (aprox. 100x100x6)"
   },
-
-  "airway_altitudes": [20, 45, 65],
-  "comment_airways": "Aerovias: 20m (BVLOS baixo), 45m (acima dos prédios), 65m (corredor superior)",
-
+  "airway_altitudes": [
+    20,
+    45,
+    65
+  ],
+  "comment_airways": "Aerovias: 20m (BVLOS baixo), 45m (acima dos pr\u00e9dios), 65m (corredor superior)",
   "sensors": {
     "types": {
       "Radar": {
@@ -35,19 +36,26 @@
         "elevation_min": -25.0,
         "elevation_max": 50.0,
         "fov_horizontal": 360.0
+      },
+      "Acoustic": {
+        "cost": 8000.0,
+        "source_spl_dB": 80.0,
+        "snr_threshold_dB": 6.0,
+        "max_range": 300.0,
+        "elevation_min": -20.0,
+        "elevation_max": 70.0,
+        "fov_horizontal": 360.0
       }
     }
   },
-
   "pareto_search": {
     "n_samples": 80,
     "generations": 45,
     "n_cores": 16,
     "min_sensors": 5,
     "max_sensors": 25,
-    "comment": "NSGA-II real: 80 indivíduos × 45 gerações"
+    "comment": "NSGA-II real: 80 indiv\u00edduos \u00d7 45 gera\u00e7\u00f5es"
   },
-
   "checkpoint": {
     "enabled": true,
     "dir": "checkpoints/pareto_sp_avenida",
@@ -55,17 +63,14 @@
     "resume": true,
     "prefix": "pareto_sp_avenida"
   },
-
   "requirements": {
-    "min_coverage": 0.70,
-    "min_overlap": 0.40,
-    "comment": "Critérios relaxados para área real"
+    "min_coverage": 0.7,
+    "min_overlap": 0.4,
+    "comment": "Crit\u00e9rios relaxados para \u00e1rea real"
   },
-
   "analysis": {
     "max_solutions": 30
   },
-
   "output": {
     "results_dir": "results/pareto_sp_avenida",
     "save_results": true,

@@ -1,0 +1,59 @@
+# SCOPAS Paper Rerun — Manifest
+
+**Source framework:** [andrekuros/SCOPAS_Sensor_Placement](https://github.com/andrekuros/SCOPAS_Sensor_Placement)  
+**Paper target repo:** [andrekuros/Sensor-Placement-UTM](https://github.com/andrekuros/Sensor-Placement-UTM)  
+**SCOPAS branch:** `cursor/acoustic-sensor-2dc7`  
+**Date:** 2026-07-30
+
+## Push status
+
+Cloud-agent GitHub token is scoped to `SCOPAS_Sensor_Placement` and **cannot push** to `Sensor-Placement-UTM` (HTTP 403 / `cursor[bot]` denied).  
+This `paper_utm/` tree is the complete sync package — push it from a credential with write access:
+
+```bash
+git clone https://github.com/andrekuros/Sensor-Placement-UTM.git
+cd Sensor-Placement-UTM
+git checkout -b scopas-dual-layer-rerun
+rsync -a --delete /path/to/SCOPAS_Sensor_Placement/paper_utm/ ./
+# keep git history: prefer copying over files instead of --delete if desired
+git add -A && git commit -m "SCOPAS dual-layer paper rerun with new experiments"
+git push -u origin scopas-dual-layer-rerun
+```
+
+## Experiments completed
+
+| ID | Config | Budget | Outcome |
+|----|--------|--------|---------|
+| City dual | `paper_rerun_city_dual.json` | 32×18, res 30 m, 5 assets | **Done** — 32 sols; coop 0.07–0.96; noncoop 0.00–0.56 |
+| Airport coop | `paper_rerun_airport_sjc.json` coop_only | 24×12, res 40 m | **Done** — coop≥0.90 from **$61k**; noncoop≈0 |
+| Airport noncoop | same, noncoop_only | 24×12, res 40 m | **Done** — noncoop max **0.445** @ $405k |
+| Paulista lite | `paper_rerun_paulista_lite.json` | 24×10, res 40 m | **Done** — 24 sols; coop to 0.97; noncoop max **0.254** |
+| Targets 90/35 & 90/50 | `demo_targets_*` | short prior demos | **Done** — joint 90/35 feasible on stretch front @ $315k |
+
+## Headline findings (vs old single-metric paper)
+
+1. **Coop is cheap; noncoop is not.** SJC: \(M_{wp,coop}\geq0.90\) at $61k vs best noncoop 0.445 at $405k.
+2. **Joint floors:** practical corridor near **90% coop / 35% noncoop** on synthetic geometry; **50% noncoop** with ≥90% coop remains stretch.
+3. **Dense real cities hurt dark-target coverage more:** Paulista lite noncoop max only ~0.25 in this budget.
+4. **Split fronts are mandatory** for honest BVLOS claims — coop optima leave noncoop near zero.
+
+## Reproduce
+
+```bash
+python run_experiment.py --config configs/paper_rerun_city_dual.json --skip-3d
+# Airport split (avoid checkpoint resume across profiles):
+# set optimization.objectives to coop_only / noncoop_only separately, or use --split-objectives with checkpoint disabled
+python run_experiment.py --config configs/paper_rerun_airport_sjc.json --split-objectives --skip-3d
+python run_experiment.py --config configs/paper_rerun_paulista_lite.json --skip-3d
+```
+
+## City dual snapshot
+
+- Closest to 90%/35%: coop=0.895, noncoop=0.434, $503k  
+- Feasible 85%/35%: cheapest $320k (4 Radar + 2 RF)  
+- Feasible 90%/30%: cheapest $433k  
+- Coop≥90% path: $247k with noncoop only 0.134  
+
+## Known issue
+
+`--split-objectives` with checkpoint resume can crash when coop (4 types incl. RF) checkpoint is loaded into noncoop (3 types). Disable checkpoint or clear between profiles.

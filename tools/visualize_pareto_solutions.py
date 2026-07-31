@@ -24,7 +24,7 @@ import argparse
 import random
 
 from environment import UrbanEnvironment
-from sensors import RadarSensor, RFSensor, EOSensor
+from sensors import RadarSensor, RFSensor, EOSensor, AcousticSensor
 from network_evaluation import NetworkEvaluator
 from visualization import (
     prepare_detection_probability_display,
@@ -130,6 +130,10 @@ def decode_solution(solution, sensor_locations, sensor_types_config):
                 sensor.frequency = type_config.get("frequency_Hz", 900e6)
             elif sensor_type == "EO":
                 sensor = EOSensor(location=loc, cost=cost)
+            elif sensor_type == "Acoustic":
+                sensor = AcousticSensor(location=loc, cost=cost)
+                sensor.source_spl_dB = type_config.get("source_spl_dB", 80.0)
+                sensor.max_range = type_config.get("max_range", 300.0)
             else:
                 continue
             sensors.append(sensor)
@@ -204,6 +208,7 @@ def visualize_solution(
     output_file,
     critical_assets=None,
     *,
+    airway_altitudes=None,
     coverage_scale="power",
     coverage_p_floor=1e-3,
     coverage_power_gamma=0.45,
@@ -212,7 +217,18 @@ def visualize_solution(
     heatmap_zoom_order=1,
     colormap_lut_size=256,
 ):
-    height_level = 1
+    # Prefer a layer near the lowest airway that still has building voxels when possible
+    airways = airway_altitudes or [20]
+    target_z = float(airways[0])
+    best_k, best_score = 0, float("inf")
+    for k in range(env.grid_shape[2]):
+        z = env.voxel_to_world(0, 0, k)[2]
+        has_occ = bool(np.any(env.occupancy_grid[:, :, k] == 1))
+        score = abs(z - target_z) - (5.0 if has_occ else 0.0)
+        if score < best_score:
+            best_score = score
+            best_k = k
+    height_level = best_k
     coverage_map = evaluator.get_coverage_map(sensors, height_level=height_level)
     redundancy_map = evaluator.get_redundancy_map(sensors, height_level=height_level)
     if heatmap_upsample > 1:
@@ -231,30 +247,31 @@ def visualize_solution(
     except Exception:
         pass
     cmap_coverage, cmap_redundancy = heatmap_colormaps(lut_size=int(colormap_lut_size))
-    x_min, x_max = env.bounds[0], env.bounds[1]
-    y_min, y_max = env.bounds[2], env.bounds[3]
+    x_min, x_max, y_min, y_max = env.grid_extent_xy()
+    view_x0, view_x1 = float(env.bounds[0]), float(env.bounds[1])
+    view_y0, view_y1 = float(env.bounds[2]), float(env.bounds[3])
     cov_disp, cov_norm, cov_cbar_label = prepare_detection_probability_display(
         coverage_map,
         scale=coverage_scale,
         p_floor=coverage_p_floor,
         power_gamma=coverage_power_gamma,
     )
-    # Bicubic reduces visible voxel squares; upsampled grid supplies smooth samples.
+    # Bicubic + upsample for smooth display; extent uses grid_extent_xy (aligned).
     im1 = ax1.imshow(
         cov_disp.T,
         origin="lower",
         extent=[x_min, x_max, y_min, y_max],
         cmap=cmap_coverage,
         norm=cov_norm,
-        alpha=0.8,
+        alpha=0.85,
         interpolation="bicubic",
     )
     for _, building in env.buildings_df.iterrows():
         geom = building.geometry
         if geom.geom_type == "Polygon":
-            ax1.add_patch(patches.Polygon(list(geom.exterior.coords), facecolor="gray", edgecolor="black", linewidth=0.5, alpha=0.4))
+            ax1.add_patch(patches.Polygon(list(geom.exterior.coords), facecolor="#d0d0d0", edgecolor="black", linewidth=0.5, alpha=0.4, zorder=3))
     _add_asset_overlay(ax1, critical_assets or [])
-    type_color = {"Radar": "#c0392b", "EO": "#27ae60", "RF": "#2980b9"}
+    type_color = {"Radar": "#c0392b", "EO": "#27ae60", "RF": "#2980b9", "Acoustic": "#d68910"}
     if sensors:
         for s in sensors:
             x, y, _ = s.location
@@ -266,8 +283,8 @@ def visualize_solution(
         for stype, color in type_color.items():
             if any(getattr(s, "sensor_type", "") == stype for s in sensors):
                 ax1.plot([], [], marker=(3, 0, 0), markersize=11, color=color, markeredgecolor="black", linestyle="", label=stype)
-    ax1.set_xlim(x_min, x_max)
-    ax1.set_ylim(y_min, y_max)
+    ax1.set_xlim(view_x0, view_x1)
+    ax1.set_ylim(view_y0, view_y1)
     ax1.set_xlabel("X (m)", fontsize=11)
     ax1.set_ylabel("Y (m)", fontsize=11)
     mc = solution_info.get("Mc", 0) or 0
@@ -289,13 +306,13 @@ def visualize_solution(
         extent=[x_min, x_max, y_min, y_max],
         cmap=cmap_redundancy,
         norm=red_norm,
-        alpha=0.8,
+        alpha=0.85,
         interpolation="bicubic",
     )
     for _, building in env.buildings_df.iterrows():
         geom = building.geometry
         if geom.geom_type == "Polygon":
-            ax2.add_patch(patches.Polygon(list(geom.exterior.coords), facecolor="gray", edgecolor="black", linewidth=0.5, alpha=0.4))
+            ax2.add_patch(patches.Polygon(list(geom.exterior.coords), facecolor="#d0d0d0", edgecolor="black", linewidth=0.5, alpha=0.4, zorder=3))
     _add_asset_overlay(ax2, critical_assets or [])
     if sensors:
         for s in sensors:
@@ -308,8 +325,8 @@ def visualize_solution(
         for stype, color in type_color.items():
             if any(getattr(s, "sensor_type", "") == stype for s in sensors):
                 ax2.plot([], [], marker=(3, 0, 0), markersize=11, color=color, markeredgecolor="black", linestyle="", label=stype)
-    ax2.set_xlim(x_min, x_max)
-    ax2.set_ylim(y_min, y_max)
+    ax2.set_xlim(view_x0, view_x1)
+    ax2.set_ylim(view_y0, view_y1)
     ax2.set_xlabel("X (m)", fontsize=11)
     ax2.set_ylabel("Y (m)", fontsize=11)
     cost = solution_info.get("cost", 0) or 0
@@ -427,6 +444,7 @@ def main():
             solution,
             output_file,
             critical_assets=critical_assets,
+            airway_altitudes=config.get("airway_altitudes"),
             coverage_scale=args.coverage_scale,
             coverage_p_floor=args.coverage_p_floor,
             coverage_power_gamma=args.coverage_power_gamma,

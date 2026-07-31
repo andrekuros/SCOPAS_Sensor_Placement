@@ -54,7 +54,7 @@ def run(config: dict, config_path: str = None, base_dir: Path = None) -> Tuple[L
     env = load_environment_from_config(config, base_dir=base_dir)
     sensor_types = list(config.get("sensors", {}).get("types", {}).keys())
     if not sensor_types:
-        sensor_types = ["Radar", "RF", "EO"]
+        sensor_types = ["Radar", "RF", "EO", "Acoustic"]
     locations = env.get_sensor_locations()
     if not locations:
         return [], []

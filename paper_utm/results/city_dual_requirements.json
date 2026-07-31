@@ -1,0 +1,12 @@
+{
+  "source": "results/paper_rerun_city_dual/run_medium/evaluation_results.json",
+  "targets": {
+    "min_M_wp_coop": 0.9,
+    "min_M_wp_noncoop": 0.35,
+    "min_fused_resilience": null
+  },
+  "n_pareto": 32,
+  "n_feasible": 0,
+  "cheapest": null,
+  "solutions": []
+}

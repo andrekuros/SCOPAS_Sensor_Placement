@@ -6,6 +6,22 @@
 |--------|---------|
 | `evaluate_custom_solution.py` | Evaluate a hand-defined sensor deployment using the full SCOPAS metric suite |
 | `custom_algorithm_demo.py` | Plug your own optimizer: random search loop calling `evaluate_solution()` |
+| `sample_solutions.json` | Sample deployments including Acoustic for `--mode evaluate` |
+
+## Acoustic and target demos (recommended)
+
+From the repo root (see `docs/DEMO_RUNS.md`):
+
+```bash
+python run_experiment.py --config configs/demo_acoustic_dual_layer.json --skip-3d
+python run_experiment.py --config configs/demo_acoustic_noncoop.json --skip-3d
+python run_experiment.py --config configs/demo_acoustic_split.json --split-objectives --skip-3d
+
+# Dual-layer requirement floors (90% coop / 35% or 50% noncoop)
+python run_experiment.py --config configs/demo_targets_coop90_noncoop35.json --skip-3d
+python tools/select_requirement_solutions.py \
+  --results results/demo_targets_coop90_noncoop35/run_practical/
+```
 
 ## Experiments (legacy)
 

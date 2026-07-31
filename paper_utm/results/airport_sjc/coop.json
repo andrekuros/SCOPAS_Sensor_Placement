@@ -1,0 +1,1465 @@
+[
+  {
+    "solution_id": 1,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 525.0,
+        "y": 75.0,
+        "z": 32.097642105698455,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 825.0,
+        "y": 825.0,
+        "z": 31.08069008585787,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 525.0,
+        "y": 375.0,
+        "z": 33.86907852543065,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 825.0,
+        "y": 825.0,
+        "z": 31.08069008585787,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 75.0,
+        "y": 1125.0,
+        "z": 27.205747719852717,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 225.0,
+        "y": 1125.0,
+        "z": 30.6901099750692,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 225.0,
+        "y": 825.0,
+        "z": 32.16654220735259,
+        "azimuth_deg": 240.0
+      }
+    ],
+    "M_wp_coop": 0.9999989863091564,
+    "M_wp_noncoop": 0.0020667755134702722,
+    "M_vuln_coop": 1.0136908435987024e-06,
+    "M_vuln_noncoop": 0.9979332244865298,
+    "fused_resilience": 0.0,
+    "asset_security_roi": 188000.19057407178,
+    "asset_security_roi_noncoop": 90962951.11622152,
+    "M_c_coop": 0.9999989863091564,
+    "M_c_noncoop": 0.0020667755134702722,
+    "coverage": 0.9999989863091564,
+    "redundancy": 5.400842998814114,
+    "cost": 188000.0,
+    "cost_hardware": 98000.0,
+    "cost_sites": 90000.0,
+    "num_sensors": 7,
+    "unique_sites": 6,
+    "fitness": [
+      0.9999989863091564,
+      0.0020667755134702722,
+      1.88
+    ],
+    "evaluated_voxels": 3784,
+    "total_voxels": 3784
+  },
+  {
+    "solution_id": 2,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 525.0,
+        "y": 75.0,
+        "z": 32.097642105698455,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 825.0,
+        "y": 825.0,
+        "z": 31.08069008585787,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 525.0,
+        "y": 375.0,
+        "z": 33.86907852543065,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 825.0,
+        "y": 825.0,
+        "z": 31.08069008585787,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 75.0,
+        "y": 1125.0,
+        "z": 27.205747719852717,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 225.0,
+        "y": 1125.0,
+        "z": 30.6901099750692,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 225.0,
+        "y": 825.0,
+        "z": 32.16654220735259,
+        "azimuth_deg": 240.0
+      }
+    ],
+    "M_wp_coop": 0.9999989863091564,
+    "M_wp_noncoop": 0.0020667755134702722,
+    "M_vuln_coop": 1.0136908435987024e-06,
+    "M_vuln_noncoop": 0.9979332244865298,
+    "fused_resilience": 0.0,
+    "asset_security_roi": 188000.19057407178,
+    "asset_security_roi_noncoop": 90962951.11622152,
+    "M_c_coop": 0.9999989863091564,
+    "M_c_noncoop": 0.0020667755134702722,
+    "coverage": 0.9999989863091564,
+    "redundancy": 5.400842998814114,
+    "cost": 188000.0,
+    "cost_hardware": 98000.0,
+    "cost_sites": 90000.0,
+    "num_sensors": 7,
+    "unique_sites": 6,
+    "fitness": [
+      0.9999989863091564,
+      0.0020667755134702722,
+      1.88
+    ],
+    "evaluated_voxels": 3784,
+    "total_voxels": 3784
+  },
+  {
+    "solution_id": 3,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 525.0,
+        "y": 75.0,
+        "z": 32.097642105698455,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 825.0,
+        "y": 825.0,
+        "z": 31.08069008585787,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 525.0,
+        "y": 375.0,
+        "z": 33.86907852543065,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 825.0,
+        "y": 825.0,
+        "z": 31.08069008585787,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 75.0,
+        "y": 1125.0,
+        "z": 27.205747719852717,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 225.0,
+        "y": 1125.0,
+        "z": 30.6901099750692,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 225.0,
+        "y": 825.0,
+        "z": 32.16654220735259,
+        "azimuth_deg": 240.0
+      }
+    ],
+    "M_wp_coop": 0.9999989863091564,
+    "M_wp_noncoop": 0.0020667755134702722,
+    "M_vuln_coop": 1.0136908435987024e-06,
+    "M_vuln_noncoop": 0.9979332244865298,
+    "fused_resilience": 0.0,
+    "asset_security_roi": 188000.19057407178,
+    "asset_security_roi_noncoop": 90962951.11622152,
+    "M_c_coop": 0.9999989863091564,
+    "M_c_noncoop": 0.0020667755134702722,
+    "coverage": 0.9999989863091564,
+    "redundancy": 5.400842998814114,
+    "cost": 188000.0,
+    "cost_hardware": 98000.0,
+    "cost_sites": 90000.0,
+    "num_sensors": 7,
+    "unique_sites": 6,
+    "fitness": [
+      0.9999989863091564,
+      0.0020667755134702722,
+      1.88
+    ],
+    "evaluated_voxels": 3784,
+    "total_voxels": 3784
+  },
+  {
+    "solution_id": 4,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 525.0,
+        "y": 75.0,
+        "z": 32.097642105698455,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 825.0,
+        "y": 825.0,
+        "z": 31.08069008585787,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 525.0,
+        "y": 375.0,
+        "z": 33.86907852543065,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 825.0,
+        "y": 825.0,
+        "z": 31.08069008585787,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 75.0,
+        "y": 1125.0,
+        "z": 27.205747719852717,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 225.0,
+        "y": 1125.0,
+        "z": 30.6901099750692,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 225.0,
+        "y": 825.0,
+        "z": 32.16654220735259,
+        "azimuth_deg": 240.0
+      }
+    ],
+    "M_wp_coop": 0.9999989863091564,
+    "M_wp_noncoop": 0.0020667755134702722,
+    "M_vuln_coop": 1.0136908435987024e-06,
+    "M_vuln_noncoop": 0.9979332244865298,
+    "fused_resilience": 0.0,
+    "asset_security_roi": 188000.19057407178,
+    "asset_security_roi_noncoop": 90962951.11622152,
+    "M_c_coop": 0.9999989863091564,
+    "M_c_noncoop": 0.0020667755134702722,
+    "coverage": 0.9999989863091564,
+    "redundancy": 5.400842998814114,
+    "cost": 188000.0,
+    "cost_hardware": 98000.0,
+    "cost_sites": 90000.0,
+    "num_sensors": 7,
+    "unique_sites": 6,
+    "fitness": [
+      0.9999989863091564,
+      0.0020667755134702722,
+      1.88
+    ],
+    "evaluated_voxels": 3784,
+    "total_voxels": 3784
+  },
+  {
+    "solution_id": 5,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 525.0,
+        "y": 75.0,
+        "z": 32.097642105698455,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 825.0,
+        "y": 825.0,
+        "z": 31.08069008585787,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 525.0,
+        "y": 375.0,
+        "z": 33.86907852543065,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 825.0,
+        "y": 825.0,
+        "z": 31.08069008585787,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 75.0,
+        "y": 1125.0,
+        "z": 27.205747719852717,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 225.0,
+        "y": 1125.0,
+        "z": 30.6901099750692,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 225.0,
+        "y": 825.0,
+        "z": 32.16654220735259,
+        "azimuth_deg": 240.0
+      }
+    ],
+    "M_wp_coop": 0.9999989863091564,
+    "M_wp_noncoop": 0.0020667755134702722,
+    "M_vuln_coop": 1.0136908435987024e-06,
+    "M_vuln_noncoop": 0.9979332244865298,
+    "fused_resilience": 0.0,
+    "asset_security_roi": 188000.19057407178,
+    "asset_security_roi_noncoop": 90962951.11622152,
+    "M_c_coop": 0.9999989863091564,
+    "M_c_noncoop": 0.0020667755134702722,
+    "coverage": 0.9999989863091564,
+    "redundancy": 5.400842998814114,
+    "cost": 188000.0,
+    "cost_hardware": 98000.0,
+    "cost_sites": 90000.0,
+    "num_sensors": 7,
+    "unique_sites": 6,
+    "fitness": [
+      0.9999989863091564,
+      0.0020667755134702722,
+      1.88
+    ],
+    "evaluated_voxels": 3784,
+    "total_voxels": 3784
+  },
+  {
+    "solution_id": 6,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 525.0,
+        "y": 75.0,
+        "z": 32.097642105698455,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 825.0,
+        "y": 825.0,
+        "z": 31.08069008585787,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 525.0,
+        "y": 375.0,
+        "z": 33.86907852543065,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 825.0,
+        "y": 825.0,
+        "z": 31.08069008585787,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 75.0,
+        "y": 1125.0,
+        "z": 27.205747719852717,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 225.0,
+        "y": 1125.0,
+        "z": 30.6901099750692,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 225.0,
+        "y": 825.0,
+        "z": 32.16654220735259,
+        "azimuth_deg": 240.0
+      }
+    ],
+    "M_wp_coop": 0.9999989863091564,
+    "M_wp_noncoop": 0.0020667755134702722,
+    "M_vuln_coop": 1.0136908435987024e-06,
+    "M_vuln_noncoop": 0.9979332244865298,
+    "fused_resilience": 0.0,
+    "asset_security_roi": 188000.19057407178,
+    "asset_security_roi_noncoop": 90962951.11622152,
+    "M_c_coop": 0.9999989863091564,
+    "M_c_noncoop": 0.0020667755134702722,
+    "coverage": 0.9999989863091564,
+    "redundancy": 5.400842998814114,
+    "cost": 188000.0,
+    "cost_hardware": 98000.0,
+    "cost_sites": 90000.0,
+    "num_sensors": 7,
+    "unique_sites": 6,
+    "fitness": [
+      0.9999989863091564,
+      0.0020667755134702722,
+      1.88
+    ],
+    "evaluated_voxels": 3784,
+    "total_voxels": 3784
+  },
+  {
+    "solution_id": 7,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 825.0,
+        "y": 75.0,
+        "z": 26.501391657565136,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 825.0,
+        "y": 825.0,
+        "z": 31.08069008585787,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 825.0,
+        "y": 825.0,
+        "z": 31.08069008585787,
+        "azimuth_deg": 0.0
+      }
+    ],
+    "M_wp_coop": 0.900406921477083,
+    "M_wp_noncoop": 0.004069214770830074,
+    "M_vuln_coop": 0.09959307852291699,
+    "M_vuln_noncoop": 0.9959307852291699,
+    "fused_resilience": 0.0,
+    "asset_security_roi": 67747.1469232287,
+    "asset_security_roi_noncoop": 14990607.140540946,
+    "M_c_coop": 0.900406921477083,
+    "M_c_noncoop": 0.004069214770830074,
+    "coverage": 0.900406921477083,
+    "redundancy": 0.9045401202496359,
+    "cost": 61000.0,
+    "cost_hardware": 31000.0,
+    "cost_sites": 30000.0,
+    "num_sensors": 3,
+    "unique_sites": 2,
+    "fitness": [
+      0.900406921477083,
+      0.004069214770830074,
+      0.61
+    ],
+    "evaluated_voxels": 3784,
+    "total_voxels": 3784
+  },
+  {
+    "solution_id": 8,
+    "sensors": [
+      {
+        "type": "Acoustic",
+        "x": 525.0,
+        "y": 975.0,
+        "z": 26.34476774684866,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 825.0,
+        "y": 825.0,
+        "z": 31.08069008585787,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 75.0,
+        "y": 1125.0,
+        "z": 27.205747719852717,
+        "azimuth_deg": 120.0
+      }
+    ],
+    "M_wp_coop": 0.9003543072041342,
+    "M_wp_noncoop": 0.0035987185464066034,
+    "M_vuln_coop": 0.09964569279586577,
+    "M_vuln_noncoop": 0.9964012814535934,
+    "fused_resilience": 0.0,
+    "asset_security_roi": 84411.21388756658,
+    "asset_security_roi_noncoop": 21118628.48398845,
+    "M_c_coop": 0.9003543072041342,
+    "M_c_noncoop": 0.0035987185464066034,
+    "coverage": 0.9003543072041342,
+    "redundancy": 0.9040852952581213,
+    "cost": 76000.0,
+    "cost_hardware": 31000.0,
+    "cost_sites": 45000.0,
+    "num_sensors": 3,
+    "unique_sites": 3,
+    "fitness": [
+      0.9003543072041342,
+      0.0035987185464066034,
+      0.76
+    ],
+    "evaluated_voxels": 3784,
+    "total_voxels": 3784
+  },
+  {
+    "solution_id": 9,
+    "sensors": [
+      {
+        "type": "Acoustic",
+        "x": 525.0,
+        "y": 975.0,
+        "z": 26.34476774684866,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 825.0,
+        "y": 825.0,
+        "z": 31.08069008585787,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 75.0,
+        "y": 1125.0,
+        "z": 27.205747719852717,
+        "azimuth_deg": 120.0
+      }
+    ],
+    "M_wp_coop": 0.9003543072041342,
+    "M_wp_noncoop": 0.0035987185464066034,
+    "M_vuln_coop": 0.09964569279586577,
+    "M_vuln_noncoop": 0.9964012814535934,
+    "fused_resilience": 0.0,
+    "asset_security_roi": 84411.21388756658,
+    "asset_security_roi_noncoop": 21118628.48398845,
+    "M_c_coop": 0.9003543072041342,
+    "M_c_noncoop": 0.0035987185464066034,
+    "coverage": 0.9003543072041342,
+    "redundancy": 0.9040852952581213,
+    "cost": 76000.0,
+    "cost_hardware": 31000.0,
+    "cost_sites": 45000.0,
+    "num_sensors": 3,
+    "unique_sites": 3,
+    "fitness": [
+      0.9003543072041342,
+      0.0035987185464066034,
+      0.76
+    ],
+    "evaluated_voxels": 3784,
+    "total_voxels": 3784
+  },
+  {
+    "solution_id": 10,
+    "sensors": [
+      {
+        "type": "Acoustic",
+        "x": 525.0,
+        "y": 975.0,
+        "z": 26.34476774684866,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 825.0,
+        "y": 825.0,
+        "z": 31.08069008585787,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 75.0,
+        "y": 1125.0,
+        "z": 27.205747719852717,
+        "azimuth_deg": 120.0
+      }
+    ],
+    "M_wp_coop": 0.9003543072041342,
+    "M_wp_noncoop": 0.0035987185464066034,
+    "M_vuln_coop": 0.09964569279586577,
+    "M_vuln_noncoop": 0.9964012814535934,
+    "fused_resilience": 0.0,
+    "asset_security_roi": 84411.21388756658,
+    "asset_security_roi_noncoop": 21118628.48398845,
+    "M_c_coop": 0.9003543072041342,
+    "M_c_noncoop": 0.0035987185464066034,
+    "coverage": 0.9003543072041342,
+    "redundancy": 0.9040852952581213,
+    "cost": 76000.0,
+    "cost_hardware": 31000.0,
+    "cost_sites": 45000.0,
+    "num_sensors": 3,
+    "unique_sites": 3,
+    "fitness": [
+      0.9003543072041342,
+      0.0035987185464066034,
+      0.76
+    ],
+    "evaluated_voxels": 3784,
+    "total_voxels": 3784
+  },
+  {
+    "solution_id": 11,
+    "sensors": [
+      {
+        "type": "Acoustic",
+        "x": 525.0,
+        "y": 975.0,
+        "z": 26.34476774684866,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 825.0,
+        "y": 825.0,
+        "z": 31.08069008585787,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 75.0,
+        "y": 1125.0,
+        "z": 27.205747719852717,
+        "azimuth_deg": 120.0
+      }
+    ],
+    "M_wp_coop": 0.9003543072041342,
+    "M_wp_noncoop": 0.0035987185464066034,
+    "M_vuln_coop": 0.09964569279586577,
+    "M_vuln_noncoop": 0.9964012814535934,
+    "fused_resilience": 0.0,
+    "asset_security_roi": 84411.21388756658,
+    "asset_security_roi_noncoop": 21118628.48398845,
+    "M_c_coop": 0.9003543072041342,
+    "M_c_noncoop": 0.0035987185464066034,
+    "coverage": 0.9003543072041342,
+    "redundancy": 0.9040852952581213,
+    "cost": 76000.0,
+    "cost_hardware": 31000.0,
+    "cost_sites": 45000.0,
+    "num_sensors": 3,
+    "unique_sites": 3,
+    "fitness": [
+      0.9003543072041342,
+      0.0035987185464066034,
+      0.76
+    ],
+    "evaluated_voxels": 3784,
+    "total_voxels": 3784
+  },
+  {
+    "solution_id": 12,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 825.0,
+        "y": 75.0,
+        "z": 26.501391657565136,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 825.0,
+        "y": 825.0,
+        "z": 31.08069008585787,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 75.0,
+        "y": 1125.0,
+        "z": 27.205747719852717,
+        "azimuth_deg": 120.0
+      }
+    ],
+    "M_wp_coop": 0.990020111290084,
+    "M_wp_noncoop": 0.0020667755134702722,
+    "M_vuln_coop": 0.009979888709915952,
+    "M_vuln_noncoop": 0.9979332244865298,
+    "fused_resilience": 0.0,
+    "asset_security_roi": 83836.68074363019,
+    "asset_security_roi_noncoop": 40159175.22684248,
+    "M_c_coop": 0.990020111290084,
+    "M_c_noncoop": 0.0020667755134702722,
+    "coverage": 0.990020111290084,
+    "redundancy": 1.8017943730212973,
+    "cost": 83000.0,
+    "cost_hardware": 38000.0,
+    "cost_sites": 45000.0,
+    "num_sensors": 3,
+    "unique_sites": 3,
+    "fitness": [
+      0.990020111290084,
+      0.0020667755134702722,
+      0.83
+    ],
+    "evaluated_voxels": 3784,
+    "total_voxels": 3784
+  },
+  {
+    "solution_id": 13,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 825.0,
+        "y": 75.0,
+        "z": 26.501391657565136,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 825.0,
+        "y": 825.0,
+        "z": 31.08069008585787,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 75.0,
+        "y": 1125.0,
+        "z": 27.205747719852717,
+        "azimuth_deg": 120.0
+      }
+    ],
+    "M_wp_coop": 0.990020111290084,
+    "M_wp_noncoop": 0.0020667755134702722,
+    "M_vuln_coop": 0.009979888709915952,
+    "M_vuln_noncoop": 0.9979332244865298,
+    "fused_resilience": 0.0,
+    "asset_security_roi": 83836.68074363019,
+    "asset_security_roi_noncoop": 40159175.22684248,
+    "M_c_coop": 0.990020111290084,
+    "M_c_noncoop": 0.0020667755134702722,
+    "coverage": 0.990020111290084,
+    "redundancy": 1.8017943730212973,
+    "cost": 83000.0,
+    "cost_hardware": 38000.0,
+    "cost_sites": 45000.0,
+    "num_sensors": 3,
+    "unique_sites": 3,
+    "fitness": [
+      0.990020111290084,
+      0.0020667755134702722,
+      0.83
+    ],
+    "evaluated_voxels": 3784,
+    "total_voxels": 3784
+  },
+  {
+    "solution_id": 14,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 525.0,
+        "y": 75.0,
+        "z": 32.097642105698455,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 75.0,
+        "y": 1125.0,
+        "z": 27.205747719852717,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 225.0,
+        "y": 1125.0,
+        "z": 30.6901099750692,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 225.0,
+        "y": 825.0,
+        "z": 32.16654220735259,
+        "azimuth_deg": 240.0
+      }
+    ],
+    "M_wp_coop": 0.9998995411057722,
+    "M_wp_noncoop": 0.0,
+    "M_vuln_coop": 0.00010045889422782839,
+    "M_vuln_noncoop": 1.0,
+    "fused_resilience": 0.0,
+    "asset_security_roi": 120012.05627846775,
+    "asset_security_roi_noncoop": 1200000000000000.0,
+    "M_c_coop": 0.9998995411057722,
+    "M_c_noncoop": 0.0,
+    "coverage": 0.9998995411057722,
+    "redundancy": 3.5988107822412494,
+    "cost": 120000.0,
+    "cost_hardware": 60000.0,
+    "cost_sites": 60000.0,
+    "num_sensors": 4,
+    "unique_sites": 4,
+    "fitness": [
+      0.9998995411057722,
+      0.0,
+      1.2
+    ],
+    "evaluated_voxels": 3784,
+    "total_voxels": 3784
+  },
+  {
+    "solution_id": 15,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 525.0,
+        "y": 75.0,
+        "z": 32.097642105698455,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 825.0,
+        "y": 75.0,
+        "z": 26.501391657565136,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 75.0,
+        "y": 1125.0,
+        "z": 27.205747719852717,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 225.0,
+        "y": 1125.0,
+        "z": 30.6901099750692,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 225.0,
+        "y": 825.0,
+        "z": 32.16654220735259,
+        "azimuth_deg": 240.0
+      }
+    ],
+    "M_wp_coop": 0.999989954110577,
+    "M_wp_noncoop": 0.0,
+    "M_vuln_coop": 1.0045889422993781e-05,
+    "M_vuln_noncoop": 1.0,
+    "fused_resilience": 0.0,
+    "asset_security_roi": 150001.5068985516,
+    "asset_security_roi_noncoop": 1500000000000000.0,
+    "M_c_coop": 0.999989954110577,
+    "M_c_noncoop": 0.0,
+    "coverage": 0.999989954110577,
+    "redundancy": 4.498810782241015,
+    "cost": 150000.0,
+    "cost_hardware": 75000.0,
+    "cost_sites": 75000.0,
+    "num_sensors": 5,
+    "unique_sites": 5,
+    "fitness": [
+      0.999989954110577,
+      0.0,
+      1.5
+    ],
+    "evaluated_voxels": 3784,
+    "total_voxels": 3784
+  },
+  {
+    "solution_id": 16,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 525.0,
+        "y": 75.0,
+        "z": 32.097642105698455,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 825.0,
+        "y": 75.0,
+        "z": 26.501391657565136,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 75.0,
+        "y": 1125.0,
+        "z": 27.205747719852717,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 225.0,
+        "y": 1125.0,
+        "z": 30.6901099750692,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 225.0,
+        "y": 825.0,
+        "z": 32.16654220735259,
+        "azimuth_deg": 240.0
+      }
+    ],
+    "M_wp_coop": 0.999989954110577,
+    "M_wp_noncoop": 0.0,
+    "M_vuln_coop": 1.0045889422993781e-05,
+    "M_vuln_noncoop": 1.0,
+    "fused_resilience": 0.0,
+    "asset_security_roi": 150001.5068985516,
+    "asset_security_roi_noncoop": 1500000000000000.0,
+    "M_c_coop": 0.999989954110577,
+    "M_c_noncoop": 0.0,
+    "coverage": 0.999989954110577,
+    "redundancy": 4.498810782241015,
+    "cost": 150000.0,
+    "cost_hardware": 75000.0,
+    "cost_sites": 75000.0,
+    "num_sensors": 5,
+    "unique_sites": 5,
+    "fitness": [
+      0.999989954110577,
+      0.0,
+      1.5
+    ],
+    "evaluated_voxels": 3784,
+    "total_voxels": 3784
+  },
+  {
+    "solution_id": 17,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 525.0,
+        "y": 75.0,
+        "z": 32.097642105698455,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 825.0,
+        "y": 825.0,
+        "z": 31.08069008585787,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 525.0,
+        "y": 375.0,
+        "z": 33.86907852543065,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 75.0,
+        "y": 1125.0,
+        "z": 27.205747719852717,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 375.0,
+        "y": 225.0,
+        "z": 28.78517873583405,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 225.0,
+        "y": 825.0,
+        "z": 32.16654220735259,
+        "azimuth_deg": 240.0
+      }
+    ],
+    "M_wp_coop": 0.999998984268648,
+    "M_wp_noncoop": 0.0,
+    "M_vuln_coop": 1.0157313520275935e-06,
+    "M_vuln_noncoop": 1.0,
+    "fused_resilience": 0.0,
+    "asset_security_roi": 180000.18283182906,
+    "asset_security_roi_noncoop": 1800000000000000.0,
+    "M_c_coop": 0.999998984268648,
+    "M_c_noncoop": 0.0,
+    "coverage": 0.999998984268648,
+    "redundancy": 5.398810782241098,
+    "cost": 180000.0,
+    "cost_hardware": 90000.0,
+    "cost_sites": 90000.0,
+    "num_sensors": 6,
+    "unique_sites": 6,
+    "fitness": [
+      0.999998984268648,
+      0.0,
+      1.8
+    ],
+    "evaluated_voxels": 3784,
+    "total_voxels": 3784
+  },
+  {
+    "solution_id": 18,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 525.0,
+        "y": 75.0,
+        "z": 32.097642105698455,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 825.0,
+        "y": 825.0,
+        "z": 31.08069008585787,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 525.0,
+        "y": 375.0,
+        "z": 33.86907852543065,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 75.0,
+        "y": 1125.0,
+        "z": 27.205747719852717,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 375.0,
+        "y": 225.0,
+        "z": 28.78517873583405,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 225.0,
+        "y": 825.0,
+        "z": 32.16654220735259,
+        "azimuth_deg": 240.0
+      }
+    ],
+    "M_wp_coop": 0.999998984268648,
+    "M_wp_noncoop": 0.0,
+    "M_vuln_coop": 1.0157313520275935e-06,
+    "M_vuln_noncoop": 1.0,
+    "fused_resilience": 0.0,
+    "asset_security_roi": 180000.18283182906,
+    "asset_security_roi_noncoop": 1800000000000000.0,
+    "M_c_coop": 0.999998984268648,
+    "M_c_noncoop": 0.0,
+    "coverage": 0.999998984268648,
+    "redundancy": 5.398810782241098,
+    "cost": 180000.0,
+    "cost_hardware": 90000.0,
+    "cost_sites": 90000.0,
+    "num_sensors": 6,
+    "unique_sites": 6,
+    "fitness": [
+      0.999998984268648,
+      0.0,
+      1.8
+    ],
+    "evaluated_voxels": 3784,
+    "total_voxels": 3784
+  },
+  {
+    "solution_id": 19,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 525.0,
+        "y": 75.0,
+        "z": 32.097642105698455,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 75.0,
+        "y": 1125.0,
+        "z": 27.205747719852717,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 225.0,
+        "y": 825.0,
+        "z": 32.16654220735259,
+        "azimuth_deg": 240.0
+      }
+    ],
+    "M_wp_coop": 0.9989954373246364,
+    "M_wp_noncoop": 0.0,
+    "M_vuln_coop": 0.0010045626753636405,
+    "M_vuln_noncoop": 1.0,
+    "fused_resilience": 0.0,
+    "asset_security_roi": 90090.50155526721,
+    "asset_security_roi_noncoop": 900000000000000.0,
+    "M_c_coop": 0.9989954373246364,
+    "M_c_noncoop": 0.0,
+    "coverage": 0.9989954373246364,
+    "redundancy": 2.6990486257928534,
+    "cost": 90000.0,
+    "cost_hardware": 45000.0,
+    "cost_sites": 45000.0,
+    "num_sensors": 3,
+    "unique_sites": 3,
+    "fitness": [
+      0.9989954373246364,
+      0.0,
+      0.9
+    ],
+    "evaluated_voxels": 3784,
+    "total_voxels": 3784
+  },
+  {
+    "solution_id": 20,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 525.0,
+        "y": 75.0,
+        "z": 32.097642105698455,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 75.0,
+        "y": 1125.0,
+        "z": 27.205747719852717,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 225.0,
+        "y": 825.0,
+        "z": 32.16654220735259,
+        "azimuth_deg": 240.0
+      }
+    ],
+    "M_wp_coop": 0.9989954373246364,
+    "M_wp_noncoop": 0.0,
+    "M_vuln_coop": 0.0010045626753636405,
+    "M_vuln_noncoop": 1.0,
+    "fused_resilience": 0.0,
+    "asset_security_roi": 90090.50155526721,
+    "asset_security_roi_noncoop": 900000000000000.0,
+    "M_c_coop": 0.9989954373246364,
+    "M_c_noncoop": 0.0,
+    "coverage": 0.9989954373246364,
+    "redundancy": 2.6990486257928534,
+    "cost": 90000.0,
+    "cost_hardware": 45000.0,
+    "cost_sites": 45000.0,
+    "num_sensors": 3,
+    "unique_sites": 3,
+    "fitness": [
+      0.9989954373246364,
+      0.0,
+      0.9
+    ],
+    "evaluated_voxels": 3784,
+    "total_voxels": 3784
+  },
+  {
+    "solution_id": 21,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 675.0,
+        "y": 975.0,
+        "z": 27.485468221717486,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 825.0,
+        "y": 75.0,
+        "z": 26.501391657565136,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 825.0,
+        "y": 825.0,
+        "z": 31.08069008585787,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 75.0,
+        "y": 1125.0,
+        "z": 27.205747719852717,
+        "azimuth_deg": 120.0
+      }
+    ],
+    "M_wp_coop": 0.9990020111290083,
+    "M_wp_noncoop": 0.0020667755134702722,
+    "M_vuln_coop": 0.0009979888709916729,
+    "M_vuln_noncoop": 0.9979332244865298,
+    "fused_resilience": 0.0,
+    "asset_security_roi": 113112.88540079576,
+    "asset_security_roi_noncoop": 54674539.766665064,
+    "M_c_coop": 0.9990020111290083,
+    "M_c_noncoop": 0.0020667755134702722,
+    "coverage": 0.9990020111290083,
+    "redundancy": 2.701794373021254,
+    "cost": 113000.0,
+    "cost_hardware": 53000.0,
+    "cost_sites": 60000.0,
+    "num_sensors": 4,
+    "unique_sites": 4,
+    "fitness": [
+      0.9990020111290083,
+      0.0020667755134702722,
+      1.13
+    ],
+    "evaluated_voxels": 3784,
+    "total_voxels": 3784
+  },
+  {
+    "solution_id": 22,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 675.0,
+        "y": 975.0,
+        "z": 27.485468221717486,
+        "azimuth_deg": 240.0
+      },
+      {
+        "type": "RF",
+        "x": 825.0,
+        "y": 75.0,
+        "z": 26.501391657565136,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 825.0,
+        "y": 825.0,
+        "z": 31.08069008585787,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 75.0,
+        "y": 1125.0,
+        "z": 27.205747719852717,
+        "azimuth_deg": 120.0
+      }
+    ],
+    "M_wp_coop": 0.9990020111290083,
+    "M_wp_noncoop": 0.0020667755134702722,
+    "M_vuln_coop": 0.0009979888709916729,
+    "M_vuln_noncoop": 0.9979332244865298,
+    "fused_resilience": 0.0,
+    "asset_security_roi": 113112.88540079576,
+    "asset_security_roi_noncoop": 54674539.766665064,
+    "M_c_coop": 0.9990020111290083,
+    "M_c_noncoop": 0.0020667755134702722,
+    "coverage": 0.9990020111290083,
+    "redundancy": 2.701794373021254,
+    "cost": 113000.0,
+    "cost_hardware": 53000.0,
+    "cost_sites": 60000.0,
+    "num_sensors": 4,
+    "unique_sites": 4,
+    "fitness": [
+      0.9990020111290083,
+      0.0020667755134702722,
+      1.13
+    ],
+    "evaluated_voxels": 3784,
+    "total_voxels": 3784
+  },
+  {
+    "solution_id": 23,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 525.0,
+        "y": 75.0,
+        "z": 32.097642105698455,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 825.0,
+        "y": 75.0,
+        "z": 26.501391657565136,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 825.0,
+        "y": 825.0,
+        "z": 31.08069008585787,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 75.0,
+        "y": 1125.0,
+        "z": 27.205747719852717,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 225.0,
+        "y": 825.0,
+        "z": 32.16654220735259,
+        "azimuth_deg": 240.0
+      }
+    ],
+    "M_wp_coop": 0.999899750410015,
+    "M_wp_noncoop": 0.0020667755134702722,
+    "M_vuln_coop": 0.000100249589985002,
+    "M_vuln_noncoop": 0.9979332244865298,
+    "fused_resilience": 0.0,
+    "asset_security_roi": 143014.33712865913,
+    "asset_security_roi_noncoop": 69189904.30648765,
+    "M_c_coop": 0.999899750410015,
+    "M_c_noncoop": 0.0020667755134702722,
+    "coverage": 0.999899750410015,
+    "redundancy": 3.6013186859178057,
+    "cost": 143000.0,
+    "cost_hardware": 68000.0,
+    "cost_sites": 75000.0,
+    "num_sensors": 5,
+    "unique_sites": 5,
+    "fitness": [
+      0.999899750410015,
+      0.0020667755134702722,
+      1.43
+    ],
+    "evaluated_voxels": 3784,
+    "total_voxels": 3784
+  },
+  {
+    "solution_id": 24,
+    "sensors": [
+      {
+        "type": "RF",
+        "x": 525.0,
+        "y": 75.0,
+        "z": 32.097642105698455,
+        "azimuth_deg": 0.0
+      },
+      {
+        "type": "RF",
+        "x": 825.0,
+        "y": 75.0,
+        "z": 26.501391657565136,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "Acoustic",
+        "x": 825.0,
+        "y": 825.0,
+        "z": 31.08069008585787,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 75.0,
+        "y": 1125.0,
+        "z": 27.205747719852717,
+        "azimuth_deg": 120.0
+      },
+      {
+        "type": "RF",
+        "x": 225.0,
+        "y": 825.0,
+        "z": 32.16654220735259,
+        "azimuth_deg": 240.0
+      }
+    ],
+    "M_wp_coop": 0.999899750410015,
+    "M_wp_noncoop": 0.0020667755134702722,
+    "M_vuln_coop": 0.000100249589985002,
+    "M_vuln_noncoop": 0.9979332244865298,
+    "fused_resilience": 0.0,
+    "asset_security_roi": 143014.33712865913,
+    "asset_security_roi_noncoop": 69189904.30648765,
+    "M_c_coop": 0.999899750410015,
+    "M_c_noncoop": 0.0020667755134702722,
+    "coverage": 0.999899750410015,
+    "redundancy": 3.6013186859178057,
+    "cost": 143000.0,
+    "cost_hardware": 68000.0,
+    "cost_sites": 75000.0,
+    "num_sensors": 5,
+    "unique_sites": 5,
+    "fitness": [
+      0.999899750410015,
+      0.0020667755134702722,
+      1.43
+    ],
+    "evaluated_voxels": 3784,
+    "total_voxels": 3784
+  }
+]

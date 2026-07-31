@@ -229,7 +229,7 @@ def calculate_fused_resilience(
 ) -> float:
     """
     Fused Resilience: % of (weighted) threat volume where Q=1.0 — covered by both
-    RF identity and kinematic Radar/EO. Modality diversity for weapon-grade fused track.
+    cooperative and non-cooperative (Radar / EO / Acoustic) layers.
     coop_covered and noncoop_covered are binary (0/1) grids.
     """
     fused = coop_covered * noncoop_covered
@@ -379,6 +379,56 @@ def check_scopas_requirements(
         'status': status,
         'coverage_value': metrics.get('Mc', 0),
         'overlap_value': overlap_value
+    }
+
+
+def check_dual_layer_requirements(
+    metrics: Dict[str, float],
+    min_M_wp_coop: float = 0.90,
+    min_M_wp_noncoop: float = 0.50,
+    min_fused_resilience: float = None,
+) -> Dict[str, Any]:
+    """
+    Check dual-layer point-defense targets (cooperative + non-cooperative).
+
+    Typical planning targets (evidence-based defaults):
+    - M_wp_coop >= 0.90 (compliant / RID traffic — usually inexpensive)
+    - M_wp_noncoop >= 0.50 (dark-target floor — much harder / costlier)
+
+    Returns stoplight status plus per-layer values.
+    """
+    coop = float(metrics.get("M_wp_coop", metrics.get("M_c_coop", metrics.get("coverage", 0.0))) or 0.0)
+    noncoop = float(metrics.get("M_wp_noncoop", metrics.get("M_c_noncoop", 0.0)) or 0.0)
+    fused = metrics.get("fused_resilience", None)
+    if fused is not None:
+        fused = float(fused)
+
+    meets_coop = coop >= float(min_M_wp_coop)
+    meets_noncoop = noncoop >= float(min_M_wp_noncoop)
+    meets_fused = True
+    if min_fused_resilience is not None and fused is not None:
+        meets_fused = fused >= float(min_fused_resilience)
+
+    meets_all = meets_coop and meets_noncoop and meets_fused
+    if meets_all:
+        status = "green"
+    elif meets_coop or meets_noncoop:
+        status = "yellow"
+    else:
+        status = "red"
+
+    return {
+        "meets_M_wp_coop": meets_coop,
+        "meets_M_wp_noncoop": meets_noncoop,
+        "meets_fused_resilience": meets_fused,
+        "meets_all": meets_all,
+        "status": status,
+        "M_wp_coop": coop,
+        "M_wp_noncoop": noncoop,
+        "fused_resilience": fused,
+        "min_M_wp_coop": float(min_M_wp_coop),
+        "min_M_wp_noncoop": float(min_M_wp_noncoop),
+        "min_fused_resilience": None if min_fused_resilience is None else float(min_fused_resilience),
     }
 
 
