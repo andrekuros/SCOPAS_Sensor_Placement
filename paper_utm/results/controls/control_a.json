@@ -1,0 +1,432 @@
+[
+  {
+    "n": 8,
+    "k": 3,
+    "oracle_Mc": 0.891136228435455,
+    "Exhaustive": {
+      "method": "Exhaustive",
+      "mode": "full_exhaustive",
+      "Mc": 0.891136228435455,
+      "cost": 45000.0,
+      "types": [
+        [
+          "RF",
+          3
+        ]
+      ],
+      "n_eval": 3584,
+      "seconds": 0.0852727019955637,
+      "total_space": 3584,
+      "solution": {
+        "sites": [
+          49,
+          96,
+          180
+        ],
+        "types": [
+          "RF",
+          "RF",
+          "RF"
+        ],
+        "Mc": 0.891136228435455,
+        "cost": 45000.0
+      }
+    },
+    "Greedy": {
+      "method": "Greedy",
+      "Mc": 0.891136228435455,
+      "cost": 45000.0,
+      "types": [
+        [
+          "RF",
+          3
+        ]
+      ],
+      "n_eval": 84,
+      "seconds": 0.00175325499731116,
+      "solution": {
+        "sites": [
+          96,
+          180,
+          49
+        ],
+        "types": [
+          "RF",
+          "RF",
+          "RF"
+        ],
+        "Mc": 0.891136228435455
+      }
+    },
+    "Random": {
+      "method": "Random",
+      "Mc": 0.891136228435455,
+      "Mc_mean": 0.8803093396787626,
+      "Mc_std": 0.005821358630684135,
+      "cost": 45000.0,
+      "types": [
+        [
+          "RF",
+          3
+        ]
+      ],
+      "n_eval": 1000,
+      "seconds": 0.02561128699744586,
+      "n_seeds": 5,
+      "samples_per_seed": 200,
+      "solution": {
+        "sites": [
+          49,
+          96,
+          180
+        ],
+        "types": [
+          "RF",
+          "RF",
+          "RF"
+        ],
+        "Mc": 0.891136228435455,
+        "cost": 45000.0
+      }
+    },
+    "NSGA": {
+      "method": "NSGA-II*",
+      "note": "fixed-k Mc-maximizing GA (same ray-tracer); not full multi-objective DEAP",
+      "Mc": 0.891136228435455,
+      "Mc_mean": 0.8905413444378347,
+      "Mc_std": 0.0011897679952408869,
+      "cost": 45000.0,
+      "types": [
+        [
+          "RF",
+          3
+        ]
+      ],
+      "n_eval": 1920,
+      "seconds": 0.05214685200189706,
+      "pop": 24,
+      "gens": 15,
+      "n_seeds": 5,
+      "solution": {
+        "sites": [
+          180,
+          96,
+          49
+        ],
+        "types": [
+          "RF",
+          "RF",
+          "RF"
+        ],
+        "Mc": 0.891136228435455,
+        "cost": 45000.0
+      }
+    },
+    "delta_Mc": {
+      "Greedy": 0.0,
+      "Random": 0.0,
+      "NSGA": 0.0
+    },
+    "gap_pct": {
+      "Greedy": 0.0,
+      "Random": 0.0,
+      "NSGA": 0.0
+    }
+  },
+  {
+    "n": 10,
+    "k": 4,
+    "oracle_Mc": 0.9149315883402737,
+    "Exhaustive": {
+      "method": "Exhaustive",
+      "mode": "full_exhaustive",
+      "Mc": 0.9149315883402737,
+      "cost": 60000.0,
+      "types": [
+        [
+          "RF",
+          4
+        ]
+      ],
+      "n_eval": 53760,
+      "seconds": 1.4607075050007552,
+      "total_space": 53760,
+      "solution": {
+        "sites": [
+          109,
+          123,
+          146,
+          208
+        ],
+        "types": [
+          "RF",
+          "RF",
+          "RF",
+          "RF"
+        ],
+        "Mc": 0.9149315883402737,
+        "cost": 60000.0
+      }
+    },
+    "Greedy": {
+      "method": "Greedy",
+      "Mc": 0.9149315883402737,
+      "cost": 60000.0,
+      "types": [
+        [
+          "RF",
+          4
+        ]
+      ],
+      "n_eval": 136,
+      "seconds": 0.0029936220089439303,
+      "solution": {
+        "sites": [
+          146,
+          208,
+          109,
+          123
+        ],
+        "types": [
+          "RF",
+          "RF",
+          "RF",
+          "RF"
+        ],
+        "Mc": 0.9149315883402737
+      }
+    },
+    "Random": {
+      "method": "Random",
+      "Mc": 0.9119571683521713,
+      "Mc_mean": 0.8941106484235574,
+      "Mc_std": 0.009847082306512114,
+      "cost": 60000.0,
+      "types": [
+        [
+          "RF",
+          4
+        ]
+      ],
+      "n_eval": 1000,
+      "seconds": 0.029584592004539445,
+      "n_seeds": 5,
+      "samples_per_seed": 200,
+      "solution": {
+        "sites": [
+          208,
+          52,
+          125,
+          146
+        ],
+        "types": [
+          "RF",
+          "RF",
+          "RF",
+          "RF"
+        ],
+        "Mc": 0.9119571683521713,
+        "cost": 60000.0
+      }
+    },
+    "NSGA": {
+      "method": "NSGA-II*",
+      "note": "fixed-k Mc-maximizing GA (same ray-tracer); not full multi-objective DEAP",
+      "Mc": 0.9149315883402737,
+      "Mc_mean": 0.9077929803688282,
+      "Mc_std": 0.006193653817880006,
+      "cost": 60000.0,
+      "types": [
+        [
+          "RF",
+          4
+        ]
+      ],
+      "n_eval": 1920,
+      "seconds": 0.05731827099225484,
+      "pop": 24,
+      "gens": 15,
+      "n_seeds": 5,
+      "solution": {
+        "sites": [
+          208,
+          146,
+          109,
+          123
+        ],
+        "types": [
+          "RF",
+          "RF",
+          "RF",
+          "RF"
+        ],
+        "Mc": 0.9149315883402737,
+        "cost": 60000.0
+      }
+    },
+    "delta_Mc": {
+      "Greedy": 0.0,
+      "Random": 0.002974419988102328,
+      "NSGA": 0.0
+    },
+    "gap_pct": {
+      "Greedy": 0.0,
+      "Random": 0.32509752925877766,
+      "NSGA": 0.0
+    }
+  },
+  {
+    "n": 12,
+    "k": 5,
+    "oracle_Mc": 0.9619274241522903,
+    "Exhaustive": {
+      "method": "Exhaustive",
+      "mode": "site_exhaustive_type_sampled",
+      "Mc": 0.9619274241522903,
+      "cost": 75000.0,
+      "types": [
+        [
+          "RF",
+          5
+        ]
+      ],
+      "n_eval": 63988,
+      "seconds": 2.0480050559999654,
+      "total_space": 811008,
+      "solution": {
+        "sites": [
+          36,
+          68,
+          95,
+          135,
+          168
+        ],
+        "types": [
+          "RF",
+          "RF",
+          "RF",
+          "RF",
+          "RF"
+        ],
+        "Mc": 0.9619274241522903,
+        "cost": 75000.0
+      }
+    },
+    "Greedy": {
+      "method": "Greedy",
+      "Mc": 0.9589530041641879,
+      "cost": 75000.0,
+      "types": [
+        [
+          "RF",
+          5
+        ]
+      ],
+      "n_eval": 200,
+      "seconds": 0.004705868996097706,
+      "solution": {
+        "sites": [
+          121,
+          95,
+          68,
+          135,
+          168
+        ],
+        "types": [
+          "RF",
+          "RF",
+          "RF",
+          "RF",
+          "RF"
+        ],
+        "Mc": 0.9589530041641879
+      }
+    },
+    "Random": {
+      "method": "Random",
+      "Mc": 0.9274241522903034,
+      "Mc_mean": 0.9225461035098157,
+      "Mc_std": 0.003476892134729916,
+      "cost": 110000.0,
+      "types": [
+        [
+          "RF",
+          4
+        ],
+        [
+          "Radar",
+          1
+        ]
+      ],
+      "n_eval": 1000,
+      "seconds": 0.03363895800430328,
+      "n_seeds": 5,
+      "samples_per_seed": 200,
+      "solution": {
+        "sites": [
+          121,
+          135,
+          95,
+          123,
+          168
+        ],
+        "types": [
+          "RF",
+          "RF",
+          "RF",
+          "RF",
+          "Radar"
+        ],
+        "Mc": 0.9274241522903034,
+        "cost": 110000.0
+      }
+    },
+    "NSGA": {
+      "method": "NSGA-II*",
+      "note": "fixed-k Mc-maximizing GA (same ray-tracer); not full multi-objective DEAP",
+      "Mc": 0.9589530041641879,
+      "Mc_mean": 0.951338488994646,
+      "Mc_std": 0.007594038499575451,
+      "cost": 75000.0,
+      "types": [
+        [
+          "RF",
+          5
+        ]
+      ],
+      "n_eval": 1920,
+      "seconds": 0.06455428099434357,
+      "pop": 24,
+      "gens": 15,
+      "n_seeds": 5,
+      "solution": {
+        "sites": [
+          95,
+          121,
+          68,
+          168,
+          135
+        ],
+        "types": [
+          "RF",
+          "RF",
+          "RF",
+          "RF",
+          "RF"
+        ],
+        "Mc": 0.9589530041641879,
+        "cost": 75000.0
+      }
+    },
+    "delta_Mc": {
+      "Greedy": 0.002974419988102328,
+      "Random": 0.03450327186198687,
+      "NSGA": 0.002974419988102328
+    },
+    "gap_pct": {
+      "Greedy": 0.30921459492888603,
+      "Random": 3.5868893011750114,
+      "NSGA": 0.30921459492888603
+    }
+  }
+]

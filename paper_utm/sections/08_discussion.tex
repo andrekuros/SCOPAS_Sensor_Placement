@@ -8,6 +8,8 @@ The SCOPAS reruns overturn the operational reading of a single fused coverage pe
 
 Acoustic helps as a low-CapEx non-cooperative filler but does not replace Radar for city-scale dark-target floors in these budgets. Requirement corridors near \(0.90/0.35\) are a more honest planning target than legacy GREEN thresholds or unsupported ``\% of optimum'' claims.
 
+Controls~A--B close two review blockers under matched physics: small-$n$ GA gaps stay \(\leq0.3\)\,pp versus oracle \(M_c\), and matched-budget ablation shows RF-only wins lean/mid classic coverage while heterogeneous mixes only edge at \$150k. City-scale dual-layer optimality gaps remain unsupported; heterogeneity stays a conditional, metric-dependent claim.
+
 \subsection{Model Fidelity: Rigorous Ray-Tracing Enforcement}
 
 Our deterministic ray-tracing ensures physical realism through strict occlusion enforcement:
@@ -31,7 +33,7 @@ Rooftop-mounted sensors have limited vertical coverage. We model elevation angle
 \item \textbf{Acoustic}: $\theta_{elev} \in [-40°, 80°]$ (omnidirectional microphone array)
 \end{itemize}
 
-These constraints prevent sensors atop 50m buildings from detecting targets at ground level—improving model fidelity by 40\% compared to omnidirectional assumptions. EO sensors, in particular, have significantly reduced coverage due to limited horizontal FOV (90° vs 360°), making heterogeneous deployments essential.
+These constraints prevent sensors atop 50m buildings from detecting targets at ground level—improving model fidelity by 40\% compared to omnidirectional assumptions. EO sensors, in particular, have significantly reduced coverage due to limited horizontal FOV (90° vs 360°). Heterogeneous mixes help when dark-target or FOV-limited modalities are required; Control~B shows they are not automatically best for CapEx-matched classic \(M_c\).
 
 \subsection{Scalability Advantages}
 
@@ -72,17 +74,15 @@ The updated airway set $\{20,45,65\}$\,m highlights how strongly surveillance qu
 \item \textbf{Tiered certification}: Regulators can codify altitude bands such as 20--30\,m (restricted, requires dense GBSS), 45--70\,m (standard BVLOS), and $>70$\,m (relaxed surveillance requirements), grounding policy in measurable coverage gaps rather than qualitative risk arguments.
 \end{enumerate}
 
-This airway-stratified analysis quantifies, for the first time, how altitude selection influences GBSS efficacy when ray-tracing physics and heterogeneous sensors are modeled explicitly.
+This airway-stratified analysis quantifies how altitude selection influences GBSS efficacy when ray-tracing physics and multi-modal sensors are modeled explicitly.
 
 \subsection{Comparison with MUSCAT Baseline}
 
-Compared to the original MUSCAT framework \cite{muscat2023}, our enhanced approach addresses fundamental scalability limitations while maintaining compatibility with established metrics and methodology. The original MUSCAT employed exhaustive search over sensor combinations, which becomes computationally intractable beyond 10--15 candidate locations due to $O(2^n)$ complexity. Our GA-based optimization reduces this to $O(g \cdot p)$ complexity, where $g$ is generations and $p$ is population size, enabling optimization of scenarios with 50--100 sensors.
-
-Table~\ref{tab:baseline_comparison} provides a quantitative comparison of computational requirements and solution quality. For a small-scale scenario (10 candidate locations, 5--8 sensors), exhaustive search evaluates $2^{10} = 1,024$ combinations and guarantees global optimum, but requires approximately 2--4 hours of computation. Our GA evaluates 5,000 individuals (synthetic) or 3,600 (real-world) with parallelization, achieving wall-clock times of 91 minutes and 7.6 hours respectively for much larger scenarios (221 and 93 candidate locations). 
+Compared to the original MUSCAT framework \cite{muscat2023}, SCOPAS keeps the metric lineage while replacing exhaustive enumeration with NSGA-II in a \(g\cdot p\) budget. Exhaustive search remains intractable for \(n\gtrsim25\) sites; city-scale runs therefore report Pareto fronts, not optimality gaps. Matched quality evidence is confined to Control~A (Table~\ref{tab:oracle_comparison}).
 
 \begin{table}[h]
 \centering
-\caption{Comparison of exhaustive search (MUSCAT baseline) vs. GA optimization (this work).}
+\caption{Complexity comparison: exhaustive MUSCAT-style search vs.\ GA (solution quality is \emph{not} claimed here; see Control~A).}
 \label{tab:baseline_comparison}
 \begin{tabular}{lccc}
 \toprule
@@ -92,23 +92,20 @@ Max Candidate Locations & 10--15 & 221 & 93 \\
 Max Sensors & 5--8 & 15 & 22 \\
 Evaluations Required & $2^n$ & $g \cdot p$ & $g \cdot p$ \\
 Example Evaluations & 1,024 & 5,000 & 3,600 \\
-Execution Time (small) & 2--4 h & N/A & N/A \\
-Execution Time (full) & Infeasible & 91.3 min & 7.6 h \\
-Solution Quality & Global optimum & $\approx$98\% of optimum & $\approx$98\% of optimum \\
-Pareto Solutions & Single optimum & 40 solutions & 80 solutions \\
+Full-scale status & Infeasible for \(n\gtrsim25\) & Tractable & Tractable \\
+Solution quality claim & Global optimum (small \(n\)) & See Control~A & Not claimed \\
+Pareto output & Single optimum & Multi-objective front & Multi-objective front \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 Key advantages of our GA approach:
 \begin{itemize}
-\item \textbf{Scalability}: MUSCAT's exhaustive search handles 10--15 sensors maximum; our framework successfully optimizes 50--100 sensor networks (5--10$\times$ increase in problem size).
-\item \textbf{Computational Tractability}: For scenarios with 88 candidate locations (Avenida Paulista), exhaustive search would require $2^{88} \approx 3 \times 10^{26}$ evaluations—computationally impossible. Our GA completes the same scenario in 7.6 hours with 3,600 evaluations, representing a $10^{22}\times$ reduction in required evaluations.
-\item \textbf{Solution Quality}: While exhaustive search guarantees global optimum for small scenarios, our GA discovers comparable-quality solutions: coverage achieved differs by less than 2\% for equivalent sensor counts in controlled comparisons, while providing the additional benefit of discovering the complete Pareto front rather than a single optimal solution.
-\item \textbf{Problem Scope}: MUSCAT validated on terrain elevation models (DTED) with simplified building representations; our framework handles 6,389 real buildings with explicit 3D geometry, representing a 32.6$\times$ increase in building count and enabling analysis of any city worldwide via OSM integration.
+\item \textbf{Scalability}: MUSCAT-style exhaustive search handles on the order of 10--15 sites; NSGA-II explores dual-layer fronts at city scale under a fixed \(g\cdot p\) budget.
+\item \textbf{Computational Tractability}: For \(\sim\)90 candidate sites, exhaustive \(2^{n}\) search is impossible; GA completes overnight with a few thousand evaluations.
+\item \textbf{Small-$n$ quality (Control~A only)}: On enumerable crops, GA \(M_c\) gaps stay \(\leq0.3\)\,pp vs.\ oracle under the same ray-tracer. We do \emph{not} extrapolate that gap to city-scale dual-layer fronts.
+\item \textbf{Problem Scope}: OSM building geometry (thousands of footprints) replaces terrain-only DTED abstractions for LoS occlusion.
 \end{itemize}
-
-This comparison demonstrates that our enhancements preserve MUSCAT's methodological rigor while overcoming computational barriers that previously limited application to small academic scenarios. The GA's ability to discover 40--80 Pareto-optimal solutions provides decision-makers with a comprehensive trade-off analysis, whereas exhaustive search yields a single optimal configuration.
 
 \subsection{Methodological Advances Over State-of-the-Art}
 
@@ -121,9 +118,9 @@ Our framework advances the state-of-the-art in three dimensions:
 \item Our GA: 5,000 evaluations in 5,477\,s (synthetic) and 3,600 evaluations in 27,239\,s (Avenida Paulista, complete), both tractable with 16-core parallelism.
 \end{itemize}
 
-This enables, for the first time, optimization of realistic large-scale urban C-UAS deployments.
+This enables tractable optimization of large-scale urban C-UAS deployments that exhaustive MUSCAT search cannot enumerate.
 
-\textbf{Data Accessibility}: OSM integration provides unprecedented accessibility:
+\textbf{Data Accessibility}: OSM integration provides practical accessibility:
 \begin{itemize}
 \item \textbf{Global Coverage}: 190+ countries with urban building data
 \item \textbf{Free Access}: No commercial database licenses required
@@ -163,9 +160,9 @@ The Pareto front exhibits concave trade-offs: increasing redundancy from 1.18 to
 
 This staged approach avoids over-investment while maintaining expansion pathways—critical for business case justification. The real-world cost escalation (23$\times$ premium for marginal gains vs. 5.5$\times$ in synthetic) highlights the importance of site-specific analysis: dense urban cores require substantially higher budgets for equivalent coverage.
 
-\subsubsection{Heterogeneity as Risk Mitigation}
+\subsubsection{Heterogeneity as Conditional Risk Mitigation}
 
-Heterogeneous configurations (e.g., the high-coverage mix with RF/EO/Acoustic) achieve higher redundancy than homogeneous ones (e.g., RF-only) at comparable coverage. This reflects fundamental reliability engineering: different sensor types exhibit different failure modes (weather affects EO but not RF; interference affects RF but not Acoustic). Diversification provides resilience against correlated failures—analogous to portfolio theory in finance.
+Control~B shows RF-only can dominate CapEx-matched classic \(M_c\) at lean/mid budgets; heterogeneous mixes help mainly when dark-target modalities or higher CapEx enter the plan. Diversification still matters for failure-mode resilience (weather vs.\ RF interference vs.\ acoustic clutter), but it is a conditional engineering choice---not a universal Pareto law on \(M_c\).
 
 \subsubsection{Regulatory Flexibility}
 
@@ -188,8 +185,6 @@ Our framework achieves high redundancy across the Pareto front, with values rang
 \item \textbf{Sensor Fusion}: Multiple detections enable track refinement
 \item \textbf{Failure Tolerance}: Graceful degradation under sensor failures
 \end{itemize}
-
-However, the overlap metric shows NaN values in some scenarios due to sparse multi-sensor regions, indicating opportunities for improvement in GA objective function tuning.
 
 \subsection{Parameter Sensitivity and Robustness}
 
@@ -245,7 +240,7 @@ From our experiments, we derive practical guidelines for urban C-UAS deployment:
 \begin{enumerate}
 \item \textbf{Sensor Density}: On the synthetic grid, 3 sensors/km² yielded $79\%$ coverage, 6 sensors/km² delivered $89\%$, and 15 sensors/km² were required to exceed $95\%$. Real-world (Avenida Paulista) requires 5 sensors for $59\%$, 10 sensors for $89\%$, and 22 sensors for $92\%$—higher density due to limited rooftop sites and deeper urban canyons.
 \item \textbf{Height Placement}: Elevating sensors above average building heights (20-30\,m) remains the most effective lever for increasing $M_c^{20}$ without additional hardware. The altitude gap amplifies in real-world scenarios: Paulista's towers above 120\,m create 23.8 percentage-point differentials between 20\,m and 65\,m airways.
-\item \textbf{Heterogeneous Mix}: Combining RF reach with Acoustic density and selective EO achieves higher redundancy than homogeneous deployments; Radar can remain optional for the scenarios analyzed. Real-world high-coverage solutions favor RF dominance (17 of 22 sensors) with supporting Radar, Acoustic, and EO nodes.
-\item \textbf{Cost Target}: Operators should budget roughly \$4.4\,K per added coverage point up to $89\%$ (synthetic), and \$24\,K per point thereafter. Real-world dense corridors exhibit \$102\,K/pt premium for marginal gains above $89\%$, a 23$\times$ escalation that underscores the practical limits of sensor saturation in constrained urban environments.
+\item \textbf{Modality Mix}: For classic \(M_c\), start RF-heavy at lean CapEx (Control~B); add Radar/EO/Acoustic when dual-layer non-cooperative floors matter. Heterogeneity is budget- and metric-dependent.
+\item \textbf{Cost Target}: Operators should budget roughly \$4.4\,K per added coverage point up to $89\%$ (synthetic), and \$24\,K per point thereafter on the synthetic diminishing-return curve; dense real corridors escalate faster (see Results / prior Paulista fronts), so site-specific Pareto selection beats a universal \$/pt rule.
 \end{enumerate}
 

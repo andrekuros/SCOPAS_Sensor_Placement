@@ -44,14 +44,17 @@ Despite progress, three gaps persist in urban GBSS design:
 
 \subsection{Contributions}
 
-This paper revises and extends prior city-scale GBSS optimization (MUSCAT / SCOPAS lineage) with a dual-layer operational framing:
+This paper revises and extends prior city-scale GBSS optimization (MUSCAT / SCOPAS lineage) with a dual-layer operational framing and two claim-closing controls:
 
 \begin{enumerate}
     \item \textbf{Dual-layer multi-objective placement}: NSGA-II optimizes threat-weighted \(M_{wp,coop}\) and \(M_{wp,noncoop}\) jointly with CapEx, instead of a single fused coverage score.
-    \item \textbf{Heterogeneous non-cooperative mix}: Radar, EO, and Acoustic form the dark-target layer; RF is cooperative-only. Acoustic provides a documented low-CapEx non-coop filler.
+    \item \textbf{Heterogeneous non-cooperative mix}: Radar, EO, and Acoustic form the dark-target layer; RF is cooperative-only. Acoustic provides a documented low-CapEx non-coop filler---without claiming universal heterogeneity dominance on classic \(M_c\).
     \item \textbf{Requirement floors for planning}: Explicit joint corridors (e.g., \(0.90/0.35\)) with Pareto filtering replace opaque GREEN thresholds and unsupported ``\% of optimum'' claims.
     \item \textbf{Evidence across scenes}: Synthetic city asset-weighted fronts, airport split coop/noncoop runs, and short target-seeking demos quantify the coop-cheap / noncoop-hard asymmetry for BVLOS safety cases.
+    \item \textbf{Claim-closing controls}: (A)~small-$n$ oracle comparison (Exhaustive / Greedy / Random / GA) under the same ray-tracer; (B)~matched-budget modality ablation (RF / Acoustic / EO / Radar / Heterogeneous). These bound GA gaps where enumeration is feasible and restrict when heterogeneity helps CapEx-matched \(M_c\).
 \end{enumerate}
 
-The remainder of this paper is organized as follows: Section II reviews related work. Section III formulates the dual-layer problem. Section IV--V describe methodology and SCOPAS implementation. Section VI presents experimental setup. Section VII analyzes dual-layer results. Section VIII discusses implications and limits. Section IX concludes.
+Locked contribution sentence: NSGA-II with deterministic 3D ray-tracing and OSM geometry yields dual-layer GBSS Pareto fronts spanning cooperative \(M_{wp}\) near \(0.07\)--\(0.96\) and non-cooperative \(M_{wp}\) near \(0.00\)--\(0.56\) on a synthetic city (with complementary airport and Paulista lite fronts), in a \(g\cdot p\) evaluation regime where exhaustive MUSCAT search is intractable for \(n\gtrsim25\) sites; city-scale optimality gaps and universal heterogeneity dominance remain unsupported.
+
+The remainder of this paper is organized as follows: Section II reviews related work. Section III formulates the dual-layer problem. Section IV--V describe methodology and SCOPAS implementation. Section VI presents experimental setup. Section VII analyzes dual-layer results and Controls~A--B. Section VIII discusses implications and limits. Section IX concludes.
 
