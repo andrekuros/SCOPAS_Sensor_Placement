@@ -30,16 +30,18 @@ paper_utm/
 └── references/
 ```
 
-## Sync to Sensor-Placement-UTM
+## Sync to Sensor-Placement-UTM (Overleaf)
+
+From the SCOPAS repo root, with your GitHub credentials:
 
 ```bash
-# From a machine with write access to the paper repo:
-git clone https://github.com/andrekuros/Sensor-Placement-UTM.git
-cd Sensor-Placement-UTM
-git checkout -b scopas-dual-layer-rerun
-rsync -a /path/to/SCOPAS_Sensor_Placement/paper_utm/ ./
-git add -A && git commit -m "SCOPAS dual-layer paper rerun package"
-git push -u origin scopas-dual-layer-rerun
+./tools/sync_paper_to_utm.sh
 ```
+
+That clones/updates `andrekuros/Sensor-Placement-UTM`, copies `paper_utm/` to the paper repo root, commits, and pushes `main` (override with `--branch`).
+
+Useful flags: `--dry-run`, `--no-push`, `--dest ~/path/to/Sensor-Placement-UTM`.
+
+Then in Overleaf: **Import from GitHub** (or pull) that repo.
 
 See `MANIFEST.md` for experiment status and measured city numbers.
