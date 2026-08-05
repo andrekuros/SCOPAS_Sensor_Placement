@@ -4,7 +4,7 @@
 
 \subsection{Multi-Sensor Optimization Problem}
 
-Following the MUSCAT formulation \cite{muscat2023}, we define the sensor placement problem as a resource allocation optimization. The objective is to determine the optimal number, combination, and placement of sensors in a given Region of Interest (ROI) to maximize system performance under resource constraints.
+Following the MUSCAT formulation \cite{muscat2023}, we define the sensor placement problem as a resource allocation optimization. The objective is to determine the optimal number, combination, and placement of sensors in a given Region of Interest (ROI) to maximize system performance under resource constraints. Operationally, UTM / Counter-UAS literature stresses that cooperative (RID/RF-capable) and non-cooperative (dark-target) surveillance are not interchangeable \cite{besada2022cuas,blasch2021information,dulia2024sand}; Section~\ref{sec:related} and our dual-layer objectives encode that split explicitly.
 
 \subsubsection{Sets and Indices}
 
@@ -56,7 +56,7 @@ x_{tluh} \in \{0, 1\} \quad \forall t \in T, l \in L, u \in U, h \in H
 
 \subsection{Genetic Algorithm Reformulation}
 
-For GA implementation, we reformulate the decision variables as a chromosome representation:
+The binary allocation $x_{tluh}$ above is the MUSCAT-style decision variable \cite{muscat2023}. For GA / NSGA-II search we encode deployments as chromosomes (variable-length lists of activated site--type genes), which is an implementation encoding of the same allocation---not a different physical problem:
 
 \begin{equation}
 \textbf{X} = [(l_1, t_1, a_1), (l_2, t_2, a_2), ..., (l_n, t_n, a_n)]
@@ -110,13 +110,6 @@ CA = \frac{\sum_{t \in T} C_t \cdot x_t}{\mc}
 
 \subsection{Requirements}
 
-Following the MUSCAT baseline study \cite{muscat2023}, we adopt the following requirements for corridor coverage:
-
-\begin{itemize}
-\item $\mc > 0.95$ (coverage exceeds 95\%)
-\item Overlap $> 0.55$ (multi-sensor redundancy exceeds 55\%)
-\end{itemize}
-
-These requirements ensure comprehensive monitoring and system resilience against sensor failures or cyber-attacks.
+Legacy MUSCAT corridor thresholds used high single-score coverage and overlap floors \cite{muscat2023}. In the dual-layer revision we instead post-filter Pareto members with joint planning floors on $M_{wp,\mathrm{coop}}$ and $M_{wp,\mathrm{noncoop}}$ (e.g., $0.90/0.35$), reflecting noncollaborative UTM surveillance needs \cite{besada2022cuas} rather than a fused GREEN label alone.
 
 

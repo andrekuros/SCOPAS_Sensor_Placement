@@ -78,7 +78,7 @@ This airway-stratified analysis quantifies how altitude selection influences GBS
 
 \subsection{Comparison with MUSCAT Baseline}
 
-Compared to the original MUSCAT framework \cite{muscat2023}, SCOPAS keeps the metric lineage while replacing exhaustive enumeration with NSGA-II in a \(g\cdot p\) budget. Exhaustive search remains intractable for \(n\gtrsim25\) sites; city-scale runs therefore report Pareto fronts, not optimality gaps. Matched quality evidence is confined to Control~A (Table~\ref{tab:oracle_comparison}).
+Compared to the original MUSCAT framework \cite{muscat2023} and related AAM surveillance placement models \cite{aievola2022ground,dulia2024sand} (Table~\ref{tab:related_comparison}), SCOPAS keeps the metric lineage while replacing exhaustive enumeration with NSGA-II in a \(g \cdot p\) budget \cite{deb2002fast}. Exhaustive search remains intractable for \(n\gtrsim25\) sites; city-scale runs therefore report Pareto fronts, not optimality gaps. Matched quality evidence is confined to Control~A (Table~\ref{tab:oracle_comparison}).
 
 \begin{table}[h]
 \centering
@@ -120,7 +120,7 @@ Our framework advances the state-of-the-art in three dimensions:
 
 This enables tractable optimization of large-scale urban C-UAS deployments that exhaustive MUSCAT search cannot enumerate.
 
-\textbf{Data Accessibility}: OSM integration provides practical accessibility:
+\textbf{Data Accessibility}: OSM integration provides practical accessibility for building-resolved LoS planning \cite{osm_applications,elias2023exploring}:
 \begin{itemize}
 \item \textbf{Global Coverage}: 190+ countries with urban building data
 \item \textbf{Free Access}: No commercial database licenses required

@@ -4,7 +4,7 @@
 
 \subsection{Summary of Contributions}
 
-This paper presented a dual-layer SCOPAS framework for urban GBSS planning: NSGA-II jointly optimizes threat-weighted \(M_{wp,coop}\), \(M_{wp,noncoop}\), and CapEx under deterministic 3D LoS on OSM geometry, with Acoustic in the non-cooperative layer and explicit requirement floors. Three claim-closing controls bound what we may assert: small-$n$ oracle comparison (Control~A), matched-budget classic \(M_c\) ablation (Control~B), and dual-layer CapEx ablation (Control~C).
+This paper presented a dual-layer SCOPAS framework for urban GBSS planning: NSGA-II jointly optimizes threat-weighted \(M_{wp,coop}\), \(M_{wp,noncoop}\), and CapEx under deterministic 3D LoS on OSM geometry, with Acoustic in the non-cooperative layer and explicit requirement floors. Relative to placement and sensing literature summarized in Table~\ref{tab:related_comparison}, the distinctive systems claim is the CapEx-aware coop/noncoop objective split under city-resolved occlusion---not uniqueness of GA placement or OSM alone. Three claim-closing controls bound what we may assert: small-$n$ oracle comparison (Control~A), matched-budget classic \(M_c\) ablation (Control~B), and dual-layer CapEx ablation (Control~C).
 
 \subsection{Key Findings}
 
@@ -33,4 +33,4 @@ This paper presented a dual-layer SCOPAS framework for urban GBSS planning: NSGA
 
 \subsection{Concluding Remarks}
 
-NSGA-II with deterministic 3D ray-tracing and OSM geometry yields dual-layer GBSS Pareto fronts that make the coop-cheap / noncoop-hard asymmetry operationally visible, in a \(g\cdot p\) regime where exhaustive MUSCAT search is intractable for \(n\gtrsim25\). Controls~A--C support method credibility on enumerable instances and restrict heterogeneity claims to CapEx- and metric-matched evidence: RF for lean coop / classic \(M_c\); mixed Radar/EO/Acoustic/RF for joint dark-target floors. Open implementation: \url{https://github.com/andrekuros/SCOPAS_Sensor_Placement}.
+NSGA-II with deterministic 3D ray-tracing and OSM geometry yields dual-layer GBSS Pareto fronts that make the coop-cheap / noncoop-hard asymmetry operationally visible, in a \(g\cdot p\) regime where exhaustive MUSCAT search is intractable for \(n\gtrsim25\). Positioned against Table~\ref{tab:related_comparison}, Controls~A--C support method credibility on enumerable instances and restrict heterogeneity claims to CapEx- and metric-matched evidence: RF for lean coop / classic \(M_c\); mixed Radar/EO/Acoustic/RF for joint dark-target floors. Open implementation: \url{https://github.com/andrekuros/SCOPAS_Sensor_Placement}.
