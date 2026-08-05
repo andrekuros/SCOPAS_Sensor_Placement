@@ -4,14 +4,14 @@
 
 \subsection{Summary of Contributions}
 
-This paper presented a dual-layer SCOPAS framework for urban GBSS planning: NSGA-II jointly optimizes threat-weighted \(M_{wp,coop}\), \(M_{wp,noncoop}\), and CapEx under deterministic 3D LoS on OSM geometry, with Acoustic in the non-cooperative layer and explicit requirement floors. Two claim-closing controls bound what we may assert: small-$n$ oracle comparison (Control~A) and matched-budget modality ablation (Control~B).
+This paper presented a dual-layer SCOPAS framework for urban GBSS planning: NSGA-II jointly optimizes threat-weighted \(M_{wp,coop}\), \(M_{wp,noncoop}\), and CapEx under deterministic 3D LoS on OSM geometry, with Acoustic in the non-cooperative layer and explicit requirement floors. Three claim-closing controls bound what we may assert: small-$n$ oracle comparison (Control~A), matched-budget classic \(M_c\) ablation (Control~B), and dual-layer CapEx ablation (Control~C).
 
 \subsection{Key Findings}
 
 \begin{enumerate}
 \item \textbf{Layer asymmetry}: Cooperative coverage saturates with RF-inclusive mixes at comparatively low CapEx; non-cooperative dark-target floors remain expensive and incomplete on the reported fronts (synthetic city, airport SJC splits, Paulista lite).
 \item \textbf{Altitude still matters}: Airway-stratified metrics retain large low-vs-mid altitude gaps under the same hardware---altitude policy remains a first-order lever alongside CapEx.
-\item \textbf{Heterogeneity is conditional}: Control~B shows RF-only wins CapEx-matched classic \(M_c\) at \$31k/\$76k; heterogeneous mixes only edge RF at \$150k. Dual-layer dark-target planning still requires Radar/EO/Acoustic---but ``heterogeneity always superior'' is unsupported for classic \(M_c\).
+\item \textbf{Heterogeneity is metric- and budget-dependent}: Control~B: RF-only wins CapEx-matched classic \(M_c\) at \$31k/\$76k. Control~C: RF saturates \(M_{wp,coop}\) with zero noncoop at every budget; heterogeneous mixes win \(M_{wp,noncoop}\) at \$320k (\(47.5\%\), companion coop \(\approx83\%\)). Joint dark-target floors need mixed modalities; lean classic coverage does not.
 \item \textbf{Small-$n$ GA quality}: Control~A finds \(\Delta M_c\leq0.3\)\,pp vs.\ oracle under the same ray-tracer for \(n\in\{8,10,12\}\). City-scale optimality gaps are \emph{not} claimed.
 \item \textbf{Planning floors over fused scores}: Joint corridors near \(0.90/0.35\) (practical) are more honest than a single fused coverage percentage or unsupported ``\% of optimum'' statements.
 \end{enumerate}
@@ -20,17 +20,17 @@ This paper presented a dual-layer SCOPAS framework for urban GBSS planning: NSGA
 
 \begin{enumerate}
 \item Binary LoS and two primary city-scale scenes (plus lite Paulista) limit transfer claims.
-\item Control~B uses classic \(M_c\); a full dual-layer matched-budget ablation remains future work.
+\item Controls~B--C use hardware-only CapEx on cropped site pools; full NSGA-II fronts remain the city-scale evidence.
 \item Author/funding metadata and camera-ready full-budget Paulista remain open for submission packaging.
 \end{enumerate}
 
-\subsection{Future Work (claim closure)}
+\subsection{Future Work}
 
-\textbf{Dual-layer CapEx ablation}: Repeat Control~B objectives with \((M_{wp,coop},M_{wp,noncoop})\) winners at equal CapEx.\\
 \textbf{Multi-city transfer}: Additional OSM morphologies beyond Paulista/SJC.\\
 \textbf{Richer propagation}: Diffraction / limited penetration sensitivity without abandoning worst-case LoS floors.\\
-\textbf{Field calibration}: Empirically anchor \(P_D\) models on a instrumented corridor.
+\textbf{Field calibration}: Empirically anchor \(P_D\) models on an instrumented corridor.\\
+\textbf{Site-activation CapEx}: Repeat Controls~B--C with site fees included for procurement-facing tables.
 
 \subsection{Concluding Remarks}
 
-NSGA-II with deterministic 3D ray-tracing and OSM geometry yields dual-layer GBSS Pareto fronts that make the coop-cheap / noncoop-hard asymmetry operationally visible, in a \(g\cdot p\) regime where exhaustive MUSCAT search is intractable for \(n\gtrsim25\). Controls~A--B support method credibility on enumerable instances and restrict heterogeneity claims to CapEx- and metric-matched evidence. Open implementation: \url{https://github.com/andrekuros/SCOPAS_Sensor_Placement}.
+NSGA-II with deterministic 3D ray-tracing and OSM geometry yields dual-layer GBSS Pareto fronts that make the coop-cheap / noncoop-hard asymmetry operationally visible, in a \(g\cdot p\) regime where exhaustive MUSCAT search is intractable for \(n\gtrsim25\). Controls~A--C support method credibility on enumerable instances and restrict heterogeneity claims to CapEx- and metric-matched evidence: RF for lean coop / classic \(M_c\); mixed Radar/EO/Acoustic/RF for joint dark-target floors. Open implementation: \url{https://github.com/andrekuros/SCOPAS_Sensor_Placement}.

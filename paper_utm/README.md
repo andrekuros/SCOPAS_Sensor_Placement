@@ -13,7 +13,7 @@ This directory is a **SCOPAS-based revision package** for the paper previously d
 | Synthetic city + Paulista only | City + **airport SJC split fronts** + requirement floors |
 | “≈98% of optimum” baseline claim | Dropped; Control A small-$n$ oracle (\(\Delta M_c\leq0.3\) pp) |
 | GREEN = \(M_c\geq0.75\), overlap ≥0.35 | Planning floors e.g. coop≥90%, noncoop≥35% |
-| “Heterogeneity always superior” | Softened; Control B CapEx-matched ablation (RF wins lean/mid) |
+| “Heterogeneity always superior” | Softened; B: RF wins lean \(M_c\); C: hetero wins dual noncoop @ $320k |
 
 ## Package layout
 

@@ -31,4 +31,9 @@ To bound GA quality where enumeration is feasible, we crop the synthetic city to
 \subsection{Control B --- matched-budget modality ablation}
 \label{sec:protocol_ablation}
 
-At hardware CapEx budgets \(\{\$31\mathrm{k},\$76\mathrm{k},\$150\mathrm{k}\}\) on the same cropped synthetic geometry, we gate search to RF-only, Acoustic-only, EO-only, Radar-only, and Heterogeneous (all types) and report best achievable classic \(M_c\). Heterogeneity is claimed only when it wins at equal CapEx; lean RF wins are reported honestly. Dual-layer non-cooperative floors remain a separate operational argument (airport split fronts), not conflated with this \(M_c\) ablation.
+At hardware CapEx budgets \(\{\$31\mathrm{k},\$76\mathrm{k},\$150\mathrm{k}\}\) on the same cropped synthetic geometry, we gate search to RF-only, Acoustic-only, EO-only, Radar-only, and Heterogeneous (all types) and report best achievable classic \(M_c\). Heterogeneity is claimed only when it wins at equal CapEx; lean RF wins are reported honestly.
+
+\subsection{Control C --- dual-layer CapEx ablation}
+\label{sec:protocol_dual_ablation}
+
+Control~C repeats the matched-budget gates under threat-weighted dual-layer metrics \(M_{wp,coop}\) and \(M_{wp,noncoop}\) (same ray-tracer and five critical assets as the city dual-layer runs). Budgets \(\{\$31\mathrm{k},\$76\mathrm{k},\$150\mathrm{k},\$320\mathrm{k}\}\) (hardware only; \$320k matches the practical joint-floor CapEx band). For each modality$\times$budget we report (i)~the best-coop solution and its companion noncoop, and (ii)~the best-noncoop solution and its companion coop. Heterogeneity is claimed for a layer only when it wins that layer at equal CapEx.

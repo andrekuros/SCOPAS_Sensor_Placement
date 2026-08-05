@@ -40,5 +40,35 @@
       "winner": "Heterogeneous",
       "hetero_wins": true
     }
+  ],
+  "control_c_winners": [
+    {
+      "budget": 31000.0,
+      "winner_coop": "RF-only",
+      "winner_noncoop": "EO-only",
+      "hetero_wins_coop": false,
+      "hetero_wins_noncoop": false
+    },
+    {
+      "budget": 76000.0,
+      "winner_coop": "RF-only",
+      "winner_noncoop": "EO-only",
+      "hetero_wins_coop": false,
+      "hetero_wins_noncoop": false
+    },
+    {
+      "budget": 150000.0,
+      "winner_coop": "RF-only",
+      "winner_noncoop": "Radar-only",
+      "hetero_wins_coop": false,
+      "hetero_wins_noncoop": false
+    },
+    {
+      "budget": 320000.0,
+      "winner_coop": "RF-only",
+      "winner_noncoop": "Heterogeneous",
+      "hetero_wins_coop": false,
+      "hetero_wins_noncoop": true
+    }
   ]
 }

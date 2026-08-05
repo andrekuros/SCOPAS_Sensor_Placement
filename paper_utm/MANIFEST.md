@@ -31,8 +31,9 @@ git push -u origin scopas-dual-layer-rerun
 | Targets 90/35 & 90/50 | `demo_targets_*` | short prior demos | **Done** — joint 90/35 feasible on stretch front @ $315k |
 | Control A (oracle) | `tools/paper_controls_ab.py` | n∈{8,10,12}, k∈{3,4,5}, res 40 m | **Done** — GA ΔMc ≤0.3 pp vs oracle |
 | Control B (ablation) | same | budgets $31k/$76k/$150k | **Done** — RF wins lean/mid; hetero edges @ $150k |
+| Control C (dual CapEx) | `--only-c` + `paper_rerun_city_dual.json` | $31k/$76k/$150k/$320k | **Done** — RF wins coop (nc=0); hetero wins noncoop @ $320k (47.5%, coop≈83%) |
 
-Artifacts: `paper_utm/results/controls/`, `paper_utm/tables/tab_oracle_comparison.tex`, `paper_utm/tables/tab_modality_ablation.tex`.
+Artifacts: `paper_utm/results/controls/`, `paper_utm/tables/tab_oracle_comparison.tex`, `paper_utm/tables/tab_modality_ablation*.tex`.
 
 ## Headline findings (vs old single-metric paper)
 
@@ -41,7 +42,8 @@ Artifacts: `paper_utm/results/controls/`, `paper_utm/tables/tab_oracle_compariso
 3. **Dense real cities hurt dark-target coverage more:** Paulista lite noncoop max only ~0.25 in this budget.
 4. **Split fronts are mandatory** for honest BVLOS claims — coop optima leave noncoop near zero.
 5. **Control A:** small-$n$ GA matches oracle \(M_c\) within 0.0–0.3 pp (same ray-tracer); city-scale optimality not claimed.
-6. **Control B:** RF-only wins CapEx-matched classic \(M_c\) at $31k/$76k; heterogeneous only edges at $150k — heterogeneity claim stays soft.
+6. **Control B:** RF-only wins CapEx-matched classic \(M_c\) at $31k/$76k; heterogeneous only edges at $150k.
+7. **Control C:** RF saturates \(M_{wp,coop}\) with 0 noncoop; EO/Radar win lean noncoop; **heterogeneous wins noncoop at $320k** (47.5% with companion coop ≈83%).
 
 ## Reproduce
 
@@ -51,7 +53,9 @@ python run_experiment.py --config configs/paper_rerun_city_dual.json --skip-3d
 # set optimization.objectives to coop_only / noncoop_only separately, or use --split-objectives with checkpoint disabled
 python run_experiment.py --config configs/paper_rerun_airport_sjc.json --split-objectives --skip-3d
 python run_experiment.py --config configs/paper_rerun_paulista_lite.json --skip-3d
-python tools/paper_controls_ab.py --resolution 40 --out results/paper_controls
+python3 tools/paper_controls_ab.py --resolution 40 --out results/paper_controls
+python3 tools/paper_controls_ab.py --only-c --resolution 40 --out results/paper_controls \
+  --dual-config configs/paper_rerun_city_dual.json
 ```
 
 ## City dual snapshot
