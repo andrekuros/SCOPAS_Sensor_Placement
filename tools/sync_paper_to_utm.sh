@@ -8,7 +8,8 @@
 #   ./tools/sync_paper_to_utm.sh --dest ~/code/Sensor-Placement-UTM
 #   ./tools/sync_paper_to_utm.sh --branch scopas-paper-sync
 #
-# Requires: git, rsync, and write access to Sensor-Placement-UTM (your GitHub creds).
+# Requires: git + write access to Sensor-Placement-UTM (your GitHub creds).
+# Uses rsync when available; otherwise falls back to Python copy.
 
 set -euo pipefail
 
@@ -162,13 +163,13 @@ if dest.exists():
             rel = p.relative_to(dest)
             if rel not in wanted:
                 print(f"delete {rel}")
-                if dry != "1":
+                if not dry:
                     p.unlink()
 
 for rel in sorted(wanted):
     s, d = src / rel, dest / rel
     print(f"copy   {rel}")
-    if dry != "1":
+    if not dry:
         d.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(s, d)
 PY

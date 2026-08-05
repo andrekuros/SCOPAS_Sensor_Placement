@@ -240,7 +240,7 @@ From our experiments, we derive practical guidelines for urban C-UAS deployment:
 \begin{enumerate}
 \item \textbf{Sensor Density}: On the synthetic grid, 3 sensors/km² yielded $79\%$ coverage, 6 sensors/km² delivered $89\%$, and 15 sensors/km² were required to exceed $95\%$. Real-world (Avenida Paulista) requires 5 sensors for $59\%$, 10 sensors for $89\%$, and 22 sensors for $92\%$—higher density due to limited rooftop sites and deeper urban canyons.
 \item \textbf{Height Placement}: Elevating sensors above average building heights (20-30\,m) remains the most effective lever for increasing $M_c^{20}$ without additional hardware. The altitude gap amplifies in real-world scenarios: Paulista's towers above 120\,m create 23.8 percentage-point differentials between 20\,m and 65\,m airways.
-\item \textbf{Modality Mix}: For classic \(M_c\), start RF-heavy at lean CapEx (Control~B); add Radar/EO/Acoustic when dual-layer non-cooperative floors matter. Heterogeneity is budget- and metric-dependent.
+\item \textbf{Modality Mix}: For classic \(M_c\) / coop-only floors, start RF-heavy (Controls~B--C). For dark-target or joint floors, budget EO/Radar first at lean CapEx, then heterogeneous mixes near \$320k (Control~C).
 \item \textbf{Cost Target}: Operators should budget roughly \$4.4\,K per added coverage point up to $89\%$ (synthetic), and \$24\,K per point thereafter on the synthetic diminishing-return curve; dense real corridors escalate faster (see Results / prior Paulista fronts), so site-specific Pareto selection beats a universal \$/pt rule.
 \end{enumerate}
 

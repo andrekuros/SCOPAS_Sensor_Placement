@@ -7,18 +7,17 @@
 
 ## Push status
 
-Cloud-agent GitHub token is scoped to `SCOPAS_Sensor_Placement` and **cannot push** to `Sensor-Placement-UTM` (HTTP 403 / `cursor[bot]` denied).  
-This `paper_utm/` tree is the complete sync package — push it from a credential with write access:
+Cloud-agent GitHub token is scoped to `SCOPAS_Sensor_Placement` and **cannot push** to `Sensor-Placement-UTM`.
+
+**On your machine** (with write access), sync the paper package in one command:
 
 ```bash
-git clone https://github.com/andrekuros/Sensor-Placement-UTM.git
-cd Sensor-Placement-UTM
-git checkout -b scopas-dual-layer-rerun
-rsync -a --delete /path/to/SCOPAS_Sensor_Placement/paper_utm/ ./
-# keep git history: prefer copying over files instead of --delete if desired
-git add -A && git commit -m "SCOPAS dual-layer paper rerun with new experiments"
-git push -u origin scopas-dual-layer-rerun
+./tools/sync_paper_to_utm.sh
 ```
+
+Flags: `--dry-run`, `--no-push`, `--dest ~/code/Sensor-Placement-UTM`, `--branch main`.
+
+Manual alternative:
 
 ## Experiments completed
 
