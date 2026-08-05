@@ -109,3 +109,31 @@ Lite dual-layer rerun of the prior real-city case (6,389 buildings, 93 sites, re
 Relative to the synthetic city, the dense corridor compresses dark-target performance harder than cooperative RID coverage --- reinforcing that Paulista-class canyons need either denser noncoop deployments, relaxed floors, or altitude policy, not merely more RF nodes.
 
 Full paper-budget Paulista (80$\times$45 @ 20\,m) remains a longer checkpointed job for the camera-ready revision.
+
+\subsection{Control A: small-$n$ oracle vs.\ GA}
+\label{sec:results_oracle}
+
+Table~\ref{tab:oracle_comparison} reports Control~A under the protocol of Section~\ref{sec:protocol_oracle}. On fully enumerable instances (\(n{=}8,k{=}3\) and \(n{=}10,k{=}4\)), NSGA-II* matches the oracle \(M_c\) exactly (\(\Delta{=}0.0\)\,pp). At \(n{=}12,k{=}5\) (type-sampled oracle), the gap is \(0.3\)\,pp. Greedy is competitive; Random trails on the largest crop. Wall-clock for the oracle stays under a few seconds at this resolution because \(P_D\) grids are precomputed.
+
+\textbf{Interpretation.} Where exhaustive search is feasible, the GA recovers near-oracle classic \(M_c\) under the same ray-tracer. We treat this as method validation on enumerable instances---\emph{not} as a city-scale optimality certificate for dual-layer fronts with \(n\gtrsim25\).
+
+\input{tables/tab_oracle_comparison}
+
+\subsection{Control B: matched CapEx modality ablation}
+\label{sec:results_ablation}
+
+Table~\ref{tab:modality_ablation} reports best classic \(M_c\) at three CapEx budgets. RF-only wins at \$31k (\(88.3\%\) vs.\ heterogeneous \(82.3\%\)) and \$76k (\(95.3\%\) vs.\ \(93.8\%\)). Heterogeneous only edges RF at \$150k (\(98.3\%\) vs.\ \(98.0\%\)). Acoustic-only and EO-only remain near zero / single-digit \(M_c\) at these budgets (short effective range under the \(0.8\) threshold); Radar-only is infeasible at \$31k and weak thereafter relative to RF for classic coverage.
+
+\textbf{Interpretation.} For CapEx-matched classic \(M_c\), heterogeneity is \emph{not} universally superior: lean and mid budgets favor RF-dominant layouts. Heterogeneity becomes competitive only at higher CapEx. This softens any ``always heterogeneous'' claim. Dual-layer airport splits still show why RF-only plans fail dark-target floors---the modality story depends on whether the planning metric is cooperative \(M_c\) or joint coop/noncoop.
+
+\input{tables/tab_modality_ablation}
+
+\subsection{Control C: dual-layer CapEx ablation}
+\label{sec:results_dual_ablation}
+
+Tables~\ref{tab:modality_ablation_dual_coop}--\ref{tab:modality_ablation_dual_noncoop} report Control~C. On the cooperative axis, RF-only wins every budget (\$31k--\$320k) with \(M_{wp,coop}\) from \(89.3\%\) to \(99.6\%\), but companion noncoop stays at \(0\%\). On the non-cooperative axis, EO-only leads at \$31k/\$76k (\(7.2\%\)/\(17.2\%\)); Radar-only leads at \$150k (\(33.7\%\), matched by a Radar-heavy heterogeneous pack); Heterogeneous wins at \$320k with \(M_{wp,noncoop}=47.5\%\) and companion coop \(82.6\%\).
+
+\textbf{Interpretation.} Dual-layer CapEx matching overturns any RF-only reading of Control~B: RF saturates coop while contributing nothing to dark targets. Heterogeneity is \emph{necessary for joint floors} near the \$320k band, not for lean classic \(M_c\). Lean noncoop budgets favor dense EO/Acoustic fills over mixed packs; mixed Radar/RF/EO/Acoustic wins when both layers must be high together.
+
+\input{tables/tab_modality_ablation_dual_coop}
+\input{tables/tab_modality_ablation_dual_noncoop}

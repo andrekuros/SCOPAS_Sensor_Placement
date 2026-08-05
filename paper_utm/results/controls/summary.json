@@ -1,0 +1,74 @@
+{
+  "resolution": 40.0,
+  "seed": 0,
+  "control_a_gaps": [
+    {
+      "n": 8,
+      "k": 3,
+      "gap_NSGA_pp": 0.0,
+      "oracle": 0.891136228435455,
+      "nsga": 0.891136228435455
+    },
+    {
+      "n": 10,
+      "k": 4,
+      "gap_NSGA_pp": 0.0,
+      "oracle": 0.9149315883402737,
+      "nsga": 0.9149315883402737
+    },
+    {
+      "n": 12,
+      "k": 5,
+      "gap_NSGA_pp": 0.2974419988102328,
+      "oracle": 0.9619274241522903,
+      "nsga": 0.9589530041641879
+    }
+  ],
+  "control_b_winners": [
+    {
+      "budget": 31000.0,
+      "winner": "RF-only",
+      "hetero_wins": false
+    },
+    {
+      "budget": 76000.0,
+      "winner": "RF-only",
+      "hetero_wins": false
+    },
+    {
+      "budget": 150000.0,
+      "winner": "Heterogeneous",
+      "hetero_wins": true
+    }
+  ],
+  "control_c_winners": [
+    {
+      "budget": 31000.0,
+      "winner_coop": "RF-only",
+      "winner_noncoop": "EO-only",
+      "hetero_wins_coop": false,
+      "hetero_wins_noncoop": false
+    },
+    {
+      "budget": 76000.0,
+      "winner_coop": "RF-only",
+      "winner_noncoop": "EO-only",
+      "hetero_wins_coop": false,
+      "hetero_wins_noncoop": false
+    },
+    {
+      "budget": 150000.0,
+      "winner_coop": "RF-only",
+      "winner_noncoop": "Radar-only",
+      "hetero_wins_coop": false,
+      "hetero_wins_noncoop": false
+    },
+    {
+      "budget": 320000.0,
+      "winner_coop": "RF-only",
+      "winner_noncoop": "Heterogeneous",
+      "hetero_wins_coop": false,
+      "hetero_wins_noncoop": true
+    }
+  ]
+}

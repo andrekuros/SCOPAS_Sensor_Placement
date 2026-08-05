@@ -4,79 +4,33 @@
 
 \subsection{Summary of Contributions}
 
-This paper presented an enhanced framework for multi-sensor C-UAS network optimization, addressing key limitations of existing approaches while maintaining compatibility with established MUSCAT methodology and metrics. Our three main contributions provide significant practical advantages:
-
-\textbf{Genetic Algorithm Optimization} reduces computational complexity from $O(2^n)$ to $O(g \cdot p)$, enabling optimization of networks with 50-100 sensors in scenarios previously computationally intractable. This scalability is essential for urban C-UAS deployment covering multiple square kilometers.
-
-\textbf{OpenStreetMap Integration} enables automatic acquisition and processing of real urban building data from any location worldwide. Validation with Avenida Paulista (6,389 buildings over 3.8 km²) demonstrates the framework's capability to handle realistic urban complexity, producing 80 Pareto-optimal solutions spanning \$47\,K--\$398\,K and providing more accurate deployment planning than terrain-only models.
-
-\textbf{Deterministic Ray-Tracing} replaces statistical LoS models with precise 3D obstacle detection, improving prediction accuracy for urban environments where building geometry significantly impacts sensor coverage.
+This paper presented a dual-layer SCOPAS framework for urban GBSS planning: NSGA-II jointly optimizes threat-weighted \(M_{wp,coop}\), \(M_{wp,noncoop}\), and CapEx under deterministic 3D LoS on OSM geometry, with Acoustic in the non-cooperative layer and explicit requirement floors. Three claim-closing controls bound what we may assert: small-$n$ oracle comparison (Control~A), matched-budget classic \(M_c\) ablation (Control~B), and dual-layer CapEx ablation (Control~C).
 
 \subsection{Key Findings}
 
-Our experimental validation with rigorous ray-tracing and airway-stratified analysis reveals critical insights:
-
 \begin{enumerate}
-\item \textbf{Altitude Dominates Surveillance Quality}: Identical deployments exhibit $M_c^{20}=50.4\%$, $M_c^{45}=86.3\%$, and $M_c^{65}=100\%$ in the synthetic scenario—a 35.9 percentage-point swing between 20\,m and 45\,m without altering hardware. This provides quantitative evidence that BVLOS altitude restrictions (45\,m AGL or higher) are surveillance-effectiveness driven, not merely collision driven.
-
-\item \textbf{Severe Diminishing Returns}: Coverage cost scales non-linearly: approximately \$4.4\,K per percentage point up to 89\% vs. \$24\,K/\% to reach 95.4\% (synthetic)—a 5.5$\times$ premium. Real-world dense corridors exhibit \$78.5\,K/pt premium for marginal gains above $89\%$, a 17.8$\times$ escalation that quantifies the economic infeasibility of pushing beyond $\approx 90\%$ coverage except for safety-critical operations.
-
-\item \textbf{Heterogeneity Mandatory}: All 40 Pareto-optimal GREEN solutions employ multi-sensor mixes. No homogeneous configuration (single type) is optimal—confirming diversity provides Pareto-superior resilience.
-
-\item \textbf{Physical Validation Essential}: Initial results appeared optimal but physical inspection revealed sensors "seeing through buildings." Rigorous $P_D = P_{D}^{base} \times P_{LoS}$ enforcement corrected 40\% overestimation—demonstrating that model outputs must satisfy domain physics.
-
-\item \textbf{Context-Dependent Optima}: The Pareto front spans a 7.7$\times$ cost range (synthetic) and 8.5$\times$ (real-world) while all solutions meet regulatory thresholds. No universal optimum exists—budget delivery can operate with the lean configuration (\$31\,K synthetic, \$47\,K real-world), operational BVLOS corridors favour the balanced mix (\$76\,K synthetic, \$150\,K real-world), and passenger UAM requires the high-coverage mix (\$231\,K synthetic, \$354\,K real-world).
+\item \textbf{Layer asymmetry}: Cooperative coverage saturates with RF-inclusive mixes at comparatively low CapEx; non-cooperative dark-target floors remain expensive and incomplete on the reported fronts (synthetic city, airport SJC splits, Paulista lite).
+\item \textbf{Altitude still matters}: Airway-stratified metrics retain large low-vs-mid altitude gaps under the same hardware---altitude policy remains a first-order lever alongside CapEx.
+\item \textbf{Heterogeneity is metric- and budget-dependent}: Control~B: RF-only wins CapEx-matched classic \(M_c\) at \$31k/\$76k. Control~C: RF saturates \(M_{wp,coop}\) with zero noncoop at every budget; heterogeneous mixes win \(M_{wp,noncoop}\) at \$320k (\(47.5\%\), companion coop \(\approx83\%\)). Joint dark-target floors need mixed modalities; lean classic coverage does not.
+\item \textbf{Small-$n$ GA quality}: Control~A finds \(\Delta M_c\leq0.3\)\,pp vs.\ oracle under the same ray-tracer for \(n\in\{8,10,12\}\). City-scale optimality gaps are \emph{not} claimed.
+\item \textbf{Planning floors over fused scores}: Joint corridors near \(0.90/0.35\) (practical) are more honest than a single fused coverage percentage or unsupported ``\% of optimum'' statements.
 \end{enumerate}
-
-\subsection{Practical Implications}
-
-For urban C-UAS deployment practitioners, this framework provides:
-
-\begin{itemize}
-\item \textbf{Site-Specific Analysis}: Capability to analyze actual deployment locations using OSM data
-\item \textbf{Resource Planning}: Prediction of sensor requirements for desired coverage levels
-\item \textbf{Trade-off Exploration}: Systematic evaluation of coverage vs. cost via GA weight tuning
-\item \textbf{Decision Support}: Stoplight visualizations clearly indicating requirement satisfaction
-\end{itemize}
 
 \subsection{Limitations}
 
-Current limitations include:
-
 \begin{enumerate}
-\item \textbf{Propagation Model}: Ray-tracing provides LoS but does not model multi-path, diffraction, or reflection effects that may enhance coverage
-\item \textbf{Static Analysis}: Framework assumes stationary sensors and does not optimize for dynamic threats or time-varying coverage requirements
-\item \textbf{Binary Detection}: Simplified detection model (threshold-based) does not account for detection quality degradation
+\item Binary LoS and two primary city-scale scenes (plus lite Paulista) limit transfer claims.
+\item Controls~B--C use hardware-only CapEx on cropped site pools; full NSGA-II fronts remain the city-scale evidence.
+\item Author/funding metadata and camera-ready full-budget Paulista remain open for submission packaging.
 \end{enumerate}
 
 \subsection{Future Work}
 
-We identify several high-impact directions:
-
-\textbf{Semi-Deterministic Propagation}: Hybrid models incorporating diffraction and limited building penetration (10-30 dB loss) could provide less conservative estimates while maintaining worst-case guarantees—balancing realism with safety margins.
-
-\textbf{Steerable Sensor Modeling}: PTZ cameras and phased-array radars can dynamically reorient. Modeling orientation scheduling could improve EO/Radar coverage by 30-50\% compared to fixed-orientation assumptions.
-
-\textbf{Real-World Validation}: Field measurements with deployed sensors (Avenida Paulista or similar) would validate coverage predictions and enable empirical propagation model calibration for urban environments.
-
-\textbf{Multi-City Comparative Analysis}: Applying framework to 10+ cities with varying morphologies (Manhattan grid vs. European radial vs. Asian organic) could establish density-dependent deployment guidelines generalizable worldwide.
-
-\textbf{Dynamic Threat Integration}: Optimizing for known UAS flight corridors (delivery routes, vertiport approaches) rather than uniform coverage could reduce sensor requirements by 30-40\%.
-
-\textbf{Cost-Benefit Analysis}: Integrating operational revenue models (UTM throughput, delivery density) with infrastructure cost enables ROI-driven deployment decisions beyond coverage-only optimization.
-
-\textbf{Regulatory Framework Development}: Collaborating with aviation authorities to establish tiered altitude-dependent GBSS requirements (grounded in the measured 20\,m vs. 45\,m coverage gap) could accelerate BVLOS certification pathways.
+\textbf{Multi-city transfer}: Additional OSM morphologies beyond Paulista/SJC.\\
+\textbf{Richer propagation}: Diffraction / limited penetration sensitivity without abandoning worst-case LoS floors.\\
+\textbf{Field calibration}: Empirically anchor \(P_D\) models on an instrumented corridor.\\
+\textbf{Site-activation CapEx}: Repeat Controls~B--C with site fees included for procurement-facing tables.
 
 \subsection{Concluding Remarks}
 
-This work provides the first Pareto-based GBSS optimization framework with rigorous urban fidelity, demonstrating that context-dependent infrastructure selection from non-dominated solution sets enables more nuanced deployment decisions than single-optimum prescriptions. Three contributions have immediate practical impact:
-
-\textbf{Airway-Stratified Analysis} revealing a 49.6 percentage-point swing between 20\,m and 65\,m (synthetic, with a 35.9-point gain from 20\,m to 45\,m) and 23.8-point differentials in real-world dense corridors provides quantitative justification for altitude-dependent operational rules—regulations can now cite surveillance effectiveness (not merely collision risk) when restricting low-altitude BVLOS.
-
-\textbf{Diminishing Returns Quantification} (5.5$\times$ cost premium for the final coverage percentage points) enables evidence-based threshold selection: 85--90\% coverage balances performance and economics for most operations, with $>$95\% justified only for passenger UAM or safety-critical corridors.
-
-\textbf{Heterogeneity Mandate} (all Pareto-optimal solutions multi-sensor) shifts procurement from "which sensor type" to "which mix"—Acoustic for density, RF for reach, and EO for classification—mirroring diversification strategies in reliability engineering.
-
-By open-sourcing the implementation with comprehensive documentation and providing reproducible 1km$\times$1km validation, we enable urban planners, UTM operators, and aviation regulators worldwide to perform site-specific GBSS analysis—previously requiring proprietary tools or academic partnerships. The framework's demonstration that altitude, not sensor quantity, primarily determines coverage quality in urban environments fundamentally reframes the BVLOS infrastructure conversation from "how many sensors" to "at what altitude."
-
-
+NSGA-II with deterministic 3D ray-tracing and OSM geometry yields dual-layer GBSS Pareto fronts that make the coop-cheap / noncoop-hard asymmetry operationally visible, in a \(g\cdot p\) regime where exhaustive MUSCAT search is intractable for \(n\gtrsim25\). Controls~A--C support method credibility on enumerable instances and restrict heterogeneity claims to CapEx- and metric-matched evidence: RF for lean coop / classic \(M_c\); mixed Radar/EO/Acoustic/RF for joint dark-target floors. Open implementation: \url{https://github.com/andrekuros/SCOPAS_Sensor_Placement}.

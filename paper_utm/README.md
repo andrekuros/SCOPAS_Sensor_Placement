@@ -11,8 +11,9 @@ This directory is a **SCOPAS-based revision package** for the paper previously d
 | Single fused \(M_c\) + redundancy + cost | Dual-layer \(M_{wp,coop}\), \(M_{wp,noncoop}\), cost |
 | RF / Acoustic / EO narrative without dark-target split | Explicit non-coop set: Radar + EO + Acoustic |
 | Synthetic city + Paulista only | City + **airport SJC split fronts** + requirement floors |
-| “≈98% of optimum” baseline claim | Dropped; report honest NSGA fronts + cost-to-floor |
+| “≈98% of optimum” baseline claim | Dropped; Control A small-$n$ oracle (\(\Delta M_c\leq0.3\) pp) |
 | GREEN = \(M_c\geq0.75\), overlap ≥0.35 | Planning floors e.g. coop≥90%, noncoop≥35% |
+| “Heterogeneity always superior” | Softened; B: RF wins lean \(M_c\); C: hetero wins dual noncoop @ $320k |
 
 ## Package layout
 
@@ -24,6 +25,8 @@ paper_utm/
 ├── sections/                # LaTeX sections (results rewritten for dual-layer)
 ├── figures/scopas/          # Regenerated PNGs from SCOPAS runs
 ├── results/                 # evaluation_results.json + hypervolume + requirement filters
+├── results/controls/        # Control A/B JSON (oracle + modality ablation)
+├── tables/                  # Filled Control A/B LaTeX tables
 └── references/
 ```
 

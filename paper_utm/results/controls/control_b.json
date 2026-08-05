@@ -1,0 +1,477 @@
+[
+  {
+    "budget": 31000.0,
+    "methods": {
+      "RF-only": {
+        "Mc": 0.8828078524687686,
+        "cost": 30000.0,
+        "types": [
+          [
+            "RF",
+            2
+          ]
+        ],
+        "n_eval": 300,
+        "seconds": 0.006253754007047974,
+        "n_packs": 1,
+        "solution": {
+          "sites": [
+            64,
+            135
+          ],
+          "types": [
+            "RF",
+            "RF"
+          ],
+          "Mc": 0.8828078524687686,
+          "cost": 30000.0
+        }
+      },
+      "Acoustic-only": {
+        "Mc": 0.0,
+        "cost": 24000.0,
+        "types": [
+          [
+            "Acoustic",
+            3
+          ]
+        ],
+        "n_eval": 300,
+        "seconds": 0.007279944999027066,
+        "n_packs": 1,
+        "solution": {
+          "sites": [
+            156,
+            169,
+            38
+          ],
+          "types": [
+            "Acoustic",
+            "Acoustic",
+            "Acoustic"
+          ],
+          "Mc": 0.0,
+          "cost": 24000.0
+        }
+      },
+      "EO-only": {
+        "Mc": 0.00892325996430696,
+        "cost": 25000.0,
+        "types": [
+          [
+            "EO",
+            1
+          ]
+        ],
+        "n_eval": 36,
+        "seconds": 0.000631291011814028,
+        "n_packs": 1,
+        "solution": {
+          "sites": [
+            118
+          ],
+          "types": [
+            "EO"
+          ],
+          "Mc": 0.00892325996430696,
+          "cost": 25000.0
+        }
+      },
+      "Radar-only": {
+        "Mc": null,
+        "note": "no_pack"
+      },
+      "Heterogeneous": {
+        "Mc": 0.8233194527067222,
+        "cost": 31000.0,
+        "types": [
+          [
+            "Acoustic",
+            2
+          ],
+          [
+            "RF",
+            1
+          ]
+        ],
+        "n_eval": 900,
+        "seconds": 0.02110768599959556,
+        "n_packs": 1,
+        "solution": {
+          "sites": [
+            107,
+            216,
+            64
+          ],
+          "types": [
+            "Acoustic",
+            "Acoustic",
+            "RF"
+          ],
+          "Mc": 0.8233194527067222,
+          "cost": 31000.0
+        }
+      }
+    },
+    "winner": "RF-only",
+    "hetero_wins": false
+  },
+  {
+    "budget": 76000.0,
+    "methods": {
+      "RF-only": {
+        "Mc": 0.9530041641879834,
+        "cost": 75000.0,
+        "types": [
+          [
+            "RF",
+            5
+          ]
+        ],
+        "n_eval": 300,
+        "seconds": 0.009651562009821646,
+        "n_packs": 1,
+        "solution": {
+          "sites": [
+            174,
+            64,
+            150,
+            135,
+            95
+          ],
+          "types": [
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF"
+          ],
+          "Mc": 0.9530041641879834,
+          "cost": 75000.0
+        }
+      },
+      "Acoustic-only": {
+        "Mc": 0.0,
+        "cost": 72000.0,
+        "types": [
+          [
+            "Acoustic",
+            9
+          ]
+        ],
+        "n_eval": 300,
+        "seconds": 0.034116142996936105,
+        "n_packs": 1,
+        "solution": {
+          "sites": [
+            156,
+            169,
+            38,
+            107,
+            186,
+            97,
+            179,
+            159,
+            216
+          ],
+          "types": [
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic"
+          ],
+          "Mc": 0.0,
+          "cost": 72000.0
+        }
+      },
+      "EO-only": {
+        "Mc": 0.028554431885782272,
+        "cost": 75000.0,
+        "types": [
+          [
+            "EO",
+            3
+          ]
+        ],
+        "n_eval": 300,
+        "seconds": 0.007281041005626321,
+        "n_packs": 1,
+        "solution": {
+          "sites": [
+            98,
+            145,
+            118
+          ],
+          "types": [
+            "EO",
+            "EO",
+            "EO"
+          ],
+          "Mc": 0.028554431885782272,
+          "cost": 75000.0
+        }
+      },
+      "Radar-only": {
+        "Mc": 0.0511600237953599,
+        "cost": 50000.0,
+        "types": [
+          [
+            "Radar",
+            1
+          ]
+        ],
+        "n_eval": 36,
+        "seconds": 0.0006512289983220398,
+        "n_packs": 1,
+        "solution": {
+          "sites": [
+            184
+          ],
+          "types": [
+            "Radar"
+          ],
+          "Mc": 0.0511600237953599,
+          "cost": 50000.0
+        }
+      },
+      "Heterogeneous": {
+        "Mc": 0.9375371802498513,
+        "cost": 76000.0,
+        "types": [
+          [
+            "RF",
+            4
+          ],
+          [
+            "Acoustic",
+            2
+          ]
+        ],
+        "n_eval": 4500,
+        "seconds": 0.14853786599996965,
+        "n_packs": 1,
+        "solution": {
+          "sites": [
+            184,
+            150,
+            103,
+            38,
+            135,
+            179
+          ],
+          "types": [
+            "Acoustic",
+            "RF",
+            "Acoustic",
+            "RF",
+            "RF",
+            "RF"
+          ],
+          "Mc": 0.9375371802498513,
+          "cost": 76000.0
+        }
+      }
+    },
+    "winner": "RF-only",
+    "hetero_wins": false
+  },
+  {
+    "budget": 150000.0,
+    "methods": {
+      "RF-only": {
+        "Mc": 0.9797739440809042,
+        "cost": 150000.0,
+        "types": [
+          [
+            "RF",
+            10
+          ]
+        ],
+        "n_eval": 300,
+        "seconds": 0.23039031799999066,
+        "n_packs": 1,
+        "solution": {
+          "sites": [
+            150,
+            103,
+            38,
+            135,
+            51,
+            22,
+            99,
+            216,
+            153,
+            179
+          ],
+          "types": [
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF"
+          ],
+          "Mc": 0.9797739440809042,
+          "cost": 150000.0
+        }
+      },
+      "Acoustic-only": {
+        "Mc": 0.0,
+        "cost": 96000.0,
+        "types": [
+          [
+            "Acoustic",
+            12
+          ]
+        ],
+        "n_eval": 300,
+        "seconds": 31.79931308099185,
+        "n_packs": 1,
+        "solution": {
+          "sites": [
+            156,
+            169,
+            38,
+            107,
+            186,
+            97,
+            179,
+            159,
+            216,
+            64,
+            103,
+            95
+          ],
+          "types": [
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic"
+          ],
+          "Mc": 0.0,
+          "cost": 96000.0
+        }
+      },
+      "EO-only": {
+        "Mc": 0.05175490779298037,
+        "cost": 150000.0,
+        "types": [
+          [
+            "EO",
+            6
+          ]
+        ],
+        "n_eval": 300,
+        "seconds": 0.01063705500564538,
+        "n_packs": 1,
+        "solution": {
+          "sites": [
+            218,
+            137,
+            95,
+            54,
+            55,
+            118
+          ],
+          "types": [
+            "EO",
+            "EO",
+            "EO",
+            "EO",
+            "EO",
+            "EO"
+          ],
+          "Mc": 0.05175490779298037,
+          "cost": 150000.0
+        }
+      },
+      "Radar-only": {
+        "Mc": 0.1421772754312909,
+        "cost": 150000.0,
+        "types": [
+          [
+            "Radar",
+            3
+          ]
+        ],
+        "n_eval": 300,
+        "seconds": 0.007272664995980449,
+        "n_packs": 1,
+        "solution": {
+          "sites": [
+            125,
+            184,
+            54
+          ],
+          "types": [
+            "Radar",
+            "Radar",
+            "Radar"
+          ],
+          "Mc": 0.1421772754312909,
+          "cost": 150000.0
+        }
+      },
+      "Heterogeneous": {
+        "Mc": 0.9827483640690066,
+        "cost": 150000.0,
+        "types": [
+          [
+            "RF",
+            10
+          ]
+        ],
+        "n_eval": 2490600,
+        "seconds": 127.05548543900659,
+        "n_packs": 9,
+        "solution": {
+          "sites": [
+            38,
+            150,
+            156,
+            179,
+            137,
+            51,
+            54,
+            153,
+            107,
+            174
+          ],
+          "types": [
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF"
+          ],
+          "Mc": 0.9827483640690066,
+          "cost": 150000.0
+        }
+      }
+    },
+    "winner": "Heterogeneous",
+    "hetero_wins": true
+  }
+]
