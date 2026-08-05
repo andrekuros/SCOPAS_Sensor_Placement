@@ -8,7 +8,7 @@ Our methodology extends the four-phase MUSCAT approach with three key enhancemen
 
 \subsubsection{Urban Data Acquisition}
 
-Unlike MUSCAT's terrain-focused approach using DTED maps, we employ OpenStreetMap (OSM) to obtain real urban building data:
+Unlike MUSCAT's terrain-focused approach using DTED maps \cite{muscat2023}, we employ OpenStreetMap (OSM) to obtain real urban building footprints \cite{osm_applications,elias2023exploring}:
 
 \begin{algorithmic}
 \STATE Input: Latitude, Longitude, Radius
@@ -78,7 +78,7 @@ For real scenarios, sensor locations are automatically generated on a grid patte
 
 \subsubsection{Deterministic Ray-Tracing}
 
-We replace statistical LoS models with deterministic ray-tracing:
+We replace statistical LoS probability models \cite{3gpp38901,itur_p1411} with deterministic ray-tracing on the voxelized building occupancy grid:
 
 \begin{algorithmic}
 \STATE Input: Sensor location $\mathbf{s}$, Target location $\mathbf{t}$
@@ -143,7 +143,7 @@ where $N_{free}$ is the number of unoccupied voxels and $N_s$ is the number of a
 
 \subsubsection{GA Implementation}
 
-We employ DEAP (Distributed Evolutionary Algorithms in Python) with the following operators:
+We employ DEAP (Distributed Evolutionary Algorithms in Python) \cite{deap2012} with the following operators:
 
 \textbf{Selection}: Tournament selection with tournament size 3
 
@@ -164,7 +164,7 @@ We maintain the best individual across generations (elitism) and track fitness s
 
 \subsection{Multi-Objective Optimization with NSGA-II}
 
-The sensor placement problem inherently involves conflicting objectives that cannot be simultaneously optimized. To address this, we employ the Non-dominated Sorting Genetic Algorithm II (NSGA-II) \cite{deb2002fast} for multi-objective optimization.
+The sensor placement problem inherently involves conflicting objectives that cannot be simultaneously optimized. To address this, we employ the Non-dominated Sorting Genetic Algorithm II (NSGA-II) \cite{deb2002fast}, following the multi-objective placement tradition in WSN/radar management \cite{molina2008layout,iqbal2015wsn,charlish2016radar} but with dual-layer GBSS objectives. In the dual-layer SCOPAS configuration the primary objectives are threat-weighted $M_{wp,\mathrm{coop}}$, $M_{wp,\mathrm{noncoop}}$, and CapEx (maximize, maximize, minimize); the classical $M_c$/redundancy/cost triple below documents the MUSCAT-compatible scalarized lineage.
 
 \subsubsection{Problem Formulation}
 

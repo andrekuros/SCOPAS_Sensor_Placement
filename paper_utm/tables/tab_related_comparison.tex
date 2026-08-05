@@ -1,0 +1,22 @@
+\begin{table*}[t]
+\centering
+\caption{Systems comparison of closely related GBSS / C-UAS / AAM surveillance placement work and method analogs. Tokens summarize scope; ``---'' means not the paper's focus.}
+\label{tab:related_comparison}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lccccccc}
+\toprule
+\textbf{Work} & \textbf{Sensors} & \textbf{Urban geometry / LoS} & \textbf{Objectives} & \textbf{Optimizer} & \textbf{Coop$\neq$Noncoop} & \textbf{City-scale case} \\
+\midrule
+Guvenc et al.\ \cite{guvenc2018detection} & Multi (survey) & --- & Detection/tracking & --- & Partial & --- \\
+Besada et al.\ \cite{besada2022cuas} & Radar/RF/EO/Ac & Sim.\ models & C-UAS for UTM & --- & Yes (noncollab.) & --- \\
+Yan et al.\ \cite{yan2023passive} & RF/Ac/vision & Urban survey & Detection/tracking & --- & Implicit & --- \\
+MUSCAT \cite{muscat2023} & Heterogeneous & DTED / elev. & $M_c$, $M_g$, cost & Exhaustive & No (fused) & Small / synthetic \\
+Aievola et al.\ \cite{aievola2022ground} & Radar & Urban UAM & Coverage / radar net & MIP / analysis & No & Corridor-scale \\
+Dulia \& Shihab (SAND) \cite{dulia2024sand} & Multi-type AAM & Terrain classes & Cost + $P_D$ floors & ILP / design & Discussed & Multi-city OH \\
+Molina et al.\ \cite{molina2008layout} & Homog.\ WSN & Flat field & Nodes + energy & NSGA-II / MOEA & --- & Synthetic field \\
+Iqbal et al.\ \cite{iqbal2015wsn} & WSN (survey) & --- & Coverage/cost/\ldots & MOEA survey & --- & --- \\
+Charlish et al.\ \cite{charlish2016radar} & Radar & --- & Sensor management & GA & --- & --- \\
+\textbf{This work} & Radar+RF+EO+Ac & OSM + ray-trace & $M_{wp,\mathrm{coop}}$, $M_{wp,\mathrm{noncoop}}$, CapEx & NSGA-II & \textbf{Yes} & City + SJC + Paulista lite \\
+\bottomrule
+\end{tabular}
+\end{table*}

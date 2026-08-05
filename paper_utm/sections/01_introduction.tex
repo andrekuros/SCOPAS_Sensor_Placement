@@ -11,36 +11,36 @@ Current manned air traffic relies on cooperative transponders and centralized Ai
 Ground-Based Surveillance Systems (GBSS) provide the foundational monitoring layer for UTM, complementing onboard DAA sensors with persistent infrastructure-supported detection \cite{kopardekar2016unmanned}. Multiple sensor modalities are employed, each with trade-offs:
 
 \begin{itemize}
-    \item \textbf{Radar}: robust in adverse weather and all lighting conditions, but limited in detecting small radar cross-section (RCS) UAVs at longer distances \cite{guvenc2018detection}.
+    \item \textbf{Radar}: robust in adverse weather and all lighting conditions, but limited in detecting small radar cross-section (RCS) UAVs at longer distances \cite{guvenc2018detection,semkin2020analyzing}.
     
-    \item \textbf{RF/RID Receivers}: cost-effective and low-power, but dependent on cooperative transmitters \cite{guvenc2018detection}.
+    \item \textbf{RF/RID Receivers}: cost-effective and low-power, but dependent on cooperative transmitters \cite{guvenc2018detection,besada2022cuas}.
     
-    \item \textbf{Electro-Optical/Infrared (EO/IR) sensors}: high-resolution visual coverage, but degraded by fog, rain, or night conditions \cite{guvenc2018detection}.
+    \item \textbf{Electro-Optical/Infrared (EO/IR) sensors}: high-resolution visual coverage, but degraded by fog, rain, or night conditions \cite{guvenc2018detection,yan2023passive}.
     
-    \item \textbf{Acoustic sensors}: can detect propeller noise without line-of-sight, but are highly susceptible to urban background noise \cite{guvenc2018detection}.
+    \item \textbf{Acoustic sensors}: can detect propeller noise without line-of-sight, but are highly susceptible to urban background noise \cite{guvenc2018detection,yan2023passive}.
 \end{itemize}
 
-This diversity motivates heterogeneous multi-sensor networks, combining complementary modalities to ensure robust coverage and redundancy, as emphasized in recent counter-UAS literature \cite{muscat2023}. Despite significant interest, designing cost-effective GBSS remains challenging: one must optimize the number, type, and placement of sensors over large urban areas, balancing coverage, redundancy, and budget while considering deployment constraints such as rooftop accessibility, line-of-sight obstructions, and regulatory limits \cite{aievola2022ground}.
+This diversity motivates heterogeneous multi-sensor networks, combining complementary modalities to ensure robust coverage and redundancy, as emphasized in counter-UAS and UTM surveillance literature \cite{muscat2023,besada2022cuas,blasch2021information}. Despite significant interest, designing cost-effective GBSS remains challenging: one must optimize the number, type, and placement of sensors over large urban areas, balancing coverage, redundancy, and budget while considering deployment constraints such as rooftop accessibility, line-of-sight obstructions, and regulatory limits \cite{aievola2022ground,dulia2024sand}.
 
 \subsection{Prior Work on Sensor Placement Optimization}
 
-Several frameworks have addressed GBSS or C-UAS sensor allocation:
+Several frameworks have addressed GBSS or C-UAS sensor allocation (detailed comparison in Section~\ref{sec:related}, Table~\ref{tab:related_comparison}):
 
-\textbf{MUSCAT} (Kukulka de Albuquerque et al., 2019): combines JDL Data Fusion principles with exhaustive sensor placement analysis using elevation-based terrain models (DTED). Metrics like Coverage Index ($M_c$), Gap Index ($M_g$), and Cost-Effectiveness ($C_A$) were introduced to systematically evaluate solutions \cite{muscat2023}. Despite rigor, MUSCAT's exhaustive search is computationally intractable for realistic urban scenarios beyond 15 candidate locations.
+\textbf{MUSCAT} \cite{muscat2023}: multi-sensor C-UAS placement with coverage/gap/cost metrics and exhaustive search over elevation-oriented terrain models. Rigorous for small candidate sets, but $O(2^n)$ search is intractable beyond roughly 10--15 locations.
 
-\textbf{Mathematical Programming Approaches}: Mixed-Integer Programming (MIP) formulations have been explored for radar and sensor networks, but complex urban environments with heterogeneous sensors produce non-convex optimization landscapes, limiting scalability \cite{aievola2022ground}.
+\textbf{Radar / AAM network design}: Aievola et al.\ analyze ground-based radar networks for UAM \cite{aievola2022ground}; Dulia and Shihab optimize AAM surveillance networks under cost and detection-probability floors over terrain classes \cite{dulia2024sand}. These advance placement for cooperative/non-cooperative AAM traffic but do not jointly expose dual-layer OSM+ray-trace CapEx Pareto fronts of the form pursued here.
 
-\textbf{Metaheuristics (Genetic Algorithms)}: widely applied in network and sensor placement problems, including wireless sensor networks and radar arrays \cite{aievola2022ground}. GAs are particularly suited for multi-objective optimization over discrete, non-convex spaces.
+\textbf{Metaheuristics}: NSGA-II and related MOEAs are standard for coverage--cost placement in WSN and radar management \cite{deb2002fast,molina2008layout,iqbal2015wsn,charlish2016radar}, motivating transfer to occlusion-aware GBSS chromosomes.
 
 \subsection{Remaining Challenges}
 
-Despite progress, three gaps persist in urban GBSS design:
+Despite progress, three gaps persist in urban GBSS design (Table~\ref{tab:related_comparison}):
 
-\textbf{Scalability}: Exhaustive and MIP-based methods are infeasible for realistic urban areas requiring tens of sensors across square kilometers \cite{muscat2023}.
+\textbf{Scalability}: Exhaustive and many MIP formulations become impractical for tens of heterogeneous sensors across square kilometers with occlusion physics \cite{muscat2023,katoh1998resource}.
 
-\textbf{Urban Environment Fidelity}: Statistical terrain or propagation models fail to capture complex 3D urban geometries, line-of-sight obstructions, and building-induced multipath effects. No existing frameworks fully integrate open, global building datasets (e.g., OpenStreetMap) for C-UAS sensor planning \cite{aievola2022ground}.
+\textbf{Urban Environment Fidelity}: Statistical LoS models omit building-resolved shadowing that dominates low airways \cite{3gpp38901,itur_p1411}; OSM-enabled deterministic LoS for C-UAS CapEx planning remains comparatively sparse relative to telecom uses of OSM \cite{osm_applications}.
 
-\textbf{Real-World Validation}: Most prior studies use synthetic or small-scale urban models. City-scale validation across thousands of buildings remains absent, limiting confidence in deployment planning \cite{aievola2022ground}.
+\textbf{Operational Metric Split}: Cooperative RID/RF coverage and non-cooperative dark-target coverage are often collapsed into one score, understating dark-target risk for BVLOS safety cases \cite{besada2022cuas,blasch2021information}.
 
 \subsection{Contributions}
 
@@ -56,5 +56,5 @@ This paper revises and extends prior city-scale GBSS optimization (MUSCAT / SCOP
 
 Locked contribution sentence: NSGA-II with deterministic 3D ray-tracing and OSM geometry yields dual-layer GBSS Pareto fronts spanning cooperative \(M_{wp}\) near \(0.07\)--\(0.96\) and non-cooperative \(M_{wp}\) near \(0.00\)--\(0.56\) on a synthetic city (with complementary airport and Paulista lite fronts), in a \(g\cdot p\) evaluation regime where exhaustive MUSCAT search is intractable for \(n\gtrsim25\) sites; city-scale optimality gaps and universal heterogeneity dominance remain unsupported.
 
-The remainder of this paper is organized as follows: Section II reviews related work. Section III formulates the dual-layer problem. Section IV--V describe methodology and SCOPAS implementation. Section VI presents experimental setup. Section VII analyzes dual-layer results and Controls~A--B. Section VIII discusses implications and limits. Section IX concludes.
+The remainder of this paper is organized as follows: Section II reviews related work and the systems comparison table. Section III formulates the dual-layer problem. Section IV--V describe methodology and SCOPAS implementation. Section VI presents experimental setup. Section VII analyzes dual-layer results and Controls~A--C. Section VIII discusses implications and limits. Section IX concludes.
 

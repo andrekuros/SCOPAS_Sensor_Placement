@@ -1,34 +1,32 @@
-% Section 2: Related Work
+% Section 2: Related Work (strengthened literature review)
 
 \section{Related Work}
+\label{sec:related}
 
-\subsection{Multi-Sensor C-UAS Systems}
+We organize prior art along four streams that frame GBSS planning for BVLOS: (i)~multi-sensor C-UAS / UTM sensing, (ii)~surveillance network \emph{placement} for UAM/AAM, (iii)~multi-objective / metaheuristic placement methods, and (iv)~urban LoS geometry. Table~\ref{tab:related_comparison} summarizes closest systems work against this paper's dual-layer SCOPAS framing.
 
-Detection and tracking of small UAVs has been extensively studied using various sensor modalities. Guvenc et al. \cite{guvenc2018detection} demonstrated that multi-sensor fusion significantly improves detection rates compared to single-sensor approaches. Jovanoska et al. \cite{jovanoska2018multisensor} developed data fusion techniques combining radar, RF, and optical sensors, achieving robust tracking even with partial sensor failures. Dudczyk et al. \cite{dudczyk2022multisensor} presented a 3D multi-sensor fusion framework, though focused on detection algorithms rather than optimal placement.
+\input{tables/tab_related_comparison}
 
-\subsection{Optimization Methods for Sensor Placement}
+\subsection{Multi-Sensor C-UAS Sensing for UTM}
 
-The sensor placement problem has been approached using various optimization techniques, each with distinct trade-offs:
+Amateur and small-UAV detection surveys emphasize complementary modalities---radar, RF/Remote~ID, EO/IR, and acoustic---and the value of fusion under urban clutter \cite{guvenc2018detection,yan2023passive}. Multisensor track fusion can maintain tracks under partial sensor outages \cite{jovanoska2018multisensor,dudczyk2022multisensor}, while small-RCS phenomenology remains challenging for radar alone \cite{semkin2020analyzing}. For UTM specifically, Besada et al.\ review Counter-UAS sensors and provide simulation models for noncollaborative surveillance feeding tactical UTM services \cite{besada2022cuas}. Blasch et al.\ argue that information fusion is an autonomy enabler for UTM \cite{blasch2021information}, consistent with classical JDL-style fusion handbooks \cite{liggins2009handbook}.
 
-\textbf{Exhaustive Search}: MUSCAT \cite{muscat2023} evaluates all possible sensor combinations to guarantee finding the global optimum. While theoretically optimal, this $O(2^n)$ approach becomes intractable for $n > 15$ locations. For a realistic urban scenario with 50 potential positions, exhaustive search would require $2^{50} \approx 10^{15}$ evaluations—computationally infeasible.
+These works establish \emph{why} heterogeneous GBSS matter and that cooperative (e.g., RID/RF) and non-cooperative (radar/EO/acoustic) sensing address different threat classes. They typically stop at detection algorithms, sensor models, or system architecture---not CapEx-constrained placement under city-scale LoS occlusion with separate coop/noncoop coverage objectives.
 
-\textbf{Mathematical Programming}: Aievola et al. \cite{aievola2022ground} formulated radar network design as Mixed-Integer Programming (MIP) for UAM applications. While MIP provides optimality guarantees for convex problems, sensor placement with heterogeneous types and complex propagation models yields non-convex formulations that similarly suffer from computational intractability. Katoh and Ibaraki \cite{katoh1998resource} survey MIP approaches for resource allocation, noting scalability challenges.
+\subsection{Surveillance Network Placement for UAM / AAM}
 
-\textbf{Greedy Heuristics}: Sequential greedy selection offers polynomial complexity but frequently yields suboptimal solutions, particularly for problems requiring balanced coverage and redundancy—missing opportunities for synergistic sensor placement.
+Closest placement literature includes MUSCAT, which formulates multi-sensor C-UAS placement with coverage/gap/cost metrics and exhaustive search over candidate sites, adopting elevation-oriented terrain models \cite{muscat2023}. Exhaustive enumeration guarantees small-$n$ optima but becomes intractable beyond roughly 10--15 sites. Aievola et al.\ study ground-based radar networks for UAM with design and performance analysis under urban constraints, leaning on mathematical programming / structured radar-network design rather than multi-modal CapEx Pareto fronts \cite{aievola2022ground}. Dulia and Shihab's SAND model designs AAM surveillance networks that minimize sensor cost subject to coverage and detection-probability floors over terrain classes, and discusses cooperative vs.\ non-cooperative sensing options in a cost--benefit setting \cite{dulia2024sand}. Resource-allocation MIP surveys underline scalability limits once formulations become non-convex \cite{katoh1998resource}.
 
-\textbf{Meta-heuristics}: Genetic Algorithms have successfully addressed network optimization in other domains \cite{zou2019WSN, charlish2016radar}, offering good solution quality with manageable computational requirements. Applications to C-UAS / GBSS placement with urban LoS constraints remain comparatively sparse relative to WSN and radar-array literature.
+Relative to these, our work keeps MUSCAT's metric lineage and heterogeneous mix, but (i)~optimizes threat-weighted \emph{dual-layer} $M_{wp,\mathrm{coop}}$ and $M_{wp,\mathrm{noncoop}}$ jointly with CapEx via NSGA-II, (ii)~uses OSM building geometry with deterministic ray-traced LoS, and (iii)~reports city/airport/Paulista fronts plus matched CapEx ablations (Controls~B--C) rather than a single fused score or exhaustive optimum claim.
 
-The MUSCAT framework \cite{muscat2023} specifically addressed multi-sensor C-UAS placement, establishing valuable methodology (four phases, metrics, requirements) and demonstrating the importance of considering multiple sensor types. Our work adopts MUSCAT's methodological framework while addressing its scalability limitation through GA-based optimization.
+\subsection{Multi-Objective and Metaheuristic Placement}
 
-\subsection{Genetic Algorithms for Network Optimization}
+Holland's GA foundations \cite{holland1992adaptation} and Deb's NSGA-II \cite{deb2002fast} underpin Pareto search for discrete placement. WSN layout has long used MOEAs to trade coverage, node count, and energy \cite{molina2008layout,iqbal2015wsn,zou2019WSN}; radar sensor management has likewise used GAs \cite{charlish2016radar}. We treat these as \emph{method transfer}: coverage--cost Pareto search is mature in WSN/radar management, but transferring it to urban C-UAS GBSS requires occlusion-aware $P_D$ models and an explicit coop/noncoop objective split that WSN energy/connectivity formulations do not provide.
 
-Genetic Algorithms have been successfully applied to network design problems due to their ability to explore large solution spaces efficiently. Holland \cite{holland1992adaptation} established the theoretical foundations, while recent applications include wireless sensor network placement \cite{zou2019WSN} and radar network configuration \cite{charlish2016radar}. Unlike gradient-based methods, GAs can handle discrete combinatorial problems and multiple objectives simultaneously, making them well-suited for sensor placement with heterogeneous costs and capabilities.
+\subsection{Urban Geometry and Line-of-Sight Modeling}
 
-\subsection{Urban Environment Modeling}
-
-Accurate propagation modeling in urban environments is essential for realistic sensor network design. The 3GPP channel model \cite{3gpp38901} provides statistical LoS probability models based on building density and heights. However, deterministic approaches using actual building geometries offer higher accuracy. OpenStreetMap has emerged as a valuable source of urban data, successfully used in various telecommunications and sensor network studies \cite{osm_applications}. The integration of OSM data with sensor placement optimization, particularly for C-UAS applications, remains an underexplored area that our work addresses.
+Statistical urban channel models (e.g., 3GPP TR~38.901 LoS probability) and ITU short-range outdoor recommendations support radio planning without full building footprints \cite{3gpp38901,itur_p1411}. OpenStreetMap provides globally available building footprints used across geospatial and telecom studies \cite{osm_applications,elias2023exploring}. Deterministic ray-tracing on voxelized OSM buildings is more conservative than statistical LoS and yields altitude-stratified shadow zones---the geometry regime we adopt for GBSS planning.
 
 \subsection{Gap Analysis}
 
-Despite significant progress, current approaches face limitations in scalability (exhaustive vs. heuristic optimization), urban environment modeling (statistical vs. deterministic), and validation with real-world data. Our work bridges these gaps by combining GA-based optimization with OSM urban data and deterministic ray-tracing, validated against both synthetic scenarios and real urban environments.
-
+Table~\ref{tab:related_comparison} highlights three persistent gaps: (1)~placement papers rarely expose \emph{separate} cooperative and non-cooperative coverage objectives under CapEx; (2)~exhaustive / MIP approaches struggle at city-scale candidate sets with heterogeneous types and occlusion physics; (3)~urban C-UAS placement validations seldom combine OSM geometry, ray-traced LoS, and multi-city (or multi-scene) Pareto evidence. This paper addresses (1)--(3) within a $g\cdot p$ NSGA-II budget, with Controls~A--C bounding small-$n$ quality and CapEx-matched modality claims---without asserting city-scale optimality gaps.
