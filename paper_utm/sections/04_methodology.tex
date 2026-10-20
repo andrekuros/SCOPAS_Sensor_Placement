@@ -33,7 +33,7 @@ We discretize the urban environment into a 3D occupancy grid:
 \end{cases}
 \end{equation}
 
-where $(i,j,k)$ are voxel indices and resolution $r$ (typically 10-20m) is user-configurable. This voxelization enables efficient ray-tracing and LoS calculations.
+where $(i,j,k)$ are voxel indices and resolution $r$ is user-configurable (30--40\,m in this study). This voxelization enables efficient ray-tracing and LoS calculations.
 
 \subsection{Phase 2: Sensor Attributes and ROI Definition}
 
@@ -50,16 +50,16 @@ f(P_t, G, \sigma_{RCS}, R, \lambda) & \text{if } \theta_{elev} \in [-5^{\circ}, 
 \end{equation}
 where $\theta_{elev}$ is the elevation angle from sensor to target.
 
-\textbf{RF Passive (RID equivalent)}: Nearly omnidirectional ($\theta_{elev} \in [-30^{\circ}, 70^{\circ}]$):
+\textbf{RF Passive (RID equivalent)}: Nearly omnidirectional ($\theta_{elev} \in [-30^{\circ}, 70^{\circ}]$, sensitivity \(-90\)\,dBm at 900\,MHz):
 \begin{equation}
 P_D^{RF} = f(ERP, Sensitivity, R)
 \end{equation}
 
-\textbf{Electro-Optical (EO)}: Limited FOV (90\textdegree{} horizontal, $\theta_{elev} \in [-20^{\circ}, 45^{\circ}]$)
+\textbf{Electro-Optical (EO)}: 360\textdegree{} horizontal coverage, $\theta_{elev} \in [-20^{\circ}, 45^{\circ}]$, maximum range 150\,m.
 
-\textbf{Acoustic}: Omnidirectional ($\theta_{elev} \in [-40^{\circ}, 80^{\circ}]$)
+\textbf{Acoustic}: 360\textdegree{} horizontal coverage, $\theta_{elev} \in [-20^{\circ}, 70^{\circ}]$, source level 80\,dB SPL, SNR threshold 6\,dB, maximum range 300\,m.
 
-These FOV constraints prevent unrealistic scenarios where rooftop sensors "see" targets far below horizon, improving model fidelity.
+These values are those of the experiment configurations (Section~\ref{sec:setup}). Elevation limits prevent rooftop sensors from detecting targets far below the horizon. Every modality, including Acoustic, is gated by the same binary LoS test; this is conservative for acoustic sensing, which can partly propagate around obstacles.
 
 \subsubsection{Sensor Location Generation}
 
@@ -128,6 +128,21 @@ For multiple sensors, we employ soft voting fusion:
 
 where $P_{D,i}$ is the detection probability of the $i$-th sensor.
 
+\subsubsection{Dual-Layer Threat-Weighted Coverage}
+\label{sec:dual_metrics}
+
+Critical assets \(a\) with location \(\mathbf{p}_a\), protection radius \(\rho_a\), and weight multiplier \(m_a\) define a threat map over free voxels \(v\):
+\begin{equation}
+w(v) = \max_a\; 100\, m_a \exp\!\left(-\frac{\lVert \mathbf{x}_v - \mathbf{p}_a \rVert^2}{2\rho_a^2}\right),
+\label{eq:threat}
+\end{equation}
+with \(w(v)=0\) inside buildings. The network probability \(\pnet\) is computed twice: over all active sensors (cooperative layer, \(\pnet^{\mathrm{coop}}\)) and over Radar, EO, and Acoustic only (non-cooperative layer, \(\pnet^{\mathrm{nc}}\)), because RF receivers detect only targets that broadcast. Threat-weighted coverage is
+\begin{equation}
+M_{wp,\ell} = \frac{\sum_v w(v)\,\pnet^{\ell}(v)}{\sum_v w(v)}, \qquad \ell\in\{\mathrm{coop},\mathrm{nc}\}.
+\label{eq:mwp}
+\end{equation}
+For airway analysis (Fig.~\ref{fig:airways}), the sums are restricted to the voxel layer containing the airway altitude.
+
 \subsubsection{Redundancy Metric}
 
 System redundancy is calculated as:
@@ -145,38 +160,21 @@ where $N_{free}$ is the number of unoccupied voxels and $N_s$ is the number of a
 
 We employ DEAP (Distributed Evolutionary Algorithms in Python) \cite{deap2012} with the following operators:
 
-\textbf{Selection}: Tournament selection with tournament size 3
+\textbf{Parent selection}: Crowded-comparison tournament (DEAP \texttt{selTournamentDCD}).
 
-\textbf{Crossover}: Two-point crossover preserving gene structure
+\textbf{Crossover}: Two-point crossover on the gene list, probability 0.7.
 
-\textbf{Mutation}: 
-\begin{itemize}
-\item Location mutation: Change $l_i$ to random valid location
-\item Type mutation: Change $t_i$ to different sensor type
-\item Activation mutation: Toggle $a_i$ between 0 and 1
-\end{itemize}
+\textbf{Mutation}: Applied with probability 0.2 per offspring; each gene is perturbed with probability 0.1, and within a perturbed gene the site, type, azimuth, and activation bit change with probabilities 0.3, 0.3, 0.25, and 0.5. Genes are then reactivated if fewer than the minimum sensor count remain active.
 
-\textbf{Fitness Evaluation}: Equation \ref{eq:fitness} with parallelized computation across available CPU cores.
+\textbf{Survival}: NSGA-II non-dominated sorting with crowding distance (\texttt{selNSGA2}).
 
-\subsubsection{Convergence and Elitism}
-
-We maintain the best individual across generations (elitism) and track fitness statistics to monitor convergence. Typical runs achieve stable solutions within 50-100 generations for population sizes of 30-50.
+\textbf{Fitness Evaluation}: The objective vector of Eq.~\eqref{eq:fitness}, evaluated in parallel across CPU cores.
 
 \subsection{Multi-Objective Optimization with NSGA-II}
 
-The sensor placement problem inherently involves conflicting objectives that cannot be simultaneously optimized. To address this, we employ the Non-dominated Sorting Genetic Algorithm II (NSGA-II) \cite{deb2002fast}, following the multi-objective placement tradition in WSN/radar management \cite{molina2008layout,iqbal2015wsn,charlish2016radar} but with dual-layer GBSS objectives. In the dual-layer SCOPAS configuration the primary objectives are threat-weighted $M_{wp,\mathrm{coop}}$, $M_{wp,\mathrm{noncoop}}$, and CapEx (maximize, maximize, minimize); the classical $M_c$/redundancy/cost triple below documents the MUSCAT-compatible scalarized lineage.
+The objectives conflict, so we employ the Non-dominated Sorting Genetic Algorithm II (NSGA-II) \cite{deb2002fast}, following the multi-objective placement tradition in WSN/radar management \cite{molina2008layout,iqbal2015wsn,charlish2016radar}. The objectives are \(M_{wp,\mathrm{coop}}\), \(M_{wp,\mathrm{noncoop}}\), and CapEx (Eqs.~\eqref{eq:fitness}--\eqref{eq:mwp}); there are no scalarization weights. The airport study also runs two single-layer profiles, (\(M_{wp,\mathrm{coop}}\), CapEx) and (\(M_{wp,\mathrm{noncoop}}\), CapEx); the latter excludes RF from the type set.
 
-\subsubsection{Problem Formulation}
-
-Given a sensor configuration $X$, we define three objectives:
-
-\begin{align}
-\text{maximize} \quad & f_1(X) = M_c(X) \quad \text{(Coverage Index)} \label{eq:obj1}\\
-\text{maximize} \quad & f_2(X) = \bar{R}(X) \quad \text{(Mean Redundancy)} \label{eq:obj2}\\
-\text{minimize} \quad & f_3(X) = C(X) \quad \text{(Total Cost)} \label{eq:obj3}
-\end{align}
-
-A solution $X_1$ \textit{dominates} $X_2$ if $X_1$ is no worse in all objectives and strictly better in at least one. The \textit{Pareto-optimal front} is the set of all non-dominated solutions.
+A solution $X_1$ \textit{dominates} $X_2$ if $X_1$ is no worse in all objectives and strictly better in at least one. The \textit{Pareto-optimal front} is the set of all non-dominated solutions; the fronts we report are the non-dominated sets found within a fixed evaluation budget, not certified Pareto-optimal sets.
 
 \subsubsection{NSGA-II Algorithm}
 
@@ -189,7 +187,7 @@ NSGA-II discovers the Pareto front through:
 
 \item \textbf{Selection}: Tournament selection favors individuals with better (lower) front rank and, for equal rank, larger crowding distance—balancing convergence toward Pareto front with diversity maintenance.
 
-\item \textbf{Elitism}: The best non-dominated solutions are preserved across generations, ensuring Pareto front quality monotonically improves.
+\item \textbf{Elitism}: Parents and offspring compete for survival, so non-dominated solutions are retained across generations.
 \end{enumerate}
 
 This approach provides decision-makers with a continuum of optimal trade-offs rather than a single prescribed configuration, enabling context-specific infrastructure selection based on operational requirements, budget constraints, and risk tolerance.
@@ -207,12 +205,6 @@ O(\text{GA}) = O(g \cdot p \cdot e)
 \end{equation}
 where $g$ is generations, $p$ is population size, and $e$ is evaluation complexity.
 
-For $n=30$ locations:
-\begin{itemize}
-\item MUSCAT: $2^{30} \approx 10^9$ evaluations (intractable)
-\item GA: $50 \times 30 \times e = 1,500 \cdot e$ evaluations (feasible)
-\end{itemize}
-
-This represents approximately 6 orders of magnitude reduction in computational requirements, enabling optimization of much larger networks.
+For the synthetic city (221 sites, four types, up to 15 sensors), exhaustive enumeration is out of reach, whereas the city runs use at most \(32\times19=608\) evaluations each. A small evaluation count says nothing about solution quality by itself; Section~\ref{sec:results_seeds} compares the GA with random search at the same budget.
 
 

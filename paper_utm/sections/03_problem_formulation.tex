@@ -59,35 +59,34 @@ x_{tluh} \in \{0, 1\} \quad \forall t \in T, l \in L, u \in U, h \in H
 The binary allocation $x_{tluh}$ above is the MUSCAT-style decision variable \cite{muscat2023}. For GA / NSGA-II search we encode deployments as chromosomes (variable-length lists of activated site--type genes), which is an implementation encoding of the same allocation---not a different physical problem:
 
 \begin{equation}
-\textbf{X} = [(l_1, t_1, a_1), (l_2, t_2, a_2), ..., (l_n, t_n, a_n)]
+\textbf{X} = [(l_1, t_1, o_1, a_1), \ldots, (l_{n}, t_{n}, o_{n}, a_{n})]
 \label{eq:chromosome}
 \end{equation}
 
-where each gene $(l_i, t_i, a_i)$ represents:
+where each gene represents:
 \begin{itemize}
-\item $l_i \in L$: sensor location index
+\item $l_i \in L$: candidate site index (several genes may share a site)
 \item $t_i \in T$: sensor type
-\item $a_i \in \{0, 1\}$: activation status
+\item $o_i$: azimuth index in \(\{0^{\circ},120^{\circ},240^{\circ}\}\)
+\item $a_i \in \{0, 1\}$: activation bit
 \end{itemize}
+The chromosome length \(n\) is the maximum sensor count; at least the minimum count of genes is kept active.
 
-The fitness function becomes:
-
+The search is not scalarized. Each chromosome is scored by the three dual-layer objectives
 \begin{equation}
-F(\textbf{X}) = w_1 \cdot \pnet(\textbf{X}) + w_2 \cdot \rnet(\textbf{X}) - w_3 \cdot C(\textbf{X})
+F(\textbf{X}) = \bigl(M_{wp,\mathrm{coop}}(\textbf{X}),\; M_{wp,\mathrm{noncoop}}(\textbf{X}),\; C(\textbf{X})\bigr)
 \label{eq:fitness}
 \end{equation}
-
-where:
-\begin{itemize}
-\item $\pnet(\textbf{X})$: Average network detection probability
-\item $\rnet(\textbf{X})$: Average redundancy
-\item $C(\textbf{X})$: Total cost
-\item $w_1, w_2, w_3$: Weight parameters
-\end{itemize}
+(maximize, maximize, minimize), defined in Section~\ref{sec:dual_metrics}. CapEx counts hardware plus a site-activation fee for every distinct occupied site:
+\begin{equation}
+C(\textbf{X}) = \sum_{i:\,a_i=1} C_{t_i} + C_{\mathrm{site}}\,\bigl|\{l_i : a_i = 1\}\bigr|,
+\label{eq:capex}
+\end{equation}
+with \(C_{\mathrm{site}}=\$15\mathrm{k}\) unless stated otherwise.
 
 \subsection{MUSCAT Metrics}
 
-To maintain compatibility with the original framework, we implement the following metrics:
+To maintain compatibility with the original framework, we also report the classic metrics below; Controls~A--B use \(M_c\), while all dual-layer fronts use \(M_{wp}\).
 
 \textbf{Coverage Index} (Equation 6 from \cite{muscat2023}):
 \begin{equation}

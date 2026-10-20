@@ -31,6 +31,7 @@ Manual alternative:
 | E2 Paulista journal | `paper_rerun_paulista_journal.json` | 40×20, res 30 m, 8 cores | **Done** — 40 sols; 5 RF → coop 0.933 @ $150k (noncoop 0); coop max 0.947; noncoop max **0.219** @ $571k; no 85/25 member |
 | E3 Control C + sites | `--only-c --site-cost 15000` | $31k–$320k, hardware + $15k/site | **Done** — noncoop winners: Ac $31k, Radar $76k/$150k, hetero $320k (39.0%, coop 70%) |
 | E4 Airways | `tools/paper_journal_experiments.py airways` | 3 stored city plans, 20/45/65 m | **Done** — coop at 20 m 39–52% vs 92–99% at 45/65 m |
+| E5 Random baseline | `tools/paper_journal_experiments.py random --seed 0/1/2` | 608 uniform samples per seed, res 30 m | **Done** — HV 0.251–0.254 (GA 0.251–0.267); 85/35 met in 3/3 seeds ($423k–$488k); max noncoop 0.465–0.503. GA shows no advantage at this budget |
 | Targets 90/35 & 90/50 | `demo_targets_*` | short prior demos | **Done** — joint 90/35 feasible on stretch front @ $315k |
 | Control A (oracle) | `tools/paper_controls_ab.py` | n∈{8,10,12}, k∈{3,4,5}, res 40 m | **Done** — GA ΔMc ≤0.3 pp vs oracle |
 | Control B (ablation) | same | budgets $31k/$76k/$150k | **Done** — RF wins lean/mid; hetero edges @ $150k |
@@ -71,10 +72,15 @@ cp results/paper_rerun_paulista_journal/run_journal/evaluation_results.json pape
 python tools/paper_controls_ab.py --only-c --out paper_utm/results/controls
 python tools/paper_controls_ab.py --only-c --site-cost 15000 --out paper_utm/results/controls
 python tools/paper_journal_experiments.py airways
+# E5 random baseline + HV-vs-evaluations (needs E1 checkpoints)
+for s in 0 1 2; do python tools/paper_journal_experiments.py random --seed $s --cores 7; done
+python tools/paper_journal_experiments.py summary \
+  --runs results/paper_rerun_city_dual/random_seed{0,1,2} --out paper_utm/results/seeds/city_random_summary.json
+python tools/paper_journal_experiments.py convergence --seeds 0 1 2
 python tools/make_journal_figures.py
 ```
 
-Wall clock on a 24-thread Windows workstation: city seeds ≈20 min each (3 in parallel, 4 cores each); Paulista journal ≈1 h 25 min end to end (8 cores, run alongside the seeds); Control C ≈1.5 min per variant.
+Wall clock on a 24-thread Windows workstation: city seeds ≈20 min each (3 in parallel, 4 cores each); Paulista journal ≈1 h 25 min end to end (8 cores, run alongside the seeds); Control C ≈1.5 min per variant; random baseline ≈38 min per seed (3 in parallel, 7 cores each).
 
 ## City dual snapshot
 

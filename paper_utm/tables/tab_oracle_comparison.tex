@@ -1,10 +1,12 @@
 \begin{table}[t]
 \centering
-\caption{Control A — small-$n$ oracle. $\Delta M_c$ = oracle $-$ method (same ray-tracer). NSGA-II* is a fixed-$k$ $M_c$-maximizing GA (5 seeds).}
+\caption{Control A — small-$n$ oracle. $\Delta M_c$ = oracle $-$ method (same ray-tracer). Columns give $M_c$; NSGA* is a fixed-$k$ $M_c$-maximizing GA (5 seeds); $t$ is oracle runtime.}
 \label{tab:oracle_comparison}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
 \begin{tabular}{ccrrrrrr}
 \toprule
-$n$ & $k$ & Oracle $M_c$ & Greedy & Random & NSGA-II* & $\Delta_{\mathrm{NSGA}}$ & $t_{\mathrm{oracle}}$ (s) \\
+$n$ & $k$ & Oracle & Greedy & Rand. & NSGA* & $\Delta$ & $t$ (s) \\
 \midrule
 8 & 3 & 89.1\% & 89.1\% & 89.1\% & 89.1\% & 0.0\,pp & 0.1 \\
 10 & 4 & 91.5\% & 91.5\% & 91.2\% & 91.5\% & 0.0\,pp & 1.5 \\

@@ -4,15 +4,15 @@
 
 \subsection{Software Architecture}
 
-The framework is implemented in Python 3.10+ with a modular architecture consisting of eight core modules totaling approximately 2,680 lines of code:
+The framework is implemented in Python 3.10+ (about 4,800 lines in \texttt{src/}). Core modules:
 
 \begin{itemize}
-\item \texttt{environment.py}: Urban environment loading and voxelization
+\item \texttt{environment.py}: Urban environment loading, voxelization, threat map
 \item \texttt{sensors.py}: Sensor class definitions with physical parameters
 \item \texttt{propagation.py}: Ray-tracing and detection probability calculations
-\item \texttt{network\_evaluation.py}: Network performance assessment
-\item \texttt{genetic\_algorithm.py}: GA implementation using DEAP
-\item \texttt{muscat\_metrics.py}: MUSCAT-compatible metrics computation
+\item \texttt{network\_evaluation.py}: Dual-layer \(M_{wp}\) and CapEx evaluation
+\item \texttt{genetic\_algorithm.py}, \texttt{deap\_base.py}: NSGA-II using DEAP
+\item \texttt{scopas\_metrics.py}, \texttt{airway\_metrics.py}: MUSCAT-compatible and per-airway metrics
 \item \texttt{visualization.py}: Results visualization and reporting
 \item \texttt{download\_osm.py}: OpenStreetMap data acquisition
 \end{itemize}
@@ -44,11 +44,11 @@ This design separates experiment specification from implementation, facilitating
 
 \subsection{Parallelization}
 
-The GA evaluation phase is parallelized across available CPU cores using Python's multiprocessing. For a machine with 16 cores, this provides approximately 12-14x speedup compared to sequential evaluation, further enhancing scalability.
+The GA evaluation phase is parallelized across CPU cores using Python's multiprocessing. On a 24-thread workstation, a city run (608 evaluations, 4 cores) takes about 20 minutes and the 30\,m Paulista run (40\(\times\)20, 8 cores) about 1.4 hours.
 
 \subsection{Checkpointing and Robustness}
 
-To ensure robustness for long-running optimizations (e.g., the Avenida Paulista case requiring 7.6 hours), the framework implements a checkpointing mechanism that saves the complete genetic algorithm state at user-specified intervals (typically every generation). Each checkpoint includes the current population, hall-of-fame archive, random number generator state, and generation counter. This enables seamless resumption from the most recent checkpoint after interruptions (e.g., system failures or manual stops), validating the framework's practical applicability for production deployments where overnight runs may be interrupted.
+To ensure robustness for long-running optimizations, the framework implements a checkpointing mechanism that saves the complete genetic algorithm state at user-specified intervals (typically every generation). Each checkpoint includes the current population, hall-of-fame archive, random number generator state, and generation counter. This enables seamless resumption from the most recent checkpoint after interruptions (e.g., system failures or manual stops), validating the framework's practical applicability for production deployments where overnight runs may be interrupted.
 
 \subsection{Computational Optimizations}
 
@@ -62,7 +62,7 @@ Several optimizations reduce computational requirements:
 \item \textbf{Early Termination}: If LoS is blocked in ray-tracing, detection probability is immediately set to zero without further propagation calculations.
 \end{enumerate}
 
-These optimizations enable processing of scenarios with 44,000+ voxels (Avenida Paulista case) in reasonable time frames.
+These optimizations keep the 26,130-voxel Paulista grid (30\,m) tractable on a single workstation.
 
 \subsection{Open Source Availability}
 

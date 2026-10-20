@@ -296,6 +296,27 @@ def fig_airways():
     _save(fig, "fig_airways")
 
 
+def fig_convergence():
+    path = PAPER / "results" / "seeds" / "city_convergence.json"
+    if not path.exists():
+        return
+    data = json.loads(path.read_text(encoding="utf-8"))
+    fig, ax = plt.subplots(figsize=(3.5, 2.6))
+    for s, pts in data["nsga2"].items():
+        ax.plot([p["evals_max"] for p in pts], [p["hypervolume"] for p in pts], "-o", color=BLUE,
+                markersize=3, linewidth=0.9, label="NSGA-II" if s == "0" else None)
+    for s, pts in data["random"].items():
+        ax.plot([p["evals"] for p in pts], [p["hypervolume"] for p in pts], "--s", color=ORANGE,
+                markersize=3, linewidth=0.9, label="Random search" if s == "0" else None)
+    ax.set_xlabel("Evaluations (upper bound)")
+    ax.set_ylabel("Hypervolume")
+    ax.set_title("Synthetic city, seeds 0–2")
+    ax.grid(True, linewidth=0.3, color="#dddddd")
+    ax.legend(frameon=False, loc="lower right")
+    fig.tight_layout()
+    _save(fig, "fig_convergence")
+
+
 def main():
     _style()
     fig_scenario()
@@ -304,6 +325,7 @@ def main():
     fig_controls()
     fig_scenes()
     fig_airways()
+    fig_convergence()
 
 
 if __name__ == "__main__":

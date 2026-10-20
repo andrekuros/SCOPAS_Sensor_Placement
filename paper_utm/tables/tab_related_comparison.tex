@@ -3,7 +3,8 @@
 \caption{Systems comparison of closely related GBSS / C-UAS / AAM surveillance placement work and method analogs. Tokens summarize scope; ``---'' means not the paper's focus.}
 \label{tab:related_comparison}
 \setlength{\tabcolsep}{3pt}
-\begin{tabular}{lccccccc}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcccccc}
 \toprule
 \textbf{Work} & \textbf{Sensors} & \textbf{Urban geometry / LoS} & \textbf{Objectives} & \textbf{Optimizer} & \textbf{Coop$\neq$Noncoop} & \textbf{City-scale case} \\
 \midrule
@@ -18,5 +19,5 @@ Iqbal et al.\ \cite{iqbal2015wsn} & WSN (survey) & --- & Coverage/cost/\ldots & 
 Charlish et al.\ \cite{charlish2016radar} & Radar & --- & Sensor management & GA & --- & --- \\
 \textbf{This work} & Radar+RF+EO+Ac & OSM + ray-trace & $M_{wp,\mathrm{coop}}$, $M_{wp,\mathrm{noncoop}}$, CapEx & NSGA-II & \textbf{Yes} & City + SJC + Paulista \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table*}

@@ -1,0 +1,183 @@
+{
+  "population": 32,
+  "generations": 18,
+  "hv_cost_ref_usd": 700000.0,
+  "nsga2": {
+    "0": [
+      {
+        "generation": 4,
+        "evals_max": 160,
+        "hypervolume": 0.1960544626192857
+      },
+      {
+        "generation": 9,
+        "evals_max": 320,
+        "hypervolume": 0.22578272212207423
+      },
+      {
+        "generation": 14,
+        "evals_max": 480,
+        "hypervolume": 0.2255053532917253
+      },
+      {
+        "generation": 17,
+        "evals_max": 576,
+        "hypervolume": 0.24340649305495457
+      },
+      {
+        "generation": 18,
+        "evals_max": 608,
+        "hypervolume": 0.25393374944498515
+      }
+    ],
+    "1": [
+      {
+        "generation": 4,
+        "evals_max": 160,
+        "hypervolume": 0.18908521635203449
+      },
+      {
+        "generation": 9,
+        "evals_max": 320,
+        "hypervolume": 0.23652025486649614
+      },
+      {
+        "generation": 14,
+        "evals_max": 480,
+        "hypervolume": 0.24089429178418204
+      },
+      {
+        "generation": 17,
+        "evals_max": 576,
+        "hypervolume": 0.2596487873198102
+      },
+      {
+        "generation": 18,
+        "evals_max": 608,
+        "hypervolume": 0.26709201243060604
+      }
+    ],
+    "2": [
+      {
+        "generation": 4,
+        "evals_max": 160,
+        "hypervolume": 0.2286864478726432
+      },
+      {
+        "generation": 9,
+        "evals_max": 320,
+        "hypervolume": 0.2378326462189675
+      },
+      {
+        "generation": 14,
+        "evals_max": 480,
+        "hypervolume": 0.23805979804980337
+      },
+      {
+        "generation": 17,
+        "evals_max": 576,
+        "hypervolume": 0.23727123271106904
+      },
+      {
+        "generation": 18,
+        "evals_max": 608,
+        "hypervolume": 0.2512815566059082
+      }
+    ]
+  },
+  "random": {
+    "0": [
+      {
+        "evals": 160,
+        "hypervolume": 0.22666317593580118
+      },
+      {
+        "evals": 320,
+        "hypervolume": 0.23799063833555956
+      },
+      {
+        "evals": 480,
+        "hypervolume": 0.2421953477123696
+      },
+      {
+        "evals": 576,
+        "hypervolume": 0.24981053703032785
+      },
+      {
+        "evals": 608,
+        "hypervolume": 0.250634782634862,
+        "n_solutions": 90,
+        "hv_cost_ref_usd": 700000.0,
+        "max_coop": 0.9576284078734257,
+        "max_noncoop": 0.49979880204804744,
+        "cheapest_coop90_usd": 120000.0,
+        "noncoop_at_cheapest_coop90": 0.0,
+        "cheapest_85_35_usd": 488000.0,
+        "n_feasible_85_35": 10,
+        "cheapest_90_35_usd": 500000.0
+      }
+    ],
+    "1": [
+      {
+        "evals": 160,
+        "hypervolume": 0.22650594677136104
+      },
+      {
+        "evals": 320,
+        "hypervolume": 0.23943800316208955
+      },
+      {
+        "evals": 480,
+        "hypervolume": 0.24747646975408566
+      },
+      {
+        "evals": 576,
+        "hypervolume": 0.2507663995944739
+      },
+      {
+        "evals": 608,
+        "hypervolume": 0.25082751053298075,
+        "n_solutions": 101,
+        "hv_cost_ref_usd": 700000.0,
+        "max_coop": 0.9633979279833158,
+        "max_noncoop": 0.46484221816972504,
+        "cheapest_coop90_usd": 130000.0,
+        "noncoop_at_cheapest_coop90": 0.050041273846593744,
+        "cheapest_85_35_usd": 468000.0,
+        "n_feasible_85_35": 8,
+        "cheapest_90_35_usd": 582000.0
+      }
+    ],
+    "2": [
+      {
+        "evals": 160,
+        "hypervolume": 0.2186667937749734
+      },
+      {
+        "evals": 320,
+        "hypervolume": 0.23542604503259296
+      },
+      {
+        "evals": 480,
+        "hypervolume": 0.24630963537337736
+      },
+      {
+        "evals": 576,
+        "hypervolume": 0.25147963030959825
+      },
+      {
+        "evals": 608,
+        "hypervolume": 0.2536999757831072,
+        "n_solutions": 92,
+        "hv_cost_ref_usd": 700000.0,
+        "max_coop": 0.9722494682309127,
+        "max_noncoop": 0.5032118592651196,
+        "cheapest_coop90_usd": 206000.0,
+        "noncoop_at_cheapest_coop90": 0.03220156561414253,
+        "cheapest_85_35_usd": 423000.0,
+        "n_feasible_85_35": 8,
+        "cheapest_90_35_usd": 531000.0
+      }
+    ]
+  }
+}

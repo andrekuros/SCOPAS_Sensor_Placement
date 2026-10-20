@@ -179,6 +179,106 @@ def cmd_airways(args) -> None:
     print(f"wrote {dest}")
 
 
+_WORKER = {}
+
+
+def _init_worker(config_path: str) -> None:
+    from scopas_core import load_config, load_environment_from_config
+    cfg = load_config(config_path)
+    _WORKER["config"] = cfg
+    _WORKER["env"] = load_environment_from_config(cfg, base_dir=ROOT)
+
+
+def _eval_random(sol: List[Dict]) -> Dict:
+    from scopas_core import evaluate_solution
+    cfg = _WORKER["config"]
+    r = evaluate_solution(_WORKER["env"], sol, cfg["sensors"]["types"], config=cfg)
+    keep = ("M_wp_coop", "M_wp_noncoop", "cost", "num_sensors", "unique_sites")
+    out = {k: float(r[k]) for k in keep if k in r}
+    out["sensors"] = sol
+    return out
+
+
+def _nondominated(rows: List[Dict]) -> List[Dict]:
+    def dom(a, b):
+        ge = a["M_wp_coop"] >= b["M_wp_coop"] and a["M_wp_noncoop"] >= b["M_wp_noncoop"] and a["cost"] <= b["cost"]
+        gt = a["M_wp_coop"] > b["M_wp_coop"] or a["M_wp_noncoop"] > b["M_wp_noncoop"] or a["cost"] < b["cost"]
+        return ge and gt
+    return [r for r in rows if not any(dom(o, r) for o in rows if o is not r)]
+
+
+def cmd_random(args) -> None:
+    """E5: uniform random search on the city at the NSGA-II evaluation budget."""
+    import random
+    from multiprocessing import Pool
+    from scopas_core import load_config, load_environment_from_config
+
+    cfg = load_config(str(CITY_CONFIG))
+    env = load_environment_from_config(cfg, base_dir=ROOT)
+    sites = env.get_sensor_locations()
+    types = list(cfg["sensors"]["types"])
+    ps = cfg["pareto_search"]
+    budget = args.evals or ps["n_samples"] * (ps["generations"] + 1)
+    rng = random.Random(args.seed)
+    sols = []
+    for _ in range(budget):
+        k = rng.randint(ps["min_sensors"], ps["max_sensors"])
+        sols.append([{"type": rng.choice(types), "x": float(s[0]), "y": float(s[1]), "z": float(s[2])}
+                     for s in (rng.choice(sites) for _ in range(k))])
+    with Pool(args.cores, initializer=_init_worker, initargs=(str(CITY_CONFIG),)) as pool:
+        rows = []
+        for i, r in enumerate(pool.imap(_eval_random, sols, chunksize=4), 1):
+            rows.append(r)
+            if i % 50 == 0:
+                print(f"seed {args.seed}: {i}/{budget}", flush=True)
+    dest = ROOT / "results" / "paper_rerun_city_dual" / f"random_seed{args.seed}"
+    dest.mkdir(parents=True, exist_ok=True)
+    (dest / "samples.json").write_text(json.dumps(rows) + "\n", encoding="utf-8")
+    front = _nondominated(rows)
+    (dest / "evaluation_results.json").write_text(json.dumps(front, indent=2) + "\n", encoding="utf-8")
+    print(f"seed {args.seed}: {budget} evals, front {len(front)}, HV {hypervolume(front):.4f}")
+
+
+def cmd_convergence(args) -> None:
+    """Hypervolume against evaluation count: NSGA-II checkpoints vs random samples."""
+    import pickle
+    from deap_base import setup_multi_objective_creator
+    setup_multi_objective_creator((1.0, 1.0, -1.0))
+    cfg = json.loads(CITY_CONFIG.read_text(encoding="utf-8"))
+    pop = cfg["pareto_search"]["n_samples"]
+    gens = cfg["pareto_search"]["generations"]
+    out = {"population": pop, "generations": gens, "hv_cost_ref_usd": HV_COST_REF,
+           "nsga2": {}, "random": {}}
+    for s in args.seeds:
+        pts = []
+        ck = ROOT / "checkpoints" / f"paper_rerun_city_dual_seed{s}"
+        for f in sorted(ck.glob("*.pkl")):
+            d = pickle.loads(f.read_bytes())
+            rows = [{"M_wp_coop": ind.fitness.values[0], "M_wp_noncoop": ind.fitness.values[1],
+                     "cost": ind.fitness.values[2] * 100_000.0} for ind in d["population"]]
+            g = int(d["generation"])
+            pts.append({"generation": g, "evals_max": pop * (g + 1),
+                        "hypervolume": hypervolume(_nondominated(rows))})
+        final = _rows(ROOT / "results" / "paper_rerun_city_dual" / f"run_medium_seed{s}" / "evaluation_results.json")
+        pts.append({"generation": gens, "evals_max": pop * (gens + 1), "hypervolume": hypervolume(final)})
+        out["nsga2"][str(s)] = pts
+        rnd = ROOT / "results" / "paper_rerun_city_dual" / f"random_seed{s}" / "samples.json"
+        if rnd.exists():
+            samples = json.loads(rnd.read_text(encoding="utf-8"))
+            out["random"][str(s)] = [
+                {"evals": n, "hypervolume": hypervolume(_nondominated(samples[:n]))}
+                for n in [p["evals_max"] for p in pts]
+            ]
+            fr = _rows(rnd.parent / "evaluation_results.json")
+            out["random"][str(s)][-1].update(summarize_front(fr))
+    dest = PAPER / "results" / "seeds" / "city_convergence.json"
+    dest.write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
+    for s in args.seeds:
+        print(s, [round(p["hypervolume"], 4) for p in out["nsga2"][str(s)]],
+              [round(p["hypervolume"], 4) for p in out["random"].get(str(s), [])])
+    print(f"wrote {dest}")
+
+
 def main():
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -186,11 +286,15 @@ def main():
     s = sub.add_parser("summary")
     s.add_argument("--runs", nargs="+", required=True)
     s.add_argument("--out", required=True)
+    r = sub.add_parser("random")
+    r.add_argument("--seed", type=int, required=True)
+    r.add_argument("--evals", type=int, default=0, help="default: n_samples x (generations + 1)")
+    r.add_argument("--cores", type=int, default=6)
+    c = sub.add_parser("convergence")
+    c.add_argument("--seeds", type=int, nargs="+", default=[0, 1, 2])
     args = ap.parse_args()
-    if args.cmd == "airways":
-        cmd_airways(args)
-    else:
-        cmd_summary(args)
+    {"airways": cmd_airways, "summary": cmd_summary, "random": cmd_random,
+     "convergence": cmd_convergence}[args.cmd](args)
 
 
 if __name__ == "__main__":

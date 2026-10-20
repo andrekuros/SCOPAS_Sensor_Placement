@@ -696,11 +696,13 @@ def latex_oracle_table(rows: List[Dict]) -> str:
     lines = [
         r"\begin{table}[t]",
         r"\centering",
-        r"\caption{Control A — small-$n$ oracle. $\Delta M_c$ = oracle $-$ method (same ray-tracer). NSGA-II* is a fixed-$k$ $M_c$-maximizing GA (5 seeds).}",
+        r"\caption{Control A — small-$n$ oracle. $\Delta M_c$ = oracle $-$ method (same ray-tracer). Columns give $M_c$; NSGA* is a fixed-$k$ $M_c$-maximizing GA (5 seeds); $t$ is oracle runtime.}",
         r"\label{tab:oracle_comparison}",
+        r"\footnotesize",
+        r"\setlength{\tabcolsep}{3pt}",
         r"\begin{tabular}{ccrrrrrr}",
         r"\toprule",
-        r"$n$ & $k$ & Oracle $M_c$ & Greedy & Random & NSGA-II* & $\Delta_{\mathrm{NSGA}}$ & $t_{\mathrm{oracle}}$ (s) \\",
+        r"$n$ & $k$ & Oracle & Greedy & Rand. & NSGA* & $\Delta$ & $t$ (s) \\",
         r"\midrule",
     ]
     for r in rows:
@@ -719,9 +721,10 @@ def latex_ablation_table(rows: List[Dict]) -> str:
         r"\centering",
         r"\caption{Control B — matched CapEx modality ablation (hardware only). Best $M_c$ under each budget.}",
         r"\label{tab:modality_ablation}",
+        r"\setlength{\tabcolsep}{4pt}",
         r"\begin{tabular}{lrrrrr}",
         r"\toprule",
-        r"Budget & RF-only & Ac-only & EO-only & Radar-only & Heterogeneous \\",
+        r"Budget & RF & Ac & EO & Radar & Hetero. \\",
         r"\midrule",
     ]
     for r in rows:
