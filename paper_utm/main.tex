@@ -1,7 +1,7 @@
-% SCOPAS dual-layer revision of the UTM / MUSCAT sensor-placement paper
-% Target venue: IEEE/AIAA DASC (IEEEtran)
+% SCOPAS dual-layer GBSS paper
+% Target venue: IEEE Sensors Journal (IEEEtran journal)
 
-\documentclass[conference]{IEEEtran}
+\documentclass[journal]{IEEEtran}
 
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
@@ -24,21 +24,18 @@
 
 \title{Dual-Layer Multi-Objective Sensor Placement for Urban BVLOS Surveillance}
 
-\author{
-\IEEEauthorblockN{Your Name\IEEEauthorrefmark{1}, Co-Author Name\IEEEauthorrefmark{2}}
-\IEEEauthorblockA{\IEEEauthorrefmark{1}Your Institution, Department\\
-City, Country\\
-Email: your.email@institution.edu}
-\IEEEauthorblockA{\IEEEauthorrefmark{2}Co-Author Institution\\
-Email: coauthor@institution.edu}
-}
+\author{Pedro~Kukulka~de~Albuquerque and Andr\'{e}~R.~Kuroswiski
+\thanks{P.~Kukulka~de~Albuquerque is with the Aeronautics Institute of Technology (ITA), S\~{a}o Jos\'{e} dos Campos, Brazil, and with the Institute for Advanced Studies (IEAv), Department of Aerospace Science and Technology (DCTA) (e-mail: pedrokuk@ita.br). A.~R.~Kuroswiski is with ITA.}
+\thanks{Manuscript prepared for IEEE Sensors Journal.}}
+
+\markboth{IEEE Sensors Journal}{Albuquerque and Kuroswiski: Dual-Layer Sensor Placement for Urban BVLOS}
 
 \maketitle
 
 \begin{abstract}
 Urban Beyond Visual Line of Sight (BVLOS) operations require Ground-Based Surveillance Systems (GBSS) that separately account for \emph{cooperative} traffic (e.g., Remote~ID / RF) and \emph{non-cooperative} dark targets (Radar, EO, Acoustic). Collapsing both into a single coverage score systematically understates dark-target risk. This paper revisits city-scale sensor placement with the SCOPAS dual-layer framework: multi-objective NSGA-II optimizing threat-weighted \(M_{wp,coop}\), \(M_{wp,noncoop}\), and CapEx under deterministic 3D LoS occlusion on OSM geometry, with Acoustic as a low-cost non-cooperative modality and explicit planning floors (e.g., \(0.90/0.35\)).
 
-On a 1\,km$\times$1\,km synthetic city, a dual-layer front of 32 solutions spans cooperative coverage \(0.07\)--\(0.96\) and non-cooperative coverage \(0.00\)--\(0.56\). Cooperative \(\geq90\%\) is reachable near \$247k while non-cooperative coverage stays near \(0.13\); joint floors near \(0.85/0.35\) cost about \$320k. Airport split fronts and a Paulista lite case reinforce the same asymmetry. Three strengthening controls close prior claim gaps under the \emph{same} ray-tracer: (A)~on enumerable crops \(n\in\{8,10,12\}\), a fixed-$k$ GA matches oracle \(M_c\) within \(0.0\)--\(0.3\)\,pp; (B)~at matched CapEx, RF-only wins lean/mid classic \(M_c\); (C)~dual-layer CapEx ablation shows RF saturates \(M_{wp,coop}\) with zero noncoop, while heterogeneous mixes win \(M_{wp,noncoop}\) at \$320k (\(47.5\%\) with companion coop \(83\%\)). Heterogeneity is required for joint dark-target floors, not for lean classic coverage. We do \emph{not} claim city-scale optimality gaps. Code: \url{https://github.com/andrekuros/SCOPAS_Sensor_Placement}.
+On a 1\,km$\times$1\,km synthetic city, cooperative coverage above \(0.96\) is reached in every run, whereas the best non-cooperative coverage ranges from \(0.41\) to \(0.51\) across three seeds (\(0.56\) on the front we show). The joint floor \(0.85/0.35\) is met in two of three seeds, at \$383k and \$600k. On a 30\,m Avenida Paulista corridor with 6,389 OSM buildings, five RF receivers reach \(0.93\) cooperative coverage for \$150k, but the best non-cooperative coverage is \(0.22\). Re-evaluating stored plans per airway shows that the same hardware covers \(39\)--\(52\%\) of the threat-weighted 20\,m layer cooperatively, against \(92\)--\(99\%\) at 45 and 65\,m. Three controls use the \emph{same} ray-tracer: (A)~on enumerable crops (\(n\leq12\)), a fixed-$k$ GA matches the oracle \(M_c\) within \(0.3\)\,pp; (B)~at matched CapEx, RF-only wins lean classic \(M_c\); (C)~in the dual-layer ablation, RF saturates \(M_{wp,coop}\) with zero non-cooperative coverage, and heterogeneous mixes win \(M_{wp,noncoop}\) only at \$320k: \(47.5\%\) with hardware-only budgets, \(39.0\%\) when each site costs \$15k. Heterogeneity is needed for joint dark-target floors, not for lean cooperative coverage. We do \emph{not} claim optimality on city-scale fronts. Code: \url{https://github.com/andrekuros/SCOPAS_Sensor_Placement}.
 \end{abstract}
 
 \begin{IEEEkeywords}

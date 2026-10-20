@@ -1,6 +1,5 @@
 % Section 7: Results (SCOPAS dual-layer revision)
-% Numbers below are from paper_rerun_city_dual / run_medium (see MANIFEST.md).
-% Replace airport / Paulista placeholders once those runs complete.
+% Numbers below come from the JSON under paper_utm/results (see MANIFEST.md).
 
 \section{Results and Analysis}
 \label{sec:results}
@@ -11,19 +10,12 @@ We report dual-layer NSGA-II fronts under SCOPAS: maximize threat-weighted coope
 
 Configuration: resolution 30\,m, population 32, 18 generations, 4 cores, sensor budget 3--15, Acoustic enabled. The run produced 32 non-dominated solutions. Cooperative coverage spans \(0.074\)--\(0.963\); non-cooperative coverage spans \(0.003\)--\(0.563\).
 
-\begin{figure}[t]
+\begin{figure*}[t]
   \centering
-  \includegraphics[width=0.48\textwidth]{figures/scopas/city_pareto_front.png}
-  \caption{Dual-layer Pareto projections for the synthetic city (cost vs.\ \(M_{wp,coop}\) and \(M_{wp,noncoop}\)).}
+  \includegraphics[width=0.95\textwidth]{figures/journal/fig_city_pareto.pdf}
+  \caption{Synthetic-city dual-layer front (32 solutions). (a)~Cooperative coverage against CapEx; color is non-cooperative coverage. (b)~The same solutions in the coop--noncoop plane; color is CapEx. Dashed lines mark the planning floors \(0.90\) and \(0.35\). The shaded box is that joint target; no member of this front lies inside it.}
   \label{fig:city_pareto}
-\end{figure}
-
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=0.48\textwidth]{figures/scopas/city_dual_targets.png}
-  \caption{Coop$\times$noncoop trade space with planning floors \(M_{wp,coop}\geq0.90\) and \(M_{wp,noncoop}\geq0.35\) (green box). Color encodes CapEx.}
-  \label{fig:city_targets}
-\end{figure}
+\end{figure*}
 
 \subsubsection{Representative operating points}
 
@@ -45,27 +37,32 @@ Best noncoop & 7Rad+2EO+1RF & 0.856 & 0.563 & \$565k \\
 \end{table}
 
 \textbf{Finding 1 (layer asymmetry).}
-Cooperative coverage \(\geq90\%\) is reachable near \$247k, but that individual only achieves \(M_{wp,noncoop}=0.134\). Dark-target coverage above \(0.50\) requires Radar-heavy mixes above \$500k and still does not jointly clear a strict \(0.90/0.50\) box in this budget.
+Cooperative coverage \(\geq90\%\) is reachable near \$247k, but that individual only achieves \(M_{wp,noncoop}=0.134\). Across the three seeds the cheapest such plan costs \$90k--\$306k with non-cooperative coverage \(0.00\)--\(0.20\). Dark-target coverage above \(0.50\) requires Radar-heavy mixes above \$500k and still does not jointly clear a strict \(0.90/0.50\) box in this budget.
 
 \textbf{Finding 2 (practical joint floor).}
-Under floors \(0.90/0.35\), the front has no feasible member (closest: \(0.895/0.434\) at \$503k). Softening to \(0.85/0.35\) yields five feasible solutions; cheapest \$320k (4 Radar + 2 RF). Stretch demos on the same geometry previously found a joint \(0.90/0.35\) solution at \$315k with a larger dual-layer search (see \texttt{demo\_targets} package).
+Under floors \(0.90/0.35\), the front has no feasible member (closest: \(0.895/0.434\) at \$503k). Softening to \(0.85/0.35\) yields five feasible solutions; cheapest \$320k (4 Radar + 2 RF). Across three seeded reruns this floor costs \$383k--\$600k or is not reached (Section~\ref{sec:results_seeds}).
 
-\textbf{Finding 3 (altitude still matters).}
-Flight-level analysis preserves the airway gap narrative: low airways remain occlusion-limited even when aggregate \(M_{wp}\) is high (Figure~\ref{fig:city_flight}).
+\subsubsection{Run-to-run spread}
+\label{sec:results_seeds}
 
-\begin{figure}[t]
+Table~\ref{tab:city_seeds} reruns the same configuration with seeds 0, 1, and 2. Maximum cooperative coverage is stable (\(0.964\)--\(0.966\)). Everything that depends on the non-cooperative layer varies: maximum \(M_{wp,noncoop}\) spans \(0.408\)--\(0.511\) (median \(0.415\)), and hypervolume spans \(0.251\)--\(0.267\) (median \(0.254\)). The \(0.85/0.35\) floor is met in two of three seeds, at \$383k and \$600k; seed~2 has no feasible member. Seed~0 is the only run that also meets \(0.90/0.35\) (\$383k). The front in Fig.~\ref{fig:city_pareto} has higher hypervolume (\(0.305\)) than every seeded rerun, so its \$320k floor cost is a favorable draw, not a typical outcome. At this budget (\(32\times18\)) the optimizer has not converged on the non-cooperative axis; Findings~1--2 should be read as ``reachable'' rather than ``cheapest possible''.
+
+\input{tables/tab_city_seeds}
+
+\textbf{Finding 3 (the asymmetry repeats).}
+The same coop-high / noncoop-low pattern appears on the airport split fronts and on Paulista (Fig.~\ref{fig:scenes}). Airport cooperative search reaches \(100\%\) cooperative coverage; its non-cooperative search tops out near \(45\%\). Paulista reaches \(94.7\%\) cooperative coverage and \(21.9\%\) non-cooperative coverage.
+
+\subsubsection{Coverage per airway}
+\label{sec:results_airways}
+
+Fig.~\ref{fig:airways} re-evaluates three stored members of this front per airway layer. The lowest airway is the weak layer for every plan: cooperative \(M_{wp}\) is \(38.5\%\), \(52.2\%\), and \(50.0\%\) at 20\,m, against \(92\)--\(99\%\) at 45 and 65\,m. The \$83k cooperative plan has no non-cooperative coverage on any airway. The \$320k joint plan reaches \(47.1\%\) non-cooperative coverage at 45\,m and \(15.3\%\) at 20\,m; the \$565k best non-cooperative plan reaches \(72.0\%\) and \(35.3\%\).
+
+\begin{figure*}[t]
   \centering
-  \includegraphics[width=0.48\textwidth]{figures/scopas/city_flight_levels.png}
-  \caption{Coverage by flight level for representative Pareto members.}
-  \label{fig:city_flight}
-\end{figure}
-
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=0.48\textwidth]{figures/scopas/city_cost_vs_coverage.png}
-  \caption{Minimum CapEx to reach cooperative \(M_{wp}\) thresholds; non-cooperative 70\%+ thresholds remain empty on this front.}
-  \label{fig:city_cost_thr}
-\end{figure}
+  \includegraphics[width=0.95\textwidth]{figures/journal/fig_airways.pdf}
+  \caption{Threat-weighted coverage per airway for three stored city solutions, re-evaluated without re-optimization. (a)~Cooperative layer. (b)~Non-cooperative layer. At 30\,m voxels the 20\,m airway is the 0--30\,m layer.}
+  \label{fig:airways}
+\end{figure*}
 
 \subsection{Requirement-seeking demos (prior short runs)}
 
@@ -79,36 +76,20 @@ Split optimization on the São José dos Campos airport scene (resolution 40\,m,
 
 \textbf{Non-cooperative front.} Twenty-four Radar/EO/Acoustic solutions span \(M_{wp,noncoop}\) from \(0.032\) to \(0.445\). Best observed dark-target coverage is \(0.445\) at \$405k (5 Radar + 2 EO); no plan reaches a 70\% noncoop threshold in this budget.
 
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=0.48\textwidth]{figures/scopas/sjc_coop_pareto.png}
-  \caption{Airport SJC cooperative-only Pareto (cost vs.\ \(M_{wp,coop}\)).}
-  \label{fig:sjc_coop}
-\end{figure}
-
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=0.48\textwidth]{figures/scopas/sjc_noncoop_pareto.png}
-  \caption{Airport SJC non-cooperative-only Pareto (cost vs.\ \(M_{wp,noncoop}\)).}
-  \label{fig:sjc_noncoop}
-\end{figure}
-
 This split is the operational punchline: a cooperative optimum is \emph{not} a dark-target plan. BVLOS safety cases that quote a single coverage percentage from RF-inclusive optimization overstate non-cooperative protection.
 
-\subsection{Avenida Paulista lite}
+\subsection{Avenida Paulista}
 
-Lite dual-layer rerun of the prior real-city case (6,389 buildings, 93 sites, resolution 40\,m, population 24, 10 generations) produced 24 solutions. Cooperative coverage reaches \(0.970\) (\$311k, RF-heavy mix); non-cooperative coverage tops out at \(0.254\) (\$464k, Radar-heavy). No joint member meets even \(0.85/0.25\) in this budget (closest deficits remain on the noncoop axis).
+The real corridor (6,389 buildings, 93 rooftop sites, two critical assets) was run at 30\,m voxels with population 40 and 20 generations, producing 40 non-dominated solutions (Fig.~\ref{fig:paulista_pareto}).\footnote{An earlier reduced run (40\,m voxels, population 24, 10 generations) gave the same qualitative picture: best cooperative \(0.970\), best non-cooperative \(0.254\). Values at different voxel sizes are not directly comparable.} Five RF receivers clear \(M_{wp,coop}=0.933\) at \$150k with zero non-cooperative coverage. Best cooperative coverage is \(0.947\) (\$516k). Best non-cooperative coverage is \(0.219\) (\$571k, seven Radars), with companion cooperative coverage \(0.692\). The best joint member reaches \(0.920/0.201\) at \$545k (6 RF + 5 Radar + 1 EO). No member meets \(0.85/0.35\) or even \(0.85/0.25\).
 
-\begin{figure}[t]
+\begin{figure*}[t]
   \centering
-  \includegraphics[width=0.48\textwidth]{figures/scopas/paulista_targets.png}
-  \caption{Paulista lite dual-layer trade space (color = CapEx).}
-  \label{fig:paulista_targets}
-\end{figure}
+  \includegraphics[width=0.95\textwidth]{figures/journal/fig_paulista_pareto.pdf}
+  \caption{Avenida Paulista dual-layer front (40 solutions, 30\,m voxels). (a)~Cooperative coverage against CapEx; color is non-cooperative coverage. (b)~Coop--noncoop plane; color is CapEx. No member approaches the \(0.90/0.35\) box.}
+  \label{fig:paulista_pareto}
+\end{figure*}
 
-Relative to the synthetic city, the dense corridor compresses dark-target performance harder than cooperative RID coverage --- reinforcing that Paulista-class canyons need either denser noncoop deployments, relaxed floors, or altitude policy, not merely more RF nodes.
-
-Full paper-budget Paulista (80$\times$45 @ 20\,m) remains a longer checkpointed job for the camera-ready revision.
+Relative to the synthetic city, the dense corridor compresses dark-target coverage much more than cooperative coverage: the non-cooperative ceiling falls from \(0.41\)--\(0.56\) (city runs) to \(0.22\), while cooperative coverage above \(0.90\) remains cheap. Paulista-class canyons need denser non-cooperative deployments, relaxed floors, or altitude policy; adding RF nodes does not help the dark-target layer.
 
 \subsection{Control A: small-$n$ oracle vs.\ GA}
 \label{sec:results_oracle}
@@ -128,12 +109,30 @@ Table~\ref{tab:modality_ablation} reports best classic \(M_c\) at three CapEx bu
 
 \input{tables/tab_modality_ablation}
 
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=0.95\textwidth]{figures/journal/fig_controls.pdf}
+  \caption{Matched-budget modality search under the same ray-tracer. (a)~Control~B, best classic \(M_c\); Acoustic-only is at zero on these budgets and Radar-only has no feasible pack at \$31k. (b)~Control~C, best non-cooperative \(M_{wp}\) with hardware-only budgets. (c)~Same with \$15k per occupied site. RF-only is at zero on the non-cooperative axis at every budget.}
+  \label{fig:controls}
+\end{figure*}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/journal/fig_scenes.pdf}
+  \caption{Best cooperative and best non-cooperative coverage attained on each reported front. Dotted lines mark the \(90\%\) and \(35\%\) planning floors. Airport values come from separate split optimizations, not one joint front.}
+  \label{fig:scenes}
+\end{figure}
+
 \subsection{Control C: dual-layer CapEx ablation}
 \label{sec:results_dual_ablation}
 
-Tables~\ref{tab:modality_ablation_dual_coop}--\ref{tab:modality_ablation_dual_noncoop} report Control~C. On the cooperative axis, RF-only wins every budget (\$31k--\$320k) with \(M_{wp,coop}\) from \(89.3\%\) to \(99.6\%\), but companion noncoop stays at \(0\%\). On the non-cooperative axis, EO-only leads at \$31k/\$76k (\(7.2\%\)/\(17.2\%\)); Radar-only leads at \$150k (\(33.7\%\), matched by a Radar-heavy heterogeneous pack); Heterogeneous wins at \$320k with \(M_{wp,noncoop}=47.5\%\) and companion coop \(82.6\%\).
-
-\textbf{Interpretation.} Dual-layer CapEx matching overturns any RF-only reading of Control~B: RF saturates coop while contributing nothing to dark targets. Heterogeneity is \emph{necessary for joint floors} near the \$320k band, not for lean classic \(M_c\). Lean noncoop budgets favor dense EO/Acoustic fills over mixed packs; mixed Radar/RF/EO/Acoustic wins when both layers must be high together.
+Tables~\ref{tab:modality_ablation_dual_coop}--\ref{tab:modality_ablation_dual_noncoop} report Control~C with hardware-only budgets. On the cooperative axis, RF-only wins or ties every budget (\$31k--\$320k) with \(M_{wp,coop}\) from \(89.3\%\) to \(99.6\%\), but companion noncoop stays at \(0\%\). On the non-cooperative axis, EO-only leads at \$31k/\$76k (\(7.2\%\)/\(17.2\%\)) and Radar-only at \$150k (\(33.7\%\)); the heterogeneous gate only ties these, because its best pack is the single-modality one. Heterogeneous wins outright at \$320k with \(M_{wp,noncoop}=47.5\%\) and companion coop \(82.6\%\).
 
 \input{tables/tab_modality_ablation_dual_coop}
 \input{tables/tab_modality_ablation_dual_noncoop}
+
+\textbf{With site activation.} Table~\ref{tab:modality_ablation_dual_sites} repeats Control~C with \$15k per occupied site. Fewer sensors fit each budget, so all values drop. RF-only still wins or ties the cooperative layer (\(76.2\%\) at \$31k, \(98.4\%\) at \$320k) with zero non-cooperative coverage. On the non-cooperative layer, Acoustic leads at \$31k (\(1.6\%\)), Radar-only at \$76k and \$150k (\(14.0\%\), \(24.9\%\)), and Heterogeneous wins only at \$320k (\(39.0\%\), companion coop \(70\%\)).
+
+\input{tables/tab_modality_ablation_dual_sites}
+
+\textbf{Interpretation.} Dual-layer CapEx matching overturns any RF-only reading of Control~B: RF saturates coop while contributing nothing to dark targets. Heterogeneity is \emph{necessary for joint floors} near the \$320k band, with or without site fees, but not for lean classic \(M_c\). Lean non-cooperative budgets favor a single modality: EO without site fees, Radar once each site costs \$15k.

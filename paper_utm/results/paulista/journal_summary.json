@@ -1,0 +1,44 @@
+{
+  "runs": [
+    {
+      "n_solutions": 40,
+      "hypervolume": 0.11342969521417533,
+      "hv_cost_ref_usd": 700000.0,
+      "max_coop": 0.9472758604043471,
+      "max_noncoop": 0.21874935839235757,
+      "cheapest_coop90_usd": 150000.0,
+      "noncoop_at_cheapest_coop90": 0.0,
+      "cheapest_85_35_usd": null,
+      "n_feasible_85_35": 0,
+      "cheapest_90_35_usd": null,
+      "source": "paper_utm\\results\\paulista\\journal.json"
+    }
+  ],
+  "hv_cost_ref_usd": 700000.0,
+  "aggregate": {
+    "hypervolume": {
+      "min": 0.11342969521417533,
+      "median": 0.11342969521417533,
+      "max": 0.11342969521417533,
+      "n": 1
+    },
+    "max_coop": {
+      "min": 0.9472758604043471,
+      "median": 0.9472758604043471,
+      "max": 0.9472758604043471,
+      "n": 1
+    },
+    "max_noncoop": {
+      "min": 0.21874935839235757,
+      "median": 0.21874935839235757,
+      "max": 0.21874935839235757,
+      "n": 1
+    },
+    "cheapest_coop90_usd": {
+      "min": 150000.0,
+      "median": 150000.0,
+      "max": 150000.0,
+      "n": 1
+    }
+  }
+}

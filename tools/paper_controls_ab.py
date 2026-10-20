@@ -390,19 +390,26 @@ def packs_for_budget(
     type_pool: List[str],
     max_sensors: int = 12,
     max_packs: int = 40,
+    site_cost: float = 0.0,
 ) -> List[List[str]]:
-    """Multisets of types with hardware cost == budget (exact) or max fill <= budget."""
+    """Multisets of types with cost == budget (exact) or max fill <= budget.
+
+    Cost is hardware plus site_cost per sensor (each sensor occupies its own site).
+    """
+    def pack_cost(combo) -> float:
+        return sum(COSTS[t] for t in combo) + site_cost * len(combo)
+
     packs: List[List[str]] = []
     for k in range(1, max_sensors + 1):
         for combo in itertools.combinations_with_replacement(type_pool, k):
-            if abs(sum(COSTS[t] for t in combo) - budget) < 0.5:
+            if abs(pack_cost(combo) - budget) < 0.5:
                 packs.append(list(combo))
     if not packs:
         best: List[List[str]] = []
         best_spend = -1.0
         for k in range(1, max_sensors + 1):
             for combo in itertools.combinations_with_replacement(type_pool, k):
-                c = sum(COSTS[t] for t in combo)
+                c = pack_cost(combo)
                 if c <= budget + 0.5 and c > best_spend + 0.5:
                     best_spend = c
                     best = [list(combo)]
@@ -533,6 +540,7 @@ def best_under_packs_dual(
     packs: List[List[str]],
     site_samples: int = 400,
     seed: int = 0,
+    site_cost: float = 0.0,
 ) -> Dict:
     """Find CapEx-feasible solutions maximizing coop and noncoop separately."""
     rng = random.Random(seed)
@@ -561,7 +569,7 @@ def best_under_packs_dual(
                     "types": list(types),
                     "M_wp_coop": coop,
                     "M_wp_noncoop": noncoop,
-                    "cost": engine.cost_for(types),
+                    "cost": engine.cost_for(types) + site_cost * len(set(sites)),
                 }
                 if (
                     best_coop is None
@@ -596,6 +604,7 @@ def run_control_c(
     n_pool: int = 28,
     budgets: Optional[Sequence[float]] = None,
     site_samples: int = 180,
+    site_cost: float = 0.0,
 ) -> List[Dict]:
     """Dual-layer matched CapEx modality ablation (Control C)."""
     if not engine.dual_layer:
@@ -624,11 +633,21 @@ def run_control_c(
     }
     rows = []
     for budget in budgets:
-        row = {"budget": budget, "methods": {}}
-        print(f"\n-- Dual CapEx ${budget:,.0f} --", flush=True)
+        row = {"budget": budget, "site_cost": site_cost, "methods": {}}
+        print(f"\n-- Dual CapEx ${budget:,.0f} (site cost ${site_cost:,.0f}) --", flush=True)
         for name, tpool in modalities.items():
             max_k = 16 if len(tpool) == 1 else 12
-            packs = packs_for_budget(budget, tpool, max_sensors=max_k, max_packs=24)
+            packs = packs_for_budget(budget, tpool, max_sensors=max_k, max_packs=24,
+                                     site_cost=site_cost)
+            if len(tpool) > 1:
+                # Heterogeneous pool must contain every single-modality pack.
+                seen = {tuple(sorted(p)) for p in packs}
+                for t in tpool:
+                    for p in packs_for_budget(budget, [t], max_sensors=16, max_packs=24,
+                                              site_cost=site_cost):
+                        if tuple(sorted(p)) not in seen:
+                            seen.add(tuple(sorted(p)))
+                            packs.append(p)
             if not packs:
                 print(f"  {name}: no pack fits budget", flush=True)
                 row["methods"][name] = {
@@ -639,7 +658,8 @@ def run_control_c(
                 continue
             print(f"  {name}: searching {len(packs)} packs...", flush=True)
             res = best_under_packs_dual(
-                engine, pool, packs, site_samples=site_samples, seed=engine.seed
+                engine, pool, packs, site_samples=site_samples, seed=engine.seed,
+                site_cost=site_cost,
             )
             row["methods"][name] = res
             print(
@@ -730,21 +750,23 @@ def latex_dual_ablation_tables(rows: List[Dict]) -> Tuple[str, str]:
     noncoop_lines = [
         r"\begin{table}[t]",
         r"\centering",
-        r"\caption{Control C — dual-layer CapEx ablation. Best $M_{wp,\mathrm{noncoop}}$ under each hardware budget (companion $M_{wp,\mathrm{coop}}$ in parentheses).}",
+        r"\caption{Control C --- dual-layer CapEx ablation. Best $M_{wp,\mathrm{noncoop}}$ (\%) under each hardware-only budget, no site cost (companion $M_{wp,\mathrm{coop}}$ in parentheses).}",
         r"\label{tab:modality_ablation_dual_noncoop}",
+        r"\setlength{\tabcolsep}{3pt}",
         r"\begin{tabular}{lrrrrr}",
         r"\toprule",
-        r"Budget & RF-only & Ac-only & EO-only & Radar-only & Heterogeneous \\",
+        r"Budget & RF & Ac & EO & Radar & Hetero. \\",
         r"\midrule",
     ]
     coop_lines = [
         r"\begin{table}[t]",
         r"\centering",
-        r"\caption{Control C — dual-layer CapEx ablation. Best $M_{wp,\mathrm{coop}}$ under each hardware budget (companion $M_{wp,\mathrm{noncoop}}$ in parentheses).}",
+        r"\caption{Control C --- dual-layer CapEx ablation. Best $M_{wp,\mathrm{coop}}$ (\%) under each hardware-only budget, no site cost (companion $M_{wp,\mathrm{noncoop}}$ in parentheses).}",
         r"\label{tab:modality_ablation_dual_coop}",
+        r"\setlength{\tabcolsep}{3pt}",
         r"\begin{tabular}{lrrrrr}",
         r"\toprule",
-        r"Budget & RF-only & Ac-only & EO-only & Radar-only & Heterogeneous \\",
+        r"Budget & RF & Ac & EO & Radar & Hetero. \\",
         r"\midrule",
     ]
     for r in rows:
@@ -752,13 +774,13 @@ def latex_dual_ablation_tables(rows: List[Dict]) -> Tuple[str, str]:
             m = r["methods"].get(name, {})
             if m.get("M_wp_noncoop") is None:
                 return "---"
-            return f"{m['M_wp_noncoop']*100:.1f}\\% ({m['coop_at_best_noncoop']*100:.0f}\\%)"
+            return f"{m['M_wp_noncoop']*100:.1f} ({m['coop_at_best_noncoop']*100:.0f})"
 
         def cell_coop(name: str) -> str:
             m = r["methods"].get(name, {})
             if m.get("M_wp_coop") is None:
                 return "---"
-            return f"{m['M_wp_coop']*100:.1f}\\% ({m['noncoop_at_best_coop']*100:.0f}\\%)"
+            return f"{m['M_wp_coop']*100:.1f} ({m['noncoop_at_best_coop']*100:.0f})"
 
         h_nc = cell_noncoop("Heterogeneous")
         if r.get("hetero_wins_noncoop"):
@@ -779,6 +801,46 @@ def latex_dual_ablation_tables(rows: List[Dict]) -> Tuple[str, str]:
     return "\n".join(noncoop_lines), "\n".join(coop_lines)
 
 
+def latex_dual_sites_table(rows: List[Dict]) -> str:
+    """Control C with site activation: both layers in one table (winner in bold)."""
+    site_cost = rows[0].get("site_cost", 0.0) if rows else 0.0
+    names = ["RF-only", "Acoustic-only", "EO-only", "Radar-only", "Heterogeneous"]
+    lines = [
+        r"\begin{table}[t]",
+        r"\centering",
+        r"\caption{Control C with site activation. Budget = hardware + \$"
+        f"{site_cost/1000:.0f}"
+        r"k per occupied site. Values in \%. Top: best $M_{wp,\mathrm{noncoop}}$ (companion $M_{wp,\mathrm{coop}}$). "
+        r"Bottom: best $M_{wp,\mathrm{coop}}$ (companion $M_{wp,\mathrm{noncoop}}$). Winner in bold.}",
+        r"\label{tab:modality_ablation_dual_sites}",
+        r"\setlength{\tabcolsep}{3pt}",
+        r"\begin{tabular}{lrrrrr}",
+        r"\toprule",
+        r"Budget & RF & Ac & EO & Radar & Hetero. \\",
+        r"\midrule",
+        r"\multicolumn{6}{l}{\emph{Non-cooperative layer}} \\",
+    ]
+    blocks = [
+        ("M_wp_noncoop", "coop_at_best_noncoop", "winner_noncoop"),
+        ("M_wp_coop", "noncoop_at_best_coop", "winner_coop"),
+    ]
+    for bi, (key, comp, win) in enumerate(blocks):
+        if bi == 1:
+            lines += [r"\midrule", r"\multicolumn{6}{l}{\emph{Cooperative layer}} \\"]
+        for r in rows:
+            cells = []
+            for n in names:
+                m = r["methods"].get(n, {})
+                if m.get(key) is None:
+                    cells.append("---")
+                    continue
+                c = f"{m[key]*100:.1f} ({m[comp]*100:.0f})"
+                cells.append(r"\textbf{" + c + "}" if r.get(win) == n else c)
+            lines.append(f"\\${r['budget']/1000:.0f}k & " + " & ".join(cells) + r" \\")
+    lines += [r"\bottomrule", r"\end{tabular}", r"\end{table}", ""]
+    return "\n".join(lines)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default="configs/pareto_city_10x10_final.json")
@@ -791,6 +853,8 @@ def main():
     ap.add_argument("--skip-b", action="store_true")
     ap.add_argument("--skip-c", action="store_true")
     ap.add_argument("--only-c", action="store_true", help="Run only dual-layer CapEx ablation")
+    ap.add_argument("--site-cost", type=float, default=0.0,
+                    help="Control C: add this cost per occupied site (writes *_sites outputs)")
     args = ap.parse_args()
 
     if args.only_c:
@@ -817,11 +881,11 @@ def main():
         if not args.skip_a:
             results["control_a"] = run_control_a(engine, pairs)
             (out / "control_a.json").write_text(json.dumps(results["control_a"], indent=2) + "\n")
-            (out / "tab_oracle_comparison.tex").write_text(latex_oracle_table(results["control_a"]))
+            (out / "tab_oracle_comparison.tex").write_text(latex_oracle_table(results["control_a"]), encoding="utf-8")
         if not args.skip_b:
             results["control_b"] = run_control_b(engine, n_pool=36)
             (out / "control_b.json").write_text(json.dumps(results["control_b"], indent=2) + "\n")
-            (out / "tab_modality_ablation.tex").write_text(latex_ablation_table(results["control_b"]))
+            (out / "tab_modality_ablation.tex").write_text(latex_ablation_table(results["control_b"]), encoding="utf-8")
 
     if not args.skip_c:
         print(f"Loading dual-layer engine from {args.dual_config} (resolution={args.resolution})...")
@@ -835,11 +899,17 @@ def main():
             f"Sites available: {len(dual_engine.locations)}; "
             f"grid={dual_engine.occupied.shape}; threat_sum={dual_engine.weight_sum:.0f}"
         )
-        results["control_c"] = run_control_c(dual_engine, n_pool=28, site_samples=160)
-        (out / "control_c.json").write_text(json.dumps(results["control_c"], indent=2) + "\n")
-        tex_nc, tex_c = latex_dual_ablation_tables(results["control_c"])
-        (out / "tab_modality_ablation_dual_noncoop.tex").write_text(tex_nc)
-        (out / "tab_modality_ablation_dual_coop.tex").write_text(tex_c)
+        rows_c = run_control_c(dual_engine, n_pool=28, site_samples=160, site_cost=args.site_cost)
+        if args.site_cost > 0:
+            results["control_c_sites"] = rows_c
+            (out / "control_c_sites.json").write_text(json.dumps(rows_c, indent=2) + "\n")
+            (out / "tab_modality_ablation_dual_sites.tex").write_text(latex_dual_sites_table(rows_c), encoding="utf-8")
+        else:
+            results["control_c"] = rows_c
+            (out / "control_c.json").write_text(json.dumps(rows_c, indent=2) + "\n")
+            tex_nc, tex_c = latex_dual_ablation_tables(rows_c)
+            (out / "tab_modality_ablation_dual_noncoop.tex").write_text(tex_nc, encoding="utf-8")
+            (out / "tab_modality_ablation_dual_coop.tex").write_text(tex_c, encoding="utf-8")
 
     summary = {
         "resolution": args.resolution,
@@ -863,16 +933,25 @@ def main():
             }
             for r in results["control_c"]
         ],
+        "control_c_sites_winners": [
+            {
+                "budget": r["budget"],
+                "site_cost": r.get("site_cost"),
+                "winner_coop": r.get("winner_coop"),
+                "winner_noncoop": r.get("winner_noncoop"),
+            }
+            for r in results.get("control_c_sites", [])
+        ],
     }
-    # Preserve prior A/B summary fields if only-c re-run
+    # Preserve prior summary fields not recomputed in this run
     summary_path = out / "summary.json"
     if args.only_c and summary_path.exists():
         try:
             prev = json.loads(summary_path.read_text())
-            if prev.get("control_a_gaps") and not summary["control_a_gaps"]:
-                summary["control_a_gaps"] = prev["control_a_gaps"]
-            if prev.get("control_b_winners") and not summary["control_b_winners"]:
-                summary["control_b_winners"] = prev["control_b_winners"]
+            for key in ("control_a_gaps", "control_b_winners", "control_c_winners",
+                        "control_c_sites_winners"):
+                if prev.get(key) and not summary[key]:
+                    summary[key] = prev[key]
         except Exception:
             pass
     summary_path.write_text(json.dumps(summary, indent=2) + "\n")

@@ -41,23 +41,23 @@ where $(i,j,k)$ are voxel indices and resolution $r$ (typically 10-20m) is user-
 
 We implement four sensor types with realistic Field-of-View (FOV) parameters:
 
-\textbf{Radar}: Active sensor with 360° horizontal coverage and limited elevation:
+\textbf{Radar}: Active sensor with 360\textdegree{} horizontal coverage and limited elevation:
 \begin{equation}
 P_D^{radar} = \begin{cases}
-f(P_t, G, \sigma_{RCS}, R, \lambda) & \text{if } \theta_{elev} \in [-5°, 30°] \\
+f(P_t, G, \sigma_{RCS}, R, \lambda) & \text{if } \theta_{elev} \in [-5^{\circ}, 30^{\circ}] \\
 0 & \text{otherwise}
 \end{cases}
 \end{equation}
 where $\theta_{elev}$ is the elevation angle from sensor to target.
 
-\textbf{RF Passive (RID equivalent)}: Nearly omnidirectional ($\theta_{elev} \in [-30°, 70°]$):
+\textbf{RF Passive (RID equivalent)}: Nearly omnidirectional ($\theta_{elev} \in [-30^{\circ}, 70^{\circ}]$):
 \begin{equation}
 P_D^{RF} = f(ERP, Sensitivity, R)
 \end{equation}
 
-\textbf{Electro-Optical (EO)}: Limited FOV (90° horizontal, $\theta_{elev} \in [-20°, 45°]$)
+\textbf{Electro-Optical (EO)}: Limited FOV (90\textdegree{} horizontal, $\theta_{elev} \in [-20^{\circ}, 45^{\circ}]$)
 
-\textbf{Acoustic}: Omnidirectional ($\theta_{elev} \in [-40°, 80°]$)
+\textbf{Acoustic}: Omnidirectional ($\theta_{elev} \in [-40^{\circ}, 80^{\circ}]$)
 
 These FOV constraints prevent unrealistic scenarios where rooftop sensors "see" targets far below horizon, improving model fidelity.
 
