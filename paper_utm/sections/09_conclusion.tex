@@ -1,26 +1,9 @@
 % Section 9: Conclusion
 
-\section{Conclusion and Future Work}
+\section{Conclusion}
 
-\subsection{Summary of Contributions}
+This paper measured threat-weighted cooperative and non-cooperative coverage as separate quantities against CapEx, under ray-traced line of sight on OSM buildings, on a synthetic city, an airport, and one real corridor. Cooperative coverage saturates with RF-inclusive mixes at modest CapEx: above \(0.96\) in every city run, and \(0.93\) for \$150k on Avenida Paulista. Non-cooperative coverage stays incomplete: \(0.41\)--\(0.51\) across three city seeds and \(0.22\) on Paulista. The same stored plans cover the 20\,m airway far worse than the 45--65\,m airways. Matched-CapEx controls show that RF alone suffices for lean cooperative coverage and that mixed Radar/EO/Acoustic sets give the best non-cooperative coverage only near \$320k, with or without site fees.
 
-This paper presented a dual-layer SCOPAS framework for urban GBSS planning: NSGA-II jointly optimizes threat-weighted \(M_{wp,coop}\), \(M_{wp,noncoop}\), and CapEx under deterministic 3D LoS on OSM geometry, with Acoustic in the non-cooperative layer and explicit requirement floors. Relative to placement and sensing literature summarized in Table~\ref{tab:related_comparison}, the distinctive systems claim is the CapEx-aware coop/noncoop objective split under city-resolved occlusion---not uniqueness of GA placement or OSM alone. Three claim-closing controls bound what we may assert: small-$n$ oracle comparison (Control~A), matched-budget classic \(M_c\) ablation (Control~B), and dual-layer CapEx ablation (Control~C).
+The fronts are reachable trade-offs, not optimal designs. At 608 evaluations, uniform random search reaches the same city hypervolume as NSGA-II and shows the same asymmetry, so the finding concerns the coverage layers, not the search procedure. A BVLOS safety case should therefore state both layers, or a dual-layer front with explicit floors, rather than one fused coverage percentage.
 
-\subsection{Key Findings}
-
-\begin{enumerate}
-\item \textbf{Layer asymmetry}: Cooperative coverage saturates with RF-inclusive mixes at comparatively low CapEx; non-cooperative floors remain expensive and incomplete on every reported front. Best non-cooperative coverage is \(0.41\)--\(0.51\) across three city seeds and \(0.22\) on the 30\,m Paulista corridor, where five RF receivers already give \(0.93\) cooperative coverage for \$150k.
-\item \textbf{Run-to-run spread}: The \(0.85/0.35\) city floor is met in two of three seeds (\$383k, \$600k). Uniform random search at the same 608-evaluation budget matches NSGA-II hypervolume (\(0.251\)--\(0.254\) vs.\ \(0.251\)--\(0.267\)) and meets the floor in all three seeds (\$423k--\$488k). Single-run floor costs are reachable, not minimal, and the asymmetry does not depend on the optimizer.
-\item \textbf{Altitude still matters}: For the same stored plans, cooperative coverage of the 20\,m layer is \(39\)--\(52\%\) versus \(92\)--\(99\%\) at 45--65\,m; for plans with dark-target sensors, non-cooperative coverage drops by half or more. Altitude policy is a first-order lever alongside CapEx.
-\item \textbf{Heterogeneity is metric- and budget-dependent}: Control~B: RF-only wins CapEx-matched classic \(M_c\) at \$31k/\$76k. Control~C: RF saturates \(M_{wp,coop}\) with zero noncoop at every budget; heterogeneous mixes win \(M_{wp,noncoop}\) only at \$320k (\(47.5\%\) hardware-only; \(39.0\%\) with \$15k per site). Joint dark-target floors need mixed modalities; lean classic coverage does not.
-\item \textbf{Small-$n$ GA quality}: Control~A finds \(\Delta M_c\leq0.3\)\,pp vs.\ oracle under the same ray-tracer for \(n\in\{8,10,12\}\). City-scale optimality gaps are \emph{not} claimed.
-\item \textbf{Planning floors over fused scores}: Joint corridors near \(0.90/0.35\) (practical) are more honest than a single fused coverage percentage or unsupported ``\% of optimum'' statements.
-\end{enumerate}
-
-\subsection{Limitations and Future Work}
-
-The numbered limitations in Section~\ref{sec:limitations} bound these findings: binary LoS, one real corridor, cropped control pools, no field calibration, and coarse vertical resolution. Each maps to a next step: diffraction and penetration sensitivity that keeps worst-case LoS floors; additional OSM morphologies; full-pool modality ablations; an instrumented corridor to anchor \(P_D\); and finer voxels for low airways.
-
-\subsection{Concluding Remarks}
-
-Multi-objective search with deterministic 3D ray-tracing and OSM geometry yields dual-layer GBSS trade-off fronts that make the coop-cheap / noncoop-hard asymmetry operationally visible, in a \(g\cdot p\) regime where exhaustive MUSCAT search is intractable for \(n\gtrsim25\). Positioned against Table~\ref{tab:related_comparison}, Controls~A--C support method credibility on enumerable instances and restrict heterogeneity claims to CapEx- and metric-matched evidence: RF for lean coop / classic \(M_c\); mixed Radar/EO/Acoustic/RF for joint dark-target floors. Open implementation: \url{https://github.com/andrekuros/SCOPAS_Sensor_Placement}.
+Section~\ref{sec:limitations} lists the limits on these findings; the next steps are diffraction-aware propagation, additional OSM morphologies, full-pool modality ablations, field calibration of \(P_D\), and finer voxels for low airways. Code: \url{https://github.com/andrekuros/SCOPAS_Sensor_Placement}.

@@ -1,60 +1,20 @@
 \section{Introduction}
 
-\subsection{Enabling Safe BVLOS and UAM Operations}
+Beyond Visual Line of Sight (BVLOS) drone operations and Urban Air Mobility (UAM) need continuous surveillance to support Detect-and-Avoid for manned and unmanned aircraft \cite{faa2023uam,mueller2017enabling}. Unlike manned traffic with transponders, BVLOS airspace includes uncooperative users---malfunctioning drones, hobbyist UAVs, unauthorized vehicles---that must still be detected \cite{faa2020utm}. Surveillance reliability limits capacity: regulators may impose separation minima of about 500\,m when detection is uncertain, whereas high-confidence monitoring can reduce separations by an order of magnitude \cite{nasa2021utm}.
 
-The rapid expansion of Beyond Visual Line of Sight (BVLOS) drone operations and Urban Air Mobility (UAM) promises transformative economic and societal benefits, ranging from autonomous parcel delivery to passenger air taxis \cite{faa2023uam}. However, safe integration into dense urban airspace requires overcoming critical infrastructure challenges. Central among these is continuous, reliable surveillance coverage to support Detect-and-Avoid (DAA) capabilities for both manned and unmanned aircraft \cite{mueller2017enabling}.
+Ground-Based Surveillance Systems (GBSS) provide this monitoring layer for UTM \cite{kopardekar2016unmanned}. Radar works in all weather and lighting but struggles with small radar cross-section UAVs at range \cite{guvenc2018detection,semkin2020analyzing}. RF/Remote~ID receivers are cheap but detect only cooperative transmitters \cite{guvenc2018detection,besada2022cuas}. EO/IR sensors give high-resolution coverage but degrade in fog, rain, or darkness \cite{guvenc2018detection,yan2023passive}. Acoustic sensors are low-cost non-cooperative detectors of propeller noise but are highly susceptible to urban background noise \cite{guvenc2018detection,yan2023passive}; sound can partly propagate around obstacles, but this study applies the same line-of-sight gate as for Radar, RF, and EO (Section~\ref{sec:methodology}). Heterogeneous networks combine these modalities \cite{muscat2023,besada2022cuas,blasch2021information}, and their placement must balance coverage, budget, rooftop access, and line-of-sight obstruction \cite{aievola2022ground,dulia2024sand}.
 
-Current manned air traffic relies on cooperative transponders and centralized Air Traffic Control (ATC), but BVLOS/UAM operations introduce uncooperative airspace users—malfunctioning drones, hobbyist UAVs, or unauthorized vehicles—that must still be detected to prevent collisions and ensure public safety \cite{faa2020utm}. The resulting surveillance uncertainty directly limits airspace capacity: regulators may mandate conservative separation minima (e.g., 500 m radius) when detection reliability is low, whereas high-confidence monitoring can reduce separations by an order of magnitude \cite{nasa2021utm}. This makes surveillance infrastructure a critical enabler of operational scalability for urban air corridors.
+Prior GBSS placement work (Section~\ref{sec:related}, Table~\ref{tab:related_comparison}) leaves three gaps. \emph{Scalability}: exhaustive and many MIP formulations become impractical for tens of heterogeneous sensors over square kilometers with occlusion physics \cite{muscat2023,katoh1998resource}. \emph{Urban fidelity}: statistical LoS models omit the building-resolved shadowing that dominates low airways \cite{3gpp38901,itur_p1411}, and OSM-based deterministic LoS remains rare in C-UAS CapEx planning \cite{osm_applications}. \emph{Metric split}: cooperative and non-cooperative coverage are often collapsed into one score, understating dark-target risk for BVLOS safety cases \cite{besada2022cuas,blasch2021information}.
 
-\subsection{Ground-Based Surveillance Systems (GBSS)}
-
-Ground-Based Surveillance Systems (GBSS) provide the foundational monitoring layer for UTM, complementing onboard DAA sensors with persistent infrastructure-supported detection \cite{kopardekar2016unmanned}. Multiple sensor modalities are employed, each with trade-offs:
-
-\begin{itemize}
-    \item \textbf{Radar}: robust in adverse weather and all lighting conditions, but limited in detecting small radar cross-section (RCS) UAVs at longer distances \cite{guvenc2018detection,semkin2020analyzing}.
-    
-    \item \textbf{RF/RID Receivers}: cost-effective and low-power, but dependent on cooperative transmitters \cite{guvenc2018detection,besada2022cuas}.
-    
-    \item \textbf{Electro-Optical/Infrared (EO/IR) sensors}: high-resolution visual coverage, but degraded by fog, rain, or night conditions \cite{guvenc2018detection,yan2023passive}.
-    
-    \item \textbf{Acoustic sensors}: can detect propeller noise without line-of-sight, but are highly susceptible to urban background noise \cite{guvenc2018detection,yan2023passive}.
-\end{itemize}
-
-This diversity motivates heterogeneous multi-sensor networks, combining complementary modalities to ensure robust coverage and redundancy, as emphasized in counter-UAS and UTM surveillance literature \cite{muscat2023,besada2022cuas,blasch2021information}. Despite significant interest, designing cost-effective GBSS remains challenging: one must optimize the number, type, and placement of sensors over large urban areas, balancing coverage, redundancy, and budget while considering deployment constraints such as rooftop accessibility, line-of-sight obstructions, and regulatory limits \cite{aievola2022ground,dulia2024sand}.
-
-\subsection{Prior Work on Sensor Placement Optimization}
-
-Several frameworks have addressed GBSS or C-UAS sensor allocation (detailed comparison in Section~\ref{sec:related}, Table~\ref{tab:related_comparison}):
-
-\textbf{MUSCAT} \cite{muscat2023}: multi-sensor C-UAS placement with coverage/gap/cost metrics and exhaustive search over elevation-oriented terrain models. Rigorous for small candidate sets, but $O(2^n)$ search is intractable beyond roughly 10--15 locations.
-
-\textbf{Radar / AAM network design}: Aievola et al.\ analyze ground-based radar networks for UAM \cite{aievola2022ground}; Dulia and Shihab optimize AAM surveillance networks under cost and detection-probability floors over terrain classes \cite{dulia2024sand}. These advance placement for cooperative/non-cooperative AAM traffic but do not jointly expose dual-layer OSM+ray-trace CapEx Pareto fronts of the form pursued here.
-
-\textbf{Metaheuristics}: NSGA-II and related MOEAs are standard for coverage--cost placement in WSN and radar management \cite{deb2002fast,molina2008layout,iqbal2015wsn,charlish2016radar}, motivating transfer to occlusion-aware GBSS chromosomes.
-
-\subsection{Remaining Challenges}
-
-Despite progress, three gaps persist in urban GBSS design (Table~\ref{tab:related_comparison}):
-
-\textbf{Scalability}: Exhaustive and many MIP formulations become impractical for tens of heterogeneous sensors across square kilometers with occlusion physics \cite{muscat2023,katoh1998resource}.
-
-\textbf{Urban Environment Fidelity}: Statistical LoS models omit building-resolved shadowing that dominates low airways \cite{3gpp38901,itur_p1411}; OSM-enabled deterministic LoS for C-UAS CapEx planning remains comparatively sparse relative to telecom uses of OSM \cite{osm_applications}.
-
-\textbf{Operational Metric Split}: Cooperative RID/RF coverage and non-cooperative dark-target coverage are often collapsed into one score, understating dark-target risk for BVLOS safety cases \cite{besada2022cuas,blasch2021information}.
-
-\subsection{Contributions}
-
-This paper revises and extends prior city-scale GBSS optimization (MUSCAT / SCOPAS lineage) with a dual-layer operational framing and two claim-closing controls:
+The question we answer is how far cooperative and non-cooperative coverage diverge under matched CapEx and the same occlusion model, and what that implies for BVLOS planning floors. The contributions are:
 
 \begin{enumerate}
-    \item \textbf{Dual-layer multi-objective placement}: NSGA-II optimizes threat-weighted \(M_{wp,coop}\) and \(M_{wp,noncoop}\) jointly with CapEx, instead of a single fused coverage score.
-    \item \textbf{Heterogeneous non-cooperative mix}: Radar, EO, and Acoustic form the dark-target layer; RF is cooperative-only. Acoustic provides a documented low-CapEx non-coop filler---without claiming universal heterogeneity dominance on classic \(M_c\).
-    \item \textbf{Requirement floors for planning}: Explicit joint corridors (e.g., \(0.90/0.35\)) with Pareto filtering replace opaque GREEN thresholds and unsupported ``\% of optimum'' claims.
-    \item \textbf{Evidence across scenes}: Synthetic city fronts over three seeds, airport split coop/noncoop runs, a 30\,m Avenida Paulista front, and per-airway re-evaluation quantify the coop-cheap / noncoop-hard asymmetry for BVLOS safety cases, with run-to-run spread reported.
-    \item \textbf{Claim-closing controls}: (A)~small-$n$ oracle comparison (Exhaustive / Greedy / Random / GA) under the same ray-tracer; (B)~matched-budget classic \(M_c\) modality ablation; (C)~dual-layer CapEx ablation on \(M_{wp,coop}/M_{wp,noncoop}\), with and without site-activation cost. Together these bound GA gaps where enumeration is feasible and show when heterogeneity helps (joint dark-target floors) versus when RF-only wins (lean classic/coop coverage).
+    \item \textbf{Separate coverage layers under CapEx}: threat-weighted cooperative coverage \(M_{wp,coop}\) and non-cooperative coverage \(M_{wp,noncoop}\) are kept as separate objectives against CapEx (hardware plus site activation), under deterministic ray-traced line of sight on OSM buildings, instead of one fused coverage score.
+    \item \textbf{The asymmetry across scenes and altitudes}: cooperative coverage saturates with RF-inclusive mixes at modest CapEx while non-cooperative coverage stays incomplete on a synthetic city (three seeds), an airport split, and the Avenida Paulista corridor; per-airway re-evaluation shows the same plans cover far less at 20\,m than at 45--65\,m.
+    \item \textbf{Controls that bound the modality claim}: under the same ray-tracer, (A)~a small-$n$ oracle comparison, (B)~a matched-CapEx classic \(M_c\) ablation, and (C)~a dual-layer CapEx ablation with and without site cost show when a mixed Radar/EO/Acoustic set is needed (joint dark-target floors) and when RF alone suffices (lean cooperative coverage).
 \end{enumerate}
 
-The question we answer is how far cooperative and non-cooperative coverage diverge under matched CapEx and the same occlusion model, and what that implies for BVLOS planning floors. We do not ask, and do not answer, how close the city-scale fronts are to the true optimum: exhaustive search is intractable for \(n\gtrsim25\) sites, and the seed spread in Section~\ref{sec:results_seeds} shows the fronts are not converged on the non-cooperative axis.
+NSGA-II is the search procedure, not a contribution. We do not claim that the city-scale fronts are optimal: at 608 evaluations, NSGA-II and uniform random search reach the same hypervolume (Section~\ref{sec:results_seeds}).
 
-The remainder of this paper is organized as follows: Section II reviews related work and the systems comparison table. Section III formulates the dual-layer problem. Section IV--V describe methodology and SCOPAS implementation. Section VI presents experimental setup. Section VII analyzes dual-layer results and Controls~A--C. Section VIII discusses implications and limits. Section IX concludes.
+Section~II reviews related work. Section~III formulates the dual-layer problem and Section~IV the method. Section~V gives the experimental setup, Section~VI the results and Controls~A--C, Section~VII the discussion and limitations, and Section~VIII concludes.
 

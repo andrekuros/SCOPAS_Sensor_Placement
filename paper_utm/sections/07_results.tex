@@ -4,7 +4,7 @@
 \section{Results and Analysis}
 \label{sec:results}
 
-We report dual-layer NSGA-II fronts under SCOPAS: maximize threat-weighted cooperative coverage \(M_{wp,coop}\) and non-cooperative coverage \(M_{wp,noncoop}\) while minimizing CapEx (hardware + site activation). Non-cooperative sensors are Radar, EO, and Acoustic; RF contributes only to the cooperative layer.
+Each front trades threat-weighted cooperative coverage \(M_{wp,coop}\) and non-cooperative coverage \(M_{wp,noncoop}\) against CapEx (hardware + site activation). Non-cooperative sensors are Radar, EO, and Acoustic; RF contributes only to the cooperative layer. Fronts are the non-dominated sets an NSGA-II run reached at a fixed budget; Section~\ref{sec:results_seeds} shows that uniform random search reaches the same hypervolume.
 
 \subsection{Synthetic city (1\,km$\times$1\,km, five critical assets)}
 
@@ -47,22 +47,15 @@ Under floors \(0.90/0.35\), the front has no feasible member (closest: \(0.895/0
 \subsubsection{Run-to-run spread}
 \label{sec:results_seeds}
 
-Table~\ref{tab:city_seeds} reruns the same configuration with seeds 0, 1, and 2. Maximum cooperative coverage is stable (\(0.964\)--\(0.966\)). Everything that depends on the non-cooperative layer varies: maximum \(M_{wp,noncoop}\) spans \(0.408\)--\(0.511\) (median \(0.415\)), and hypervolume spans \(0.251\)--\(0.267\) (median \(0.254\)). The \(0.85/0.35\) floor is met in two of three seeds, at \$383k and \$600k; seed~2 has no feasible member. Seed~0 is the only run that also meets \(0.90/0.35\) (\$383k). The front in Fig.~\ref{fig:city_pareto} has higher hypervolume (\(0.305\)) than every seeded rerun, so its \$320k floor cost is a favorable draw, not a typical outcome. At this budget (\(32\times18\)) the optimizer has not converged on the non-cooperative axis; Findings~1--2 should be read as ``reachable'' rather than ``cheapest possible''.
+Table~\ref{tab:city_seeds} reruns the same configuration with seeds 0, 1, and 2. Maximum cooperative coverage is stable (\(0.964\)--\(0.966\)). Everything that depends on the non-cooperative layer varies: maximum \(M_{wp,noncoop}\) spans \(0.408\)--\(0.511\) (median \(0.415\)), and hypervolume spans \(0.251\)--\(0.267\) (median \(0.254\)). The \(0.85/0.35\) floor is met in two of three seeds, at \$383k and \$600k; seed~2 has no feasible member. Seed~0 is the only run that also meets \(0.90/0.35\) (\$383k). The front in Fig.~\ref{fig:city_pareto} has higher hypervolume (\(0.305\)) than every seeded rerun, so its \$320k floor cost is a favorable draw, not a typical outcome. At 608 evaluations, NSGA-II and uniform random search reach the same hypervolume (below); Findings~1--2 should be read as ``reachable'' rather than ``cheapest possible''.
 
 \input{tables/tab_city_seeds}
 
 \textbf{Random search at the same budget.}
-The lower block of Table~\ref{tab:city_seeds} replaces NSGA-II with uniform random search: 608 layouts per seed, with sensor count, sites (221 candidates), and types drawn uniformly, scored by the same evaluator. Its hypervolume (\(0.251\)--\(0.254\)) sits inside the NSGA-II range (\(0.251\)--\(0.267\)). Random search meets the \(0.85/0.35\) floor in all three seeds (\$423k--\$488k) and the \(0.90/0.35\) floor in all three (\$500k--\$582k); NSGA-II meets them in two and one seeds. NSGA-II finds cheaper cooperative-only plans in one seed (\$90k) but not consistently. Fig.~\ref{fig:convergence} tracks hypervolume against evaluations; the GA points use the surviving population at each checkpoint, the random points use all samples so far, which favors random search early on. Between 576 and 608 evaluations the GA curves still rise (by \(0.007\)--\(0.014\)) while the random curves are nearly flat (\(\leq0.002\)), which suggests, but does not show, that a larger budget would separate them. At this budget we therefore cannot claim that NSGA-II beats random search on the city front. The layer asymmetry does not depend on the optimizer: no random layout exceeds \(M_{wp,noncoop}=0.51\), while cooperative coverage reaches \(0.96\)--\(0.97\) in every seed.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\columnwidth]{figures/journal/fig_convergence.pdf}
-\caption{Hypervolume against evaluation count on the synthetic city, three seeds each. NSGA-II: non-dominated members of the population at generations 4, 9, 14, 17 and the final front (\(32(g{+}1)\) evaluations). Random search: non-dominated set of the first \(N\) uniform samples.}
-\label{fig:convergence}
-\end{figure}
+The lower block of Table~\ref{tab:city_seeds} replaces NSGA-II with uniform random search: 608 layouts per seed, with sensor count, sites (221 candidates), and types drawn uniformly, scored by the same evaluator. Its hypervolume (\(0.251\)--\(0.254\)) sits inside the NSGA-II range (\(0.251\)--\(0.267\)). Random search meets the \(0.85/0.35\) floor in all three seeds (\$423k--\$488k) and the \(0.90/0.35\) floor in all three (\$500k--\$582k); NSGA-II meets them in two and one seeds. NSGA-II finds cheaper cooperative-only plans in one seed (\$90k) but not consistently. Tracking hypervolume against evaluations, between 576 and 608 evaluations the NSGA-II values still rise (by \(0.007\)--\(0.014\)) while the random-search values are nearly flat (\(\leq0.002\)), which suggests, but does not show, that a larger budget would separate them. At this budget we therefore cannot claim that NSGA-II beats random search on the city front. The layer asymmetry does not depend on the optimizer: no random layout exceeds \(M_{wp,noncoop}=0.51\), while cooperative coverage reaches \(0.96\)--\(0.97\) in every seed.
 
 \textbf{Finding 3 (the asymmetry repeats).}
-The same coop-high / noncoop-low pattern appears on the airport split fronts and on Paulista (Fig.~\ref{fig:scenes}). Airport cooperative search reaches \(100\%\) cooperative coverage; its non-cooperative search tops out near \(45\%\). Paulista reaches \(94.7\%\) cooperative coverage and \(21.9\%\) non-cooperative coverage.
+The same pattern appears on the airport split fronts and on Paulista (Fig.~\ref{fig:scenes}; Sections~\ref{sec:results_airport}--\ref{sec:results_paulista}).
 
 \subsubsection{Coverage per airway}
 \label{sec:results_airways}
@@ -76,11 +69,8 @@ Fig.~\ref{fig:airways} re-evaluates three stored members of this front per airwa
   \label{fig:airways}
 \end{figure*}
 
-\subsection{Requirement-seeking demos (prior short runs)}
-
-Target-seeking configs aiming at \(0.90/0.35\) and stretch \(0.90/0.50\) confirm the same structure: cooperative floors are inexpensive with RF; joint dark-target floors near \(35\%\) are the practical planning corridor; \(50\%\) noncoop with \(\geq90\%\) coop remains a stretch (best observed joint near \(0.957/0.445\)).
-
 \subsection{Airport SJC split fronts}
+\label{sec:results_airport}
 
 Split optimization on the São José dos Campos airport scene (resolution 40\,m, population 24, 12 generations) isolates each layer.
 
@@ -88,38 +78,28 @@ Split optimization on the São José dos Campos airport scene (resolution 40\,m,
 
 \textbf{Non-cooperative front.} Twenty-four Radar/EO/Acoustic solutions span \(M_{wp,noncoop}\) from \(0.032\) to \(0.445\). Best observed dark-target coverage is \(0.445\) at \$405k (5 Radar + 2 EO); no plan reaches a 70\% noncoop threshold in this budget.
 
-This split is the operational punchline: a cooperative optimum is \emph{not} a dark-target plan. BVLOS safety cases that quote a single coverage percentage from RF-inclusive optimization overstate non-cooperative protection.
+The split shows that the cheapest cooperative plan is not a dark-target plan. A BVLOS safety case that quotes one coverage percentage from an RF-inclusive layout overstates non-cooperative protection.
 
 \subsection{Avenida Paulista}
+\label{sec:results_paulista}
 
-The real corridor (6,389 buildings, 93 rooftop sites, two critical assets) was run at 30\,m voxels with population 40 and 20 generations, producing 40 non-dominated solutions (Fig.~\ref{fig:paulista_pareto}).\footnote{An earlier reduced run (40\,m voxels, population 24, 10 generations) gave the same qualitative picture: best cooperative \(0.970\), best non-cooperative \(0.254\). Values at different voxel sizes are not directly comparable.} Five RF receivers clear \(M_{wp,coop}=0.933\) at \$150k with zero non-cooperative coverage. Best cooperative coverage is \(0.947\) (\$516k). Best non-cooperative coverage is \(0.219\) (\$571k, seven Radars), with companion cooperative coverage \(0.692\). The best joint member reaches \(0.920/0.201\) at \$545k (6 RF + 5 Radar + 1 EO). No member meets \(0.85/0.35\) or even \(0.85/0.25\).
+The real corridor (6,389 buildings, 93 rooftop sites, two critical assets) was run at 30\,m voxels with population 40 and 20 generations, producing 40 non-dominated solutions.\footnote{An earlier reduced run (40\,m voxels, population 24, 10 generations) gave the same qualitative picture: best cooperative \(0.970\), best non-cooperative \(0.254\). Values at different voxel sizes are not directly comparable.} Five RF receivers clear \(M_{wp,coop}=0.933\) at \$150k with zero non-cooperative coverage. Best cooperative coverage is \(0.947\) (\$516k). Best non-cooperative coverage is \(0.219\) (\$571k, seven Radars), with companion cooperative coverage \(0.692\). The best joint member reaches \(0.920/0.201\) at \$545k (6 RF + 5 Radar + 1 EO). No member meets \(0.85/0.35\) or even \(0.85/0.25\).
 
-\begin{figure*}[t]
-  \centering
-  \includegraphics[width=0.95\textwidth]{figures/journal/fig_paulista_pareto.pdf}
-  \caption{Avenida Paulista dual-layer front (40 solutions, 30\,m voxels). (a)~Cooperative coverage against CapEx; color is non-cooperative coverage. (b)~Coop--noncoop plane; color is CapEx. No member approaches the \(0.90/0.35\) box.}
-  \label{fig:paulista_pareto}
-\end{figure*}
-
-Relative to the synthetic city, the dense corridor compresses dark-target coverage much more than cooperative coverage: the non-cooperative ceiling falls from \(0.41\)--\(0.56\) (city runs) to \(0.22\), while cooperative coverage above \(0.90\) remains cheap. Paulista-class canyons need denser non-cooperative deployments, relaxed floors, or altitude policy; adding RF nodes does not help the dark-target layer.
+Relative to the synthetic city, the dense corridor lowers the non-cooperative ceiling from \(0.41\)--\(0.56\) to \(0.22\), while cooperative coverage above \(0.90\) remains cheap; adding RF nodes does not help the dark-target layer.
 
 \subsection{Control A: small-$n$ oracle vs.\ GA}
 \label{sec:results_oracle}
 
-Table~\ref{tab:oracle_comparison} reports Control~A under the protocol of Section~\ref{sec:protocol_oracle}. On fully enumerable instances (\(n{=}8,k{=}3\) and \(n{=}10,k{=}4\)), NSGA-II* matches the oracle \(M_c\) exactly (\(\Delta{=}0.0\)\,pp). At \(n{=}12,k{=}5\) (type-sampled oracle), the gap is \(0.3\)\,pp. Greedy is competitive; Random trails on the largest crop. Wall-clock for the oracle stays under a few seconds at this resolution because \(P_D\) grids are precomputed.
-
-\textbf{Interpretation.} Where exhaustive search is feasible, the GA recovers near-oracle classic \(M_c\) under the same ray-tracer. We treat this as method validation on enumerable instances---\emph{not} as a city-scale optimality certificate for dual-layer fronts with \(n\gtrsim25\).
+Table~\ref{tab:oracle_comparison} reports Control~A under the protocol of Section~\ref{sec:protocol_oracle}. On fully enumerable instances (\(n{=}8,k{=}3\) and \(n{=}10,k{=}4\)), NSGA-II* matches the oracle \(M_c\) exactly (\(\Delta{=}0.0\)\,pp). At \(n{=}12,k{=}5\) (type-sampled oracle), the gap is \(0.3\)\,pp. Greedy is competitive; Random trails on the largest crop. Oracle wall-clock stays under a few seconds because \(P_D\) grids are precomputed. This validates the search on enumerable instances; it is not a city-scale optimality certificate for dual-layer fronts with \(n\gtrsim25\).
 
 \input{tables/tab_oracle_comparison}
 
 \subsection{Control B: matched CapEx modality ablation}
 \label{sec:results_ablation}
 
-Table~\ref{tab:modality_ablation} reports best classic \(M_c\) at three CapEx budgets. RF-only wins at \$31k (\(88.3\%\) vs.\ heterogeneous \(82.3\%\)) and \$76k (\(95.3\%\) vs.\ \(93.8\%\)). Heterogeneous only edges RF at \$150k (\(98.3\%\) vs.\ \(98.0\%\)). Acoustic-only and EO-only remain near zero / single-digit \(M_c\) at these budgets (short effective range under the \(0.8\) threshold); Radar-only is infeasible at \$31k and weak thereafter relative to RF for classic coverage.
+Fig.~\ref{fig:controls}(a) reports best classic \(M_c\) at three CapEx budgets. RF-only wins at \$31k (\(88.3\%\) vs.\ heterogeneous \(82.3\%\)) and \$76k (\(95.3\%\) vs.\ \(93.8\%\)). Heterogeneous only edges RF at \$150k (\(98.3\%\) vs.\ \(98.0\%\)). Acoustic-only and EO-only remain near zero / single-digit \(M_c\) at these budgets (short effective range under the \(0.8\) threshold); Radar-only is infeasible at \$31k and weak thereafter relative to RF for classic coverage.
 
-\textbf{Interpretation.} For CapEx-matched classic \(M_c\), heterogeneity is \emph{not} universally superior: lean and mid budgets favor RF-dominant layouts. Heterogeneity becomes competitive only at higher CapEx. This softens any ``always heterogeneous'' claim. Dual-layer airport splits still show why RF-only plans fail dark-target floors---the modality story depends on whether the planning metric is cooperative \(M_c\) or joint coop/noncoop.
-
-\input{tables/tab_modality_ablation}
+For CapEx-matched classic \(M_c\), heterogeneity is therefore not universally superior; whether it helps depends on whether the planning metric is cooperative \(M_c\) or joint coop/noncoop coverage (Control~C).
 
 \begin{figure*}[t]
   \centering
@@ -147,4 +127,4 @@ Tables~\ref{tab:modality_ablation_dual_coop}--\ref{tab:modality_ablation_dual_no
 
 \input{tables/tab_modality_ablation_dual_sites}
 
-\textbf{Interpretation.} Dual-layer CapEx matching overturns any RF-only reading of Control~B: RF saturates coop while contributing nothing to dark targets. Heterogeneity is \emph{necessary for joint floors} near the \$320k band, with or without site fees, but not for lean classic \(M_c\). Lean non-cooperative budgets favor a single modality: EO without site fees, Radar once each site costs \$15k.
+Site fees penalize many cheap sensors relative to a few long-range ones, so the lean non-cooperative leader moves from EO to Radar. RF saturates the cooperative layer while contributing nothing to dark targets, and mixed sets are needed only for joint floors near the \$320k band, with or without site fees.
