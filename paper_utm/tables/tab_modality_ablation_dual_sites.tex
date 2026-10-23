@@ -1,0 +1,23 @@
+\begin{table}[t]
+\centering
+\caption{Control C with site activation. Budget = hardware + \$15k per occupied site. Values in \%. Top: best $M_{wp,\mathrm{noncoop}}$ (companion $M_{wp,\mathrm{coop}}$). Bottom: best $M_{wp,\mathrm{coop}}$ (companion $M_{wp,\mathrm{noncoop}}$). Winner in bold.}
+\label{tab:modality_ablation_dual_sites}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrrrr}
+\toprule
+Budget & RF & Ac & EO & Radar & Hetero. \\
+\midrule
+\multicolumn{6}{l}{\emph{Non-cooperative layer}} \\
+\$31k & 0.0 (76) & \textbf{1.6 (2)} & --- & --- & 1.6 (2) \\
+\$76k & 0.0 (89) & 3.9 (4) & 7.2 (7) & \textbf{14.0 (14)} & 14.0 (14) \\
+\$150k & 0.0 (95) & 6.5 (7) & 17.2 (17) & \textbf{24.9 (25)} & 24.8 (25) \\
+\$320k & 0.0 (98) & 11.9 (12) & 32.9 (33) & 35.7 (36) & \textbf{39.0 (70)} \\
+\midrule
+\multicolumn{6}{l}{\emph{Cooperative layer}} \\
+\$31k & \textbf{76.2 (0)} & 1.6 (2) & --- & --- & 76.2 (0) \\
+\$76k & \textbf{89.3 (0)} & 3.9 (4) & 7.2 (7) & 14.0 (14) & 89.3 (0) \\
+\$150k & 95.3 (0) & 6.5 (7) & 17.2 (17) & 24.9 (25) & \textbf{95.4 (0)} \\
+\$320k & \textbf{98.4 (0)} & 11.9 (12) & 32.9 (33) & 35.7 (36) & 98.4 (0) \\
+\bottomrule
+\end{tabular}
+\end{table}

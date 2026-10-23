@@ -1,121 +1,37 @@
 % Section 4: Methodology
 
-\section{Enhanced MUSCAT Methodology}
+\section{Methodology}
+\label{sec:methodology}
 
-Our methodology extends the four-phase MUSCAT approach with three key enhancements: GA-based optimization, OSM urban environment integration, and deterministic ray-tracing.
+We follow MUSCAT's four phases \cite{muscat2023} with three changes: OSM building geometry, deterministic ray-traced line of sight, and separate cooperative and non-cooperative threat-weighted coverage. Phase~4 searches the resulting objective space with NSGA-II; the search procedure is a tool, and its fronts are checked against uniform random search at the same budget.
 
 \subsection{Phase 1: Environment Setup}
 
-\subsubsection{Urban Data Acquisition}
-
-Unlike MUSCAT's terrain-focused approach using DTED maps \cite{muscat2023}, we employ OpenStreetMap (OSM) to obtain real urban building footprints \cite{osm_applications,elias2023exploring}:
-
-\begin{algorithmic}
-\STATE Input: Latitude, Longitude, Radius
-\STATE Download buildings from OSM API
-\STATE Extract geometries (Polygon/MultiPolygon)
-\STATE Estimate heights (from metadata or heuristics)
-\STATE Reproject to UTM coordinates (meters)
-\STATE Translate to local origin
-\STATE Output: Buildings GeoJSON
-\end{algorithmic}
-
-This approach enables analysis of any urban area worldwide with freely available, crowd-sourced data that includes building footprints and attributes.
-
-\subsubsection{3D Voxelization}
-
-We discretize the urban environment into a 3D occupancy grid:
-
-\begin{equation}
-\text{Grid}(i,j,k) = \begin{cases}
-1 & \text{if voxel occupied by building} \\
-0 & \text{if free space}
-\end{cases}
-\end{equation}
-
-where $(i,j,k)$ are voxel indices and resolution $r$ (typically 10-20m) is user-configurable. This voxelization enables efficient ray-tracing and LoS calculations.
+Unlike MUSCAT's terrain models from DTED maps \cite{muscat2023}, we take building footprints from OpenStreetMap (OSM) \cite{osm_applications,elias2023exploring}: buildings within a radius of a given latitude and longitude are downloaded, heights are read from metadata or estimated, and geometries are reprojected to local UTM coordinates. The scene is then discretized into a 3D occupancy grid, \(\text{Grid}(i,j,k)=1\) if the voxel is occupied by a building and 0 otherwise, at resolution \(r\) (30--40\,m in this study).
 
 \subsection{Phase 2: Sensor Attributes and ROI Definition}
 
 \subsubsection{Sensor Models with Field-of-View Constraints}
 
-We implement four sensor types with realistic Field-of-View (FOV) parameters:
+Each sensor type has a detection model gated by an elevation window \(\theta_{elev}\in[\theta_{min},\theta_{max}]\), where \(\theta_{elev}\) is the elevation angle from sensor to target:
 
-\textbf{Radar}: Active sensor with 360° horizontal coverage and limited elevation:
-\begin{equation}
-P_D^{radar} = \begin{cases}
-f(P_t, G, \sigma_{RCS}, R, \lambda) & \text{if } \theta_{elev} \in [-5°, 30°] \\
-0 & \text{otherwise}
-\end{cases}
-\end{equation}
-where $\theta_{elev}$ is the elevation angle from sensor to target.
+\textbf{Radar}: 360\textdegree{} horizontal coverage, $\theta_{elev} \in [-5^{\circ}, 30^{\circ}]$; \(P_D\) from the radar equation in transmit power, gain, target RCS, range, and wavelength.
 
-\textbf{RF Passive (RID equivalent)}: Nearly omnidirectional ($\theta_{elev} \in [-30°, 70°]$):
-\begin{equation}
-P_D^{RF} = f(ERP, Sensitivity, R)
-\end{equation}
+\textbf{RF passive (RID equivalent)}: nearly omnidirectional, $\theta_{elev} \in [-30^{\circ}, 70^{\circ}]$, sensitivity \(-90\)\,dBm at 900\,MHz; \(P_D\) from received power against sensitivity.
 
-\textbf{Electro-Optical (EO)}: Limited FOV (90° horizontal, $\theta_{elev} \in [-20°, 45°]$)
+\textbf{Electro-Optical (EO)}: 360\textdegree{} horizontal coverage, $\theta_{elev} \in [-20^{\circ}, 45^{\circ}]$, maximum range 150\,m.
 
-\textbf{Acoustic}: Omnidirectional ($\theta_{elev} \in [-40°, 80°]$)
+\textbf{Acoustic}: 360\textdegree{} horizontal coverage, $\theta_{elev} \in [-20^{\circ}, 70^{\circ}]$, source level 80\,dB SPL, SNR threshold 6\,dB, maximum range 300\,m.
 
-These FOV constraints prevent unrealistic scenarios where rooftop sensors "see" targets far below horizon, improving model fidelity.
+These values are those of the experiment configurations (Section~\ref{sec:setup}). Elevation limits prevent rooftop sensors from detecting targets far below the horizon. Every modality, including Acoustic, is gated by the same binary LoS test; this is conservative for acoustic sensing, which can partly propagate around obstacles.
 
-\subsubsection{Sensor Location Generation}
+Candidate sites for real scenes are generated on a grid with spacing \(s\), keeping points outside building footprints and assigning mounting heights \(h\sim U(25,35)\)\,m.
 
-For real scenarios, sensor locations are automatically generated on a grid pattern while avoiding building interiors:
-
-\begin{algorithmic}
-\STATE Generate grid with spacing $s$ meters
-\FOR{each grid point $(x, y)$}
-  \IF{point not inside any building}
-    \STATE Add location with height $h \sim U(25, 35)$ m
-  \ENDIF
-\ENDFOR
-\end{algorithmic}
-
-\subsection{Phase 3: Coverage Computation with Airway-Specific Analysis}
+\subsection{Phase 3: Coverage Computation}
 
 \subsubsection{Deterministic Ray-Tracing}
 
-We replace statistical LoS probability models \cite{3gpp38901,itur_p1411} with deterministic ray-tracing on the voxelized building occupancy grid:
-
-\begin{algorithmic}
-\STATE Input: Sensor location $\mathbf{s}$, Target location $\mathbf{t}$
-\STATE Calculate elevation angle $\theta_{elev} = \arctan\left(\frac{z_t - z_s}{\sqrt{(x_t-x_s)^2 + (y_t-y_s)^2}}\right)$
-\IF{$\theta_{elev} \notin [\theta_{min}, \theta_{max}]$}
-  \STATE $P_D = 0.0$ (outside FOV)
-  \RETURN
-\ENDIF
-\STATE Discretize 3D line between $\mathbf{s}$ and $\mathbf{t}$
-\STATE Sample voxels along the ray
-\IF{any voxel is occupied}
-  \STATE $P_{LoS} = 0.0$ (blocked)
-\ELSE
-  \STATE $P_{LoS} = 1.0$ (clear)
-\ENDIF
-\end{algorithmic}
-
-This provides exact LoS determination with FOV constraints, improving model fidelity for urban scenarios where sensors are mounted on rooftops.
-
-\subsubsection{Multi-Altitude Airway Analysis}
-
-Urban airspace operations span multiple altitude layers. We evaluate coverage separately for three representative airways:
-
-\begin{itemize}
-\item \textbf{Low Airway (20m)}: Between buildings, high occlusion
-\item \textbf{Medium Airway (45m)}: Above low-rise buildings, optimal for surveillance
-\item \textbf{High Airway (65m)}: Above most buildings, clear line-of-sight
-\end{itemize}
-
-For each airway at altitude $h$, coverage is calculated excluding building-occupied volumes:
-
-\begin{equation}
-M_c^{(h)} = \frac{\sum_{(x,y) \in \text{Free}(h)} \mathbb{1}[\pnet(x,y,h) \geq \tau]}{|\text{Free}(h)|}
-\label{eq:mc_airway}
-\end{equation}
-
-where $\text{Free}(h) = \{(x,y) : \text{Grid}(x,y,h) = 0\}$ is the set of unoccupied voxels at altitude $h$. This airway-specific analysis reveals altitude-dependent surveillance quality—critical for establishing BVLOS operational envelopes.
+We replace statistical LoS probability models \cite{3gpp38901,itur_p1411} with deterministic ray-tracing on the occupancy grid. For a sensor at \(\mathbf{s}\) and a target voxel at \(\mathbf{t}\), \(P_D=0\) if the elevation angle falls outside the sensor's window; otherwise the segment from \(\mathbf{s}\) to \(\mathbf{t}\) is sampled voxel by voxel, and \(P_{LoS}=0\) if any sampled voxel is occupied and \(P_{LoS}=1\) otherwise. Coverage is evaluated over the whole free volume and, separately, on three airways: 20\,m (between buildings), 45\,m (above low-rise buildings), and 65\,m (above most buildings).
 
 \subsubsection{Network Detection Probability}
 
@@ -128,91 +44,35 @@ For multiple sensors, we employ soft voting fusion:
 
 where $P_{D,i}$ is the detection probability of the $i$-th sensor.
 
-\subsubsection{Redundancy Metric}
+\subsubsection{Dual-Layer Threat-Weighted Coverage}
+\label{sec:dual_metrics}
 
-System redundancy is calculated as:
-
+Critical assets \(a\) with location \(\mathbf{p}_a\), protection radius \(\rho_a\), and weight multiplier \(m_a\) define a threat map over free voxels \(v\):
 \begin{equation}
-\rnet = \frac{1}{N_{free}} \sum_{(i,j,k) \in \text{Free}} \frac{\sum_s P_{D,s}(i,j,k)}{N_s}
-\label{eq:redundancy}
+w(v) = \max_a\; 100\, m_a \exp\!\left(-\frac{\lVert \mathbf{x}_v - \mathbf{p}_a \rVert^2}{2\rho_a^2}\right),
+\label{eq:threat}
 \end{equation}
-
-where $N_{free}$ is the number of unoccupied voxels and $N_s$ is the number of active sensors.
-
-\subsection{Phase 4: Genetic Algorithm Optimization}
-
-\subsubsection{GA Implementation}
-
-We employ DEAP (Distributed Evolutionary Algorithms in Python) \cite{deap2012} with the following operators:
-
-\textbf{Selection}: Tournament selection with tournament size 3
-
-\textbf{Crossover}: Two-point crossover preserving gene structure
-
-\textbf{Mutation}: 
-\begin{itemize}
-\item Location mutation: Change $l_i$ to random valid location
-\item Type mutation: Change $t_i$ to different sensor type
-\item Activation mutation: Toggle $a_i$ between 0 and 1
-\end{itemize}
-
-\textbf{Fitness Evaluation}: Equation \ref{eq:fitness} with parallelized computation across available CPU cores.
-
-\subsubsection{Convergence and Elitism}
-
-We maintain the best individual across generations (elitism) and track fitness statistics to monitor convergence. Typical runs achieve stable solutions within 50-100 generations for population sizes of 30-50.
-
-\subsection{Multi-Objective Optimization with NSGA-II}
-
-The sensor placement problem inherently involves conflicting objectives that cannot be simultaneously optimized. To address this, we employ the Non-dominated Sorting Genetic Algorithm II (NSGA-II) \cite{deb2002fast}, following the multi-objective placement tradition in WSN/radar management \cite{molina2008layout,iqbal2015wsn,charlish2016radar} but with dual-layer GBSS objectives. In the dual-layer SCOPAS configuration the primary objectives are threat-weighted $M_{wp,\mathrm{coop}}$, $M_{wp,\mathrm{noncoop}}$, and CapEx (maximize, maximize, minimize); the classical $M_c$/redundancy/cost triple below documents the MUSCAT-compatible scalarized lineage.
-
-\subsubsection{Problem Formulation}
-
-Given a sensor configuration $X$, we define three objectives:
-
-\begin{align}
-\text{maximize} \quad & f_1(X) = M_c(X) \quad \text{(Coverage Index)} \label{eq:obj1}\\
-\text{maximize} \quad & f_2(X) = \bar{R}(X) \quad \text{(Mean Redundancy)} \label{eq:obj2}\\
-\text{minimize} \quad & f_3(X) = C(X) \quad \text{(Total Cost)} \label{eq:obj3}
-\end{align}
-
-A solution $X_1$ \textit{dominates} $X_2$ if $X_1$ is no worse in all objectives and strictly better in at least one. The \textit{Pareto-optimal front} is the set of all non-dominated solutions.
-
-\subsubsection{NSGA-II Algorithm}
-
-NSGA-II discovers the Pareto front through:
-
-\begin{enumerate}
-\item \textbf{Non-dominated Sorting}: Population is partitioned into fronts $F_1, F_2, \ldots$ where $F_1$ contains all non-dominated individuals, $F_2$ contains individuals dominated only by $F_1$, etc.
-
-\item \textbf{Crowding Distance}: Within each front, individuals are assigned a crowding distance measuring solution density. Larger distances indicate less crowded regions, promoting solution diversity along the Pareto front.
-
-\item \textbf{Selection}: Tournament selection favors individuals with better (lower) front rank and, for equal rank, larger crowding distance—balancing convergence toward Pareto front with diversity maintenance.
-
-\item \textbf{Elitism}: The best non-dominated solutions are preserved across generations, ensuring Pareto front quality monotonically improves.
-\end{enumerate}
-
-This approach provides decision-makers with a continuum of optimal trade-offs rather than a single prescribed configuration, enabling context-specific infrastructure selection based on operational requirements, budget constraints, and risk tolerance.
-
-\subsection{Computational Complexity Analysis}
-
-\textbf{MUSCAT Exhaustive Search}:
+with \(w(v)=0\) inside buildings. The network probability \(\pnet\) is computed twice: over all active sensors (cooperative layer, \(\pnet^{\mathrm{coop}}\)) and over Radar, EO, and Acoustic only (non-cooperative layer, \(\pnet^{\mathrm{nc}}\)), because RF receivers detect only targets that broadcast. Threat-weighted coverage is
 \begin{equation}
-O(\text{MUSCAT}) = O\left(\sum_{k=1}^{n} \binom{n}{k}\right) = O(2^n)
+M_{wp,\ell} = \frac{\sum_v w(v)\,\pnet^{\ell}(v)}{\sum_v w(v)}, \qquad \ell\in\{\mathrm{coop},\mathrm{nc}\}.
+\label{eq:mwp}
 \end{equation}
+For airway analysis (Fig.~\ref{fig:airways}), the sums are restricted to the voxel layer containing the airway altitude.
 
-\textbf{Our GA Approach}:
-\begin{equation}
-O(\text{GA}) = O(g \cdot p \cdot e)
-\end{equation}
-where $g$ is generations, $p$ is population size, and $e$ is evaluation complexity.
+\subsection{Phase 4: Search with NSGA-II}
 
-For $n=30$ locations:
-\begin{itemize}
-\item MUSCAT: $2^{30} \approx 10^9$ evaluations (intractable)
-\item GA: $50 \times 30 \times e = 1,500 \cdot e$ evaluations (feasible)
-\end{itemize}
+The objectives are \(M_{wp,\mathrm{coop}}\), \(M_{wp,\mathrm{noncoop}}\), and CapEx (Eqs.~\eqref{eq:fitness}--\eqref{eq:mwp}), with no scalarization weights. We search them with NSGA-II \cite{deb2002fast}, as is standard for coverage--cost placement in WSN and radar management \cite{molina2008layout,iqbal2015wsn,charlish2016radar}, implemented in DEAP \cite{deap2012}. The airport study also runs two single-layer profiles, (\(M_{wp,\mathrm{coop}}\), CapEx) and (\(M_{wp,\mathrm{noncoop}}\), CapEx); the latter excludes RF from the type set. Operators:
 
-This represents approximately 6 orders of magnitude reduction in computational requirements, enabling optimization of much larger networks.
+\textbf{Parent selection}: Crowded-comparison tournament (DEAP \texttt{selTournamentDCD}).
+
+\textbf{Crossover}: Two-point crossover on the gene list, probability 0.7.
+
+\textbf{Mutation}: Applied with probability 0.2 per offspring; each gene is perturbed with probability 0.1, and within a perturbed gene the site, type, azimuth, and activation bit change with probabilities 0.3, 0.3, 0.25, and 0.5. Genes are then reactivated if fewer than the minimum sensor count remain active.
+
+\textbf{Survival}: NSGA-II non-dominated sorting with crowding distance (\texttt{selNSGA2}).
+
+Objective vectors are evaluated in parallel across CPU cores.
+
+Budget: MUSCAT's exhaustive search grows as \(O(2^n)\) in the number of candidate sites \(n\), which rules it out for the synthetic city (221 sites, four types, up to 15 sensors). A city run uses population 32 and 18 generations, at most \(32\times19=608\) evaluations. The fronts we report are the non-dominated sets found within that budget, not certified Pareto-optimal sets; Section~\ref{sec:results_seeds} compares them with uniform random search at the same budget.
 
 

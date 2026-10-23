@@ -1,0 +1,50 @@
+{
+  "runs": [
+    {
+      "n_solutions": 32,
+      "hypervolume": 0.30504660697763075,
+      "hv_cost_ref_usd": 700000.0,
+      "max_coop": 0.9627277003760873,
+      "max_noncoop": 0.5627437736215652,
+      "cheapest_coop90_usd": 247000.0,
+      "noncoop_at_cheapest_coop90": 0.1344931717250267,
+      "cheapest_85_35_usd": 320000.0,
+      "n_feasible_85_35": 5,
+      "cheapest_90_35_usd": null,
+      "source": "paper_utm\\results\\city_dual_evaluation.json"
+    }
+  ],
+  "hv_cost_ref_usd": 700000.0,
+  "aggregate": {
+    "hypervolume": {
+      "min": 0.30504660697763075,
+      "median": 0.30504660697763075,
+      "max": 0.30504660697763075,
+      "n": 1
+    },
+    "max_coop": {
+      "min": 0.9627277003760873,
+      "median": 0.9627277003760873,
+      "max": 0.9627277003760873,
+      "n": 1
+    },
+    "max_noncoop": {
+      "min": 0.5627437736215652,
+      "median": 0.5627437736215652,
+      "max": 0.5627437736215652,
+      "n": 1
+    },
+    "cheapest_coop90_usd": {
+      "min": 247000.0,
+      "median": 247000.0,
+      "max": 247000.0,
+      "n": 1
+    },
+    "cheapest_85_35_usd": {
+      "min": 320000.0,
+      "median": 320000.0,
+      "max": 320000.0,
+      "n": 1
+    }
+  }
+}

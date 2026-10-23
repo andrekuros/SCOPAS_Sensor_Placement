@@ -65,10 +65,36 @@
     },
     {
       "budget": 320000.0,
-      "winner_coop": "RF-only",
+      "winner_coop": "Heterogeneous",
       "winner_noncoop": "Heterogeneous",
-      "hetero_wins_coop": false,
+      "hetero_wins_coop": true,
       "hetero_wins_noncoop": true
+    }
+  ],
+  "control_c_sites_winners": [
+    {
+      "budget": 31000.0,
+      "site_cost": 15000.0,
+      "winner_coop": "RF-only",
+      "winner_noncoop": "Acoustic-only"
+    },
+    {
+      "budget": 76000.0,
+      "site_cost": 15000.0,
+      "winner_coop": "RF-only",
+      "winner_noncoop": "Radar-only"
+    },
+    {
+      "budget": 150000.0,
+      "site_cost": 15000.0,
+      "winner_coop": "Heterogeneous",
+      "winner_noncoop": "Radar-only"
+    },
+    {
+      "budget": 320000.0,
+      "site_cost": 15000.0,
+      "winner_coop": "RF-only",
+      "winner_noncoop": "Heterogeneous"
     }
   ]
 }

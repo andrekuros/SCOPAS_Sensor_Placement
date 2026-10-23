@@ -1,0 +1,1054 @@
+[
+  {
+    "budget": 31000.0,
+    "site_cost": 15000.0,
+    "methods": {
+      "RF-only": {
+        "best_coop": {
+          "sites": [
+            135
+          ],
+          "types": [
+            "RF"
+          ],
+          "M_wp_coop": 0.7619790892935545,
+          "M_wp_noncoop": 0.0,
+          "cost": 30000.0
+        },
+        "best_noncoop": {
+          "sites": [
+            135
+          ],
+          "types": [
+            "RF"
+          ],
+          "M_wp_coop": 0.7619790892935545,
+          "M_wp_noncoop": 0.0,
+          "cost": 30000.0
+        },
+        "M_wp_coop": 0.7619790892935545,
+        "M_wp_noncoop": 0.0,
+        "coop_at_best_noncoop": 0.7619790892935545,
+        "noncoop_at_best_coop": 0.0,
+        "n_eval": 28,
+        "seconds": 0.013935199996922165,
+        "n_packs": 1,
+        "types_best_coop": [
+          [
+            "RF",
+            1
+          ]
+        ],
+        "types_best_noncoop": [
+          [
+            "RF",
+            1
+          ]
+        ]
+      },
+      "Acoustic-only": {
+        "best_coop": {
+          "sites": [
+            98
+          ],
+          "types": [
+            "Acoustic"
+          ],
+          "M_wp_coop": 0.015817157035904753,
+          "M_wp_noncoop": 0.015817157035904753,
+          "cost": 23000.0
+        },
+        "best_noncoop": {
+          "sites": [
+            98
+          ],
+          "types": [
+            "Acoustic"
+          ],
+          "M_wp_coop": 0.015817157035904753,
+          "M_wp_noncoop": 0.015817157035904753,
+          "cost": 23000.0
+        },
+        "M_wp_coop": 0.015817157035904753,
+        "M_wp_noncoop": 0.015817157035904753,
+        "coop_at_best_noncoop": 0.015817157035904753,
+        "noncoop_at_best_coop": 0.015817157035904753,
+        "n_eval": 28,
+        "seconds": 0.016370600002119318,
+        "n_packs": 1,
+        "types_best_coop": [
+          [
+            "Acoustic",
+            1
+          ]
+        ],
+        "types_best_noncoop": [
+          [
+            "Acoustic",
+            1
+          ]
+        ]
+      },
+      "EO-only": {
+        "M_wp_coop": null,
+        "M_wp_noncoop": null,
+        "note": "no_pack"
+      },
+      "Radar-only": {
+        "M_wp_coop": null,
+        "M_wp_noncoop": null,
+        "note": "no_pack"
+      },
+      "Heterogeneous": {
+        "best_coop": {
+          "sites": [
+            135
+          ],
+          "types": [
+            "RF"
+          ],
+          "M_wp_coop": 0.7619790892935545,
+          "M_wp_noncoop": 0.0,
+          "cost": 30000.0
+        },
+        "best_noncoop": {
+          "sites": [
+            98
+          ],
+          "types": [
+            "Acoustic"
+          ],
+          "M_wp_coop": 0.015817157035904753,
+          "M_wp_noncoop": 0.015817157035904753,
+          "cost": 23000.0
+        },
+        "M_wp_coop": 0.7619790892935545,
+        "M_wp_noncoop": 0.015817157035904753,
+        "coop_at_best_noncoop": 0.015817157035904753,
+        "noncoop_at_best_coop": 0.0,
+        "n_eval": 56,
+        "seconds": 0.023685400024987757,
+        "n_packs": 2,
+        "types_best_coop": [
+          [
+            "RF",
+            1
+          ]
+        ],
+        "types_best_noncoop": [
+          [
+            "Acoustic",
+            1
+          ]
+        ]
+      }
+    },
+    "winner_coop": "RF-only",
+    "winner_noncoop": "Acoustic-only",
+    "hetero_wins_coop": false,
+    "hetero_wins_noncoop": false
+  },
+  {
+    "budget": 76000.0,
+    "site_cost": 15000.0,
+    "methods": {
+      "RF-only": {
+        "best_coop": {
+          "sites": [
+            95,
+            135
+          ],
+          "types": [
+            "RF",
+            "RF"
+          ],
+          "M_wp_coop": 0.8933260987897489,
+          "M_wp_noncoop": 0.0,
+          "cost": 60000.0
+        },
+        "best_noncoop": {
+          "sites": [
+            95,
+            135
+          ],
+          "types": [
+            "RF",
+            "RF"
+          ],
+          "M_wp_coop": 0.8933260987897489,
+          "M_wp_noncoop": 0.0,
+          "cost": 60000.0
+        },
+        "M_wp_coop": 0.8933260987897489,
+        "M_wp_noncoop": 0.0,
+        "coop_at_best_noncoop": 0.8933260987897489,
+        "noncoop_at_best_coop": 0.0,
+        "n_eval": 160,
+        "seconds": 0.09121059998869896,
+        "n_packs": 1,
+        "types_best_coop": [
+          [
+            "RF",
+            2
+          ]
+        ],
+        "types_best_noncoop": [
+          [
+            "RF",
+            2
+          ]
+        ]
+      },
+      "Acoustic-only": {
+        "best_coop": {
+          "sites": [
+            135,
+            99,
+            156
+          ],
+          "types": [
+            "Acoustic",
+            "Acoustic",
+            "Acoustic"
+          ],
+          "M_wp_coop": 0.0388951202229087,
+          "M_wp_noncoop": 0.0388951202229087,
+          "cost": 69000.0
+        },
+        "best_noncoop": {
+          "sites": [
+            135,
+            99,
+            156
+          ],
+          "types": [
+            "Acoustic",
+            "Acoustic",
+            "Acoustic"
+          ],
+          "M_wp_coop": 0.0388951202229087,
+          "M_wp_noncoop": 0.0388951202229087,
+          "cost": 69000.0
+        },
+        "M_wp_coop": 0.0388951202229087,
+        "M_wp_noncoop": 0.0388951202229087,
+        "coop_at_best_noncoop": 0.0388951202229087,
+        "noncoop_at_best_coop": 0.0388951202229087,
+        "n_eval": 160,
+        "seconds": 0.15499349997844547,
+        "n_packs": 1,
+        "types_best_coop": [
+          [
+            "Acoustic",
+            3
+          ]
+        ],
+        "types_best_noncoop": [
+          [
+            "Acoustic",
+            3
+          ]
+        ]
+      },
+      "EO-only": {
+        "best_coop": {
+          "sites": [
+            97
+          ],
+          "types": [
+            "EO"
+          ],
+          "M_wp_coop": 0.07208527706227633,
+          "M_wp_noncoop": 0.07208527706227633,
+          "cost": 40000.0
+        },
+        "best_noncoop": {
+          "sites": [
+            97
+          ],
+          "types": [
+            "EO"
+          ],
+          "M_wp_coop": 0.07208527706227633,
+          "M_wp_noncoop": 0.07208527706227633,
+          "cost": 40000.0
+        },
+        "M_wp_coop": 0.07208527706227633,
+        "M_wp_noncoop": 0.07208527706227633,
+        "coop_at_best_noncoop": 0.07208527706227633,
+        "noncoop_at_best_coop": 0.07208527706227633,
+        "n_eval": 28,
+        "seconds": 0.014685000001918525,
+        "n_packs": 1,
+        "types_best_coop": [
+          [
+            "EO",
+            1
+          ]
+        ],
+        "types_best_noncoop": [
+          [
+            "EO",
+            1
+          ]
+        ]
+      },
+      "Radar-only": {
+        "best_coop": {
+          "sites": [
+            95
+          ],
+          "types": [
+            "Radar"
+          ],
+          "M_wp_coop": 0.13985473929256304,
+          "M_wp_noncoop": 0.13985473929256304,
+          "cost": 65000.0
+        },
+        "best_noncoop": {
+          "sites": [
+            95
+          ],
+          "types": [
+            "Radar"
+          ],
+          "M_wp_coop": 0.13985473929256304,
+          "M_wp_noncoop": 0.13985473929256304,
+          "cost": 65000.0
+        },
+        "M_wp_coop": 0.13985473929256304,
+        "M_wp_noncoop": 0.13985473929256304,
+        "coop_at_best_noncoop": 0.13985473929256304,
+        "noncoop_at_best_coop": 0.13985473929256304,
+        "n_eval": 28,
+        "seconds": 0.0166577999771107,
+        "n_packs": 1,
+        "types_best_coop": [
+          [
+            "Radar",
+            1
+          ]
+        ],
+        "types_best_noncoop": [
+          [
+            "Radar",
+            1
+          ]
+        ]
+      },
+      "Heterogeneous": {
+        "best_coop": {
+          "sites": [
+            135,
+            95
+          ],
+          "types": [
+            "RF",
+            "RF"
+          ],
+          "M_wp_coop": 0.8933260987897489,
+          "M_wp_noncoop": 0.0,
+          "cost": 60000.0
+        },
+        "best_noncoop": {
+          "sites": [
+            95
+          ],
+          "types": [
+            "Radar"
+          ],
+          "M_wp_coop": 0.13985473929256304,
+          "M_wp_noncoop": 0.13985473929256304,
+          "cost": 65000.0
+        },
+        "M_wp_coop": 0.8933260987897489,
+        "M_wp_noncoop": 0.13985473929256304,
+        "coop_at_best_noncoop": 0.13985473929256304,
+        "noncoop_at_best_coop": 0.0,
+        "n_eval": 856,
+        "seconds": 0.6247455999837257,
+        "n_packs": 5,
+        "types_best_coop": [
+          [
+            "RF",
+            2
+          ]
+        ],
+        "types_best_noncoop": [
+          [
+            "Radar",
+            1
+          ]
+        ]
+      }
+    },
+    "winner_coop": "RF-only",
+    "winner_noncoop": "Radar-only",
+    "hetero_wins_coop": false,
+    "hetero_wins_noncoop": false
+  },
+  {
+    "budget": 150000.0,
+    "site_cost": 15000.0,
+    "methods": {
+      "RF-only": {
+        "best_coop": {
+          "sites": [
+            97,
+            51,
+            135,
+            184,
+            64
+          ],
+          "types": [
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF"
+          ],
+          "M_wp_coop": 0.9526814458432941,
+          "M_wp_noncoop": 0.0,
+          "cost": 150000.0
+        },
+        "best_noncoop": {
+          "sites": [
+            97,
+            51,
+            135,
+            184,
+            64
+          ],
+          "types": [
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF"
+          ],
+          "M_wp_coop": 0.9526814458432941,
+          "M_wp_noncoop": 0.0,
+          "cost": 150000.0
+        },
+        "M_wp_coop": 0.9526814458432941,
+        "M_wp_noncoop": 0.0,
+        "coop_at_best_noncoop": 0.9526814458432941,
+        "noncoop_at_best_coop": 0.0,
+        "n_eval": 160,
+        "seconds": 0.14818740001646802,
+        "n_packs": 1,
+        "types_best_coop": [
+          [
+            "RF",
+            5
+          ]
+        ],
+        "types_best_noncoop": [
+          [
+            "RF",
+            5
+          ]
+        ]
+      },
+      "Acoustic-only": {
+        "best_coop": {
+          "sites": [
+            97,
+            99,
+            107,
+            58,
+            34,
+            137
+          ],
+          "types": [
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic"
+          ],
+          "M_wp_coop": 0.06515657212689732,
+          "M_wp_noncoop": 0.06515657212689732,
+          "cost": 138000.0
+        },
+        "best_noncoop": {
+          "sites": [
+            97,
+            99,
+            107,
+            58,
+            34,
+            137
+          ],
+          "types": [
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic"
+          ],
+          "M_wp_coop": 0.06515657212689732,
+          "M_wp_noncoop": 0.06515657212689732,
+          "cost": 138000.0
+        },
+        "M_wp_coop": 0.06515657212689732,
+        "M_wp_noncoop": 0.06515657212689732,
+        "coop_at_best_noncoop": 0.06515657212689732,
+        "noncoop_at_best_coop": 0.06515657212689732,
+        "n_eval": 160,
+        "seconds": 0.20172610000008717,
+        "n_packs": 1,
+        "types_best_coop": [
+          [
+            "Acoustic",
+            6
+          ]
+        ],
+        "types_best_noncoop": [
+          [
+            "Acoustic",
+            6
+          ]
+        ]
+      },
+      "EO-only": {
+        "best_coop": {
+          "sites": [
+            55,
+            95,
+            98
+          ],
+          "types": [
+            "EO",
+            "EO",
+            "EO"
+          ],
+          "M_wp_coop": 0.17226968819114852,
+          "M_wp_noncoop": 0.17226968819114852,
+          "cost": 120000.0
+        },
+        "best_noncoop": {
+          "sites": [
+            55,
+            95,
+            98
+          ],
+          "types": [
+            "EO",
+            "EO",
+            "EO"
+          ],
+          "M_wp_coop": 0.17226968819114852,
+          "M_wp_noncoop": 0.17226968819114852,
+          "cost": 120000.0
+        },
+        "M_wp_coop": 0.17226968819114852,
+        "M_wp_noncoop": 0.17226968819114852,
+        "coop_at_best_noncoop": 0.17226968819114852,
+        "noncoop_at_best_coop": 0.17226968819114852,
+        "n_eval": 160,
+        "seconds": 0.13225640001473948,
+        "n_packs": 1,
+        "types_best_coop": [
+          [
+            "EO",
+            3
+          ]
+        ],
+        "types_best_noncoop": [
+          [
+            "EO",
+            3
+          ]
+        ]
+      },
+      "Radar-only": {
+        "best_coop": {
+          "sites": [
+            95,
+            135
+          ],
+          "types": [
+            "Radar",
+            "Radar"
+          ],
+          "M_wp_coop": 0.2488050013523764,
+          "M_wp_noncoop": 0.2488050013523764,
+          "cost": 130000.0
+        },
+        "best_noncoop": {
+          "sites": [
+            95,
+            135
+          ],
+          "types": [
+            "Radar",
+            "Radar"
+          ],
+          "M_wp_coop": 0.2488050013523764,
+          "M_wp_noncoop": 0.2488050013523764,
+          "cost": 130000.0
+        },
+        "M_wp_coop": 0.2488050013523764,
+        "M_wp_noncoop": 0.2488050013523764,
+        "coop_at_best_noncoop": 0.2488050013523764,
+        "noncoop_at_best_coop": 0.2488050013523764,
+        "n_eval": 160,
+        "seconds": 0.1128976000181865,
+        "n_packs": 1,
+        "types_best_coop": [
+          [
+            "Radar",
+            2
+          ]
+        ],
+        "types_best_noncoop": [
+          [
+            "Radar",
+            2
+          ]
+        ]
+      },
+      "Heterogeneous": {
+        "best_coop": {
+          "sites": [
+            184,
+            135,
+            150,
+            98,
+            179
+          ],
+          "types": [
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF"
+          ],
+          "M_wp_coop": 0.9542438045620437,
+          "M_wp_noncoop": 0.0,
+          "cost": 150000.0
+        },
+        "best_noncoop": {
+          "sites": [
+            159,
+            97
+          ],
+          "types": [
+            "Radar",
+            "Radar"
+          ],
+          "M_wp_coop": 0.24768947254147147,
+          "M_wp_noncoop": 0.24768947254147147,
+          "cost": 130000.0
+        },
+        "M_wp_coop": 0.9542438045620437,
+        "M_wp_noncoop": 0.24768947254147147,
+        "coop_at_best_noncoop": 0.24768947254147147,
+        "noncoop_at_best_coop": 0.0,
+        "n_eval": 1280,
+        "seconds": 1.311809299979359,
+        "n_packs": 5,
+        "types_best_coop": [
+          [
+            "RF",
+            5
+          ]
+        ],
+        "types_best_noncoop": [
+          [
+            "Radar",
+            2
+          ]
+        ]
+      }
+    },
+    "winner_coop": "Heterogeneous",
+    "winner_noncoop": "Radar-only",
+    "hetero_wins_coop": true,
+    "hetero_wins_noncoop": false
+  },
+  {
+    "budget": 320000.0,
+    "site_cost": 15000.0,
+    "methods": {
+      "RF-only": {
+        "best_coop": {
+          "sites": [
+            179,
+            186,
+            135,
+            45,
+            175,
+            194,
+            64,
+            150,
+            103,
+            95
+          ],
+          "types": [
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF"
+          ],
+          "M_wp_coop": 0.9843102187841756,
+          "M_wp_noncoop": 0.0,
+          "cost": 300000.0
+        },
+        "best_noncoop": {
+          "sites": [
+            179,
+            186,
+            135,
+            45,
+            175,
+            194,
+            64,
+            150,
+            103,
+            95
+          ],
+          "types": [
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF"
+          ],
+          "M_wp_coop": 0.9843102187841756,
+          "M_wp_noncoop": 0.0,
+          "cost": 300000.0
+        },
+        "M_wp_coop": 0.9843102187841756,
+        "M_wp_noncoop": 0.0,
+        "coop_at_best_noncoop": 0.9843102187841756,
+        "noncoop_at_best_coop": 0.0,
+        "n_eval": 160,
+        "seconds": 0.23561859998153523,
+        "n_packs": 1,
+        "types_best_coop": [
+          [
+            "RF",
+            10
+          ]
+        ],
+        "types_best_noncoop": [
+          [
+            "RF",
+            10
+          ]
+        ]
+      },
+      "Acoustic-only": {
+        "best_coop": {
+          "sites": [
+            184,
+            51,
+            103,
+            99,
+            135,
+            34,
+            22,
+            95,
+            179,
+            159,
+            97,
+            63,
+            98
+          ],
+          "types": [
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic"
+          ],
+          "M_wp_coop": 0.11925009394816341,
+          "M_wp_noncoop": 0.11925009394816341,
+          "cost": 299000.0
+        },
+        "best_noncoop": {
+          "sites": [
+            184,
+            51,
+            103,
+            99,
+            135,
+            34,
+            22,
+            95,
+            179,
+            159,
+            97,
+            63,
+            98
+          ],
+          "types": [
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic",
+            "Acoustic"
+          ],
+          "M_wp_coop": 0.11925009394816341,
+          "M_wp_noncoop": 0.11925009394816341,
+          "cost": 299000.0
+        },
+        "M_wp_coop": 0.11925009394816341,
+        "M_wp_noncoop": 0.11925009394816341,
+        "coop_at_best_noncoop": 0.11925009394816341,
+        "noncoop_at_best_coop": 0.11925009394816341,
+        "n_eval": 160,
+        "seconds": 0.4080932000069879,
+        "n_packs": 1,
+        "types_best_coop": [
+          [
+            "Acoustic",
+            13
+          ]
+        ],
+        "types_best_noncoop": [
+          [
+            "Acoustic",
+            13
+          ]
+        ]
+      },
+      "EO-only": {
+        "best_coop": {
+          "sites": [
+            97,
+            137,
+            103,
+            95,
+            135,
+            99,
+            64,
+            34
+          ],
+          "types": [
+            "EO",
+            "EO",
+            "EO",
+            "EO",
+            "EO",
+            "EO",
+            "EO",
+            "EO"
+          ],
+          "M_wp_coop": 0.3290124016700142,
+          "M_wp_noncoop": 0.3290124016700142,
+          "cost": 320000.0
+        },
+        "best_noncoop": {
+          "sites": [
+            97,
+            137,
+            103,
+            95,
+            135,
+            99,
+            64,
+            34
+          ],
+          "types": [
+            "EO",
+            "EO",
+            "EO",
+            "EO",
+            "EO",
+            "EO",
+            "EO",
+            "EO"
+          ],
+          "M_wp_coop": 0.3290124016700142,
+          "M_wp_noncoop": 0.3290124016700142,
+          "cost": 320000.0
+        },
+        "M_wp_coop": 0.3290124016700142,
+        "M_wp_noncoop": 0.3290124016700142,
+        "coop_at_best_noncoop": 0.3290124016700142,
+        "noncoop_at_best_coop": 0.3290124016700142,
+        "n_eval": 160,
+        "seconds": 0.24737999998615123,
+        "n_packs": 1,
+        "types_best_coop": [
+          [
+            "EO",
+            8
+          ]
+        ],
+        "types_best_noncoop": [
+          [
+            "EO",
+            8
+          ]
+        ]
+      },
+      "Radar-only": {
+        "best_coop": {
+          "sites": [
+            135,
+            99,
+            156,
+            97
+          ],
+          "types": [
+            "Radar",
+            "Radar",
+            "Radar",
+            "Radar"
+          ],
+          "M_wp_coop": 0.3566160534114074,
+          "M_wp_noncoop": 0.3566160534114074,
+          "cost": 260000.0
+        },
+        "best_noncoop": {
+          "sites": [
+            135,
+            99,
+            156,
+            97
+          ],
+          "types": [
+            "Radar",
+            "Radar",
+            "Radar",
+            "Radar"
+          ],
+          "M_wp_coop": 0.3566160534114074,
+          "M_wp_noncoop": 0.3566160534114074,
+          "cost": 260000.0
+        },
+        "M_wp_coop": 0.3566160534114074,
+        "M_wp_noncoop": 0.3566160534114074,
+        "coop_at_best_noncoop": 0.3566160534114074,
+        "noncoop_at_best_coop": 0.3566160534114074,
+        "n_eval": 160,
+        "seconds": 0.16270849999273196,
+        "n_packs": 1,
+        "types_best_coop": [
+          [
+            "Radar",
+            4
+          ]
+        ],
+        "types_best_noncoop": [
+          [
+            "Radar",
+            4
+          ]
+        ]
+      },
+      "Heterogeneous": {
+        "best_coop": {
+          "sites": [
+            179,
+            159,
+            186,
+            95,
+            97,
+            150,
+            64,
+            34,
+            55,
+            156
+          ],
+          "types": [
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF"
+          ],
+          "M_wp_coop": 0.9835063235810211,
+          "M_wp_noncoop": 0.0,
+          "cost": 300000.0
+        },
+        "best_noncoop": {
+          "sites": [
+            137,
+            135,
+            103,
+            97,
+            211,
+            99
+          ],
+          "types": [
+            "RF",
+            "Radar",
+            "Radar",
+            "Radar",
+            "RF",
+            "Radar"
+          ],
+          "M_wp_coop": 0.7038892745648944,
+          "M_wp_noncoop": 0.390414358068512,
+          "cost": 320000.0
+        },
+        "M_wp_coop": 0.9835063235810211,
+        "M_wp_noncoop": 0.390414358068512,
+        "coop_at_best_noncoop": 0.7038892745648944,
+        "noncoop_at_best_coop": 0.0,
+        "n_eval": 22240,
+        "seconds": 34.74745360002271,
+        "n_packs": 10,
+        "types_best_coop": [
+          [
+            "RF",
+            10
+          ]
+        ],
+        "types_best_noncoop": [
+          [
+            "Radar",
+            4
+          ],
+          [
+            "RF",
+            2
+          ]
+        ]
+      }
+    },
+    "winner_coop": "RF-only",
+    "winner_noncoop": "Heterogeneous",
+    "hetero_wins_coop": false,
+    "hetero_wins_noncoop": true
+  }
+]

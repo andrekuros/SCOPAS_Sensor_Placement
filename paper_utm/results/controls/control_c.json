@@ -1,6 +1,7 @@
 [
   {
     "budget": 31000.0,
+    "site_cost": 0.0,
     "methods": {
       "RF-only": {
         "best_coop": {
@@ -34,7 +35,7 @@
         "coop_at_best_noncoop": 0.8933260987897489,
         "noncoop_at_best_coop": 0.0,
         "n_eval": 160,
-        "seconds": 0.009246095999969839,
+        "seconds": 0.07797290000598878,
         "n_packs": 1,
         "types_best_coop": [
           [
@@ -85,7 +86,7 @@
         "coop_at_best_noncoop": 0.0388951202229087,
         "noncoop_at_best_coop": 0.0388951202229087,
         "n_eval": 160,
-        "seconds": 0.014587459000040326,
+        "seconds": 0.13777010000194423,
         "n_packs": 1,
         "types_best_coop": [
           [
@@ -128,7 +129,7 @@
         "coop_at_best_noncoop": 0.07208527706227633,
         "noncoop_at_best_coop": 0.07208527706227633,
         "n_eval": 28,
-        "seconds": 0.0016649499998493411,
+        "seconds": 0.013017699995543808,
         "n_packs": 1,
         "types_best_coop": [
           [
@@ -151,58 +152,44 @@
       "Heterogeneous": {
         "best_coop": {
           "sites": [
-            34,
             135,
-            98
+            95
           ],
           "types": [
-            "Acoustic",
             "RF",
-            "Acoustic"
+            "RF"
           ],
-          "M_wp_coop": 0.7679805237043212,
-          "M_wp_noncoop": 0.02334678079608439,
-          "cost": 31000.0
+          "M_wp_coop": 0.8933260987897489,
+          "M_wp_noncoop": 0.0,
+          "cost": 30000.0
         },
         "best_noncoop": {
           "sites": [
-            98,
-            194,
-            99
+            97
           ],
           "types": [
-            "Acoustic",
-            "RF",
-            "Acoustic"
+            "EO"
           ],
-          "M_wp_coop": 0.23159589914743514,
-          "M_wp_noncoop": 0.030857540216327927,
-          "cost": 31000.0
+          "M_wp_coop": 0.07208527706227633,
+          "M_wp_noncoop": 0.07208527706227633,
+          "cost": 25000.0
         },
-        "M_wp_coop": 0.7679805237043212,
-        "M_wp_noncoop": 0.030857540216327927,
-        "coop_at_best_noncoop": 0.23159589914743514,
-        "noncoop_at_best_coop": 0.02334678079608439,
-        "n_eval": 480,
-        "seconds": 0.04042390299991894,
-        "n_packs": 1,
+        "M_wp_coop": 0.8933260987897489,
+        "M_wp_noncoop": 0.07208527706227633,
+        "coop_at_best_noncoop": 0.07208527706227633,
+        "noncoop_at_best_coop": 0.0,
+        "n_eval": 828,
+        "seconds": 0.6286003999994136,
+        "n_packs": 4,
         "types_best_coop": [
           [
-            "Acoustic",
-            2
-          ],
-          [
             "RF",
-            1
+            2
           ]
         ],
         "types_best_noncoop": [
           [
-            "Acoustic",
-            2
-          ],
-          [
-            "RF",
+            "EO",
             1
           ]
         ]
@@ -215,6 +202,7 @@
   },
   {
     "budget": 76000.0,
+    "site_cost": 0.0,
     "methods": {
       "RF-only": {
         "best_coop": {
@@ -260,7 +248,7 @@
         "coop_at_best_noncoop": 0.9526814458432941,
         "noncoop_at_best_coop": 0.0,
         "n_eval": 160,
-        "seconds": 0.01517398900000444,
+        "seconds": 0.16784919999190606,
         "n_packs": 1,
         "types_best_coop": [
           [
@@ -335,7 +323,7 @@
         "coop_at_best_noncoop": 0.0907047292301505,
         "noncoop_at_best_coop": 0.0907047292301505,
         "n_eval": 160,
-        "seconds": 0.030232990000058635,
+        "seconds": 0.2968671999988146,
         "n_packs": 1,
         "types_best_coop": [
           [
@@ -386,7 +374,7 @@
         "coop_at_best_noncoop": 0.17226968819114852,
         "noncoop_at_best_coop": 0.17226968819114852,
         "n_eval": 160,
-        "seconds": 0.014561398000068948,
+        "seconds": 0.13281199999619275,
         "n_packs": 1,
         "types_best_coop": [
           [
@@ -409,8 +397,8 @@
           "types": [
             "Radar"
           ],
-          "M_wp_coop": 0.13985473929256306,
-          "M_wp_noncoop": 0.13985473929256306,
+          "M_wp_coop": 0.13985473929256304,
+          "M_wp_noncoop": 0.13985473929256304,
           "cost": 50000.0
         },
         "best_noncoop": {
@@ -420,16 +408,16 @@
           "types": [
             "Radar"
           ],
-          "M_wp_coop": 0.13985473929256306,
-          "M_wp_noncoop": 0.13985473929256306,
+          "M_wp_coop": 0.13985473929256304,
+          "M_wp_noncoop": 0.13985473929256304,
           "cost": 50000.0
         },
-        "M_wp_coop": 0.13985473929256306,
-        "M_wp_noncoop": 0.13985473929256306,
-        "coop_at_best_noncoop": 0.13985473929256306,
-        "noncoop_at_best_coop": 0.13985473929256306,
+        "M_wp_coop": 0.13985473929256304,
+        "M_wp_noncoop": 0.13985473929256304,
+        "coop_at_best_noncoop": 0.13985473929256304,
+        "noncoop_at_best_coop": 0.13985473929256304,
         "n_eval": 28,
-        "seconds": 0.0016092520002075617,
+        "seconds": 0.017820000008214265,
         "n_packs": 1,
         "types_best_coop": [
           [
@@ -447,71 +435,55 @@
       "Heterogeneous": {
         "best_coop": {
           "sites": [
-            22,
-            184,
-            95,
             51,
-            179,
-            64
+            137,
+            95,
+            150,
+            179
           ],
           "types": [
-            "Acoustic",
             "RF",
             "RF",
-            "Acoustic",
+            "RF",
             "RF",
             "RF"
           ],
-          "M_wp_coop": 0.9463508559447891,
-          "M_wp_noncoop": 0.005263550010291044,
-          "cost": 76000.0
+          "M_wp_coop": 0.9512415886099261,
+          "M_wp_noncoop": 0.0,
+          "cost": 75000.0
         },
         "best_noncoop": {
           "sites": [
             135,
-            98,
-            184,
-            95,
-            45,
-            99
+            97,
+            95
           ],
           "types": [
-            "RF",
-            "Acoustic",
-            "RF",
-            "RF",
-            "RF",
-            "Acoustic"
+            "EO",
+            "EO",
+            "EO"
           ],
-          "M_wp_coop": 0.9239902467072741,
-          "M_wp_noncoop": 0.030857540216327927,
-          "cost": 76000.0
+          "M_wp_coop": 0.17177015949066302,
+          "M_wp_noncoop": 0.17177015949066302,
+          "cost": 75000.0
         },
-        "M_wp_coop": 0.9463508559447891,
-        "M_wp_noncoop": 0.030857540216327927,
-        "coop_at_best_noncoop": 0.9239902467072741,
-        "noncoop_at_best_coop": 0.005263550010291044,
-        "n_eval": 2400,
-        "seconds": 0.2920542550000391,
-        "n_packs": 1,
+        "M_wp_coop": 0.9512415886099261,
+        "M_wp_noncoop": 0.17177015949066302,
+        "coop_at_best_noncoop": 0.17177015949066302,
+        "noncoop_at_best_coop": 0.0,
+        "n_eval": 2908,
+        "seconds": 3.5514124000037555,
+        "n_packs": 5,
         "types_best_coop": [
           [
             "RF",
-            4
-          ],
-          [
-            "Acoustic",
-            2
+            5
           ]
         ],
         "types_best_noncoop": [
           [
-            "RF",
-            4
-          ],
-          [
-            "Acoustic",
-            2
+            "EO",
+            3
           ]
         ]
       }
@@ -523,6 +495,7 @@
   },
   {
     "budget": 150000.0,
+    "site_cost": 0.0,
     "methods": {
       "RF-only": {
         "best_coop": {
@@ -588,7 +561,7 @@
         "coop_at_best_noncoop": 0.9843102187841756,
         "noncoop_at_best_coop": 0.0,
         "n_eval": 160,
-        "seconds": 0.02556236700002046,
+        "seconds": 0.2345694999967236,
         "n_packs": 1,
         "types_best_coop": [
           [
@@ -691,7 +664,7 @@
         "coop_at_best_noncoop": 0.13418872645032695,
         "noncoop_at_best_coop": 0.13418872645032695,
         "n_eval": 160,
-        "seconds": 0.04794596800002182,
+        "seconds": 0.43029059999389574,
         "n_packs": 1,
         "types_best_coop": [
           [
@@ -754,7 +727,7 @@
         "coop_at_best_noncoop": 0.23696726070643168,
         "noncoop_at_best_coop": 0.23696726070643168,
         "n_eval": 160,
-        "seconds": 0.02227525299986155,
+        "seconds": 0.1967117999738548,
         "n_packs": 1,
         "types_best_coop": [
           [
@@ -805,7 +778,7 @@
         "coop_at_best_noncoop": 0.337119093777504,
         "noncoop_at_best_coop": 0.337119093777504,
         "n_eval": 160,
-        "seconds": 0.014366773000119792,
+        "seconds": 0.12178440002026036,
         "n_packs": 1,
         "types_best_coop": [
           [
@@ -846,7 +819,7 @@
             "RF",
             "RF"
           ],
-          "M_wp_coop": 0.9840970238203652,
+          "M_wp_coop": 0.984097023820365,
           "M_wp_noncoop": 0.0,
           "cost": 150000.0
         },
@@ -865,13 +838,13 @@
           "M_wp_noncoop": 0.337119093777504,
           "cost": 150000.0
         },
-        "M_wp_coop": 0.9840970238203652,
+        "M_wp_coop": 0.984097023820365,
         "M_wp_noncoop": 0.337119093777504,
         "coop_at_best_noncoop": 0.337119093777504,
         "noncoop_at_best_coop": 0.0,
-        "n_eval": 17600,
-        "seconds": 2.8375186060000033,
-        "n_packs": 9,
+        "n_eval": 17760,
+        "seconds": 20.394062700012,
+        "n_packs": 10,
         "types_best_coop": [
           [
             "RF",
@@ -893,6 +866,7 @@
   },
   {
     "budget": 320000.0,
+    "site_cost": 0.0,
     "methods": {
       "RF-only": {
         "best_coop": {
@@ -982,7 +956,7 @@
         "coop_at_best_noncoop": 0.9955426552301803,
         "noncoop_at_best_coop": 0.0,
         "n_eval": 160,
-        "seconds": 0.03761025900007553,
+        "seconds": 0.20465999998850748,
         "n_packs": 1,
         "types_best_coop": [
           [
@@ -1085,7 +1059,7 @@
         "coop_at_best_noncoop": 0.13418872645032695,
         "noncoop_at_best_coop": 0.13418872645032695,
         "n_eval": 160,
-        "seconds": 0.04816749099995832,
+        "seconds": 0.24613699998008087,
         "n_packs": 1,
         "types_best_coop": [
           [
@@ -1172,7 +1146,7 @@
         "coop_at_best_noncoop": 0.39515295987780524,
         "noncoop_at_best_coop": 0.39515295987780524,
         "n_eval": 160,
-        "seconds": 0.03756331699992188,
+        "seconds": 0.19118819999857806,
         "n_packs": 1,
         "types_best_coop": [
           [
@@ -1235,7 +1209,7 @@
         "coop_at_best_noncoop": 0.43794443895327745,
         "noncoop_at_best_coop": 0.43794443895327745,
         "n_eval": 160,
-        "seconds": 0.02207241399992199,
+        "seconds": 0.11258270000689663,
         "n_packs": 1,
         "types_best_coop": [
           [
@@ -1253,18 +1227,22 @@
       "Heterogeneous": {
         "best_coop": {
           "sites": [
+            184,
+            179,
+            97,
             95,
             156,
-            184,
-            150,
-            175,
-            64,
-            97,
-            58,
-            179,
-            63,
+            153,
             135,
-            211
+            159,
+            63,
+            45,
+            51,
+            103,
+            150,
+            55,
+            211,
+            186
           ],
           "types": [
             "RF",
@@ -1273,16 +1251,20 @@
             "RF",
             "RF",
             "RF",
-            "Radar",
-            "Radar",
             "RF",
-            "Radar",
             "RF",
-            "Radar"
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF",
+            "RF"
           ],
-          "M_wp_coop": 0.9868508516557079,
-          "M_wp_noncoop": 0.22623186977632806,
-          "cost": 320000.0
+          "M_wp_coop": 0.9963938446024291,
+          "M_wp_noncoop": 0.0,
+          "cost": 240000.0
         },
         "best_noncoop": {
           "sites": [
@@ -1314,24 +1296,20 @@
             "Radar"
           ],
           "M_wp_coop": 0.8262837110091132,
-          "M_wp_noncoop": 0.47473927885872585,
+          "M_wp_noncoop": 0.47473927885872574,
           "cost": 320000.0
         },
-        "M_wp_coop": 0.9868508516557079,
-        "M_wp_noncoop": 0.47473927885872585,
+        "M_wp_coop": 0.9963938446024291,
+        "M_wp_noncoop": 0.47473927885872574,
         "coop_at_best_noncoop": 0.8262837110091132,
-        "noncoop_at_best_coop": 0.22623186977632806,
-        "n_eval": 23040,
-        "seconds": 4.708164518999865,
-        "n_packs": 6,
+        "noncoop_at_best_coop": 0.0,
+        "n_eval": 23680,
+        "seconds": 36.944119599997066,
+        "n_packs": 10,
         "types_best_coop": [
           [
             "RF",
-            8
-          ],
-          [
-            "Radar",
-            4
+            16
           ]
         ],
         "types_best_noncoop": [
@@ -1350,9 +1328,9 @@
         ]
       }
     },
-    "winner_coop": "RF-only",
+    "winner_coop": "Heterogeneous",
     "winner_noncoop": "Heterogeneous",
-    "hetero_wins_coop": false,
+    "hetero_wins_coop": true,
     "hetero_wins_noncoop": true
   }
 ]

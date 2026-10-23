@@ -1,7 +1,7 @@
-% SCOPAS dual-layer revision of the UTM / MUSCAT sensor-placement paper
-% Target venue: IEEE/AIAA DASC (IEEEtran)
+% SCOPAS dual-layer GBSS paper
+% Target venue: IEEE Sensors Journal (IEEEtran journal)
 
-\documentclass[conference]{IEEEtran}
+\documentclass[journal]{IEEEtran}
 
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
@@ -22,41 +22,34 @@
 
 \begin{document}
 
-\title{Dual-Layer Multi-Objective Sensor Placement for Urban BVLOS Surveillance}
+\title{Cooperative and Non-Cooperative Coverage Costs for Urban BVLOS Surveillance}
 
-\author{
-\IEEEauthorblockN{Your Name\IEEEauthorrefmark{1}, Co-Author Name\IEEEauthorrefmark{2}}
-\IEEEauthorblockA{\IEEEauthorrefmark{1}Your Institution, Department\\
-City, Country\\
-Email: your.email@institution.edu}
-\IEEEauthorblockA{\IEEEauthorrefmark{2}Co-Author Institution\\
-Email: coauthor@institution.edu}
-}
+\author{Pedro~Kukulka~de~Albuquerque and Andr\'{e}~R.~Kuroswiski
+\thanks{P.~Kukulka~de~Albuquerque is with the Aeronautics Institute of Technology (ITA), S\~{a}o Jos\'{e} dos Campos, Brazil, and with the Institute for Advanced Studies (IEAv), Department of Aerospace Science and Technology (DCTA) (e-mail: pedrokuk@ita.br). A.~R.~Kuroswiski is with ITA.}}
+
+\markboth{IEEE Sensors Journal}{Albuquerque and Kuroswiski: Cooperative and Non-Cooperative Coverage Costs for Urban BVLOS}
 
 \maketitle
 
 \begin{abstract}
-Urban Beyond Visual Line of Sight (BVLOS) operations require Ground-Based Surveillance Systems (GBSS) that separately account for \emph{cooperative} traffic (e.g., Remote~ID / RF) and \emph{non-cooperative} dark targets (Radar, EO, Acoustic). Collapsing both into a single coverage score systematically understates dark-target risk. This paper revisits city-scale sensor placement with the SCOPAS dual-layer framework: multi-objective NSGA-II optimizing threat-weighted \(M_{wp,coop}\), \(M_{wp,noncoop}\), and CapEx under deterministic 3D LoS occlusion on OSM geometry, with Acoustic as a low-cost non-cooperative modality and explicit planning floors (e.g., \(0.90/0.35\)).
-
-On a 1\,km$\times$1\,km synthetic city, a dual-layer front of 32 solutions spans cooperative coverage \(0.07\)--\(0.96\) and non-cooperative coverage \(0.00\)--\(0.56\). Cooperative \(\geq90\%\) is reachable near \$247k while non-cooperative coverage stays near \(0.13\); joint floors near \(0.85/0.35\) cost about \$320k. Airport split fronts and a Paulista lite case reinforce the same asymmetry. Three strengthening controls close prior claim gaps under the \emph{same} ray-tracer: (A)~on enumerable crops \(n\in\{8,10,12\}\), a fixed-$k$ GA matches oracle \(M_c\) within \(0.0\)--\(0.3\)\,pp; (B)~at matched CapEx, RF-only wins lean/mid classic \(M_c\); (C)~dual-layer CapEx ablation shows RF saturates \(M_{wp,coop}\) with zero noncoop, while heterogeneous mixes win \(M_{wp,noncoop}\) at \$320k (\(47.5\%\) with companion coop \(83\%\)). Heterogeneity is required for joint dark-target floors, not for lean classic coverage. We do \emph{not} claim city-scale optimality gaps. Code: \url{https://github.com/andrekuros/SCOPAS_Sensor_Placement}.
+Ground-based surveillance for urban Beyond Visual Line of Sight (BVLOS) operations must cover two target classes: cooperative traffic, detectable by Remote~ID/RF receivers, and non-cooperative dark targets, detectable only by Radar, electro-optical (EO), or acoustic sensors. We measure how the two coverage layers respond to capital expenditure (CapEx) when both are evaluated under the same ray-traced line-of-sight model on OpenStreetMap (OSM) buildings. Threat-weighted cooperative and non-cooperative coverage are kept as separate objectives against CapEx and searched with NSGA-II. On a 1\,km$\times$1\,km synthetic city, cooperative coverage exceeds \(0.96\) in every run, whereas the best non-cooperative coverage is \(0.41\)--\(0.51\) across three seeds; the joint floor \(0.85/0.35\) is met in two of three seeds, at \$383k and \$600k. Uniform random search with the same 608 evaluations reaches the same hypervolume and the same asymmetry, so the fronts are reachable trade-offs, not optimal designs. On a 30\,m Avenida Paulista corridor with 6,389 OSM buildings, five RF receivers reach \(0.93\) cooperative coverage for \$150k, but the best non-cooperative coverage is \(0.22\). The same stored city plans cover \(39\)--\(52\%\) of the threat-weighted 20\,m airway cooperatively, against \(92\)--\(99\%\) at 45 and 65\,m. Matched-CapEx ablations under the same ray-tracer show that RF alone saturates cooperative coverage with zero non-cooperative coverage, and that mixed Radar/EO/Acoustic/RF sets give the best non-cooperative coverage only at \$320k (\(47.5\%\) with hardware-only budgets, \(39.0\%\) with \$15k per site). A single fused coverage score therefore overstates dark-target protection.
 \end{abstract}
 
 \begin{IEEEkeywords}
-Beyond Visual Line of Sight (BVLOS), Urban Air Mobility (UAM), Ground-Based Surveillance Systems (GBSS), Dual-layer sensing, Counter-UAS, Multi-sensor optimization, NSGA-II, Acoustic sensing, OpenStreetMap
+Beyond Visual Line of Sight (BVLOS), Ground-Based Surveillance Systems (GBSS), dual-layer sensing, capital expenditure (CapEx), OpenStreetMap, line of sight, Counter-UAS, acoustic sensing
 \end{IEEEkeywords}
 
 \input{sections/01_introduction}
 \input{sections/02_related_work}
 \input{sections/03_problem_formulation}
 \input{sections/04_methodology}
-\input{sections/05_implementation}
 \input{sections/06_experimental_setup}
 \input{sections/07_results}
 \input{sections/08_discussion}
 \input{sections/09_conclusion}
 
 \section*{Acknowledgments}
-Author affiliations and funding sources will be completed for the camera-ready version. Open-source implementation: \url{https://github.com/andrekuros/SCOPAS_Sensor_Placement}.
+[Authors: state funding sources and grant numbers here before submission.]
 
 \bibliographystyle{IEEEtran}
 \bibliography{references/references}

@@ -36,10 +36,26 @@ def main():
         default="",
         help="Optional suffix appended to output.run_id for side-by-side experiment variants.",
     )
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=None,
+        help="Seed Python/NumPy RNGs; appends _seed{N} to run_id and checkpoint dir.",
+    )
     args = parser.parse_args()
 
     base_dir = Path.cwd()
     config = load_config(args.config)
+    if args.seed is not None:
+        import random
+        import numpy as np
+        random.seed(args.seed)
+        np.random.seed(args.seed)
+        args.run_id_suffix = "_".join(s for s in (args.run_id_suffix, f"seed{args.seed}") if s)
+        ck = config.get("checkpoint") or {}
+        if ck.get("dir"):
+            ck["dir"] = f"{ck['dir']}_seed{args.seed}"
+        config["seed"] = args.seed
     if "optimization" not in config:
         config["optimization"] = {}
     if args.objective_profile != "as_config":

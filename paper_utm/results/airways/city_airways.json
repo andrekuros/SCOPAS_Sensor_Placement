@@ -1,0 +1,127 @@
+{
+  "config": "configs\\paper_rerun_city_dual.json",
+  "front": "paper_utm\\results\\city_dual_evaluation.json",
+  "resolution_m": 30.0,
+  "airways_m": [
+    20.0,
+    45.0,
+    65.0
+  ],
+  "solutions": {
+    "cheap_coop": {
+      "cost_usd": 83000.0,
+      "mix": {
+        "RF": 2,
+        "Acoustic": 1
+      },
+      "M_wp_coop_front": 0.8458097460193481,
+      "M_wp_noncoop_front": 0.002928855919778785,
+      "per_airway": {
+        "20m": {
+          "layer_index": 0,
+          "voxel_center_z_m": 15.0,
+          "free_voxels": 737,
+          "M_wp_coop": 0.38468081334025694,
+          "M_wp_noncoop": 0.0026552108163836537,
+          "Mc_coop_uniform": 0.35549525101763907,
+          "Mc_noncoop_uniform": 0.0
+        },
+        "45m": {
+          "layer_index": 1,
+          "voxel_center_z_m": 45.0,
+          "free_voxels": 1035,
+          "M_wp_coop": 0.9226422872940784,
+          "M_wp_noncoop": 0.0033692285521524246,
+          "Mc_coop_uniform": 0.8579710144927536,
+          "Mc_noncoop_uniform": 0.0
+        },
+        "65m": {
+          "layer_index": 2,
+          "voxel_center_z_m": 75.0,
+          "free_voxels": 1089,
+          "M_wp_coop": 0.9869898521847207,
+          "M_wp_noncoop": 0.003017409921365635,
+          "Mc_coop_uniform": 1.0,
+          "Mc_noncoop_uniform": 0.0
+        }
+      }
+    },
+    "joint_85_35": {
+      "cost_usd": 320000.0,
+      "mix": {
+        "Radar": 4,
+        "RF": 2
+      },
+      "M_wp_coop_front": 0.8841276701377077,
+      "M_wp_noncoop_front": 0.35628589612315426,
+      "per_airway": {
+        "20m": {
+          "layer_index": 0,
+          "voxel_center_z_m": 15.0,
+          "free_voxels": 737,
+          "M_wp_coop": 0.5217294199500587,
+          "M_wp_noncoop": 0.15260145634216665,
+          "Mc_coop_uniform": 0.383989145183175,
+          "Mc_noncoop_uniform": 0.04341926729986431
+        },
+        "45m": {
+          "layer_index": 1,
+          "voxel_center_z_m": 45.0,
+          "free_voxels": 1035,
+          "M_wp_coop": 0.9535970339725153,
+          "M_wp_noncoop": 0.4713227888322212,
+          "Mc_coop_uniform": 0.9014492753623189,
+          "Mc_noncoop_uniform": 0.22318840579710145
+        },
+        "65m": {
+          "layer_index": 2,
+          "voxel_center_z_m": 75.0,
+          "free_voxels": 1089,
+          "M_wp_coop": 0.9897283296888327,
+          "M_wp_noncoop": 0.4535519108759342,
+          "Mc_coop_uniform": 0.9944903581267218,
+          "Mc_noncoop_uniform": 0.20018365472910926
+        }
+      }
+    },
+    "best_noncoop": {
+      "cost_usd": 565000.0,
+      "mix": {
+        "Radar": 7,
+        "EO": 2,
+        "RF": 1
+      },
+      "M_wp_coop_front": 0.8562135180806778,
+      "M_wp_noncoop_front": 0.5627437736215652,
+      "per_airway": {
+        "20m": {
+          "layer_index": 0,
+          "voxel_center_z_m": 15.0,
+          "free_voxels": 737,
+          "M_wp_coop": 0.5000771047005863,
+          "M_wp_noncoop": 0.3525181495137665,
+          "Mc_coop_uniform": 0.27544097693351427,
+          "Mc_noncoop_uniform": 0.11261872455902307
+        },
+        "45m": {
+          "layer_index": 1,
+          "voxel_center_z_m": 45.0,
+          "free_voxels": 1035,
+          "M_wp_coop": 0.935088217269207,
+          "M_wp_noncoop": 0.7198676589067967,
+          "Mc_coop_uniform": 0.8705314009661835,
+          "Mc_noncoop_uniform": 0.39420289855072466
+        },
+        "65m": {
+          "layer_index": 2,
+          "voxel_center_z_m": 75.0,
+          "free_voxels": 1089,
+          "M_wp_coop": 0.9640369918273262,
+          "M_wp_noncoop": 0.6563261091891915,
+          "Mc_coop_uniform": 0.9733700642791552,
+          "Mc_noncoop_uniform": 0.3287419651056015
+        }
+      }
+    }
+  }
+}

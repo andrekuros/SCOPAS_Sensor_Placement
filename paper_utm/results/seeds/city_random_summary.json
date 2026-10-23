@@ -1,0 +1,76 @@
+{
+  "runs": [
+    {
+      "n_solutions": 90,
+      "hypervolume": 0.250634782634862,
+      "hv_cost_ref_usd": 700000.0,
+      "max_coop": 0.9576284078734257,
+      "max_noncoop": 0.49979880204804744,
+      "cheapest_coop90_usd": 120000.0,
+      "noncoop_at_cheapest_coop90": 0.0,
+      "cheapest_85_35_usd": 488000.0,
+      "n_feasible_85_35": 10,
+      "cheapest_90_35_usd": 500000.0,
+      "source": "results\\paper_rerun_city_dual\\random_seed0\\evaluation_results.json"
+    },
+    {
+      "n_solutions": 101,
+      "hypervolume": 0.25082751053298075,
+      "hv_cost_ref_usd": 700000.0,
+      "max_coop": 0.9633979279833158,
+      "max_noncoop": 0.46484221816972504,
+      "cheapest_coop90_usd": 130000.0,
+      "noncoop_at_cheapest_coop90": 0.050041273846593744,
+      "cheapest_85_35_usd": 468000.0,
+      "n_feasible_85_35": 8,
+      "cheapest_90_35_usd": 582000.0,
+      "source": "results\\paper_rerun_city_dual\\random_seed1\\evaluation_results.json"
+    },
+    {
+      "n_solutions": 92,
+      "hypervolume": 0.2536999757831072,
+      "hv_cost_ref_usd": 700000.0,
+      "max_coop": 0.9722494682309127,
+      "max_noncoop": 0.5032118592651196,
+      "cheapest_coop90_usd": 206000.0,
+      "noncoop_at_cheapest_coop90": 0.03220156561414253,
+      "cheapest_85_35_usd": 423000.0,
+      "n_feasible_85_35": 8,
+      "cheapest_90_35_usd": 531000.0,
+      "source": "results\\paper_rerun_city_dual\\random_seed2\\evaluation_results.json"
+    }
+  ],
+  "hv_cost_ref_usd": 700000.0,
+  "aggregate": {
+    "hypervolume": {
+      "min": 0.250634782634862,
+      "median": 0.25082751053298075,
+      "max": 0.2536999757831072,
+      "n": 3
+    },
+    "max_coop": {
+      "min": 0.9576284078734257,
+      "median": 0.9633979279833158,
+      "max": 0.9722494682309127,
+      "n": 3
+    },
+    "max_noncoop": {
+      "min": 0.46484221816972504,
+      "median": 0.49979880204804744,
+      "max": 0.5032118592651196,
+      "n": 3
+    },
+    "cheapest_coop90_usd": {
+      "min": 120000.0,
+      "median": 130000.0,
+      "max": 206000.0,
+      "n": 3
+    },
+    "cheapest_85_35_usd": {
+      "min": 423000.0,
+      "median": 468000.0,
+      "max": 488000.0,
+      "n": 3
+    }
+  }
+}
